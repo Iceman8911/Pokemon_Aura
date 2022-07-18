@@ -1972,6 +1972,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
 
             fixedIV = fixedIV + TRAINER_IV_MODIFIER;
 
+            gender = MON_MALE; // defaults to 0
 
             if (gTrainers[trainerNum].doubleBattle == TRUE)
                 personalityValue = 0x80;
