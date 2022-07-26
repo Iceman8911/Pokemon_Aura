@@ -4,10 +4,12 @@ This is a feature branch that makes script multichoices (pory and standard!) muc
 
 It's pretty simple to use.
 
-First step is to 
-bufferdynamicmulti string1, string2, string3, . . . (up to 6 strings can be specified. Missing strings will be filled automatically.)
-then 
-multichoice Xloc Yloc, MULTI_DYNAMIC_Z, ignoreB where Z is the number of choices you want your menu to have.
+First step is to  
+`bufferdynamicmulti string1, string2, string3, . . .  `  
+(up to 6 strings can be specified. Missing strings will be filled automatically.)
+then  
+`multichoice Xloc Yloc, MULTI_DYNAMIC_Z, ignoreB`  
+ where Z is the number of choices you want your menu to have.
 Other than this, it works exactly like the standard multichoice. This allows you to generate multichoices in your script rather than having to define new constants in other files for them.
 Example Porycript:
 ```
