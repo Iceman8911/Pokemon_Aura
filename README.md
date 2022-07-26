@@ -10,7 +10,7 @@ then
 multichoice Xloc Yloc, MULTI_DYNAMIC_Z, ignoreB where Z is the number of choices you want your menu to have.
 Other than this, it works exactly like the standard multichoice. This allows you to generate multichoices in your script rather than having to define new constants in other files for them.
 Example Porycript:
-
+```
 text MNM_1 {
     "Sweet"
 }
@@ -41,7 +41,7 @@ script myNewMultiScript {
     release
     end
 }
-
+```
 And this is all you need! No more tracking multiple files for basic multichoices!
 
 # NOTICE FOR MERGING!
