@@ -2849,16 +2849,16 @@ static void CB2_CheckPlayAgainLink(void)
         break;
     case 1:
         sBerryBlender->gameEndState = 3;
-        StringCopy(gStringVar4, gLinkPlayers[sBerryBlender->canceledPlayerId].name);
-        StringAppend(gStringVar4, sText_ApostropheSPokeblockCaseIsFull);
+        StringCopy(gSystemStringVar, gLinkPlayers[sBerryBlender->canceledPlayerId].name);
+        StringAppend(gSystemStringVar, sText_ApostropheSPokeblockCaseIsFull);
         break;
     case 2:
         sBerryBlender->gameEndState++;
-        StringCopy(gStringVar4, gLinkPlayers[sBerryBlender->canceledPlayerId].name);
-        StringAppend(gStringVar4, sText_HasNoBerriesToPut);
+        StringCopy(gSystemStringVar, gLinkPlayers[sBerryBlender->canceledPlayerId].name);
+        StringAppend(gSystemStringVar, sText_HasNoBerriesToPut);
         break;
     case 3:
-        if (Blender_PrintText(&sBerryBlender->textState, gStringVar4, GetPlayerTextSpeedDelay()))
+        if (Blender_PrintText(&sBerryBlender->textState, gSystemStringVar, GetPlayerTextSpeedDelay()))
         {
             sBerryBlender->framesToWait = 0;
             sBerryBlender->gameEndState++;
@@ -2957,15 +2957,15 @@ static void CB2_CheckPlayAgainLocal(void)
     case 1:
         sBerryBlender->gameEndState = 3;
         sBerryBlender->textState = 0;
-        StringCopy(gStringVar4, sText_YourPokeblockCaseIsFull);
+        StringCopy(gSystemStringVar, sText_YourPokeblockCaseIsFull);
         break;
     case 2:
         sBerryBlender->gameEndState++;
         sBerryBlender->textState = 0;
-        StringCopy(gStringVar4, sText_RunOutOfBerriesForBlending);
+        StringCopy(gSystemStringVar, sText_RunOutOfBerriesForBlending);
         break;
     case 3:
-        if (Blender_PrintText(&sBerryBlender->textState, gStringVar4, GetPlayerTextSpeedDelay()))
+        if (Blender_PrintText(&sBerryBlender->textState, gSystemStringVar, GetPlayerTextSpeedDelay()))
             sBerryBlender->gameEndState = 9;
         break;
     case 9:

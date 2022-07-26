@@ -776,6 +776,46 @@ static const struct MenuAction MultichoiceList_Exit[] =
     {gText_Exit},
 };
 
+static const struct MenuAction MultichoiceList_Dynamic2[] =
+{
+    {gText_DynamicMenuString1},
+    {gText_DynamicMenuString2},
+};
+
+static const struct MenuAction MultichoiceList_Dynamic3[] =
+{
+    {gText_DynamicMenuString1},
+    {gText_DynamicMenuString2},
+    {gText_DynamicMenuString3},
+};
+
+static const struct MenuAction MultichoiceList_Dynamic4[] =
+{
+    {gText_DynamicMenuString1},
+    {gText_DynamicMenuString2},
+    {gText_DynamicMenuString3},
+    {gText_DynamicMenuString4},
+};
+
+static const struct MenuAction MultichoiceList_Dynamic5[] =
+{
+    {gText_DynamicMenuString1},
+    {gText_DynamicMenuString2},
+    {gText_DynamicMenuString3},
+    {gText_DynamicMenuString4},
+    {gText_DynamicMenuString5},
+};
+
+static const struct MenuAction MultichoiceList_Dynamic6[] =
+{
+    {gText_DynamicMenuString1},
+    {gText_DynamicMenuString2},
+    {gText_DynamicMenuString3},
+    {gText_DynamicMenuString4},
+    {gText_DynamicMenuString5},
+    {gText_DynamicMenuString6},
+};
+
 struct MultichoiceListStruct
 {
     const struct MenuAction *list;
@@ -897,7 +937,11 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_WHERES_RAYQUAZA]            = MULTICHOICE(MultichoiceList_WheresRayquaza),
     [MULTI_SLATEPORT_TENT_RULES]       = MULTICHOICE(MultichoiceList_SlateportTentRules),
     [MULTI_FALLARBOR_TENT_RULES]       = MULTICHOICE(MultichoiceList_FallarborTentRules),
-    [MULTI_TAG_MATCH_TYPE]             = MULTICHOICE(MultichoiceList_TagMatchType),
+    [MULTI_DYNAMIC_2]                  = MULTICHOICE(MultichoiceList_Dynamic2),
+    [MULTI_DYNAMIC_3]                  = MULTICHOICE(MultichoiceList_Dynamic3),
+    [MULTI_DYNAMIC_4]                  = MULTICHOICE(MultichoiceList_Dynamic4),
+    [MULTI_DYNAMIC_5]                  = MULTICHOICE(MultichoiceList_Dynamic5),
+    [MULTI_DYNAMIC_6]                  = MULTICHOICE(MultichoiceList_Dynamic6),
 };
 
 const u8 *const gStdStrings[] =

@@ -1819,3 +1819,13 @@ const u8 gText_Answer[] = _("ANSWER");
 const u8 gText_PokeBalls[] = _("POKé BALLS");
 const u8 gText_Berry[] = _("BERRY");
 const u8 gText_Berries[] = _("BERRIES");
+
+
+//DYNAMIC MENUS SYSTEM
+
+const u8 gText_DynamicMenuString1[] = _("{STR_VAR_1}");
+const u8 gText_DynamicMenuString2[] = _("{STR_VAR_2}");
+const u8 gText_DynamicMenuString3[] = _("{STR_VAR_3}");
+const u8 gText_DynamicMenuString4[] = _("{STR_VAR_4}");
+const u8 gText_DynamicMenuString5[] = _("{STR_VAR_5}");
+const u8 gText_DynamicMenuString6[] = _("{STR_VAR_6}");

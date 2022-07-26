@@ -1482,7 +1482,7 @@
 	.4byte \text
 	.endm
 
-	@ Expands the given text at the pointer (- the relative address set by setvaddress) into gStringVar4
+	@ Expands the given text at the pointer (- the relative address set by setvaddress) into gSystemStringVar
 	.macro vbuffermessage text:req
 	.byte 0xbe
 	.4byte \text
@@ -1727,6 +1727,19 @@
 	stringvar \stringVarId
 	.2byte \item
 	.2byte \quantity
+	.endm
+
+	@ buffer up to 6 supplied strings for use with MULTI_DYNAMIC_X
+	@ This lets you create custom menus at runtime using only stuff you can edit within the same script.
+	@ Prevents having to create whole new const menu stuffs in other files.
+	.macro bufferdynamicmulti, ptr1=RyuEmptyTextPtr, ptr2=RyuEmptyTextPtr, ptr3=RyuEmptyTextPtr, ptr4=RyuEmptyTextPtr, ptr5=RyuEmptyTextPtr, ptr6=RyuEmptyTextPtr
+	.byte 0xe3
+	.4byte \ptr1
+	.4byte \ptr2
+	.4byte \ptr3
+	.4byte \ptr4
+	.4byte \ptr5
+	.4byte \ptr6
 	.endm
 
 
