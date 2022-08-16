@@ -41,19 +41,19 @@
 #define FLAG_TEMP_1F     (TEMP_FLAGS_START + 0x1F)
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 
-#define FLAG_UNUSED_0x020    0x20 // Unused Flag
-#define FLAG_UNUSED_0x021    0x21 // Unused Flag
-#define FLAG_UNUSED_0x022    0x22 // Unused Flag
-#define FLAG_UNUSED_0x023    0x23 // Unused Flag
-#define FLAG_UNUSED_0x024    0x24 // Unused Flag
-#define FLAG_UNUSED_0x025    0x25 // Unused Flag
-#define FLAG_UNUSED_0x026    0x26 // Unused Flag
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
-#define FLAG_UNUSED_0x028    0x28 // Unused Flag
-#define FLAG_UNUSED_0x029    0x29 // Unused Flag
-#define FLAG_UNUSED_0x02A    0x2A // Unused Flag
-#define FLAG_UNUSED_0x02B    0x2B // Unused Flag
-#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
+#define ROUTE01_MIRACLE_SEED    0x20 // Unused Flag
+#define ROUTE01_SHARP_BEAK    0x21 // Unused Flag
+#define ANCONNA_TOWN_ANTIDOTE    0x22 // Unused Flag
+#define ANCONNA_WOODS_BUGGEM    0x23 // Unused Flag
+#define ANCONNA_WOODS_MUSHROOMS    0x24 // Unused Flag
+#define RIOLU_ENCOUNTER    0x25 // Unused Flag
+#define FIRST_LIUM_ENCOUNTER    0x26 // Unused Flag
+#define ANCONNA_WOODS_POKE_BALL    0x27 // Unused Flag
+#define ANCONNA_TOWN_MYSTERIOUS_PEOPLE    0x28 // Unused Flag
+#define ROUTE01_RINDO_BERRY    0x29 // Unused Flag
+#define MURKY_GROVE_BALM_MUSHROOM    0x2A // Unused Flag
+#define MURKY_GROVE_POISON_GEM    0x2B // Unused Flag
+#define ANCONNA_WOODS_RARE_CANDY    0x2C // Unused Flag
 #define FLAG_UNUSED_0x02D    0x2D // Unused Flag
 #define FLAG_UNUSED_0x02E    0x2E // Unused Flag
 #define FLAG_UNUSED_0x02F    0x2F // Unused Flag
@@ -1634,7 +1634,7 @@
 
 #define FLAGS_COUNT (DAILY_FLAGS_END + 1)
 
-// Special Flags (Stored in EWRAM (sSpecialFlags), not in the SaveBlock)
+// Special Flags (Stored in EWRAM (gSpecialFlags), not in the SaveBlock)
 #define SPECIAL_FLAGS_START                     0x4000
 #define FLAG_HIDE_MAP_NAME_POPUP                (SPECIAL_FLAGS_START + 0x0)
 #define FLAG_DONT_TRANSITION_MUSIC              (SPECIAL_FLAGS_START + 0x1)
@@ -1643,5 +1643,9 @@
 #define FLAG_STORING_ITEMS_IN_PYRAMID_BAG       (SPECIAL_FLAGS_START + 0x4)
 // FLAG_SPECIAL_FLAG_0x4005 - 0x407F also exist and are unused
 #define SPECIAL_FLAGS_END                       (SPECIAL_FLAGS_START + 0x7F)
+
+// I'll start storing my flags here starting with a value of (SPECIAL_FLAGS_END + 1)
+
+// I'll end the flag list here
 
 #endif // GUARD_CONSTANTS_FLAGS_H

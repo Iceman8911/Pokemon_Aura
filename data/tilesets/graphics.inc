@@ -1729,3 +1729,103 @@ gTilesetPalettes_UnionRoom::
 	.align 2
 gTilesetTiles_UnionRoom::
 	.incbin "data/tilesets/secondary/union_room/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_Testing::
+	.incbin "data/tilesets/primary/testing/palettes/00.gbapal"
+	.incbin "data/tilesets/primary/testing/palettes/01.gbapal"
+	.incbin "data/tilesets/primary/testing/palettes/02.gbapal"
+	.incbin "data/tilesets/primary/testing/palettes/03.gbapal"
+	.incbin "data/tilesets/primary/testing/palettes/04.gbapal"
+	.incbin "data/tilesets/primary/testing/palettes/05.gbapal"
+	.incbin "data/tilesets/primary/testing/palettes/06.gbapal"
+	.incbin "data/tilesets/primary/testing/palettes/07.gbapal"
+	.incbin "data/tilesets/primary/testing/palettes/08.gbapal"
+	.incbin "data/tilesets/primary/testing/palettes/09.gbapal"
+	.incbin "data/tilesets/primary/testing/palettes/10.gbapal"
+	.incbin "data/tilesets/primary/testing/palettes/11.gbapal"
+	.incbin "data/tilesets/primary/testing/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_Testing::
+	.incbin "data/tilesets/primary/testing/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_testing_but_secondary::
+	.incbin "data/tilesets/secondary/testing_but_secondary/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/testing_but_secondary/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/testing_but_secondary/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/testing_but_secondary/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/testing_but_secondary/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/testing_but_secondary/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/testing_but_secondary/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/testing_but_secondary/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/testing_but_secondary/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/testing_but_secondary/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/testing_but_secondary/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/testing_but_secondary/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/testing_but_secondary/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_testing_but_secondary::
+	.incbin "data/tilesets/secondary/testing_but_secondary/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_Anconna_Woods::
+	.incbin "data/tilesets/secondary/anconna_woods/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/anconna_woods/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/anconna_woods/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/anconna_woods/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/anconna_woods/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/anconna_woods/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/anconna_woods/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/anconna_woods/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/anconna_woods/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/anconna_woods/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/anconna_woods/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/anconna_woods/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/anconna_woods/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_Anconna_Woods::
+	.incbin "data/tilesets/secondary/anconna_woods/tiles.4bpp.lz"
+	
+	.align 2
+gTilesetPalettes_House_Indoors::
+	.incbin "data/tilesets/primary/house_indoors/palettes/00.gbapal"
+	.incbin "data/tilesets/primary/house_indoors/palettes/01.gbapal"
+	.incbin "data/tilesets/primary/house_indoors/palettes/02.gbapal"
+	.incbin "data/tilesets/primary/house_indoors/palettes/03.gbapal"
+	.incbin "data/tilesets/primary/house_indoors/palettes/04.gbapal"
+	.incbin "data/tilesets/primary/house_indoors/palettes/05.gbapal"
+	.incbin "data/tilesets/primary/house_indoors/palettes/06.gbapal"
+	.incbin "data/tilesets/primary/house_indoors/palettes/07.gbapal"
+	.incbin "data/tilesets/primary/house_indoors/palettes/08.gbapal"
+	.incbin "data/tilesets/primary/house_indoors/palettes/09.gbapal"
+	.incbin "data/tilesets/primary/house_indoors/palettes/10.gbapal"
+	.incbin "data/tilesets/primary/house_indoors/palettes/11.gbapal"
+	.incbin "data/tilesets/primary/house_indoors/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_House_Indoors::
+	.incbin "data/tilesets/primary/house_indoors/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_Indoor_AnconnaTown::
+	.incbin "data/tilesets/secondary/indoor_anconnatown/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/indoor_anconnatown/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/indoor_anconnatown/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/indoor_anconnatown/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/indoor_anconnatown/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/indoor_anconnatown/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/indoor_anconnatown/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/indoor_anconnatown/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/indoor_anconnatown/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/indoor_anconnatown/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/indoor_anconnatown/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/indoor_anconnatown/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/indoor_anconnatown/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_Indoor_AnconnaTown::
+	.incbin "data/tilesets/secondary/indoor_anconnatown/tiles.4bpp.lz"

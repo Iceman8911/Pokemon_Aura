@@ -1,0 +1,243 @@
+raw `
+AnconnaTown_MapScripts::
+	.byte 0
+`
+
+script AnconnaTown_EventScript_Sign {
+	lockall
+	msgbox(AnconnaSign)
+	releaseall
+	end
+}
+
+text AnconnaSign {
+	"Anconna Town\n"
+	"'Shades Of Green Ever Lie'\p"
+	"{DOWN_ARROW} Anconna Lake"
+}
+
+script AnconnaTown_EventScript_Antidote {
+	lockall
+	finditem(ITEM_ANTIDOTE)
+	releaseall
+	end
+}
+
+script AnconnaTown_Bidoof {
+	lockall
+	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Doooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooof!"), 2)
+	waitmessage
+	releaseall
+	end
+}
+
+script AnconnaTown_EventScript_ArceusSign {
+	lockall
+	msgbox(ArceusSign)
+	releaseall
+	end
+}
+
+text ArceusSign {
+	"ARCEUS\p"
+	"It is said to be the very first Pokémon\n"
+	"in existence and the Creator Of the\l"
+	"Very Universe."
+}
+
+script AnconnaTown_EventScript_ProfessorLabSign {
+	lockall
+	msgbox("Professor Flora's Lab")
+	releaseall
+	end
+}
+
+script AnconnaTown_EventScript_FatMan {
+	lockall
+	#msgbox(FatMan, 2) 
+	msgbox(format("{COLOR BLUE}{SHADOW LIGHT_BLUE}The Power Of Science is Astonishing!!!\p {PLAYER}, Do you know that recently, 'ROM Hackers' have been able to update 17 year old"
+	" games with future generation expansions to create retouched retro games such as the\l'ROM Hack' you're playing right now!\pSCIENCE!!!"), 2)
+	waitmessage
+	releaseall
+	end
+}
+
+text FatMan {
+	"{COLOR BLUE}{SHADOW LIGHT_BLUE}The Power Of Science is Astonishing!!!\p"
+	"{PLAYER}, Do you know that recently,\n"
+	"'ROM Hackers' have been able to update\l"
+	"17 year old games with future generation\l"
+	"expansions to create retouched retro\l"
+	"games such as the 'ROM Hack' you're\l"
+	"playing right now!\p"
+	"SCIENCE!!!"
+}
+
+script AnconnaTown_EventScript_LittleGirl {
+	lockall
+	if(var(ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE) == 1){
+		msgbox(format("{COLOR RED}{SHADOW LIGHT_RED}I saw 3 strangers enter the forest. I wonder what they're doing there."), 2)
+		waitmessage
+	}
+	else{
+		msgbox(LittleGirl, 2) 
+		waitmessage
+	}
+	releaseall
+	end
+}
+
+text LittleGirl {
+	"{COLOR RED}{SHADOW LIGHT_RED}Oooh, I really want a small cute Pokémon."
+}
+
+script AnconnaTown_Woman {
+	lockall
+	msgbox(format("{COLOR RED}{SHADOW LIGHT_RED}I love this town!\p It's so simple and peaceful to live in."), 2)
+	waitmessage
+	releaseall
+	end
+}
+
+script Anconna_Town_Discovered_Mysterious_People {
+	lockall
+	applymovement(OBJ_EVENT_ID_PLAYER, Exclaim)
+	waitmovement(0)
+	delay(30)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, PanToMysteriousPeople)
+	waitmovement(0)
+
+	applymovement(5, TalkRight)
+	waitmovement(0)
+	msgbox(format("???: {COLOR BLUE}{SHADOW LIGHT_BLUE}Erhem.\pNow that we're here, I hope the both of you remember the pl..."))
+	waitmessage
+	applymovement(6, TalkLeft)
+	waitmovement(0)
+	msgbox(format("???: {COLOR RED}{SHADOW LIGHT_RED}Yeah, yeah, yeah. Find the escapee Pokémon and return it to our superiors ASAP. I know!"))
+	waitmessage
+	applymovement(7, TalkLeft)
+	waitmovement(0)
+	msgbox(format("???: {COLOR BLUE}{SHADOW LIGHT_BLUE}Me too!"))
+	applymovement(5, TalkLeft)
+	waitmovement(0)
+	msgbox(format("???: {COLOR BLUE}{SHADOW LIGHT_BLUE}Hmph."))
+	applymovement(5, TalkRight)
+	waitmovement(0)
+	msgbox(format("???: {COLOR BLUE}{SHADOW LIGHT_BLUE}Just needed to make sure. We can't have another slip-up this time, you hear?"))
+	waitmessage
+	applymovement(5, TalkRight)
+	waitmovement(0)
+	msgbox(format("???: {COLOR BLUE}{SHADOW LIGHT_BLUE}You in the back, especially!"))
+	closemessage
+	applymovement(7, LiumIsAshamed)
+	waitmovement(0)
+	delay(30)
+	applymovement(5, TalkLeft)
+	waitmovement(0)
+	msgbox(format("???: {COLOR BLUE}{SHADOW LIGHT_BLUE}This Forest here is a huge maze. I say we should stick together. It might take longer but at least we wouldn't get lost."))
+	waitmessage
+	applymovement(7, TalkRight)
+	waitmovement(0)
+	msgbox(format("(If we all go together, we would never find that Pokémon in time. I'll have to divert in order to speed things up.\pAlso, if I find the Pokémon by myself, he'll finally stop treating me like trash."))
+	waitmessage
+	applymovement(5, TalkLeft)
+	waitmovement(0)
+	msgbox(format("???: {COLOR BLUE}{SHADOW LIGHT_BLUE}...With that in mind,..\pLets move out!"))
+	closemessage
+	applymovement(5, TalkLeft)
+	delay(45)
+	removeobject(5)
+	delay(50)
+	applymovement(6, TalkRight)
+	waitmovement(0)
+	msgbox(format("???: {COLOR RED}{SHADOW LIGHT_RED}Don't mind him, Lium. That's just how he is. Just focus on the mission for now, okay?"))
+	closemessage
+	delay(35)
+	applymovement(7, TalkLeft)
+	msgbox(format("Lium: {COLOR BLUE}{SHADOW LIGHT_BLUE}...Okay."))
+	applymovement(6, TalkRight)
+	waitmovement(0)
+	msgbox(format("???: {COLOR RED}{SHADOW LIGHT_RED}That's right. Cheer up and lets go."))
+	closemessage
+	applymovement(6, WalkLeft)
+	waitmovement(0)
+	delay(35)
+	removeobject(6)
+	delay(50)
+	msgbox(format("Lium: {COLOR BLUE}{SHADOW LIGHT_BLUE}Deep Breaths.\pI can do this!"))
+	closemessage
+	applymovement(7, LiumLeaves)
+	waitmovement(0)
+	delay(35)
+	removeobject(7)
+	delay(50)
+
+	applymovement(OBJ_EVENT_ID_CAMERA, ReversePan)
+	waitmovement(0)
+	special(RemoveCameraObject)
+	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Who the heck are they?\pAnd why are they entering our forest?\p.I haven't seen them around this place before.\pHmm.\pThey also seemed to be in a hurry and mentioned something about a plan. Maybe I should investigate this further."))
+	setvar(ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE, 1)
+	releaseall
+}
+
+movement Exclaim {
+	emote_exclamation_mark
+}
+
+movement TalkRight {
+	walk_in_place_slow_right
+}
+
+movement TalkLeft {
+	walk_in_place_slow_left
+}
+
+movement FaceLeft {
+	unlock_facing_direction
+	face_left
+	step_end
+}
+
+movement WalkLeft {
+	unlock_facing_direction
+	walk_fast_left
+	step_end
+}
+
+movement PanToMysteriousPeople{
+	walk_down * 4
+	walk_left * 6
+}
+
+movement LiumIsAshamed {
+	emote_exclamation_mark
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	unlock_facing_direction
+	walk_in_place_faster_down
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	walk_in_place_faster_right
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+}
+
+movement LiumLeaves {
+	unlock_facing_direction
+	walk_fast_left * 2
+	step_end
+}
+
+movement ReversePan {
+	walk_fast_up * 4
+	walk_fast_right * 6
+}

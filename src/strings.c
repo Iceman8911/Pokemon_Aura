@@ -1820,3 +1820,42 @@ const u8 gText_Answer[] = _("ANSWER");
 const u8 gText_PokeBalls[] = _("POKé BALLS");
 const u8 gText_Berry[] = _("BERRY");
 const u8 gText_Berries[] = _("BERRIES");
+
+
+const u8 gTextQuickStart[] = _("Quick Start");
+const u8 gTextQuickItems[] = _("Quick Items");
+const u8 gTextDebugUtilityScript[] = _("Utility Script");
+const u8 gTextDebugTeleportation[] = _("Teleportation");
+const u8 gTextDebugChangeTime[] = _("Change Time");
+const u8 gTextDebugAllBadges[] = _("All Badges");
+const u8 gTextDebugHealParty[] = _("Heal Party");
+const u8 gTextDebugCheckSaveFileSize[] = _("Save File Usage");
+const u8 gTextCloseMenu[] = _("Close Menu");
+
+const u8 gText_TeleportHome[] = _(" Littleroot");
+const u8 gText_TeleportOldale[] = _(" Oldale");
+const u8 gText_TeleportPetalburg[] = _("Petalburg");
+const u8 gText_TeleportRustboro[] = _(" Rustburo");
+const u8 gText_TeleportVerdanturf[] = _(" Verdanturf");
+const u8 gText_TeleportSlateport[] = _("Slateport");
+const u8 gText_TeleportDewford[] = _(" Dewford");
+const u8 gText_TeleportPacifidlog[] = _(" Pacifidlog");
+const u8 gText_TeleportLavaridge[] = _("Lavaridge");
+const u8 gText_TeleportFallarbor[] = _(" Fallarbor");
+const u8 gText_TeleportFortree[] = _(" Fortree");
+const u8 gText_TeleportMauville[] = _("Mauville");
+const u8 gText_TeleportLilycove[] = _(" Lilycove");
+const u8 gText_TeleportSootopolis[] = _(" Sootopolis");
+const u8 gText_TeleportMossdeep[] = _("Mossdeep");
+const u8 gText_TeleportEvergrande[] = _(" EverGrande");
+const u8 gText_TeleportBattleFrontier[] = _(" B. Frontier");
+
+const u8 gText_TeleportBattleFrontierGate[] = _(" Front Gate");
+const u8 gText_TeleportBattleFrontierTower[] = _(" Battle Tower");
+const u8 gText_TeleportBattleFrontierPike[] = _(" Battle Pike");
+const u8 gText_TeleportBattleFrontierPalace[] = _(" Battle Palace");
+const u8 gText_TeleportBattleFrontierPyramid[] = _(" Battle Pyramid");
+const u8 gText_TeleportBattleFrontierFactory[] = _(" Battle Factory");
+const u8 gText_TeleportBattleFrontierArena[] = _(" Battle Arena");
+const u8 gText_TeleportBattleFrontierDome[] = _(" Battle Dome");
+const u8 gText_TeleportBattleFrontierCallback[] = _(" Return");

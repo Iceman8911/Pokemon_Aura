@@ -1,0 +1,248 @@
+mapscripts AnconnaWoods_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+	if(var(FIRST_LIUM_FIGHT) == 0) {
+		setflag(FLAG_TEMP_1)
+	}
+}
+	#MAP_SCRIPT_ON_TRANSITION: AnconnaWoods_HideOrShowBugCatchers
+}
+
+script Hide_Lium {
+	#setflag(FIRST_LIUM_ENCOUNTER)
+}
+
+script Anconna_Woods_Sign {
+	msgbox(format("Anconna Woods\p{RIGHT_ARROW} Anconna Town"))
+	closemessage
+}
+
+script Anconna_Woods_RareCandy {
+	lock
+	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Huh,\pIt was just a piece of bush candy.\pGarbage!"))
+	closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerThinksAboutFirstLiumEncounter)     #I'm just recycling another movement script
+	waitmovement(0)
+	delay(110)
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerStillWantsBushSweet)
+	waitmovement(0)
+	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: But still,\pIt wouldn't hurt to have it...."))
+	finditem(ITEM_RARE_CANDY)
+	release
+}
+
+#script AnconnaWoods_HideOrShowBugCatchers {
+#	if(var(FIRST_LIUM_FIGHT) == 0) {
+#		setflag(FLAG_TEMP_1)
+#	}
+#}
+
+script AnconnaWoods_PlayerWantsItemBall {
+	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: I would like to know what that item ball contains but wild Pokémon may jump out from that bush beside it."))
+	closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerStillWantsItemBall)
+	waitmovement(0)
+}
+
+script AnconnaWoods_PlayerWantsItemBallButCanNotJump {
+	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Even if I wanted that item ball, I couldn't jump from here."))
+	closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerStillWantsItemBall)
+	waitmovement(0)
+}
+
+script AnconnaWoods_Not_Found_Riolu {
+    lockall
+    #delay(30)
+    msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: I can't go into bushes yet. Wild Pokémon may jump out at me.\pThere has to be another way."))
+	closemessage
+    applymovement(OBJ_EVENT_ID_PLAYER, NotFoundRiolu1)
+	waitmovement(0)
+    releaseall
+}
+
+movement NotFoundRiolu1 {
+    walk_right
+}
+
+script AnconnaWoods_Not_Fought_Lium {
+	lockall
+	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: There's a shorter path to my home,\p Lemme search further."))
+	closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER, NotFoughtLium)
+	waitmovement(0)
+	releaseall
+}
+
+movement NotFoughtLium {
+	walk_left
+}
+
+script AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu {
+	lockall
+	msgbox(format("???: {COLOR RED}{SHADOW LIGHT_RED}LIUM! LIUM!! WHERE ARE YOU LIUM!!!"))
+	waitmessage
+	msgbox(format("???: {COLOR BLUE}{SHADOW LIGHT_BLUE}I told you. Bringing fresh recruits to important missions is always a bad idea. Look at what that boy has done, he's messed everything up AGAIN. It's better we leave him here, serves him right."))
+	waitmessage
+	msgbox(format("???: {COLOR RED}{SHADOW LIGHT_RED}HOW COULD YOU SAY THAT NOW!\p Lium is MISSING and we have no idea where he is now. We can't leave him behind. No matter the cost, we must find him. I promised his mothe..."))
+	waitmessage
+	delay(60)
+	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Yup, that's them.\p So one of them is missing and that is halting their 'plan', whatever that may be..."))
+	waitmessage
+	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Rioluuuuuuuuuuuu!"))
+	waitmessage
+	msgbox(format("???: {COLOR BLUE}{SHADOW LIGHT_BLUE}Forget Lium. That was the cry of the Pokémon we've been looking for, at least today wouldn't be a complete failure.\p You can keep looking for him, I'll go for something more reasonable."))
+	waitmessage
+	msgbox(format("???: {COLOR RED}{SHADOW LIGHT_RED}I KNOW YOU'VE NEVER LIKED HIM.\pBUT HE'S ONE OF US!\pWe can't abandon him here, he's too young to survive here alone."))
+	waitmessage
+	msgbox(format("???: {COLOR BLUE}{SHADOW LIGHT_BLUE}You've made your choice, Alicia. Now, its time for me to claim my prize."))
+	closemessage
+	delay(100)
+	msgbox(format("{COLOR BLUE}{SHADOW LIGHT_BLUE}.........\p.....\pDrat, where's my pokeball.\pI'm sure I brought it with me."))
+	waitmessage
+	delay(90)
+	msgbox(format("{COLOR BLUE}{SHADOW LIGHT_BLUE} Oh no, he must have took it. When I get my hands on him, he's gonna be sorry."))
+	waitmessage
+	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Ri rio riolu riolu!"))
+	waitmessage
+	msgbox(format("Alicia: {COLOR RED}{SHADOW LIGHT_RED}Now, I guess you have no other option than to help me find him since the Pokémon escaped us."))
+	waitmessage
+	msgbox(format("???: (inaudible mumbling)"))
+	delay(80)
+	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: So they've given up on getting that Pokémon, I doubt that their original plans were any good since that Pokémon ran away from them.\pI think I should find it and bring it to Professor Flora before they change their mind."))
+	setvar(ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE, 2)
+	releaseall
+}
+
+script AnconnaWoods_Lium {
+	msgbox(format("???: {COLOR BLUE}{SHADOW LIGHT_BLUE}Deep Breaths.\pTake in Deep Breaths.\nI'll make it up.\pI can do this!"))
+	closemessage
+}
+script Anconna_Woods_First_Lium_Fight {
+	if(var(ANCONNA_WOODS_FOUND_RIOLU) == 1) {
+	lockall
+	addobject(1)
+	#clearflag(FIRST_LIUM_ENCOUNTER)
+	msgbox(format("???: {COLOR BLUE}{SHADOW LIGHT_BLUE}Um, Hold IT RIGHT THERE!!!"))
+	waitmessage
+	closemessage
+	applymovement(1, FirstLiumEncounter)
+	waitmovement(0)
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerTurnsToLium)
+	waitmovement(0)
+	msgbox(format("???: {COLOR BLUE}{SHADOW LIGHT_BLUE}Huff-Puff\p(I'll never run like that again!\pHmm, I didn't think that'll actually stop him. What do I do now?)"))
+	closemessage
+	applymovement(1, LiumRemembersHisMission)
+	waitmovement(0)
+	msgbox(format("???: {COLOR BLUE}{SHADOW LIGHT_BLUE}Yeah, that's right. I ,uh, saw you in Anconna Woods with that rare Pokémon we've been looking for and ,uh, the boss said its my job to get that Pokémon back from you so hand it over."))
+	closemessage
+	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: So you're 'Lium', hmm.\pHow about,\pNO!"))
+	closemessage
+	applymovement(1, LiumisAstonished)
+	waitmovement(0)
+	msgbox(format("Lium: {COLOR BLUE}{SHADOW LIGHT_BLUE}Uh?\pHow do you know my name?"))
+	closemessage
+	applymovement(1, LiumisAstonishedNot)
+	waitmovement(0)
+	msgbox(format("{COLOR BLUE}{SHADOW LIGHT_BLUE}Nevermind, it doesn't matter.\p I ask again: Surrender that Pokémon now.\pIf you don't give it willingly, I'll have to take it by force."))
+	#turnobject(OBJ_EVENT_ID_PLAYER, up)
+	cleartrainerflag(TRAINER_AQUA_GRUNT_LIUM)
+	#trainerbattle_single(TRAINER_AQUA_GRUNT_LIUM, "{PLAYER}: Do Your Worst!", "Poochyena, NOOOOO!", Anconna_Woods_First_Lium_Fight_Won)
+	#trainerbattle_no_intro(TRAINER_AQUA_GRUNT_LIUM, "Poochyena, NOOOOO!")
+	trainerbattle (TRAINER_BATTLE_CONTINUE_SCRIPT, TRAINER_AQUA_GRUNT_LIUM, 1, PlayerBattleLiumText, "Poochyena, NOOOOO!", Anconna_Woods_First_Lium_Fight_Won)
+	}
+}
+
+text PlayerBattleLiumText {
+	format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: You're not taking Riolu from me!\pLium: {COLOR BLUE}{SHADOW LIGHT_BLUE}We'll see about that.")
+}
+
+script Anconna_Woods_First_Lium_Fight_Won {
+	msgbox(format("Lium: {COLOR BLUE}{SHADOW LIGHT_BLUE}What have you done! You hurt my first Pokémon and I have no way of getting back safe now.\pNo.\pNo.\pNo.\pNo.\pNOOO!\pI really messed up this time. I need to get out of here!"))
+	closemessage
+	applymovement(1, FirstLiumEncounterEnd)
+	waitmovement(0)
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerThinksAboutFirstLiumEncounter)
+	waitmovement(0)
+	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: What was all that about?\pThat guy was an obvious noob but suspicious. Maybe I should tell mom and Professor Flora about him soon.\pAnyways, Let's get you healed, Riolu."))
+	closemessage
+	#setflag(FIRST_LIUM_ENCOUNTER)
+	removeobject(1)
+	setvar(FIRST_LIUM_FIGHT, 1)
+	releaseall
+}
+
+movement FirstLiumEncounter {
+	walk_down
+	walk_right * 4
+	walk_down * 10
+}
+
+movement PlayerTurnsToLium {
+	emote_exclamation_mark
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	face_up
+	lock_facing_direction
+}
+
+movement LiumRemembersHisMission {
+	face_up
+	delay_16
+	delay_16
+	delay_16
+	emote_exclamation_mark
+	face_down
+}
+
+movement LiumisAstonished {
+	lock_facing_direction
+	jump_up
+	delay_16
+	delay_16
+	delay_16
+}
+
+movement LiumisAstonishedNot {
+	walk_down
+}
+
+movement FirstLiumEncounterEnd {
+	unlock_facing_direction
+	walk_fast_up * 9
+	delay_16
+	delay_16
+	delay_16
+}
+
+movement PlayerThinksAboutFirstLiumEncounter {
+	face_down
+}
+
+movement PlayerStillWantsItemBall {
+	walk_up
+}
+
+movement PlayerStillWantsBushSweet {
+	walk_in_place_right
+}
+
+script AnconnaWoods_BugCatcher1 {
+	trainerbattle_single(BUG_CATCHER_1, format("{COLOR BLUE}{SHADOW LIGHT_BLUE}I just started raising Bug Pokemon.\pCan you help me train them?"), format("That loss doesn't count.\pThey're still grubs after all."))
+	msgbox(format("{COLOR BLUE}{SHADOW LIGHT_BLUE}Almost Every Bug Type starts off as a larvae."), 2)
+	closemessage
+}
+
+script AnconnaWoods_BugCatcher2 {
+	trainerbattle_single(BUG_CATCHER_2, format("{COLOR BLUE}{SHADOW LIGHT_BLUE}Bug Types grow pretty fast, but until they've reached their power spike.\pThey're pretty.....\pWeak."), format("I knew this would happen."))
+	msgbox(format("{COLOR BLUE}{SHADOW LIGHT_BLUE}Don't ask me why I have a full team of cocoons.\pIts.....\pPrivate."))
+	closemessage
+}
+
+script AnconnaWoods_BugCatcher3 {
+	trainerbattle_single(BUG_CATCHER_3, format("{COLOR BLUE}{SHADOW LIGHT_BLUE}Bugs are Great.\pThey grow fast and become powerful quickly.\pLemme show you a taste of what I mean."), format("But.....\pBugs are supposed to dominate early-game."))
+	msgbox(format("{COLOR BLUE}{SHADOW LIGHT_BLUE}Maybe I should've evolved all my bugs.\pI'm sure I would've won then."))
+	closemessage
+}

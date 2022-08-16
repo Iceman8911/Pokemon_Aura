@@ -322,7 +322,7 @@ Route119_EventScript_WeatherInstituteSign::
 	end
 
 Route119_EventScript_Brent::
-	trainerbattle_single TRAINER_BRENT, Route119_Text_BrentIntro, Route119_Text_BrentDefeat
+	trainerbattle_single BUG_MANIAC_BRENT, Route119_Text_BrentIntro, Route119_Text_BrentDefeat
 	msgbox Route119_Text_BrentPostBattle, MSGBOX_AUTOCLOSE
 	end
 

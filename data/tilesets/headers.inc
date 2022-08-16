@@ -830,3 +830,58 @@ gTileset_UnionRoom::
 	.4byte gMetatiles_UnionRoom
 	.4byte gMetatileAttributes_UnionRoom
 	.4byte NULL @ animation callback
+
+	.align 2
+gTileset_Testing::
+	.byte TRUE @ is compressed
+	.byte FALSE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Testing
+	.4byte gTilesetPalettes_Testing
+	.4byte gMetatiles_Testing
+	.4byte gMetatileAttributes_Testing
+	.4byte NULL
+
+	.align 2
+gTileset_testing_but_secondary::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_testing_but_secondary
+	.4byte gTilesetPalettes_testing_but_secondary
+	.4byte gMetatiles_testing_but_secondary
+	.4byte gMetatileAttributes_testing_but_secondary
+	.4byte NULL
+
+	.align 2
+gTileset_Anconna_Woods::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Anconna_Woods
+	.4byte gTilesetPalettes_Anconna_Woods
+	.4byte gMetatiles_Anconna_Woods
+	.4byte gMetatileAttributes_Anconna_Woods
+	.4byte NULL
+	
+	.align 2
+gTileset_House_Indoors::
+	.byte TRUE @ is compressed
+	.byte FALSE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_House_Indoors
+	.4byte gTilesetPalettes_House_Indoors
+	.4byte gMetatiles_House_Indoors
+	.4byte gMetatileAttributes_House_Indoors
+	.4byte NULL
+
+	.align 2
+gTileset_Indoor_AnconnaTown::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Indoor_AnconnaTown
+	.4byte gTilesetPalettes_Indoor_AnconnaTown
+	.4byte gMetatiles_Indoor_AnconnaTown
+	.4byte gMetatileAttributes_Indoor_AnconnaTown
+	.4byte NULL

@@ -557,3 +557,40 @@ gMetatiles_UnionRoom::
 	.align 1
 gMetatileAttributes_UnionRoom::
 	.incbin "data/tilesets/secondary/union_room/metatile_attributes.bin"
+
+	.align 1
+gMetatiles_Testing::
+	.incbin "data/tilesets/primary/testing/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Testing::
+	.incbin "data/tilesets/primary/testing/metatile_attributes.bin"
+	.align 1
+gMetatiles_testing_but_secondary::
+	.incbin "data/tilesets/secondary/testing_but_secondary/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_testing_but_secondary::
+	.incbin "data/tilesets/secondary/testing_but_secondary/metatile_attributes.bin"
+	.align 1
+gMetatiles_Anconna_Woods::
+	.incbin "data/tilesets/secondary/anconna_woods/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Anconna_Woods::
+	.incbin "data/tilesets/secondary/anconna_woods/metatile_attributes.bin"
+	
+	.align 1
+gMetatiles_House_Indoors::
+	.incbin "data/tilesets/primary/house_indoors/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_House_Indoors::
+	.incbin "data/tilesets/primary/house_indoors/metatile_attributes.bin"
+	.align 1
+gMetatiles_Indoor_AnconnaTown::
+	.incbin "data/tilesets/secondary/indoor_anconnatown/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Indoor_AnconnaTown::
+	.incbin "data/tilesets/secondary/indoor_anconnatown/metatile_attributes.bin"

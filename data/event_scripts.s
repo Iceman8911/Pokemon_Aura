@@ -1056,3 +1056,20 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/text/frontier_brain.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
+	.include "data/scripts/script_debug_menu.inc"
+
+	.include "data/maps/AnconnaTown/scripts.inc"
+
+	.include "data/maps/AnconnaWoods/scripts.inc"
+
+	.include "data/maps/Route01/scripts.inc"
+
+	.include "data/maps/AnconnaTown_PlayerHouse/scripts.inc"
+
+	.include "data/maps/AnconnaTown_PlayerRoom/scripts.inc"
+
+	.include "data/maps/AnconnaTown_PlayerHouse_GroundFloor/scripts.inc"
+
+	.include "data/maps/AnconnaWoods_1/scripts.inc"
+
+	.include "data/maps/MurkyGrove/scripts.inc"

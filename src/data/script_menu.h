@@ -771,9 +771,57 @@ static const struct MenuAction MultichoiceList_TagMatchType[] =
     {gText_Exit},
 };
 
+static const struct MenuAction MultichoiceList_DebugMenu[] = 
+{
+    {gTextQuickStart},
+    {gTextQuickItems},
+    {gTextDebugUtilityScript},
+    {gTextDebugTeleportation},
+    {gTextDebugChangeTime},
+    {gTextDebugAllBadges},
+    {gTextDebugHealParty},
+    {gTextDebugCheckSaveFileSize},
+    {gTextCloseMenu}
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_TeleportMM[]=
+{
+    {gText_TeleportHome},
+    {gText_TeleportOldale},
+    {gText_TeleportPetalburg},
+    {gText_TeleportRustboro},
+    {gText_TeleportVerdanturf},
+    {gText_TeleportSlateport},
+    {gText_TeleportDewford},
+    {gText_TeleportPacifidlog},
+    {gText_TeleportLavaridge},
+    {gText_TeleportFallarbor},
+    {gText_TeleportFortree},
+    {gText_TeleportMauville},
+    {gText_TeleportLilycove},
+    {gText_TeleportSootopolis},
+    {gText_TeleportMossdeep},
+    {gText_TeleportEvergrande},
+    {gText_TeleportBattleFrontier},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_TeleportFrontier[]=
+{
+    {gText_TeleportBattleFrontierGate},
+    {gText_TeleportBattleFrontierTower},
+    {gText_TeleportBattleFrontierPike},
+    {gText_TeleportBattleFrontierPalace},
+    {gText_TeleportBattleFrontierPyramid},
+    {gText_TeleportBattleFrontierFactory},
+    {gText_TeleportBattleFrontierArena},
+    {gText_TeleportBattleFrontierDome},
+    {gText_TeleportBattleFrontierCallback},
 };
 
 struct MultichoiceListStruct
@@ -898,6 +946,9 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_SLATEPORT_TENT_RULES]       = MULTICHOICE(MultichoiceList_SlateportTentRules),
     [MULTI_FALLARBOR_TENT_RULES]       = MULTICHOICE(MultichoiceList_FallarborTentRules),
     [MULTI_TAG_MATCH_TYPE]             = MULTICHOICE(MultichoiceList_TagMatchType),
+    [MULTI_DEBUG_MENU]                 = MULTICHOICE(MultichoiceList_DebugMenu),
+    [MULTI_TELEPORT_MAIN_MENU]         = MULTICHOICE(MultichoiceList_TeleportMM),
+    [MULTI_TELEPORT_MENU_FRONTIER]     = MULTICHOICE(MultichoiceList_TeleportFrontier),
 };
 
 const u8 *const gStdStrings[] =

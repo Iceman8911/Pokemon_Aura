@@ -336,6 +336,7 @@ SECTIONS {
         src/battle_transition_frontier.o(.text);
         src/international_string_util.o(.text);
         src/pokemon_debug.o(.text);
+        src/speech_bubble.o(.text);
     } =0
 
     script_data :
@@ -693,6 +694,7 @@ SECTIONS {
         src/rayquaza_scene.o(.rodata);
         src/walda_phrase.o(.rodata);
         src/gym_leader_rematch.o(.rodata);
+        src/speech_bubble.o(.rodata);
         src/battle_transition_frontier.o(.rodata);
         src/text_input_strings.o(.rodata);
         src/fonts.o(.rodata);
@@ -1299,7 +1301,9 @@ SECTIONS {
         data/multiboot_pokemon_colosseum.o(.rodata);
     } =0
 
-    gfx_data  :
+
+
+    gfx_data :
     ALIGN(4)
     {
         src/graphics.o(.rodata);

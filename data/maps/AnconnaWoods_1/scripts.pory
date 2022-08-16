@@ -1,0 +1,227 @@
+mapscripts AnconnaWoods_1_MapScripts {
+#    MAP_SCRIPT_ON_TRANSITION: Hide_Mushroom_Sprite
+}
+
+#script Hide_Mushroom_Sprite {
+#    hideobjectat(2, MAP_ANCONNA_WOODS_1)
+#}
+
+script AnconnaWoods_1_BugGem {
+    lockall
+   # msgbox(FoundBugGem)
+    msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Why would anyone drop this here?\p""Well, Their Loss!"))
+    waitmessage
+    finditem(ITEM_BUG_GEM)
+    releaseall
+    end
+}
+
+text FoundBugGem {
+    "{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Why would anyone drop this here?\p"
+    "Well, Their Loss!"
+}
+
+script AnconnaWoods_1_Mushrooms {
+    lockall
+    msgbox(MushroomText_1)
+    waitmessage
+    finditem(ITEM_BIG_MUSHROOM)
+    finditem(ITEM_TINY_MUSHROOM, 2)
+    msgbox(MushroomText_2)
+    waitmessage
+    releaseall
+    end
+}
+
+text MushroomText_1 {
+    "{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Hmm, Some Mushrooms."
+}
+
+text MushroomText_2 {
+    "{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Guess these could be handy."
+}
+
+script AnconnaWoods_1_Not_Found_Riolu {
+    lockall
+    #delay(30)
+    msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: I can't go into bushes yet. Wild Pokémon may jump out at me.\pThere has to be another way."))
+    closemessage
+    applymovement(OBJ_EVENT_ID_PLAYER, NotFoundRiolu)
+    waitmovement(0)
+    releaseall
+}
+
+movement NotFoundRiolu {
+    walk_up
+}
+
+script AnconnaWoods_1_Found_Riolu {
+    lockall
+    delay(30)
+    applymovement(OBJ_EVENT_ID_PLAYER, PlayerConfused)
+    waitmovement(0)
+    msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Huh?\pWhat is that?"))
+    closemessage
+    applymovement(OBJ_EVENT_ID_PLAYER, PlayerFindsRiolu)
+    delay(20)
+    applymovement(OBJ_EVENT_ID_PLAYER, WalkToRiolu)
+    waitmovement(0)
+    delay(60)
+    msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Um?\p(What's a little Pokémon like this doing in a bug forest?\pOh, it must be that Pokémon those people were looking for.)"))
+    waitmessage
+    closemessage
+    applymovement(3, RioluReacts)
+    waitmovement(0)
+    delay(20)
+    msgbox(format("(It looks really scared of me,\pMaybe because of the strange people in the woods)\p{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: How did you get he..."))
+    msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Rio Rioo..\pRioluuu!!!"))
+    delay(17)
+    msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Wait!!!"))
+    closemessage
+    applymovement(OBJ_EVENT_ID_PLAYER, DodgeRiolu)
+    waitmovement(0)
+    applymovement(3, RioluRamsIntoYou)
+    waitmovement(0)
+    special(ShakeCamera)
+    msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Woah!\p(Why'd it try to attack me?)"))
+    waitmessage
+    msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Rio lu..."))
+    waitmessage
+    msgbox(format("{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}(It looks like it injured itself though.)\p(I'd better help it quickly with my Potion.)"))
+    waitmessage
+    closemessage
+    applymovement(OBJ_EVENT_ID_PLAYER, TreatRiolu)
+    waitmovement(0)
+    msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Easy does it!"))
+    delay(35)
+    msgbox(format("{PLAYER} used a Potion on the Injured Pokémon!"))
+    playfanfare(MUS_HEAL)
+    waitfanfare
+    delay(15)
+    msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Done!"))
+    applymovement(OBJ_EVENT_ID_PLAYER, StepBackFromRiolu)
+    msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Doesn't that feel much better?"))
+    closemessage
+    applymovement(3, RioluTurnsAround)
+    waitmovement(0)
+    msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Rio..\pRiolu?"))
+    closemessage
+    applymovement(3, RioluApproachesYou)
+    waitmovement(0)
+    msgbox(format("{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}(It's coming closer again..)"))
+    applymovement(3, RioluLikesYou)
+    waitmovement(0)
+    msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Riolu Riolu!!"))
+    waitmessage
+    msgbox(format("(Could it be that..)\p{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Do you wanna come with me.. 'Riolu'?"))
+    msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Riolu Riolu Riolu!!!"))
+    waitmessage
+    givemon(SPECIES_RIOLU, 5, ITEM_FOCUS_SASH)
+    msgbox(format("{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}Riolu has joined your team!"))
+    playfanfare(MUS_OBTAIN_ITEM)
+    waitfanfare
+    setflag(FLAG_SYS_POKEMON_GET)
+    delay(40)
+    msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: I'll take that as a yes.\pLets go to my house, Riolu."))
+    fadescreen(FADE_TO_BLACK)
+    closemessage
+    removeobject(3)
+    delay(50)
+    fadescreen(FADE_FROM_BLACK)
+    applymovement(OBJ_EVENT_ID_PLAYER, AnconnaWoods_1You)
+    msgbox(format("(The poor little thing is lost, probably because of those people from before.\pLets see if there's anyway I can help.)"))
+    setvar(ANCONNA_WOODS_FOUND_RIOLU, 1)
+    releaseall
+}
+
+movement AnconnaWoods_1You {
+    walk_in_place_slow_right
+}
+
+movement PlayerConfused {
+    emote_exclamation_mark
+    delay_16
+}
+
+movement PlayerFindsRiolu {
+    face_right
+    step_end
+}
+
+movement WalkToRiolu {
+    walk_down
+    walk_right * 4
+    walk_down
+    walk_right
+    step_end
+}
+
+movement RioluReacts {
+    face_left
+    emote_exclamation_mark
+	delay_16
+	delay_16
+	delay_16
+    delay_16
+	delay_16
+	delay_16
+    face_up
+	delay_16
+	delay_16
+	delay_16
+    delay_16
+	delay_16
+	delay_16
+    face_down
+	delay_16
+	delay_16
+	delay_16
+    delay_16
+	delay_16
+	delay_16
+    face_left
+    emote_exclamation_mark
+}
+
+movement DodgeRiolu {
+    walk_fast_up
+}
+
+movement RioluRamsIntoYou {
+    walk_fast_left * 3
+}
+
+movement TreatRiolu {
+    walk_fast_down
+    walk_fast_left
+}
+
+movement StepBackFromRiolu {
+    walk_right
+    face_left
+}
+
+movement RioluTurnsAround {
+    face_right
+}
+
+movement RioluApproachesYou {
+    walk_right
+}
+
+movement RioluLikesYou {
+    emote_question_mark
+    delay_16
+    delay_16
+    delay_16
+    delay_16
+    delay_16
+    delay_16
+    delay_16
+    delay_16
+    delay_16
+    delay_16
+    delay_16
+    delay_16
+    emote_heart
+}

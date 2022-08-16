@@ -8297,7 +8297,7 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
     switch (GetBattlerAbility(battlerAtk))
     {
     case ABILITY_TECHNICIAN:
-        if (basePower <= 60)
+        if (basePower <= 70)
            MulModifier(&modifier, UQ_4_12(1.5));
         break;
     case ABILITY_FLARE_BOOST:
@@ -8310,11 +8310,11 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
         break;
     case ABILITY_RECKLESS:
         if (gBattleMoves[move].flags & FLAG_RECKLESS_BOOST)
-           MulModifier(&modifier, UQ_4_12(1.2));
+           MulModifier(&modifier, UQ_4_12(1.5));
         break;
     case ABILITY_IRON_FIST:
         if (gBattleMoves[move].flags & FLAG_IRON_FIST_BOOST)
-           MulModifier(&modifier, UQ_4_12(1.2));
+           MulModifier(&modifier, UQ_4_12(1.3));
         break;
     case ABILITY_SHEER_FORCE:
         if (gBattleMoves[move].flags & FLAG_SHEER_FORCE_BOOST)
@@ -8891,7 +8891,7 @@ static u32 CalcDefenseStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, 
     case ABILITY_GRASS_PELT:
         if (gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN && usesDefStat)
         {
-            MulModifier(&modifier, UQ_4_12(1.5));
+            MulModifier(&modifier, UQ_4_12(2));
             if (updateFlags)
                 RecordAbilityBattle(battlerDef, ABILITY_GRASS_PELT);
         }

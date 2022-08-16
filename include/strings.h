@@ -3022,4 +3022,42 @@ extern const u8 gText_PkmnForSwap[];
 extern const u8 gText_SamePkmnInPartyAlready[];
 extern const u8 gText_Cancel3[];
 
+extern const u8 gTextQuickStart[];
+extern const u8 gTextQuickItems[];
+extern const u8 gTextDebugUtilityScript[];
+extern const u8 gTextDebugTeleportation[];
+extern const u8 gTextDebugChangeTime[];
+extern const u8 gTextDebugAllBadges[];
+extern const u8 gTextDebugHealParty[];
+extern const u8 gTextDebugCheckSaveFileSize[];
+extern const u8 gTextCloseMenu[];
+
+extern const u8 gText_TeleportHome[];
+extern const u8 gText_TeleportOldale[];
+extern const u8 gText_TeleportPetalburg[];
+extern const u8 gText_TeleportRustboro[];
+extern const u8 gText_TeleportVerdanturf[];
+extern const u8 gText_TeleportSlateport[];
+extern const u8 gText_TeleportDewford[];
+extern const u8 gText_TeleportPacifidlog[];
+extern const u8 gText_TeleportLavaridge[];
+extern const u8 gText_TeleportFallarbor[];
+extern const u8 gText_TeleportFortree[];
+extern const u8 gText_TeleportMauville[];
+extern const u8 gText_TeleportLilycove[];
+extern const u8 gText_TeleportSootopolis[];
+extern const u8 gText_TeleportMossdeep[];
+extern const u8 gText_TeleportLandmarks[];
+extern const u8 gText_TeleportEvergrande[];
+extern const u8 gText_TeleportBattleFrontier[];
+extern const u8 gText_TeleportBattleFrontierGate[];
+extern const u8 gText_TeleportBattleFrontierTower[];
+extern const u8 gText_TeleportBattleFrontierPike[];
+extern const u8 gText_TeleportBattleFrontierPalace[];
+extern const u8 gText_TeleportBattleFrontierPyramid[];
+extern const u8 gText_TeleportBattleFrontierFactory[];
+extern const u8 gText_TeleportBattleFrontierArena[];
+extern const u8 gText_TeleportBattleFrontierDome[];
+extern const u8 gText_TeleportBattleFrontierCallback[];
+
 #endif // GUARD_STRINGS_H

@@ -4410,6 +4410,86 @@
       "secondary_tileset": "gTileset_MysteryEventsHouse",
       "border_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/border.bin",
       "blockdata_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/map.bin"
+    },
+    {
+      "id": "LAYOUT_ANCONNA_TOWN",
+      "name": "AnconnaTown_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_Testing",
+      "secondary_tileset": "gTileset_testing_but_secondary",
+      "border_filepath": "data/layouts/AnconnaTown/border.bin",
+      "blockdata_filepath": "data/layouts/AnconnaTown/map.bin"
+    },
+    {
+      "id": "LAYOUT_ANCONNA_WOODS",
+      "name": "AnconnaWoods_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_Testing",
+      "secondary_tileset": "gTileset_Anconna_Woods",
+      "border_filepath": "data/layouts/AnconnaWoods/border.bin",
+      "blockdata_filepath": "data/layouts/AnconnaWoods/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE01",
+      "name": "Route01_Layout",
+      "width": 30,
+      "height": 50,
+      "primary_tileset": "gTileset_Testing",
+      "secondary_tileset": "gTileset_testing_but_secondary",
+      "border_filepath": "data/layouts/Route01/border.bin",
+      "blockdata_filepath": "data/layouts/Route01/map.bin"
+    },
+    {
+      "id": "LAYOUT_ANCONNA_TOWN_PLAYER_HOUSE",
+      "name": "AnconnaTown_PlayerHouse_Layout",
+      "width": 16,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansMaysHouse",
+      "border_filepath": "data/layouts/AnconnaTown_PlayerHouse/border.bin",
+      "blockdata_filepath": "data/layouts/AnconnaTown_PlayerHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_ANCONNA_TOWN_PLAYER_ROOM",
+      "name": "AnconnaTown_PlayerRoom_Layout",
+      "width": 11,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansMaysHouse",
+      "border_filepath": "data/layouts/AnconnaTown_PlayerRoom/border.bin",
+      "blockdata_filepath": "data/layouts/AnconnaTown_PlayerRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_ANCONNA_TOWN_PLAYER_HOUSE_GROUND_FLOOR",
+      "name": "AnconnaTown_PlayerHouse_GroundFloor_Layout",
+      "width": 16,
+      "height": 10,
+      "primary_tileset": "gTileset_House_Indoors",
+      "secondary_tileset": "gTileset_Indoor_AnconnaTown",
+      "border_filepath": "data/layouts/AnconnaTown_PlayerHouse_GroundFloor/border.bin",
+      "blockdata_filepath": "data/layouts/AnconnaTown_PlayerHouse_GroundFloor/map.bin"
+    },
+    {
+      "id": "LAYOUT_ANCONNA_WOODS_1",
+      "name": "AnconnaWoods_1_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_Testing",
+      "secondary_tileset": "gTileset_Anconna_Woods",
+      "border_filepath": "data/layouts/AnconnaWoods_1/border.bin",
+      "blockdata_filepath": "data/layouts/AnconnaWoods_1/map.bin"
+    },
+    {
+      "id": "LAYOUT_MURKY_GROVE",
+      "name": "MurkyGrove_Layout",
+      "width": 30,
+      "height": 25,
+      "primary_tileset": "gTileset_Testing",
+      "secondary_tileset": "gTileset_Anconna_Woods",
+      "border_filepath": "data/layouts/MurkyGrove/border.bin",
+      "blockdata_filepath": "data/layouts/MurkyGrove/map.bin"
     }
   ]
 }

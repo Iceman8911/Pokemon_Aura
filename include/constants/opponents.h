@@ -37,7 +37,7 @@
 #define TRAINER_SHELLY_SEAFLOOR_CAVERN       33
 #define TRAINER_ARCHIE                       34
 #define TRAINER_LEAH                         35
-#define TRAINER_DAISY                        36
+#define AROMA_LADY_DAISY                     36//Edited
 #define TRAINER_ROSE_1                       37
 #define TRAINER_FELIX                        38
 #define TRAINER_VIOLET                       39
@@ -224,7 +224,7 @@
 #define TRAINER_ETHAN_3                     220
 #define TRAINER_ETHAN_4                     221
 #define TRAINER_ETHAN_5                     222
-#define TRAINER_BRENT                       223
+#define BUG_MANIAC_BRENT                    223//Edited
 #define TRAINER_DONALD                      224
 #define TRAINER_TAYLOR                      225
 #define TRAINER_JEFFREY_1                   226
@@ -275,14 +275,14 @@
 #define TRAINER_TATE_AND_LIZA_1             271
 #define TRAINER_JUAN_1                      272
 #define TRAINER_JERRY_1                     273
-#define TRAINER_TED                         274
+#define SCHOOL_KID_M_TED                    274//Edited
 #define TRAINER_PAUL                        275
 #define TRAINER_JERRY_2                     276
 #define TRAINER_JERRY_3                     277
 #define TRAINER_JERRY_4                     278
 #define TRAINER_JERRY_5                     279
 #define TRAINER_KAREN_1                     280
-#define TRAINER_GEORGIA                     281
+#define SCHOOL_KID_F_GEORGIA                281//Edited
 #define TRAINER_KAREN_2                     282
 #define TRAINER_KAREN_3                     283
 #define TRAINER_KAREN_4                     284
@@ -856,12 +856,21 @@
 #define TRAINER_LEAF                        852
 #define TRAINER_BRENDAN_PLACEHOLDER         853
 #define TRAINER_MAY_PLACEHOLDER             854
+/* New Trainers Starting From Here */
+#define TRAINER_AQUA_GRUNT_LIUM             855 
+#define YOUNGSTER_JIMMY                     856
+#define YOUNGSTER_JOHN                      857
+#define YOUNGSTER_JOEY                      858
+#define LADY_LIA                            859
+#define BUG_CATCHER_1                       860
+#define BUG_CATCHER_2                       861
+#define BUG_CATCHER_3                       862
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT                      855
+#define TRAINERS_COUNT                      856
 #define MAX_TRAINERS_COUNT                  864
 
 #endif  // GUARD_CONSTANTS_OPPONENTS_H

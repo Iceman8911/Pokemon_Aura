@@ -85,7 +85,7 @@ Route110_TrickHousePuzzle2_EventScript_PressButton4::
 	return
 
 Route110_TrickHousePuzzle2_EventScript_Ted::
-	trainerbattle_single TRAINER_TED, Route110_TrickHousePuzzle2_Text_TedIntro, Route110_TrickHousePuzzle2_Text_TedDefeat
+	trainerbattle_single SCHOOL_KID_M_TED, Route110_TrickHousePuzzle2_Text_TedIntro, Route110_TrickHousePuzzle2_Text_TedDefeat
 	msgbox Route110_TrickHousePuzzle2_Text_TedPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -95,7 +95,7 @@ Route110_TrickHousePuzzle2_EventScript_Paul::
 	end
 
 Route110_TrickHousePuzzle2_EventScript_Georgia::
-	trainerbattle_single TRAINER_GEORGIA, Route110_TrickHousePuzzle2_Text_GeorgiaIntro, Route110_TrickHousePuzzle2_Text_GeorgiaDefeat
+	trainerbattle_single SCHOOL_KID_F_GEORGIA, Route110_TrickHousePuzzle2_Text_GeorgiaIntro, Route110_TrickHousePuzzle2_Text_GeorgiaDefeat
 	msgbox Route110_TrickHousePuzzle2_Text_GeorgiaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -138,4 +138,3 @@ Route110_TrickHousePuzzle2_Text_GeorgiaDefeat:
 Route110_TrickHousePuzzle2_Text_GeorgiaPostBattle:
 	.string "You're strong, aren't you?\n"
 	.string "Maybe even enough to be a GYM LEADER!$"
-
