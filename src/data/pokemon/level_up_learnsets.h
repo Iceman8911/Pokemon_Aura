@@ -5612,7 +5612,7 @@ static const struct LevelUpMove sNincadaLevelUpLearnset[] = {
     LEVEL_UP_MOVE(29, MOVE_BIDE),
     LEVEL_UP_MOVE(33, MOVE_FALSE_SWIPE),
     LEVEL_UP_MOVE(37, MOVE_DIG),
-    LEVEL_UP_MOVE(60, MOVE_ENDEAVOUR),
+    LEVEL_UP_MOVE(60, MOVE_ENDEAVOR),
     LEVEL_UP_END
 };
 
@@ -5656,7 +5656,7 @@ static const struct LevelUpMove sShedinjaLevelUpLearnset[] = {
     LEVEL_UP_MOVE(37, MOVE_GRUDGE),
     LEVEL_UP_MOVE(41, MOVE_HEAL_BLOCK),
     LEVEL_UP_MOVE(45, MOVE_PHANTOM_FORCE),
-    LEVEL_UP_MOVE(100, MOVE_ENDEAVOUR),
+    LEVEL_UP_MOVE(99, MOVE_ENDEAVOR),
     LEVEL_UP_END
 };
 
