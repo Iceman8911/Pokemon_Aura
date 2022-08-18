@@ -12457,7 +12457,7 @@ static const struct TrainerMon sParty_MayLinkPlaceholder[] = {
 };
 
 /* New Trainers Starting Here*/
-static const struct TrainerMonItemCustomMoves sParty_AquaGruntLium[] = {
+static const struct TrainerMon sParty_AquaGruntLium[] = {
     {
     .iv = 255,
     .lvl = 9,
@@ -12467,7 +12467,7 @@ static const struct TrainerMonItemCustomMoves sParty_AquaGruntLium[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_YoungsterJimmy[] = {
+static const struct TrainerMon sParty_YoungsterJimmy[] = {
     {
     .iv = 45,
     .lvl = 6,
@@ -12480,7 +12480,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_YoungsterJimmy[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_YoungsterJohn[] = {
+static const struct TrainerMon sParty_YoungsterJohn[] = {
     {
     .iv = 45,
     .lvl = 9,
@@ -12493,17 +12493,20 @@ static const struct TrainerMonNoItemDefaultMoves sParty_YoungsterJohn[] = {
     }
 };
 
-static const struct TrainerMonItemCustomMoves sParty_YoungsterJoey[] = {
+static const struct TrainerMon sParty_YoungsterJoey[] = {
     {
     .iv = 255,
     .lvl = 17,
     .species = SPECIES_RATTATA,
+    .gender = 1,
     .heldItem = ITEM_SILK_SCARF,
     .moves = {MOVE_HYPER_FANG, MOVE_FIRE_FANG, MOVE_ICE_FANG, MOVE_THUNDER_FANG},
+    .shiny = 1,
+    .ability = 1,
     }
 };
 
-static const struct TrainerMonItemDefaultMoves sParty_LadyLia[] = {
+static const struct TrainerMon sParty_LadyLia[] = {
     {
     .iv = 58,
     .lvl = 8,
@@ -12517,7 +12520,7 @@ static const struct TrainerMonItemDefaultMoves sParty_LadyLia[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_BugCatcher1[] = {
+static const struct TrainerMon sParty_BugCatcher1[] = {
     {
     .iv = 50,
     .lvl = 6,
@@ -12550,7 +12553,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BugCatcher1[] = {
     }
 };
 
-static const struct TrainerMonItemDefaultMoves sParty_BugCatcher2[] = {
+static const struct TrainerMon sParty_BugCatcher2[] = {
     {
     .iv = 50,
     .lvl = 9,
@@ -12583,7 +12586,7 @@ static const struct TrainerMonItemDefaultMoves sParty_BugCatcher2[] = {
     }
 };
 
-static const struct TrainerMonItemDefaultMoves sParty_BugCatcher3[] = {
+static const struct TrainerMon sParty_BugCatcher3[] = {
     {
     .iv = 50,
     .lvl = 6,
