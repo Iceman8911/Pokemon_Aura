@@ -25,7 +25,7 @@ script AnconnaTown_EventScript_Antidote {
 
 script AnconnaTown_Bidoof {
 	lockall
-	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Doooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooof!"), 2)
+	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Doof?\nBi Doof?\pDoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooof!"), 2)
 	waitmessage
 	releaseall
 	end

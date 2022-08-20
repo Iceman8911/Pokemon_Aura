@@ -226,7 +226,9 @@ ReversePan:
 	step_end
 
 AnconnaTown_Bidoof_Text_0:
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Doooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooof!$"
+	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Doof?\n"
+	.string "Bi Doof?\p"
+	.string "Doooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooof!$"
 
 AnconnaTown_EventScript_ProfessorLabSign_Text_0:
 	.string "Professor Flora's Lab$"
