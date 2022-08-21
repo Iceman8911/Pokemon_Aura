@@ -86,6 +86,8 @@ script AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu {
 	msgbox(format("???: {COLOR RED}HOW COULD YOU SAY THAT NOW!\p Lium is MISSING and we have no idea where he is now. We can't leave him behind. No matter the cost, we must find him. I promised his mothe..."))
 	waitmessage
 	delay(60)
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerHearsSuspiciousPeople)
+	waitmovement(0)
 	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Yup, that's them.\p So one of them is missing and that is halting their 'plan', whatever that may be..."))
 	waitmessage
 	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Rioluuuuuuuuuuuu!"))
@@ -100,7 +102,7 @@ script AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu {
 	msgbox(format("{COLOR BLUE}.........\p.....\pDrat, where's my pokeball.\pI'm sure I brought it with me."))
 	waitmessage
 	delay(90)
-	msgbox(format("{COLOR BLUE} Oh no, he must have took it. When I get my hands on him, he's gonna be sorry."))
+	msgbox(format("{COLOR BLUE}Oh no, he must have took it. When I get my hands on him, he's gonna be sorry."))
 	waitmessage
 	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Ri rio riolu riolu!"))
 	waitmessage
@@ -108,6 +110,8 @@ script AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu {
 	waitmessage
 	msgbox(format("???: (inaudible mumbling)"))
 	delay(80)
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerHearsSuspiciousPeople)
+	waitmovement(0)
 	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: So they've given up on getting that Pokémon, I doubt that their original plans were any good since that Pokémon ran away from them.\pI think I should find it and bring it to Professor Flora before they change their mind."))
 	setvar(ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE, 2)
 	releaseall
@@ -169,6 +173,10 @@ script Anconna_Woods_First_Lium_Fight_Won {
 	removeobject(1)
 	setvar(FIRST_LIUM_FIGHT, 1)
 	releaseall
+}
+
+movement PlayerHearsSuspiciousPeople {
+	walk_in_place_right
 }
 
 movement FirstLiumEncounter {

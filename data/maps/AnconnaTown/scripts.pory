@@ -76,7 +76,7 @@ text FatMan {
 script AnconnaTown_EventScript_LittleGirl {
 	lockall
 	if(var(ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE) == 1){
-		msgbox(format("{COLOR RED}I saw 3 strangers enter the forest. I wonder what they're doing there."), 2)
+		msgbox(format("{COLOR RED}I saw three strangers enter the forest. I wonder what they're doing there."), 2)
 		waitmessage
 	}
 	else{
@@ -176,7 +176,7 @@ script Anconna_Town_Discovered_Mysterious_People {
 	applymovement(OBJ_EVENT_ID_CAMERA, ReversePan)
 	waitmovement(0)
 	special(RemoveCameraObject)
-	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Who the heck are they?\pAnd why are they entering our forest?\p.I haven't seen them around this place before.\pHmm.\pThey also seemed to be in a hurry and mentioned something about a plan. Maybe I should investigate this further."))
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Who the heck are they?\pAnd why are they entering our forest?\pI haven't seen them around this place before.\pHmm.\pThey also seemed to be in a hurry and mentioned something about a plan. Maybe I should investigate this further."))
 	setvar(ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE, 1)
 	releaseall
 }

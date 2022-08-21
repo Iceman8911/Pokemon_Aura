@@ -244,8 +244,8 @@ AnconnaTown_EventScript_FatMan_Text_0:
 	.string "SCIENCE!!!$"
 
 AnconnaTown_EventScript_LittleGirl_Text_0:
-	.string "{COLOR RED}I saw 3 strangers enter the forest. I\n"
-	.string "wonder what they're doing there.$"
+	.string "{COLOR RED}I saw three strangers enter the forest.\n"
+	.string "I wonder what they're doing there.$"
 
 AnconnaTown_Woman_Text_0:
 	.string "{COLOR RED}I love this town!\p"
@@ -311,7 +311,7 @@ Anconna_Town_Discovered_Mysterious_People_Text_12:
 Anconna_Town_Discovered_Mysterious_People_Text_13:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Who the heck are they?\p"
 	.string "And why are they entering our forest?\p"
-	.string ".I haven't seen them around this place\n"
+	.string "I haven't seen them around this place\n"
 	.string "before.\p"
 	.string "Hmm.\p"
 	.string "They also seemed to be in a hurry and\n"

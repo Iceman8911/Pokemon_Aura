@@ -64,7 +64,12 @@ AnconnaWoods_1_Found_Riolu::
 	waitmovement 0
 	applymovement 3, RioluRamsIntoYou
 	waitmovement 0
+	setvar VAR_0x8004, 1
+	setvar VAR_0x8005, 1
+	setvar VAR_0x8006, 8
+	setvar VAR_0x8007, 5
 	special ShakeCamera
+	waitstate
 	msgbox AnconnaWoods_1_Found_Riolu_Text_5
 	waitmessage
 	msgbox AnconnaWoods_1_Found_Riolu_Text_6
@@ -109,8 +114,9 @@ AnconnaWoods_1_Found_Riolu::
 	closemessage
 	removeobject 3
 	delay 50
-	fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_PLAYER, AnconnaWoods_1You
+	waitmovement 0
+	fadescreen FADE_FROM_BLACK
 	msgbox AnconnaWoods_1_Found_Riolu_Text_19
 	setvar ANCONNA_WOODS_FOUND_RIOLU, 1
 	releaseall
@@ -234,7 +240,7 @@ AnconnaWoods_1_Found_Riolu_Text_1:
 	.string "people were looking for.)$"
 
 AnconnaWoods_1_Found_Riolu_Text_2:
-	.string "(It looks really scared of me,\p"
+	.string "(It looks really scared of me..\p"
 	.string "Maybe because of the strange people in\n"
 	.string "the woods)\p"
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: How did you get he...$"

@@ -90,6 +90,8 @@ AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu::
 	msgbox AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_2
 	waitmessage
 	delay 60
+	applymovement OBJ_EVENT_ID_PLAYER, PlayerHearsSuspiciousPeople
+	waitmovement 0
 	msgbox AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_3
 	waitmessage
 	msgbox AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_4
@@ -112,6 +114,8 @@ AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu::
 	waitmessage
 	msgbox AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_12
 	delay 80
+	applymovement OBJ_EVENT_ID_PLAYER, PlayerHearsSuspiciousPeople
+	waitmovement 0
 	msgbox AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_13
 	setvar ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE, 2
 	releaseall
@@ -173,6 +177,10 @@ Anconna_Woods_First_Lium_Fight_Won::
 	releaseall
 	return
 
+
+PlayerHearsSuspiciousPeople:
+	walk_in_place_right
+	step_end
 
 FirstLiumEncounter:
 	walk_down
@@ -358,7 +366,7 @@ AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_8:
 	.string "I'm sure I brought it with me.$"
 
 AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_9:
-	.string "{COLOR BLUE} Oh no, he must have took it. When I get\n"
+	.string "{COLOR BLUE}Oh no, he must have took it. When I get\n"
 	.string "my hands on him, he's gonna be sorry.$"
 
 AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_10:

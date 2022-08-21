@@ -73,7 +73,7 @@ script AnconnaWoods_1_Found_Riolu {
     applymovement(3, RioluReacts)
     waitmovement(0)
     delay(20)
-    msgbox(format("(It looks really scared of me,\pMaybe because of the strange people in the woods)\p{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: How did you get he..."))
+    msgbox(format("(It looks really scared of me..\pMaybe because of the strange people in the woods)\p{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: How did you get he..."))
     msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Rio Rioo..\pRioluuu!!!"))
     delay(17)
     msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Wait!!!"))
@@ -82,7 +82,12 @@ script AnconnaWoods_1_Found_Riolu {
     waitmovement(0)
     applymovement(3, RioluRamsIntoYou)
     waitmovement(0)
+    setvar(VAR_0x8004, 1)  //@ vertical pan
+	setvar(VAR_0x8005, 1)  //@ horizontal pan
+	setvar(VAR_0x8006, 8)  //@ num shakes
+	setvar(VAR_0x8007, 5)  //@ shake delay
     special(ShakeCamera)
+    waitstate
     msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Woah!\p(Why'd it try to attack me?)"))
     waitmessage
     msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Rio lu..."))
@@ -127,8 +132,9 @@ script AnconnaWoods_1_Found_Riolu {
     closemessage
     removeobject(3)
     delay(50)
-    fadescreen(FADE_FROM_BLACK)
     applymovement(OBJ_EVENT_ID_PLAYER, AnconnaWoods_1You)
+    waitmovement(0)
+    fadescreen(FADE_FROM_BLACK)
     msgbox(format("(The poor little thing is lost, probably because of those people from before.\pLets see if there's anyway I can help.)"))
     setvar(ANCONNA_WOODS_FOUND_RIOLU, 1)
     releaseall

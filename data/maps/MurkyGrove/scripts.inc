@@ -130,13 +130,15 @@ MurkyGrove_BugManiac_Text_5:
 	.string "first light brown log you can jump over.$"
 
 MurkyGrove_BugManiac_Text_6:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Thanks man,\p"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: (I bet mushrooms would sell\n"
+	.string "for a reasonable price.)\p"
+	.string "Thanks man,\p"
 	.string "You're really saving A LOT of trouble\n"
 	.string "looking for them.$"
 
 MurkyGrove_BugManiac_Text_7:
-	.string "{COLOR BLUE}Your Welcome.\n"
-	.string "Since you appreciate my advice, I'll\l"
+	.string "{COLOR BLUE}Your Welcome.\p"
+	.string "Since you appreciate my advice, I'll\n"
 	.string "throw in a bonus.\p"
 	.string "If you want extra loot, use the south\n"
 	.string "path to get out of here and choose the\l"
