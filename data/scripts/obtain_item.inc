@@ -140,6 +140,12 @@ EventScript_FoundTMHM::
 	return
 
 EventScript_FoundItem::
+	compare VAR_0x8001, TRUE
+	goto_if_eq EventScript_FoundItemMessage
+	buffernumberstring 0, VAR_0x8001
+	message gText_PlayerFoundItems
+	return
+EventScript_FoundItemMessage::
 	message gText_PlayerFoundOneItem
 	return
 
