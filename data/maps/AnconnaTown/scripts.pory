@@ -55,7 +55,7 @@ script AnconnaTown_EventScript_ProfessorLabSign {
 script AnconnaTown_EventScript_FatMan {
 	lockall
 	#msgbox(FatMan, 2) 
-	msgbox(format("{COLOR BLUE}{SHADOW LIGHT_BLUE}The Power Of Science is Astonishing!!!\p {PLAYER}, Do you know that recently, 'ROM Hackers' have been able to update 17 year old"
+	msgbox(format("{COLOR BLUE}The Power Of Science is Astonishing!!!\p {PLAYER}, Do you know that recently, 'ROM Hackers' have been able to update 17 year old"
 	" games with future generation expansions to create retouched retro games such as the\l'ROM Hack' you're playing right now!\pSCIENCE!!!"), 2)
 	waitmessage
 	releaseall
@@ -63,7 +63,7 @@ script AnconnaTown_EventScript_FatMan {
 }
 
 text FatMan {
-	"{COLOR BLUE}{SHADOW LIGHT_BLUE}The Power Of Science is Astonishing!!!\p"
+	"{COLOR BLUE}The Power Of Science is Astonishing!!!\p"
 	"{PLAYER}, Do you know that recently,\n"
 	"'ROM Hackers' have been able to update\l"
 	"17 year old games with future generation\l"
@@ -76,7 +76,7 @@ text FatMan {
 script AnconnaTown_EventScript_LittleGirl {
 	lockall
 	if(var(ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE) == 1){
-		msgbox(format("{COLOR RED}{SHADOW LIGHT_RED}I saw 3 strangers enter the forest. I wonder what they're doing there."), 2)
+		msgbox(format("{COLOR RED}I saw 3 strangers enter the forest. I wonder what they're doing there."), 2)
 		waitmessage
 	}
 	else{
@@ -88,12 +88,12 @@ script AnconnaTown_EventScript_LittleGirl {
 }
 
 text LittleGirl {
-	"{COLOR RED}{SHADOW LIGHT_RED}Oooh, I really want a small cute Pokémon."
+	"{COLOR RED}Oooh, I really want a small cute Pokémon."
 }
 
 script AnconnaTown_Woman {
 	lockall
-	msgbox(format("{COLOR RED}{SHADOW LIGHT_RED}I love this town!\p It's so simple and peaceful to live in."), 2)
+	msgbox(format("{COLOR RED}I love this town!\p It's so simple and peaceful to live in."), 2)
 	waitmessage
 	releaseall
 	end
@@ -110,32 +110,32 @@ script Anconna_Town_Discovered_Mysterious_People {
 
 	applymovement(5, TalkRight)
 	waitmovement(0)
-	msgbox(format("???: {COLOR BLUE}{SHADOW LIGHT_BLUE}Erhem.\pNow that we're here, I hope the both of you remember the pl..."))
+	msgbox(format("???: {COLOR BLUE}Erhem.\pNow that we're here, I hope the both of you remember the pl..."))
 	waitmessage
 	applymovement(6, TalkLeft)
 	waitmovement(0)
-	msgbox(format("???: {COLOR RED}{SHADOW LIGHT_RED}Yeah, yeah, yeah. Find the escapee Pokémon and return it to our superiors ASAP. I know!"))
+	msgbox(format("???: {COLOR RED}Yeah, yeah, yeah. Find the escapee Pokémon and return it to our superiors ASAP. I know!"))
 	waitmessage
 	applymovement(7, TalkLeft)
 	waitmovement(0)
-	msgbox(format("???: {COLOR BLUE}{SHADOW LIGHT_BLUE}Me too!"))
+	msgbox(format("???: {COLOR BLUE}Me too!"))
 	applymovement(5, TalkLeft)
 	waitmovement(0)
-	msgbox(format("???: {COLOR BLUE}{SHADOW LIGHT_BLUE}Hmph."))
+	msgbox(format("???: {COLOR BLUE}Hmph."))
 	applymovement(5, TalkRight)
 	waitmovement(0)
-	msgbox(format("???: {COLOR BLUE}{SHADOW LIGHT_BLUE}Just needed to make sure. We can't have another slip-up this time, you hear?"))
+	msgbox(format("???: {COLOR BLUE}Just needed to make sure. We can't have another slip-up this time, you hear?"))
 	waitmessage
 	applymovement(5, TalkRight)
 	waitmovement(0)
-	msgbox(format("???: {COLOR BLUE}{SHADOW LIGHT_BLUE}You in the back, especially!"))
+	msgbox(format("???: {COLOR BLUE}You in the back, especially!"))
 	closemessage
 	applymovement(7, LiumIsAshamed)
 	waitmovement(0)
 	delay(30)
 	applymovement(5, TalkLeft)
 	waitmovement(0)
-	msgbox(format("???: {COLOR BLUE}{SHADOW LIGHT_BLUE}This Forest here is a huge maze. I say we should stick together. It might take longer but at least we wouldn't get lost."))
+	msgbox(format("???: {COLOR BLUE}This Forest here is a huge maze. I say we should stick together. It might take longer but at least we wouldn't get lost."))
 	waitmessage
 	applymovement(7, TalkRight)
 	waitmovement(0)
@@ -143,7 +143,7 @@ script Anconna_Town_Discovered_Mysterious_People {
 	waitmessage
 	applymovement(5, TalkLeft)
 	waitmovement(0)
-	msgbox(format("???: {COLOR BLUE}{SHADOW LIGHT_BLUE}...With that in mind,..\pLets move out!"))
+	msgbox(format("???: {COLOR BLUE}...With that in mind,..\pLets move out!"))
 	closemessage
 	applymovement(5, TalkLeft)
 	delay(45)
@@ -151,21 +151,21 @@ script Anconna_Town_Discovered_Mysterious_People {
 	delay(50)
 	applymovement(6, TalkRight)
 	waitmovement(0)
-	msgbox(format("???: {COLOR RED}{SHADOW LIGHT_RED}Don't mind him, Lium. That's just how he is. Just focus on the mission for now, okay?"))
+	msgbox(format("???: {COLOR RED}Don't mind him, Lium. That's just how he is. Just focus on the mission for now, okay?"))
 	closemessage
 	delay(35)
 	applymovement(7, TalkLeft)
-	msgbox(format("Lium: {COLOR BLUE}{SHADOW LIGHT_BLUE}...Okay."))
+	msgbox(format("Lium: {COLOR BLUE}...Okay."))
 	applymovement(6, TalkRight)
 	waitmovement(0)
-	msgbox(format("???: {COLOR RED}{SHADOW LIGHT_RED}That's right. Cheer up and lets go."))
+	msgbox(format("???: {COLOR RED}That's right. Cheer up and lets go."))
 	closemessage
 	applymovement(6, WalkLeft)
 	waitmovement(0)
 	delay(35)
 	removeobject(6)
 	delay(50)
-	msgbox(format("Lium: {COLOR BLUE}{SHADOW LIGHT_BLUE}Deep Breaths.\pI can do this!"))
+	msgbox(format("Lium: {COLOR BLUE}Deep Breaths.\pI can do this!"))
 	closemessage
 	applymovement(7, LiumLeaves)
 	waitmovement(0)
@@ -176,7 +176,7 @@ script Anconna_Town_Discovered_Mysterious_People {
 	applymovement(OBJ_EVENT_ID_CAMERA, ReversePan)
 	waitmovement(0)
 	special(RemoveCameraObject)
-	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Who the heck are they?\pAnd why are they entering our forest?\p.I haven't seen them around this place before.\pHmm.\pThey also seemed to be in a hurry and mentioned something about a plan. Maybe I should investigate this further."))
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Who the heck are they?\pAnd why are they entering our forest?\p.I haven't seen them around this place before.\pHmm.\pThey also seemed to be in a hurry and mentioned something about a plan. Maybe I should investigate this further."))
 	setvar(ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE, 1)
 	releaseall
 }

@@ -234,7 +234,7 @@ AnconnaTown_EventScript_ProfessorLabSign_Text_0:
 	.string "Professor Flora's Lab$"
 
 AnconnaTown_EventScript_FatMan_Text_0:
-	.string "{COLOR BLUE}{SHADOW LIGHT_BLUE}The Power Of Science is Astonishing!!!\p"
+	.string "{COLOR BLUE}The Power Of Science is Astonishing!!!\p"
 	.string "{PLAYER}, Do you know that recently,\n"
 	.string "'ROM Hackers' have been able to update\l"
 	.string "17 year old games with future\l"
@@ -244,39 +244,39 @@ AnconnaTown_EventScript_FatMan_Text_0:
 	.string "SCIENCE!!!$"
 
 AnconnaTown_EventScript_LittleGirl_Text_0:
-	.string "{COLOR RED}{SHADOW LIGHT_RED}I saw 3 strangers enter the forest. I\n"
+	.string "{COLOR RED}I saw 3 strangers enter the forest. I\n"
 	.string "wonder what they're doing there.$"
 
 AnconnaTown_Woman_Text_0:
-	.string "{COLOR RED}{SHADOW LIGHT_RED}I love this town!\p"
+	.string "{COLOR RED}I love this town!\p"
 	.string "It's so simple and peaceful to live in.$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_0:
-	.string "???: {COLOR BLUE}{SHADOW LIGHT_BLUE}Erhem.\p"
+	.string "???: {COLOR BLUE}Erhem.\p"
 	.string "Now that we're here, I hope the both of\n"
 	.string "you remember the pl...$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_1:
-	.string "???: {COLOR RED}{SHADOW LIGHT_RED}Yeah, yeah, yeah. Find the escapee\n"
+	.string "???: {COLOR RED}Yeah, yeah, yeah. Find the escapee\n"
 	.string "Pokémon and return it to our superiors\l"
 	.string "ASAP. I know!$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_2:
-	.string "???: {COLOR BLUE}{SHADOW LIGHT_BLUE}Me too!$"
+	.string "???: {COLOR BLUE}Me too!$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_3:
-	.string "???: {COLOR BLUE}{SHADOW LIGHT_BLUE}Hmph.$"
+	.string "???: {COLOR BLUE}Hmph.$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_4:
-	.string "???: {COLOR BLUE}{SHADOW LIGHT_BLUE}Just needed to make sure. We can't\n"
+	.string "???: {COLOR BLUE}Just needed to make sure. We can't\n"
 	.string "have another slip-up this time, you\l"
 	.string "hear?$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_5:
-	.string "???: {COLOR BLUE}{SHADOW LIGHT_BLUE}You in the back, especially!$"
+	.string "???: {COLOR BLUE}You in the back, especially!$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_6:
-	.string "???: {COLOR BLUE}{SHADOW LIGHT_BLUE}This Forest here is a huge maze. I\n"
+	.string "???: {COLOR BLUE}This Forest here is a huge maze. I\n"
 	.string "say we should stick together. It might\l"
 	.string "take longer but at least we wouldn't\l"
 	.string "get lost.$"
@@ -290,26 +290,26 @@ Anconna_Town_Discovered_Mysterious_People_Text_7:
 	.string "trash.$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_8:
-	.string "???: {COLOR BLUE}{SHADOW LIGHT_BLUE}...With that in mind,..\p"
+	.string "???: {COLOR BLUE}...With that in mind,..\p"
 	.string "Lets move out!$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_9:
-	.string "???: {COLOR RED}{SHADOW LIGHT_RED}Don't mind him, Lium. That's just\n"
+	.string "???: {COLOR RED}Don't mind him, Lium. That's just\n"
 	.string "how he is. Just focus on the mission\l"
 	.string "for now, okay?$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_10:
-	.string "Lium: {COLOR BLUE}{SHADOW LIGHT_BLUE}...Okay.$"
+	.string "Lium: {COLOR BLUE}...Okay.$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_11:
-	.string "???: {COLOR RED}{SHADOW LIGHT_RED}That's right. Cheer up and lets go.$"
+	.string "???: {COLOR RED}That's right. Cheer up and lets go.$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_12:
-	.string "Lium: {COLOR BLUE}{SHADOW LIGHT_BLUE}Deep Breaths.\p"
+	.string "Lium: {COLOR BLUE}Deep Breaths.\p"
 	.string "I can do this!$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_13:
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Who the heck are they?\p"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Who the heck are they?\p"
 	.string "And why are they entering our forest?\p"
 	.string ".I haven't seen them around this place\n"
 	.string "before.\p"
@@ -331,7 +331,7 @@ ArceusSign::
 	.string "Very Universe.$"
 
 FatMan::
-	.string "{COLOR BLUE}{SHADOW LIGHT_BLUE}The Power Of Science is Astonishing!!!\p"
+	.string "{COLOR BLUE}The Power Of Science is Astonishing!!!\p"
 	.string "{PLAYER}, Do you know that recently,\n"
 	.string "'ROM Hackers' have been able to update\l"
 	.string "17 year old games with future generation\l"
@@ -341,4 +341,4 @@ FatMan::
 	.string "SCIENCE!!!$"
 
 LittleGirl::
-	.string "{COLOR RED}{SHADOW LIGHT_RED}Oooh, I really want a small cute Pokémon.$"
+	.string "{COLOR RED}Oooh, I really want a small cute Pokémon.$"

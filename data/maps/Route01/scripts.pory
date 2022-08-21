@@ -26,53 +26,53 @@ script Route01_SharpBeak {
 
 script Route01_Rindo_Berry {
     lockall
-    msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: I'm sure nobody would notice if I..."))
+    msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: I'm sure nobody would notice if I..."))
     waitmessage
     finditem(ITEM_RINDO_BERRY)
     releaseall
 }
 
 script Route01_Youngster_Jimmy {
-    trainerbattle_single(YOUNGSTER_JIMMY, format("{COLOR BLUE}{SHADOW LIGHT_BLUE}So you've come to our Route, eh.\pOnly the Toughest of Trainers are allowed to pass.\pIf you wanna go through here, gimme your all."), "Waah, I want my mommy!")
+    trainerbattle_single(YOUNGSTER_JIMMY, format("{COLOR BLUE}So you've come to our Route, eh.\pOnly the Toughest of Trainers are allowed to pass.\pIf you wanna go through here, gimme your all."), "Waah, I want my mommy!")
     if(defeated(YOUNGSTER_JOEY)) {
-        msgbox(format("{COLOR BLUE}{SHADOW LIGHT_BLUE}Even after this loss,\pWe are still the ROUTE 01 BOIS!\pBetter watch out, cus we're all gonna get stronger!"))
+        msgbox(format("{COLOR BLUE}Even after this loss,\pWe are still the ROUTE 01 BOIS!\pBetter watch out, cus we're all gonna get stronger!"))
     }else{
-        msgbox(format("{COLOR BLUE}{SHADOW LIGHT_BLUE}My brothers will not stand for this loss!\pAfter all, we are the ROUTE 01 BOIS!"))
+        msgbox(format("{COLOR BLUE}My brothers will not stand for this loss!\pAfter all, we are the ROUTE 01 BOIS!"))
     }
     closemessage
 }
 
 script Route01_Youngster_John {
-    trainerbattle_single(YOUNGSTER_JOHN, format("{COLOR BLUE}{SHADOW LIGHT_BLUE}If you managed to beat my brother, then you're pretty strong.\p But I doubt you're stronger than me, I'll have no problem beating you."), "How....did you beat me?")
+    trainerbattle_single(YOUNGSTER_JOHN, format("{COLOR BLUE}If you managed to beat my brother, then you're pretty strong.\p But I doubt you're stronger than me, I'll have no problem beating you."), "How....did you beat me?")
     if(defeated(YOUNGSTER_JOEY)){
-        msgbox(format("{COLOR BLUE}{SHADOW LIGHT_BLUE}You even beat Joey.\pYou're really are a great trainer."))
+        msgbox(format("{COLOR BLUE}You even beat Joey.\pYou're really are a great trainer."))
     }else{
-        msgbox(format("{COLOR BLUE}{SHADOW LIGHT_BLUE}You might have beaten me but there's no way you can beat Joey."))
+        msgbox(format("{COLOR BLUE}You might have beaten me but there's no way you can beat Joey."))
     }
     closemessage
 }
 
 script Route01_Youngster_Joey {
-    trainerbattle_single(YOUNGSTER_JOEY, format("{COLOR BLUE}{SHADOW LIGHT_BLUE}You beat my brothers.\p Finally, someone worthy of my power.\pDon't go soft on me because I'm six. Let's see how you fare against my top-percentage {COLOR GREEN}{SHADOW LIGHT_GREEN}Rattata!"), "That was AWESOME!!!")
+    trainerbattle_single(YOUNGSTER_JOEY, format("{COLOR BLUE}You beat my brothers.\p Finally, someone worthy of my power.\pDon't go soft on me because I'm six. Let's see how you fare against my top-percentage {COLOR GREEN}Rattata!"), "That was AWESOME!!!")
     load_speech_bubble(5)
-    msgbox(format("{COLOR BLUE}{SHADOW LIGHT_BLUE}That was a great fight.\pYou managed to win my full 31IV {COLOR GREEN}{SHADOW LIGHT_GREEN}Rattata{COLOR BLUE}{SHADOW LIGHT_BLUE}. You've got some real skill there.\pDon't think I'll take this sitting down though, I'm gonna train with {COLOR GREEN}{SHADOW LIGHT_GREEN}Rattata{COLOR BLUE}{SHADOW LIGHT_BLUE} and become the strongest trainer EVER."))
+    msgbox(format("{COLOR BLUE}That was a great fight.\pYou managed to win my full 31IV {COLOR GREEN}Rattata{COLOR BLUE}. You've got some real skill there.\pDon't think I'll take this sitting down though, I'm gonna train with {COLOR GREEN}Rattata{COLOR BLUE} and become the strongest trainer EVER."))
     destroy_speech_bubble
     closemessage
 }
 
 script Route01_Lady {
-    trainerbattle_single(LADY_LIA, format("{COLOR RED}{SHADOW LIGHT_RED}Goodday to you, Sir.\nThe weather is so lovely today. Would you care for a battle?"), "What a lovely battle.")
+    trainerbattle_single(LADY_LIA, format("{COLOR RED}Goodday to you, Sir.\nThe weather is so lovely today. Would you care for a battle?"), "What a lovely battle.")
     if(!flag(ROUTE01_RINDO_BERRY)) {
-        msgbox(format("{COLOR RED}{SHADOW LIGHT_RED}The flowers here are lovely as ever today. Although, I don't know why a Pokeball is in that other fenced patch. I'm sure it can be removed though."))
+        msgbox(format("{COLOR RED}The flowers here are lovely as ever today. Although, I don't know why a Pokeball is in that other fenced patch. I'm sure it can be removed though."))
     } else {
-        msgbox(format("{COLOR RED}{SHADOW LIGHT_RED}The flowers in this route are as lovely as ever."))
+        msgbox(format("{COLOR RED}The flowers in this route are as lovely as ever."))
     }
     closemessage
 }
 
 script Route01_Georgia {
-    trainerbattle_single(SCHOOL_KID_F_GEORGIA, format("{COLOR RED}{SHADOW LIGHT_RED}Hello.\pCan you help me with a school project?"), format("I need to train more if I'm gonna pass."))
-    msgbox(format("{COLOR RED}{SHADOW LIGHT_RED}I found my {COLOR GREEN}{SHADOW LIGHT_GREEN}Shroomish{COLOR RED}{SHADOW LIGHT_RED} in {COLOR GREEN}{SHADOW LIGHT_GREEN}Murky Grove."))
+    trainerbattle_single(SCHOOL_KID_F_GEORGIA, format("{COLOR RED}Hello.\pCan you help me with a school project?"), format("I need to train more if I'm gonna pass."))
+    msgbox(format("{COLOR RED}I found my {COLOR GREEN}Shroomish{COLOR RED} in {COLOR GREEN}Murky Grove."))
     closemessage
 }
 

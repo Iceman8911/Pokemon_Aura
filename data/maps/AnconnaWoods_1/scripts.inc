@@ -213,21 +213,21 @@ RioluLikesYou:
 	step_end
 
 AnconnaWoods_1_BugGem_Text_0:
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Why would anyone drop this\n"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Why would anyone drop this\n"
 	.string "here?\p"
 	.string "Well, Their Loss!$"
 
 AnconnaWoods_1_Not_Found_Riolu_Text_0:
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: I can't go into bushes yet.\n"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: I can't go into bushes yet.\n"
 	.string "Wild Pokémon may jump out at me.\p"
 	.string "There has to be another way.$"
 
 AnconnaWoods_1_Found_Riolu_Text_0:
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Huh?\p"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Huh?\p"
 	.string "What is that?$"
 
 AnconnaWoods_1_Found_Riolu_Text_1:
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Um?\p"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Um?\p"
 	.string "(What's a little Pokémon like this doing\n"
 	.string "in a bug forest?\p"
 	.string "Oh, it must be that Pokémon those\n"
@@ -237,64 +237,64 @@ AnconnaWoods_1_Found_Riolu_Text_2:
 	.string "(It looks really scared of me,\p"
 	.string "Maybe because of the strange people in\n"
 	.string "the woods)\p"
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: How did you get he...$"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: How did you get he...$"
 
 AnconnaWoods_1_Found_Riolu_Text_3:
 	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Rio Rioo..\p"
 	.string "Rioluuu!!!$"
 
 AnconnaWoods_1_Found_Riolu_Text_4:
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Wait!!!$"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Wait!!!$"
 
 AnconnaWoods_1_Found_Riolu_Text_5:
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Woah!\p"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Woah!\p"
 	.string "(Why'd it try to attack me?)$"
 
 AnconnaWoods_1_Found_Riolu_Text_6:
 	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Rio lu...$"
 
 AnconnaWoods_1_Found_Riolu_Text_7:
-	.string "{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}(It looks like it injured itself though.)\p"
+	.string "{COLOR DARK_GRAY}(It looks like it injured itself though.)\p"
 	.string "(I'd better help it quickly with my\n"
 	.string "Potion.)$"
 
 AnconnaWoods_1_Found_Riolu_Text_8:
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Easy does it!$"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Easy does it!$"
 
 AnconnaWoods_1_Found_Riolu_Text_9:
 	.string "{PLAYER} used a Potion on the Injured\n"
 	.string "Pokémon!$"
 
 AnconnaWoods_1_Found_Riolu_Text_10:
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Done!$"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Done!$"
 
 AnconnaWoods_1_Found_Riolu_Text_11:
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Doesn't that feel much\n"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Doesn't that feel much\n"
 	.string "better?$"
 
 AnconnaWoods_1_Found_Riolu_Text_12:
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Rio..\p"
+	.string "{COLOR GREEN}Rio..\p"
 	.string "Riolu?$"
 
 AnconnaWoods_1_Found_Riolu_Text_13:
-	.string "{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}(It's coming closer again..)$"
+	.string "{COLOR DARK_GRAY}(It's coming closer again..)$"
 
 AnconnaWoods_1_Found_Riolu_Text_14:
 	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Riolu Riolu!!$"
 
 AnconnaWoods_1_Found_Riolu_Text_15:
 	.string "(Could it be that..)\p"
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Do you wanna come with me..\n"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Do you wanna come with me..\n"
 	.string "'Riolu'?$"
 
 AnconnaWoods_1_Found_Riolu_Text_16:
 	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Riolu Riolu Riolu!!!$"
 
 AnconnaWoods_1_Found_Riolu_Text_17:
-	.string "{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}Riolu has joined your team!$"
+	.string "{COLOR DARK_GRAY}Riolu has joined your team!$"
 
 AnconnaWoods_1_Found_Riolu_Text_18:
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: I'll take that as a yes.\p"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: I'll take that as a yes.\p"
 	.string "Lets go to my house, Riolu.$"
 
 AnconnaWoods_1_Found_Riolu_Text_19:
@@ -303,11 +303,11 @@ AnconnaWoods_1_Found_Riolu_Text_19:
 	.string "Lets see if there's anyway I can help.)$"
 
 FoundBugGem::
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Why would anyone drop this here?\p"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Why would anyone drop this here?\p"
 	.string "Well, Their Loss!$"
 
 MushroomText_1::
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Hmm, Some Mushrooms.$"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Hmm, Some Mushrooms.$"
 
 MushroomText_2::
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Guess these could be handy.$"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Guess these could be handy.$"

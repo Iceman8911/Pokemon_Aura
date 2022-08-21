@@ -19,56 +19,56 @@ script MurkyGrove_Sign {
 }
 
 script MurkyGrove_BugManiac {
-    trainerbattle_single(BUG_MANIAC_BRENT, format("{COLOR BLUE}{SHADOW LIGHT_BLUE}There are four mushrooms in this grove that grow {COLOR GREEN}{SHADOW LIGHT_GREEN}Tiny Mushrooms{COLOR BLUE}{SHADOW LIGHT_BLUE} very quickly.\pIf you defeat me, I'll tell you where they are."), format("Almost had it there!"))
+    trainerbattle_single(BUG_MANIAC_BRENT, format("{COLOR BLUE}There are four mushrooms in this grove that grow {COLOR GREEN}Tiny Mushrooms{COLOR BLUE} very quickly.\pIf you defeat me, I'll tell you where they are."), format("Almost had it there!"))
     switch (var(VAR_TEMP_0)) {
         case 0:
-            msgbox(format("{COLOR BLUE}{SHADOW LIGHT_BLUE}Well,\pA deal's a deal."), 2)
+            msgbox(format("{COLOR BLUE}Well,\pA deal's a deal."), 2)
             closemessage
             addvar(VAR_TEMP_0, 1)
         case 1:
-            msgbox(format("{COLOR BLUE}{SHADOW LIGHT_BLUE}Just south of here are two mushrooms side-by-side.\p One of them has a {COLOR GREEN}{SHADOW LIGHT_GREEN}Tiny Mushroom{COLOR BLUE}{SHADOW LIGHT_BLUE}."), 2)
+            msgbox(format("{COLOR BLUE}Just south of here are two mushrooms side-by-side.\p One of them has a {COLOR GREEN}Tiny Mushroom{COLOR BLUE}."), 2)
             closemessage
             addvar(VAR_TEMP_0, 1)
         case 2:
-            msgbox(format("{COLOR BLUE}{SHADOW LIGHT_BLUE}A bit beyond that is a {COLOR GREEN}{SHADOW LIGHT_GREEN}Tiny Mushroom{COLOR BLUE}{SHADOW LIGHT_BLUE} near a ledge and small light brown log."), 2)
+            msgbox(format("{COLOR BLUE}A bit beyond that is a {COLOR GREEN}Tiny Mushroom{COLOR BLUE} near a ledge and small light brown log."), 2)
             closemessage
             addvar(VAR_TEMP_0, 1)
         case 3:
             if(var(VAR_TEMP_1) == 0) {
-                msgbox(format("{COLOR BLUE}{SHADOW LIGHT_BLUE}You can find two more {COLOR GREEN}{SHADOW LIGHT_GREEN}Tiny Mushrooms{COLOR BLUE}{SHADOW LIGHT_BLUE} if you choose to follow the other way out of this place, which is to your far right.\pThe two mushrooms are close to the first light brown log you can jump over."), 2)
+                msgbox(format("{COLOR BLUE}You can find two more {COLOR GREEN}Tiny Mushrooms{COLOR BLUE} if you choose to follow the other way out of this place, which is to your far right.\pThe two mushrooms are close to the first light brown log you can jump over."), 2)
                 waitmessage
-                msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Thanks man,\pYou're really saving A LOT of trouble looking for them."), 2)
+                msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: (I bet mushrooms would sell for a reasonable price.)\pThanks man,\pYou're really saving A LOT of trouble looking for them."), 2)
                 waitmessage
-                msgbox(format("{COLOR BLUE}{SHADOW LIGHT_BLUE}Your Welcome.\nSince you appreciate my advice, I'll throw in a bonus.\pIf you want extra loot, use the south path to get out of here and choose the path off the ledge that's closer to the pond."), 2)
+                msgbox(format("{COLOR BLUE}Your Welcome.\pSince you appreciate my advice, I'll throw in a bonus.\pIf you want extra loot, use the south path to get out of here and choose the path off the ledge that's closer to the pond."), 2)
                 closemessage
                 addvar(VAR_TEMP_1, 1)
             }else
             {
-                msgbox(format("{COLOR BLUE}{SHADOW LIGHT_BLUE}If you want extra loot, use the south path to get out of here and choose the path off the ledge that's closer to the pond.\pThat'll take you to a {COLOR GREEN}{SHADOW LIGHT_GREEN}Balm Mushroom{COLOR BLUE}{SHADOW LIGHT_BLUE}and a {COLOR GREEN}{SHADOW LIGHT_GREEN}Poison Gem{COLOR BLUE}{SHADOW LIGHT_BLUE}."), 2)
+                msgbox(format("{COLOR BLUE}If you want extra loot, use the south path to get out of here and choose the path off the ledge that's closer to the pond.\pThat'll take you to a {COLOR GREEN}Balm Mushroom{COLOR BLUE}and a {COLOR GREEN}Poison Gem{COLOR BLUE}."), 2)
                 closemessage
             }
     }
 }
 
 script MurkyGrove_AromaLady {
-    trainerbattle_single(AROMA_LADY_DAISY, format("{COLOR RED}{SHADOW LIGHT_RED}I normally wouldn't be in a place like this but there are some nice {COLOR GREEN}{SHADOW LIGHT_GREEN}Balm Mushrooms{COLOR RED}{SHADOW LIGHT_RED} here."), format("This better be worth it."))
-    msgbox(format("{COLOR RED}{SHADOW LIGHT_RED}I really want to get out of this place but I want a {COLOR GREEN}{SHADOW LIGHT_GREEN}Balm Mushroom{COLOR RED}{SHADOW LIGHT_RED} more."), 2)
+    trainerbattle_single(AROMA_LADY_DAISY, format("{COLOR RED}I normally wouldn't be in a place like this but there are some nice {COLOR GREEN}Balm Mushrooms{COLOR RED} here."), format("This better be worth it."))
+    msgbox(format("{COLOR RED}I really want to get out of this place but I want a {COLOR GREEN}Balm Mushroom{COLOR RED} more."), 2)
     closemessage
 }
 
 script MurkyGrove_SchoolKid {
-    trainerbattle_single(SCHOOL_KID_M_TED, format("{COLOR BLUE}{SHADOW LIGHT_BLUE}My classmates said that {COLOR GREEN}{SHADOW LIGHT_GREEN}Grimer{COLOR BLUE}{SHADOW LIGHT_BLUE} live here.\p Is that true?"), format("Gotta get that Grimer!"))
-    msgbox(format("{COLOR BLUE}{SHADOW LIGHT_BLUE}I'm pretty sure that {COLOR GREEN}{SHADOW LIGHT_GREEN}Grimer{COLOR BLUE}{SHADOW LIGHT_BLUE} live here. I'll keep looking."), 2)
+    trainerbattle_single(SCHOOL_KID_M_TED, format("{COLOR BLUE}My classmates said that {COLOR GREEN}Grimer{COLOR BLUE} live here.\p Is that true?"), format("Gotta get that Grimer!"))
+    msgbox(format("{COLOR BLUE}I'm pretty sure that {COLOR GREEN}Grimer{COLOR BLUE} live here. I'll keep looking."), 2)
     waitmessage
-    msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Why do you want a {COLOR GREEN}{SHADOW LIGHT_GREEN}Grimer{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY} so badly?"), 2)
+    msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Why do you want a {COLOR GREEN}Grimer{COLOR DARK_GRAY} so badly?"), 2)
     waitmessage
-    msgbox(format("{COLOR BLUE}{SHADOW LIGHT_BLUE}Well..,\pIts because {COLOR GREEN}{SHADOW LIGHT_GREEN}Grimer{COLOR BLUE}{SHADOW LIGHT_BLUE} evolves into {COLOR GREEN}{SHADOW LIGHT_GREEN}Muk{COLOR BLUE}{SHADOW LIGHT_BLUE} and {COLOR GREEN}{SHADOW LIGHT_GREEN}Muk{COLOR BLUE}{SHADOW LIGHT_BLUE} backwards is...."), 2)
+    msgbox(format("{COLOR BLUE}Well..,\pIts because {COLOR GREEN}Grimer{COLOR BLUE} evolves into {COLOR GREEN}Muk{COLOR BLUE} and {COLOR GREEN}Muk{COLOR BLUE} backwards is...."), 2)
     waitmessage
-    msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}: Nope.\pBye."))
+    msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Nope.\pBye."))
     closemessage
 }
 
 script MurkyGrove_YoungGirl {
-    msgbox(format("{COLOR RED}{SHADOW LIGHT_RED}The ground here is so mucky, I bet you can't even run or bike in it."), 2)
+    msgbox(format("{COLOR RED}The ground here is so mucky, I bet you can't even run or bike in it."), 2)
     closemessage
 }
