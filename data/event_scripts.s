@@ -1073,3 +1073,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/AnconnaWoods_1/scripts.inc"
 
 	.include "data/maps/MurkyGrove/scripts.inc"
+
+	.include "data/maps/AnconnaLake/scripts.inc"

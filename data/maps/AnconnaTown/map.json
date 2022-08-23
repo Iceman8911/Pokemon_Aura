@@ -17,6 +17,11 @@
       "direction": "up",
       "offset": 14,
       "map": "MAP_ROUTE01"
+    },
+    {
+      "direction": "down",
+      "offset": -5,
+      "map": "MAP_ANCONNA_LAKE"
     }
   ],
   "object_events": [

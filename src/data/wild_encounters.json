@@ -11852,6 +11852,160 @@
               }
             ]
           }
+        },
+        {
+          "map": "MAP_ANCONNA_LAKE",
+          "base_label": "gAnconnaLake0",
+          "land_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_BIDOOF"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_BIDOOF"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_PSYDUCK"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_LOTAD"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_LOTAD"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_LOTAD"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_SURSKIT"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_LOMBRE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_LOMBRE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_SURSKIT"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_BIBAREL"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_BIBAREL"
+              }
+            ]
+          },
+          "water_mons": {
+            "encounter_rate": 40,
+            "mons": [
+              {
+                "min_level": 30,
+                "max_level": 40,
+                "species": "SPECIES_LOTAD"
+              },
+              {
+                "min_level": 30,
+                "max_level": 40,
+                "species": "SPECIES_LOMBRE"
+              },
+              {
+                "min_level": 25,
+                "max_level": 40,
+                "species": "SPECIES_SURSKIT"
+              },
+              {
+                "min_level": 35,
+                "max_level": 45,
+                "species": "SPECIES_MASQUERAIN"
+              },
+              {
+                "min_level": 43,
+                "max_level": 53,
+                "species": "SPECIES_BIBAREL"
+              }
+            ]
+          },
+          "fishing_mons": {
+            "encounter_rate": 30,
+            "mons": [
+              {
+                "min_level": 5,
+                "max_level": 15,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 5,
+                "max_level": 10,
+                "species": "SPECIES_SURSKIT"
+              },
+              {
+                "min_level": 15,
+                "max_level": 25,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 15,
+                "max_level": 25,
+                "species": "SPECIES_FINNEON"
+              },
+              {
+                "min_level": 20,
+                "max_level": 27,
+                "species": "SPECIES_LUVDISC"
+              },
+              {
+                "min_level": 21,
+                "max_level": 37,
+                "species": "SPECIES_ALOMOMOLA"
+              },
+              {
+                "min_level": 22,
+                "max_level": 32,
+                "species": "SPECIES_LUMINEON"
+              },
+              {
+                "min_level": 23,
+                "max_level": 33,
+                "species": "SPECIES_MASQUERAIN"
+              },
+              {
+                "min_level": 40,
+                "max_level": 50,
+                "species": "SPECIES_GYARADOS"
+              },
+              {
+                "min_level": 40,
+                "max_level": 50,
+                "species": "SPECIES_GYARADOS"
+              }
+            ]
+          }
         }
       ]
     },

@@ -4490,6 +4490,16 @@
       "secondary_tileset": "gTileset_Anconna_Woods",
       "border_filepath": "data/layouts/MurkyGrove/border.bin",
       "blockdata_filepath": "data/layouts/MurkyGrove/map.bin"
+    },
+    {
+      "id": "LAYOUT_ANCONNA_LAKE",
+      "name": "AnconnaLake_Layout",
+      "width": 50,
+      "height": 30,
+      "primary_tileset": "gTileset_Testing",
+      "secondary_tileset": "gTileset_testing_but_secondary",
+      "border_filepath": "data/layouts/AnconnaLake/border.bin",
+      "blockdata_filepath": "data/layouts/AnconnaLake/map.bin"
     }
   ]
 }
