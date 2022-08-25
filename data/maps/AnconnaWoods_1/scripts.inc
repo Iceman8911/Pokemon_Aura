@@ -103,7 +103,7 @@ AnconnaWoods_1_Found_Riolu::
 	msgbox AnconnaWoods_1_Found_Riolu_Text_15
 	msgbox AnconnaWoods_1_Found_Riolu_Text_16
 	waitmessage
-	givemon SPECIES_RIOLU, 5, ITEM_FOCUS_SASH
+	givecustommon SPECIES_RIOLU, 5, ITEM_FOCUS_SASH, , NATURE_HASTY, 1, , , , , , , , 31, , 31, 31
 	msgbox AnconnaWoods_1_Found_Riolu_Text_17
 	playfanfare MUS_OBTAIN_ITEM
 	waitfanfare

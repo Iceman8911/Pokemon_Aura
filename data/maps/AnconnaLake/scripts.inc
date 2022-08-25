@@ -57,8 +57,8 @@ AnconnaLake_FisherMan1_Text_0:
 	.string "{COLOR GREEN}{PLAYER}.$"
 
 AnconnaLake_FisherMan1_Text_1:
-	.string "{COLOR BLUE}So I invited my brothers over. Who\n"
-	.string "knows what we'll catch today.$"
+	.string "{COLOR BLUE}So I invited my brothers over.\p"
+	.string "Who knows what we'll catch today.$"
 
 AnconnaLake_FisherMan2_Text_0:
 	.string "{COLOR BLUE}My Brothers and I,\p"

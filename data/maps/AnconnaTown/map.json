@@ -69,7 +69,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_1",
-      "in_connection": false,
+      "in_connection": true,
       "x": 25,
       "y": 33,
       "elevation": 3,
