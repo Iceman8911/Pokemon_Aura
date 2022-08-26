@@ -4454,10 +4454,10 @@
     {
       "id": "LAYOUT_ANCONNA_TOWN_PLAYER_ROOM",
       "name": "AnconnaTown_PlayerRoom_Layout",
-      "width": 11,
-      "height": 10,
-      "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_BrendansMaysHouse",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_House_Indoors",
+      "secondary_tileset": "gTileset_Indoor_AnconnaTown",
       "border_filepath": "data/layouts/AnconnaTown_PlayerRoom/border.bin",
       "blockdata_filepath": "data/layouts/AnconnaTown_PlayerRoom/map.bin"
     },
@@ -4465,7 +4465,7 @@
       "id": "LAYOUT_ANCONNA_TOWN_PLAYER_HOUSE_GROUND_FLOOR",
       "name": "AnconnaTown_PlayerHouse_GroundFloor_Layout",
       "width": 20,
-      "height": 15,
+      "height": 14,
       "primary_tileset": "gTileset_House_Indoors",
       "secondary_tileset": "gTileset_Indoor_AnconnaTown",
       "border_filepath": "data/layouts/AnconnaTown_PlayerHouse_GroundFloor/border.bin",
