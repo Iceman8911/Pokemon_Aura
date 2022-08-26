@@ -18,10 +18,10 @@
   ],
   "warp_events": [
     {
-      "x": 9,
-      "y": 1,
+      "x": 2,
+      "y": 2,
       "elevation": 0,
-      "dest_map": "MAP_ANCONNA_TOWN_PLAYER_HOUSE",
+      "dest_map": "MAP_ANCONNA_TOWN_PLAYER_HOUSE_GROUND_FLOOR",
       "dest_warp_id": 2
     }
   ],

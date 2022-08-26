@@ -30,6 +30,13 @@
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_TOWN",
       "dest_warp_id": 3
+    },
+    {
+      "x": 17,
+      "y": 3,
+      "elevation": 0,
+      "dest_map": "MAP_ANCONNA_TOWN_PLAYER_ROOM",
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [

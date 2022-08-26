@@ -68,7 +68,7 @@ AnconnaLake_FisherMan2_Text_0:
 	.string "I've even forgotten haha.$"
 
 AnconnaLake_FisherMan3_Text_0:
-	.string "{COLOR BLUE}Hello there {COLOR BLUE}{PLAYER}, this weather's\n"
+	.string "{COLOR BLUE}Hello there {COLOR GREEN}{PLAYER}, this weather's\n"
 	.string "nice for some fishing.\p"
 	.string "Say,\p"
 	.string "Do you want to give a try?$"
@@ -77,8 +77,8 @@ AnconnaLake_FisherMan3_Text_1:
 	.string "{COLOR GREEN}{PLAYER}: Sure, it could be fun.$"
 
 AnconnaLake_FisherMan3_Text_2:
-	.string "{COLOR BLUE}Thats nice. Infact, here's one of my {COLOR GREEN}Old\n"
-	.string "Rods.)$"
+	.string "{COLOR BLUE}Thats nice. In fact, here's one of my {COLOR GREEN}Old\n"
+	.string "Rods{COLOR BLUE}.$"
 
 AnconnaLake_FisherMan3_Text_3:
 	.string "{COLOR BLUE}It's not the best but it's pretty great\n"
