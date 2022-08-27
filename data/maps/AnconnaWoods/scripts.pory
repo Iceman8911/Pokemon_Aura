@@ -88,7 +88,9 @@ script AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu {
 	delay(60)
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerHearsSuspiciousPeople)
 	waitmovement(0)
-	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Yup, that's them.\p So one of them is missing and that is halting their 'plan', whatever that may be..."))
+	load_speech_bubble(OBJ_EVENT_ID_PLAYER)
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Yup, that's them.\p......\pSo one of them is missing and that is halting their 'plan', whatever that may be..."))
+	destroy_speech_bubble
 	waitmessage
 	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Rioluuuuuuuuuuuu!"))
 	waitmessage
@@ -112,7 +114,9 @@ script AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu {
 	delay(80)
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerHearsSuspiciousPeople)
 	waitmovement(0)
+	load_speech_bubble(OBJ_EVENT_ID_PLAYER)
 	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: So they've given up on getting that Pokémon, I doubt that their original plans were any good since that Pokémon ran away from them.\pI think I should find it and bring it to Professor Flora before they change their mind."))
+	destroy_speech_bubble
 	setvar(ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE, 2)
 	releaseall
 }
