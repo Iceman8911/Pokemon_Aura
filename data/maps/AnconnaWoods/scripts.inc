@@ -92,7 +92,9 @@ AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu::
 	delay 60
 	applymovement OBJ_EVENT_ID_PLAYER, PlayerHearsSuspiciousPeople
 	waitmovement 0
+	load_speech_bubble OBJ_EVENT_ID_PLAYER
 	msgbox AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_3
+	destroy_speech_bubble
 	waitmessage
 	msgbox AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_4
 	waitmessage
@@ -116,7 +118,9 @@ AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu::
 	delay 80
 	applymovement OBJ_EVENT_ID_PLAYER, PlayerHearsSuspiciousPeople
 	waitmovement 0
+	load_speech_bubble OBJ_EVENT_ID_PLAYER
 	msgbox AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_13
+	destroy_speech_bubble
 	setvar ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE, 2
 	releaseall
 	return
@@ -334,6 +338,7 @@ AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_2:
 
 AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_3:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Yup, that's them.\p"
+	.string "......\p"
 	.string "So one of them is missing and that is\n"
 	.string "halting their 'plan', whatever that may\l"
 	.string "be...$"

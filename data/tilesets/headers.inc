@@ -851,7 +851,7 @@ gTileset_testing_but_secondary::
 	.4byte gTilesetPalettes_testing_but_secondary
 	.4byte gMetatiles_testing_but_secondary
 	.4byte gMetatileAttributes_testing_but_secondary
-	.4byte NULL
+	.4byte InitTilesetAnim_testing_but_secondary
 
 	.align 2
 gTileset_Anconna_Woods::

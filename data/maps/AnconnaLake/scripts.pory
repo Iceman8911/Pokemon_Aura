@@ -25,17 +25,17 @@ script AnconnaLake_FisherMan2 {
 script AnconnaLake_FisherMan3 {
     lockall
     if(var(OBTAINED_OLD_ROD) == 0) {
-        msgbox(format("{COLOR BLUE}Hello there {COLOR GREEN}{PLAYER}, this weather's nice for some fishing.\pSay,\pDo you want to give a try?"), 2)
+        msgbox(format("{COLOR BLUE}Hello there {COLOR GREEN}{PLAYER}{COLOR BLUE}, this weather's nice for some fishing.\pSay,\pDo you want to give a try?"), 2)
         yesnobox(25, 0)
         if(var(VAR_RESULT) == 1) {
-            msgbox(format("{COLOR GREEN}{PLAYER}: Sure, it could be fun."))
+            msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Sure, it could be fun."))
             msgbox(format("{COLOR BLUE}Thats nice. In fact, here's one of my {COLOR GREEN}Old Rods{COLOR BLUE}."))
             giveitem(ITEM_OLD_ROD)
             setvar(OBTAINED_OLD_ROD, 1)
             msgbox(format("{COLOR BLUE}It's not the best but it's pretty great and you can keep it. It's only a spare after all."))
             releaseall
         } else {
-            msgbox(format("{COLOR GREEN}{PLAYER}: Um, I'm not sure I might like it."))
+            msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Um, I'm not sure I might like it."))
             msgbox(format("{COLOR BLUE}Oh.\pWell, in that case. I'll be seeing you later if you change your mind."))
             releaseall
 
