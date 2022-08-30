@@ -20,4 +20,4 @@ void LoadTail(s16 x, s16 y);
 void LoadTailFromObjectEventId(u32 id);
 void DestroyTail(void);
 
-#endif // GUARD_SPEECH_BUBBLE_H
+#endif // GUARD_SPEECH_BUBBLE_H 

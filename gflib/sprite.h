@@ -202,6 +202,8 @@ struct Sprite
 
     /*0x20*/ s16 x, y;
     /*0x24*/ s16 x2, y2;
+        /*0x20*/ struct Coords16 pos1;
+    /*0x24*/ struct Coords16 pos2;
     /*0x28*/ s8 centerToCornerVecX;
     /*0x29*/ s8 centerToCornerVecY;
 

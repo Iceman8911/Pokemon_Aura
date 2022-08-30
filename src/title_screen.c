@@ -14,7 +14,6 @@
 #include "reset_rtc_screen.h"
 #include "berry_fix_program.h"
 #include "sound.h"
-#include "sprite.h"
 #include "task.h"
 #include "scanline_effect.h"
 #include "gpu_regs.h"

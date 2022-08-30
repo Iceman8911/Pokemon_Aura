@@ -5,20 +5,26 @@ AnconnaLake_MapScripts::
 AnconnaLake_FisherMan1::
 	compare VAR_TEMP_0, 0
 	goto_if_eq AnconnaLake_FisherMan1_1
+	load_speech_bubble 2
 	msgbox AnconnaLake_FisherMan1_Text_1, 2
+	destroy_speech_bubble
 	setvar VAR_TEMP_0, 0
 	closemessage
 	return
 
 AnconnaLake_FisherMan1_1:
+	load_speech_bubble 2
 	msgbox AnconnaLake_FisherMan1_Text_0, 2
+	destroy_speech_bubble
 	setvar VAR_TEMP_0, 1
 	closemessage
 	return
 
 
 AnconnaLake_FisherMan2::
+	load_speech_bubble 1, 0xFF
 	msgbox AnconnaLake_FisherMan2_Text_0, 2
+	destroy_speech_bubble
 	closemessage
 	return
 
@@ -27,27 +33,41 @@ AnconnaLake_FisherMan3::
 	lockall
 	compare OBTAINED_OLD_ROD, 0
 	goto_if_eq AnconnaLake_FisherMan3_2
+	load_speech_bubble 3
 	msgbox AnconnaLake_FisherMan3_Text_6, 2
+	destroy_speech_bubble
 AnconnaLake_FisherMan3_1:
 	releaseall
 	return
 
 AnconnaLake_FisherMan3_2:
+	load_speech_bubble 3
 	msgbox AnconnaLake_FisherMan3_Text_0, 2
+	destroy_speech_bubble
 	yesnobox 25, 0
 	compare VAR_RESULT, 1
 	goto_if_eq AnconnaLake_FisherMan3_5
+	load_speech_bubble OBJ_EVENT_ID_PLAYER
 	msgbox AnconnaLake_FisherMan3_Text_4
+	destroy_speech_bubble
+	load_speech_bubble 3
 	msgbox AnconnaLake_FisherMan3_Text_5
+	destroy_speech_bubble
 	releaseall
 	goto AnconnaLake_FisherMan3_1
 
 AnconnaLake_FisherMan3_5:
+	load_speech_bubble OBJ_EVENT_ID_PLAYER
 	msgbox AnconnaLake_FisherMan3_Text_1
+	destroy_speech_bubble
+	load_speech_bubble 3
 	msgbox AnconnaLake_FisherMan3_Text_2
+	destroy_speech_bubble
 	giveitem ITEM_OLD_ROD
 	setvar OBTAINED_OLD_ROD, 1
+	load_speech_bubble 3
 	msgbox AnconnaLake_FisherMan3_Text_3
+	destroy_speech_bubble
 	releaseall
 	goto AnconnaLake_FisherMan3_1
 

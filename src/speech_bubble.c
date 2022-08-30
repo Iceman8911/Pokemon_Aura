@@ -24,7 +24,7 @@ void LoadTail(s16 x, s16 y) {
     struct SpritePalette palSheet;
     struct SpriteTemplate spriteTemp1;
     struct OamData oam = {0};
-    
+
     s16 textboxX = (x < 120) ? TEXTBOX_LEFT_X : TEXTBOX_RIGHT_X;
 
     if (GetSpriteTileStartByTag(TAG_SPEECH_BUBBLE_TAIL) == 0xFFFF)
@@ -75,8 +75,8 @@ void LoadTailFromObjectEventId(u32 id) {
     objectEvent = &gObjectEvents[GetObjectEventIdByLocalIdAndMap(id, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup)];
     sprite = &gSprites[objectEvent->spriteId];
 
-    x = sprite->oam.x - (sprite->x + sprite->centerToCornerVecX);
-    y = sprite->oam.y - (sprite->y + sprite->centerToCornerVecY);
+    x = sprite->oam.x - (sprite->pos2.x + sprite->centerToCornerVecX);
+    y = sprite->oam.y - (sprite->pos2.y + sprite->centerToCornerVecY);
 
     x += (gSpecialVar_0x8005 < 120) ? -5 : 5;
     y += 5;
