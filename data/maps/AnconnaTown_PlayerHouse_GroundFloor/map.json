@@ -3,7 +3,7 @@
   "name": "AnconnaTown_PlayerHouse_GroundFloor",
   "layout": "LAYOUT_ANCONNA_TOWN_PLAYER_HOUSE_GROUND_FLOOR",
   "music": "MUS_ABANDONED_SHIP",
-  "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
+  "region_map_section": "MAPSEC_MY_HOUSE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -35,7 +35,7 @@
       "x": 17,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_ANCONNA_TOWN_PLAYER_ROOM",
+      "dest_map": "MAP_ANCONNA_TOWN_PLAYER_HOUSE_FLOOR1",
       "dest_warp_id": 0
     }
   ],

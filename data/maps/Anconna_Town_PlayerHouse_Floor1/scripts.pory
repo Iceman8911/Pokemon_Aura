@@ -1,0 +1,13 @@
+mapscripts Anconna_Town_PlayerHouse_Floor1_MapScripts {}
+
+script PlayerHouse_Sibling_Room {
+    lockall
+    msgbox(format("Um,\pI don't think I should go in there..."))
+    applymovement(OBJ_EVENT_ID_PLAYER, PlayerHouse_PlayerMoveDown)
+    waitmovement(0)
+    releaseall
+}
+
+movement PlayerHouse_PlayerMoveDown {
+    walk_down
+}

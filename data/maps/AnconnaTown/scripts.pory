@@ -55,9 +55,11 @@ script AnconnaTown_EventScript_ProfessorLabSign {
 script AnconnaTown_EventScript_FatMan {
 	lockall
 	#msgbox(FatMan, 2) 
+	load_speech_bubble(2)
 	msgbox(format("{COLOR BLUE}The Power Of Science is Astonishing!!!\p {PLAYER}, Do you know that recently, 'ROM Hackers' have been able to update 17 year old"
 	" games with future generation expansions to create retouched retro games such as the\l'ROM Hack' you're playing right now!\pSCIENCE!!!"), 2)
 	waitmessage
+	destroy_speech_bubble
 	releaseall
 	end
 }
@@ -75,6 +77,7 @@ text FatMan {
 
 script AnconnaTown_EventScript_LittleGirl {
 	lockall
+	load_speech_bubble(3)
 	if(var(ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE) == 1){
 		msgbox(format("{COLOR RED}I saw three strangers enter the forest. I wonder what they're doing there."), 2)
 		waitmessage
@@ -83,6 +86,7 @@ script AnconnaTown_EventScript_LittleGirl {
 		msgbox(LittleGirl, 2) 
 		waitmessage
 	}
+	destroy_speech_bubble
 	releaseall
 	end
 }
@@ -93,8 +97,10 @@ text LittleGirl {
 
 script AnconnaTown_Woman {
 	lockall
+	load_speech_bubble(4)
 	msgbox(format("{COLOR RED}I love this town!\p It's so simple and peaceful to live in."), 2)
 	waitmessage
+	destroy_speech_bubble
 	releaseall
 	end
 }

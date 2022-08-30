@@ -74,6 +74,7 @@
 #define MAP_ANCONNA_TOWN_PLAYER_HOUSE              (0 | (1 << 8))
 #define MAP_ANCONNA_TOWN_PLAYER_ROOM               (1 | (1 << 8))
 #define MAP_ANCONNA_TOWN_PLAYER_HOUSE_GROUND_FLOOR (2 | (1 << 8))
+#define MAP_ANCONNA_TOWN_PLAYER_HOUSE_FLOOR1       (3 | (1 << 8))
 
 // gMapGroup_IndoorLittleroot
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (2 << 8))

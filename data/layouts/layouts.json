@@ -4500,6 +4500,16 @@
       "secondary_tileset": "gTileset_testing_but_secondary",
       "border_filepath": "data/layouts/AnconnaLake/border.bin",
       "blockdata_filepath": "data/layouts/AnconnaLake/map.bin"
+    },
+    {
+      "id": "LAYOUT_ANCONNA_TOWN_PLAYER_HOUSE_FLOOR1",
+      "name": "Anconna_Town_PlayerHouse_Floor1_Layout",
+      "width": 13,
+      "height": 5,
+      "primary_tileset": "gTileset_House_Indoors",
+      "secondary_tileset": "gTileset_Indoor_AnconnaTown",
+      "border_filepath": "data/layouts/Anconna_Town_PlayerHouse_Floor1/border.bin",
+      "blockdata_filepath": "data/layouts/Anconna_Town_PlayerHouse_Floor1/map.bin"
     }
   ]
 }

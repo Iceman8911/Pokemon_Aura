@@ -147,28 +147,40 @@ Anconna_Woods_First_Lium_Fight_1:
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, PlayerTurnsToLium
 	waitmovement 0
+	load_speech_bubble 1
 	msgbox Anconna_Woods_First_Lium_Fight_Text_1
+	destroy_speech_bubble
 	closemessage
 	applymovement 1, LiumRemembersHisMission
 	waitmovement 0
+	load_speech_bubble 1
 	msgbox Anconna_Woods_First_Lium_Fight_Text_2
+	destroy_speech_bubble
 	closemessage
+	load_speech_bubble OBJ_EVENT_ID_PLAYER
 	msgbox Anconna_Woods_First_Lium_Fight_Text_3
+	destroy_speech_bubble
 	closemessage
 	applymovement 1, LiumisAstonished
 	waitmovement 0
+	load_speech_bubble 1
 	msgbox Anconna_Woods_First_Lium_Fight_Text_4
+	destroy_speech_bubble
 	closemessage
 	applymovement 1, LiumisAstonishedNot
 	waitmovement 0
+	load_speech_bubble 1
 	msgbox Anconna_Woods_First_Lium_Fight_Text_5
+	destroy_speech_bubble
 	cleartrainerflag TRAINER_AQUA_GRUNT_LIUM
 	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT, TRAINER_AQUA_GRUNT_LIUM, 1, PlayerBattleLiumText, Anconna_Woods_First_Lium_Fight_Text_6, Anconna_Woods_First_Lium_Fight_Won
 	return
 
 
 Anconna_Woods_First_Lium_Fight_Won::
+	load_speech_bubble 1
 	msgbox Anconna_Woods_First_Lium_Fight_Won_Text_0
+	destroy_speech_bubble
 	closemessage
 	applymovement 1, FirstLiumEncounterEnd
 	waitmovement 0
@@ -265,22 +277,28 @@ PlayerStillWantsBushSweet:
 	step_end
 
 AnconnaWoods_BugCatcher1::
+	load_speech_bubble 2
 	trainerbattle_single BUG_CATCHER_1, AnconnaWoods_BugCatcher1_Text_0, AnconnaWoods_BugCatcher1_Text_1
 	msgbox AnconnaWoods_BugCatcher1_Text_2, 2
+	destroy_speech_bubble
 	closemessage
 	return
 
 
 AnconnaWoods_BugCatcher2::
+	load_speech_bubble 3
 	trainerbattle_single BUG_CATCHER_2, AnconnaWoods_BugCatcher2_Text_0, AnconnaWoods_BugCatcher2_Text_1
 	msgbox AnconnaWoods_BugCatcher2_Text_2
+	destroy_speech_bubble
 	closemessage
 	return
 
 
 AnconnaWoods_BugCatcher3::
+	load_speech_bubble 4
 	trainerbattle_single BUG_CATCHER_3, AnconnaWoods_BugCatcher3_Text_0, AnconnaWoods_BugCatcher3_Text_1
 	msgbox AnconnaWoods_BugCatcher3_Text_2
+	destroy_speech_bubble
 	closemessage
 	return
 
@@ -417,7 +435,8 @@ Anconna_Woods_First_Lium_Fight_Text_2:
 	.string "back from you so hand it over.$"
 
 Anconna_Woods_First_Lium_Fight_Text_3:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: So you're 'Lium', hmm.\p"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: So you're 'Lium'.\p"
+	.string "Hmm.\p"
 	.string "How about,\p"
 	.string "NO!$"
 

@@ -105,7 +105,8 @@
   "gMapGroup_IndoorAnconnaTown": [
     "AnconnaTown_PlayerHouse",
     "AnconnaTown_PlayerRoom",
-    "AnconnaTown_PlayerHouse_GroundFloor"
+    "AnconnaTown_PlayerHouse_GroundFloor",
+    "Anconna_Town_PlayerHouse_Floor1"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

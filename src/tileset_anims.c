@@ -81,16 +81,25 @@ static void QueueAnimTiles_testing_but_secondary_Flower(u16);
 
 
 
-const u16 gTilesetAnims_testing_but_secondary_Water_Frame0[] = INCBIN_U16("data/tilesets/secondary/testing_but_secondary/anim/Water/Image40000.4bpp");
-const u16 gTilesetAnims_testing_but_secondary_Water_Frame1[] = INCBIN_U16("data/tilesets/secondary/testing_but_secondary/anim/Water/Image40001.4bpp");
-const u16 gTilesetAnims_testing_but_secondary_Water_Frame2[] = INCBIN_U16("data/tilesets/secondary/testing_but_secondary/anim/Water/Image40002.4bpp");
-const u16 gTilesetAnims_testing_but_secondary_Water_Frame3[] = INCBIN_U16("data/tilesets/secondary/testing_but_secondary/anim/Water/Image40003.4bpp");
+const u16 gTilesetAnims_testing_but_secondary_Water_Frame0[] = INCBIN_U16("data/tilesets/secondary/testing_but_secondary/anim/Water/00000.4bpp");
+const u16 gTilesetAnims_testing_but_secondary_Water_Frame1[] = INCBIN_U16("data/tilesets/secondary/testing_but_secondary/anim/Water/00001.4bpp");
+const u16 gTilesetAnims_testing_but_secondary_Water_Frame2[] = INCBIN_U16("data/tilesets/secondary/testing_but_secondary/anim/Water/00002.4bpp");
+const u16 gTilesetAnims_testing_but_secondary_Water_Frame3[] = INCBIN_U16("data/tilesets/secondary/testing_but_secondary/anim/Water/00003.4bpp");
+const u16 gTilesetAnims_testing_but_secondary_Water_Frame4[] = INCBIN_U16("data/tilesets/secondary/testing_but_secondary/anim/Water/00004.4bpp");
 
 const u16 *const gTilesetAnims_testing_but_secondary_Water[] = {
     gTilesetAnims_testing_but_secondary_Water_Frame0,
+    gTilesetAnims_testing_but_secondary_Water_Frame0,
     gTilesetAnims_testing_but_secondary_Water_Frame1,
-    gTilesetAnims_testing_but_secondary_Water_Frame2,
-    gTilesetAnims_testing_but_secondary_Water_Frame3
+    gTilesetAnims_testing_but_secondary_Water_Frame1,
+    //gTilesetAnims_testing_but_secondary_Water_Frame2,
+    //gTilesetAnims_testing_but_secondary_Water_Frame1,
+    gTilesetAnims_testing_but_secondary_Water_Frame0,
+    gTilesetAnims_testing_but_secondary_Water_Frame0,
+    gTilesetAnims_testing_but_secondary_Water_Frame3,
+    gTilesetAnims_testing_but_secondary_Water_Frame3,
+    //gTilesetAnims_testing_but_secondary_Water_Frame4,
+    //gTilesetAnims_testing_but_secondary_Water_Frame3
 };
 
 const u16 gTilesetAnims_testing_but_secondary_Water_Corner_Frame0[] = INCBIN_U16("data/tilesets/secondary/testing_but_secondary/anim/Water_Corners/00000.4bpp");

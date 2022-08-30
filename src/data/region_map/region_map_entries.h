@@ -198,6 +198,12 @@ static const u8 sMapName_MarineCave[] = _("Marine Cave");
 static const u8 sMapName_TerraCave[] = _("Terra Cave");
 static const u8 sMapName_DesertUnderpass[] = _("Desert Underpass");
 static const u8 sMapName_TrainerHill[] = _("Trainer Hill");
+static const u8 sMapName_AnconnaTown[] = _("Anconna Town");
+static const u8 sMapName_AnconnaWoods[] = _("Anconna Woods");
+static const u8 sMapName_AnconnaLake[] = _("Anconna Lake");
+static const u8 sMapName_MyHouse[] = _("My House");
+static const u8 sMapName_Route01[] = _("Route 01");
+static const u8 sMapName_MurkyGrove[] = _("Murky Grove");
 
 const struct RegionMapLocation gRegionMapEntries[] = {
     [MAPSEC_LITTLEROOT_TOWN]            = { 4, 11, 1, 1, sMapName_LittlerootTown},
@@ -412,7 +418,13 @@ const struct RegionMapLocation gRegionMapEntries[] = {
     [MAPSEC_DESERT_UNDERPASS]           = { 2,  0, 1, 1, sMapName_DesertUnderpass},
     [MAPSEC_ALTERING_CAVE]              = { 6,  8, 1, 1, sMapName_AlteringCave},
     [MAPSEC_NAVEL_ROCK]                 = { 0,  0, 1, 1, sMapName_NavelRock},
-    [MAPSEC_TRAINER_HILL]               = { 8,  4, 1, 1, sMapName_TrainerHill}
+    [MAPSEC_TRAINER_HILL]               = { 8,  4, 1, 1, sMapName_TrainerHill},
+    [MAPSEC_ANCONNA_TOWN]               = {0, 0, 1, 1, sMapName_AnconnaTown},
+    [MAPSEC_ANCONNA_WOODS]              = {0, 0, 1, 1, sMapName_AnconnaWoods},
+    [MAPSEC_ANCONNA_LAKE]               = {0, 0, 1, 1, sMapName_AnconnaLake},
+    [MAPSEC_ROUTE_01]                   = {0, 0, 1, 1, sMapName_Route01},
+    [MAPSEC_MY_HOUSE]                   = {0, 0, 1, 1, sMapName_MyHouse},
+    [MAPSEC_MURKY_GROVE]                = {0, 0, 1, 1, sMapName_MurkyGrove},
 };
 
 #endif //GUARD_DATA_REGION_MAP_REGION_MAP_ENTRIES_H

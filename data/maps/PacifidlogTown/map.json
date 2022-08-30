@@ -27,6 +27,7 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
+      "in_connection": false,
       "x": 10,
       "y": 23,
       "elevation": 3,
@@ -40,6 +41,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
+      "in_connection": false,
       "x": 11,
       "y": 14,
       "elevation": 3,
@@ -53,6 +55,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
+      "in_connection": false,
       "x": 9,
       "y": 16,
       "elevation": 3,
@@ -109,7 +112,9 @@
       "dest_warp_id": 0
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+
+  ],
   "bg_events": [
     {
       "type": "sign",
