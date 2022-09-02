@@ -4510,6 +4510,16 @@
       "secondary_tileset": "gTileset_Indoor_AnconnaTown",
       "border_filepath": "data/layouts/Anconna_Town_PlayerHouse_Floor1/border.bin",
       "blockdata_filepath": "data/layouts/Anconna_Town_PlayerHouse_Floor1/map.bin"
+    },
+    {
+      "id": "LAYOUT_SCANDI_CITY",
+      "name": "ScandiCity_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Scandi_City",
+      "secondary_tileset": "gTileset_Sub_Scandi_City",
+      "border_filepath": "data/layouts/ScandiCity/border.bin",
+      "blockdata_filepath": "data/layouts/ScandiCity/map.bin"
     }
   ]
 }

@@ -172,11 +172,29 @@
     {
       "type": "trigger",
       "x": 6,
-      "y": 17,
+      "y": 18,
       "elevation": 0,
       "var": "ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE",
       "var_value": "0",
       "script": "Anconna_Town_Discovered_Mysterious_People"
+    },
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 1,
+      "elevation": 0,
+      "var": "FIRST_LIUM_FIGHT",
+      "var_value": "0",
+      "script": "AnconnaTown_Cannot_Leave_Anconna_Town"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 1,
+      "elevation": 0,
+      "var": "FIRST_LIUM_FIGHT",
+      "var_value": "0",
+      "script": "AnconnaTown_Cannot_Leave_Anconna_Town"
     }
   ],
   "bg_events": [

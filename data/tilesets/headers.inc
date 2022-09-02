@@ -885,3 +885,25 @@ gTileset_Indoor_AnconnaTown::
 	.4byte gMetatiles_Indoor_AnconnaTown
 	.4byte gMetatileAttributes_Indoor_AnconnaTown
 	.4byte NULL
+
+	.align 2
+gTileset_Scandi_City::
+	.byte TRUE @ is compressed
+	.byte FALSE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Scandi_City
+	.4byte gTilesetPalettes_Scandi_City
+	.4byte gMetatiles_Scandi_City
+	.4byte gMetatileAttributes_Scandi_City
+	.4byte NULL
+
+	.align 2
+gTileset_Sub_Scandi_City::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Sub_Scandi_City
+	.4byte gTilesetPalettes_Sub_Scandi_City
+	.4byte gMetatiles_Sub_Scandi_City
+	.4byte gMetatileAttributes_Sub_Scandi_City
+	.4byte NULL

@@ -2,7 +2,13 @@ raw `
 AnconnaTown_MapScripts::
 	.byte 0
 `
-
+script AnconnaTown_Cannot_Leave_Anconna_Town {
+	lockall
+	msgbox(format("I need to checkout what's happening in the forest."))
+	applymovement(OBJ_EVENT_ID_PLAYER, Walk_Down)
+	waitmovement(0)
+	releaseall
+}
 script AnconnaTown_EventScript_Sign {
 	lockall
 	msgbox(AnconnaSign)
@@ -212,7 +218,7 @@ movement WalkLeft {
 }
 
 movement PanToMysteriousPeople{
-	walk_down * 4
+	walk_down * 3
 	walk_left * 6
 }
 
@@ -244,6 +250,10 @@ movement LiumLeaves {
 }
 
 movement ReversePan {
-	walk_fast_up * 4
+	walk_fast_up * 3
 	walk_fast_right * 6
+}
+
+movement Walk_Down {
+	walk_down
 }

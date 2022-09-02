@@ -69,6 +69,7 @@
 #define MAP_ANCONNA_WOODS_1     (60 | (0 << 8))
 #define MAP_MURKY_GROVE         (61 | (0 << 8))
 #define MAP_ANCONNA_LAKE        (62 | (0 << 8))
+#define MAP_SCANDI_CITY         (63 | (0 << 8))
 
 // gMapGroup_IndoorAnconnaTown
 #define MAP_ANCONNA_TOWN_PLAYER_HOUSE              (0 | (1 << 8))

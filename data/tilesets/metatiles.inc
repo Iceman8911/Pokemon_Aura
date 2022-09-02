@@ -594,3 +594,17 @@ gMetatiles_Indoor_AnconnaTown::
 	.align 1
 gMetatileAttributes_Indoor_AnconnaTown::
 	.incbin "data/tilesets/secondary/indoor_anconnatown/metatile_attributes.bin"
+	.align 1
+gMetatiles_Scandi_City::
+	.incbin "data/tilesets/primary/scandi_city/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Scandi_City::
+	.incbin "data/tilesets/primary/scandi_city/metatile_attributes.bin"
+	.align 1
+gMetatiles_Sub_Scandi_City::
+	.incbin "data/tilesets/secondary/sub_scandi_city/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Sub_Scandi_City::
+	.incbin "data/tilesets/secondary/sub_scandi_city/metatile_attributes.bin"

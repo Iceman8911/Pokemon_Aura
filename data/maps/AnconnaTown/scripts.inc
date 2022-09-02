@@ -1,6 +1,15 @@
 AnconnaTown_MapScripts::
 	.byte 0
 
+AnconnaTown_Cannot_Leave_Anconna_Town::
+	lockall
+	msgbox AnconnaTown_Cannot_Leave_Anconna_Town_Text_0
+	applymovement OBJ_EVENT_ID_PLAYER, Walk_Down
+	waitmovement 0
+	releaseall
+	return
+
+
 AnconnaTown_EventScript_Sign::
 	lockall
 	msgbox AnconnaSign
@@ -182,7 +191,6 @@ PanToMysteriousPeople:
 	walk_down
 	walk_down
 	walk_down
-	walk_down
 	walk_left
 	walk_left
 	walk_left
@@ -230,6 +238,14 @@ ReversePan:
 	walk_fast_right
 	walk_fast_right
 	step_end
+
+Walk_Down:
+	walk_down
+	step_end
+
+AnconnaTown_Cannot_Leave_Anconna_Town_Text_0:
+	.string "I need to checkout what's happening in\n"
+	.string "the forest.$"
 
 AnconnaTown_Bidoof_Text_0:
 	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Doof?\n"

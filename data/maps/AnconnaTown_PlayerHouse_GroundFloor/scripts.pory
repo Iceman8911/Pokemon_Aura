@@ -1,1 +1,91 @@
 mapscripts AnconnaTown_PlayerHouse_GroundFloor_MapScripts {}
+
+script AnconnaTown_PlayerHouse_Mum {
+    lockall
+    msgbox(format("This is a Placeholder. Tell my Creator what you want me to say."))
+    releaseall
+}
+
+script AnconnaTown_PlayerHouse_TV {
+    lockall
+    random(5)
+    switch (var(VAR_RESULT)) {
+        case 0:
+        msgbox(format("Placeholder 1"))
+        break
+        case 1:
+        msgbox(format("Placeholder 2"))
+        break
+        case 2:
+        msgbox(format("Placeholder 3"))
+        break
+        case 3:
+        msgbox(format("Placeholder 4"))
+        break
+        case 4:
+        msgbox(format("Placeholder 5"))
+        break
+    }
+    releaseall
+}
+
+script AnconnaTown_PlayerHouse_Dishes {
+    lockall
+    msgbox(format("Clean plates are arranged nicely on its shelves."))
+    releaseall
+}
+
+script AnconnaTown_PlayerHouse_Sink {
+    lockall
+    msgbox(format("Something smells really delicious here."))
+    releaseall
+}
+
+script AnconnaTown_PlayerHouse_Fridge {
+    lockall
+    msgbox(format("This should have cold drinks and beverages in it.\pToo bad I can't have any."))
+    waitmessage
+    releaseall
+}
+
+script AnconnaTown_PlayerHouse_Dustbin {
+    lockall
+    msgbox(format("Huh, there's literally nothing here.\p......\pWhat am I even looking for in a dustbin?"))
+    waitmessage
+    releaseall
+}
+
+script AnconnaTown_PlayerHouse_Plant {
+    lockall
+    msgbox(format("Its a potted plant."))
+    waitmessage
+    releaseall
+}
+
+script AnconnaTown_PlayerHouse_Window {
+    lockall
+    msgbox(format("It looks sunny outside."))
+    waitmessage
+    releaseall
+}
+
+script AnconnaTown_PlayerHouse_BookShelve {
+    lockall
+    msgbox(format("Books covering a variety of subjects are arranged neatly on the shelf."))
+    waitmessage
+    releaseall
+}
+
+script AnconnaTown_PlayerHouse_NES {
+    lockall
+    msgbox(format("My Old NES.\p.....\pI've had some good times with this."))
+    waitmessage
+    releaseall
+}
+
+script AnconnaTown_PlayerHouse_Drawer {
+    lockall
+    msgbox(format("Placeholder"))
+    waitmessage
+    releaseall
+}
