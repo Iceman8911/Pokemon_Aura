@@ -4,7 +4,7 @@ AnconnaTown_MapScripts::
 `
 script AnconnaTown_Cannot_Leave_Anconna_Town {
 	lockall
-	msgbox(format("I need to checkout what's happening in the forest."))
+	msgbox(format("Should I really ignore what just happened now?"))
 	applymovement(OBJ_EVENT_ID_PLAYER, Walk_Down)
 	waitmovement(0)
 	releaseall
@@ -188,7 +188,7 @@ script Anconna_Town_Discovered_Mysterious_People {
 	applymovement(OBJ_EVENT_ID_CAMERA, ReversePan)
 	waitmovement(0)
 	special(RemoveCameraObject)
-	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Who the heck are they?\pAnd why are they entering our forest?\pI haven't seen them around this place before.\pHmm.\pThey also seemed to be in a hurry and mentioned something about a plan. Maybe I should investigate this further."))
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Who the heck are they?\pAnd why are they entering our forest?\pI haven't seen them around this place before.\pHmm.\pThey also seemed to be in a hurry and mentioned something about a plan.\pWhat could that possibly mean?"))
 	setvar(ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE, 1)
 	releaseall
 }

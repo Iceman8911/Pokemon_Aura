@@ -37,7 +37,7 @@ script Anconna_Woods_RareCandy {
 #}
 
 script AnconnaWoods_PlayerWantsItemBall {
-	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: I would like to know what that item ball contains but wild Pokémon may jump out from that bush beside it."))
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: What could possibly be in that item ball but it probably isn't safe to get it."))
 	closemessage
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerStillWantsItemBall)
 	waitmovement(0)
@@ -66,7 +66,7 @@ movement NotFoundRiolu1 {
 
 script AnconnaWoods_Not_Fought_Lium {
 	lockall
-	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: There's a shorter path to my home,\p Lemme search further."))
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: There's a shorter path to my home,\pLemme search further."))
 	closemessage
 	applymovement(OBJ_EVENT_ID_PLAYER, NotFoughtLium)
 	waitmovement(0)
@@ -89,7 +89,7 @@ script AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu {
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerHearsSuspiciousPeople)
 	waitmovement(0)
 	load_speech_bubble(OBJ_EVENT_ID_PLAYER)
-	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Yup, that's them.\p......\pSo one of them is missing and that is halting their 'plan', whatever that may be..."))
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: That should be them.\p......\pSo one of them is missing....\pAnd their plan seems to be at a halt..."))
 	destroy_speech_bubble
 	waitmessage
 	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Rioluuuuuuuuuuuu!"))
@@ -115,7 +115,7 @@ script AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu {
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerHearsSuspiciousPeople)
 	waitmovement(0)
 	load_speech_bubble(OBJ_EVENT_ID_PLAYER)
-	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: So they've given up on getting that Pokémon, I doubt that their original plans were any good since that Pokémon ran away from them.\pI think I should find it and bring it to Professor Flora before they change their mind."))
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: So they've given up on getting that Pokémon, I doubt that their original plans were any good since that Pokémon ran away from them.\pMaybe I should find it and bring it to Professor {COLOR GREEN}Flora{COLOR DARK_GRAY} before they change their mind."))
 	destroy_speech_bubble
 	setvar(ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE, 2)
 	releaseall
@@ -171,19 +171,19 @@ script Anconna_Woods_First_Lium_Fight {
 }
 
 text PlayerBattleLiumText {
-	format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: You're not taking Riolu from me!\pLium: {COLOR BLUE}We'll see about that.")
+	format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: You're not taking Riolu away!\pLium: {COLOR BLUE}We'll see about that.")
 }
 
 script Anconna_Woods_First_Lium_Fight_Won {
 	load_speech_bubble(1)
-	msgbox(format("Lium: {COLOR BLUE}What have you done! You hurt my first Pokémon and I have no way of getting back safe now.\pNo.\pNo.\pNo.\pNo.\pNOOO!\pI really messed up this time. I need to get out of here!"))
+	msgbox(format("Lium: {COLOR BLUE}What have you done! You hurt my Pokémon and I have no way of getting back safe now.\pNo.\pNo.\pNo.\pNo.\pNOOO!\pI really messed up this time. I need to get out of here!"))
 	destroy_speech_bubble
 	closemessage
 	applymovement(1, FirstLiumEncounterEnd)
 	waitmovement(0)
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerThinksAboutFirstLiumEncounter)
 	waitmovement(0)
-	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: What was all that about?\pThat guy was an obvious noob but suspicious. Maybe I should tell mom and Professor Flora about him soon.\pAnyways, Let's get you healed, Riolu."))
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: What was all that about?\pThat guy was obviously inexperienced but suspicious. Maybe I should tell {COLOR GREEN}Mom{COLOR DARK_GRAY} and Professor {COLOR GREEN}Flora{COLOR DARK_GRAY} about him soon.\pAnyways, Let's get you healed, Riolu."))
 	closemessage
 	#setflag(FIRST_LIUM_ENCOUNTER)
 	removeobject(1)

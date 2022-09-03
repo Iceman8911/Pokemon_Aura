@@ -230,7 +230,6 @@ ReversePan:
 	walk_fast_up
 	walk_fast_up
 	walk_fast_up
-	walk_fast_up
 	walk_fast_right
 	walk_fast_right
 	walk_fast_right
