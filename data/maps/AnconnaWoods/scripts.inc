@@ -128,6 +128,8 @@ AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu::
 
 AnconnaWoods_Lium::
 	msgbox AnconnaWoods_Lium_Text_0
+	waitmessage
+	msgbox AnconnaWoods_Lium_Text_1
 	closemessage
 	return
 
@@ -277,28 +279,22 @@ PlayerStillWantsBushSweet:
 	step_end
 
 AnconnaWoods_BugCatcher1::
-	load_speech_bubble 2
 	trainerbattle_single BUG_CATCHER_1, AnconnaWoods_BugCatcher1_Text_0, AnconnaWoods_BugCatcher1_Text_1
 	msgbox AnconnaWoods_BugCatcher1_Text_2, 2
-	destroy_speech_bubble
 	closemessage
 	return
 
 
 AnconnaWoods_BugCatcher2::
-	load_speech_bubble 3
 	trainerbattle_single BUG_CATCHER_2, AnconnaWoods_BugCatcher2_Text_0, AnconnaWoods_BugCatcher2_Text_1
 	msgbox AnconnaWoods_BugCatcher2_Text_2
-	destroy_speech_bubble
 	closemessage
 	return
 
 
 AnconnaWoods_BugCatcher3::
-	load_speech_bubble 4
 	trainerbattle_single BUG_CATCHER_3, AnconnaWoods_BugCatcher3_Text_0, AnconnaWoods_BugCatcher3_Text_1
 	msgbox AnconnaWoods_BugCatcher3_Text_2
-	destroy_speech_bubble
 	closemessage
 	return
 
@@ -317,10 +313,9 @@ Anconna_Woods_RareCandy_Text_1:
 	.string "It wouldn't hurt to have it....$"
 
 AnconnaWoods_PlayerWantsItemBall_Text_0:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: I would like to know what\n"
-	.string "that item ball contains but wild\l"
-	.string "Pokémon may jump out from that bush\l"
-	.string "beside it.$"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: What could possibly be in\n"
+	.string "that item ball?\p"
+	.string "But it probably isn't safe to get it.$"
 
 AnconnaWoods_PlayerWantsItemBallButCanNotJump_Text_0:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Even if I wanted that item\n"
@@ -332,9 +327,9 @@ AnconnaWoods_Not_Found_Riolu_Text_0:
 	.string "There has to be another way.$"
 
 AnconnaWoods_Not_Fought_Lium_Text_0:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: There's a shorter path to\n"
-	.string "my home,\p"
-	.string "Lemme search further.$"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: I'm sure that there's a\n"
+	.string "shorter path back home.\p"
+	.string "I should search somewhere else.$"
 
 AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_0:
 	.string "???: {COLOR RED}LIUM! LIUM!! WHERE ARE YOU LIUM!!!$"
@@ -351,15 +346,14 @@ AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_2:
 	.string "???: {COLOR RED}HOW COULD YOU SAY THAT NOW!\p"
 	.string "Lium is MISSING and we have no idea\n"
 	.string "where he is now. We can't leave him\l"
-	.string "behind. No matter the cost, we must\l"
+	.string "behind. No matter the reason, we must\l"
 	.string "find him. I promised his mothe...$"
 
 AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_3:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Yup, that's them.\p"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: That should be them.\p"
 	.string "......\p"
-	.string "So one of them is missing and that is\n"
-	.string "halting their 'plan', whatever that may\l"
-	.string "be...$"
+	.string "So one of them is missing....\p"
+	.string "And their plan seems to be at a halt...$"
 
 AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_4:
 	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Rioluuuuuuuuuuuu!$"
@@ -408,8 +402,8 @@ AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_13:
 	.string "getting that Pokémon, I doubt that\l"
 	.string "their original plans were any good\l"
 	.string "since that Pokémon ran away from them.\p"
-	.string "I think I should find it and bring it to\n"
-	.string "Professor Flora before they change\l"
+	.string "Maybe I should find it and bring it to\n"
+	.string "{COLOR GREEN}The Professor{COLOR DARK_GRAY} before they change\l"
 	.string "their mind.$"
 
 AnconnaWoods_Lium_Text_0:
@@ -418,8 +412,13 @@ AnconnaWoods_Lium_Text_0:
 	.string "I'll make it up.\p"
 	.string "I can do this!$"
 
+AnconnaWoods_Lium_Text_1:
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: (This guy is probably deep\n"
+	.string "in thought but he looks familiar...$"
+
 Anconna_Woods_First_Lium_Fight_Text_0:
-	.string "???: {COLOR BLUE}Um, Hold IT RIGHT THERE!!!$"
+	.string "???: {COLOR BLUE}Um...\p"
+	.string "Hold IT RIGHT THERE!!!$"
 
 Anconna_Woods_First_Lium_Fight_Text_1:
 	.string "???: {COLOR BLUE}Huff-Puff\p"
@@ -456,8 +455,8 @@ Anconna_Woods_First_Lium_Fight_Text_6:
 
 Anconna_Woods_First_Lium_Fight_Won_Text_0:
 	.string "Lium: {COLOR BLUE}What have you done! You hurt my\n"
-	.string "first Pokémon and I have no way of\l"
-	.string "getting back safe now.\p"
+	.string "Pokémon and I have no way of getting\l"
+	.string "back safe now.\p"
 	.string "No.\p"
 	.string "No.\p"
 	.string "No.\p"
@@ -468,9 +467,9 @@ Anconna_Woods_First_Lium_Fight_Won_Text_0:
 
 Anconna_Woods_First_Lium_Fight_Won_Text_1:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: What was all that about?\p"
-	.string "That guy was an obvious noob but\n"
-	.string "suspicious. Maybe I should tell mom and\l"
-	.string "Professor Flora about him soon.\p"
+	.string "That guy was obviously inexperienced\n"
+	.string "but suspicious. Maybe I should tell {COLOR GREEN}Mom{COLOR DARK_GRAY}\l"
+	.string "and {COLOR GREEN}The Professor{COLOR DARK_GRAY} about him soon.\p"
 	.string "Anyways, Let's get you healed, Riolu.$"
 
 AnconnaWoods_BugCatcher1_Text_0:
@@ -517,5 +516,5 @@ AnconnaWoods_BugCatcher3_Text_2:
 
 PlayerBattleLiumText::
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: You're not taking Riolu\n"
-	.string "from me!\p"
+	.string "away!\p"
 	.string "Lium: {COLOR BLUE}We'll see about that.$"

@@ -4,6 +4,7 @@ AnconnaTown_MapScripts::
 AnconnaTown_Cannot_Leave_Anconna_Town::
 	lockall
 	msgbox AnconnaTown_Cannot_Leave_Anconna_Town_Text_0
+	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Walk_Down
 	waitmovement 0
 	releaseall
@@ -243,8 +244,8 @@ Walk_Down:
 	step_end
 
 AnconnaTown_Cannot_Leave_Anconna_Town_Text_0:
-	.string "I need to checkout what's happening in\n"
-	.string "the forest.$"
+	.string "Should I really ignore what just\n"
+	.string "happened now?$"
 
 AnconnaTown_Bidoof_Text_0:
 	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Doof?\n"
@@ -252,7 +253,7 @@ AnconnaTown_Bidoof_Text_0:
 	.string "Doooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooof!$"
 
 AnconnaTown_EventScript_ProfessorLabSign_Text_0:
-	.string "Professor Flora's Lab$"
+	.string "Professor Maxilliam's Lab$"
 
 AnconnaTown_EventScript_FatMan_Text_0:
 	.string "{COLOR BLUE}The Power Of Science is Astonishing!!!\p"
@@ -336,9 +337,8 @@ Anconna_Town_Discovered_Mysterious_People_Text_13:
 	.string "before.\p"
 	.string "Hmm.\p"
 	.string "They also seemed to be in a hurry and\n"
-	.string "mentioned something about a plan.\l"
-	.string "Maybe I should investigate this\l"
-	.string "further.$"
+	.string "mentioned something about a plan.\p"
+	.string "What could that possibly mean?$"
 
 AnconnaSign::
 	.string "Anconna Town\n"

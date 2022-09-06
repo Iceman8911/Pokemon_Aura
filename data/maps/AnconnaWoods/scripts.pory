@@ -37,7 +37,7 @@ script Anconna_Woods_RareCandy {
 #}
 
 script AnconnaWoods_PlayerWantsItemBall {
-	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: What could possibly be in that item ball but it probably isn't safe to get it."))
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: What could possibly be in that item ball?\pBut it probably isn't safe to get it."))
 	closemessage
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerStillWantsItemBall)
 	waitmovement(0)
@@ -66,7 +66,7 @@ movement NotFoundRiolu1 {
 
 script AnconnaWoods_Not_Fought_Lium {
 	lockall
-	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: There's a shorter path to my home,\pLemme search further."))
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: I'm sure that there's a shorter path back home.\pI should search somewhere else."))
 	closemessage
 	applymovement(OBJ_EVENT_ID_PLAYER, NotFoughtLium)
 	waitmovement(0)
@@ -83,7 +83,7 @@ script AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu {
 	waitmessage
 	msgbox(format("???: {COLOR BLUE}I told you. Bringing fresh recruits to important missions is always a bad idea. Look at what that boy has done, he's messed everything up AGAIN. It's better we leave him here, serves him right."))
 	waitmessage
-	msgbox(format("???: {COLOR RED}HOW COULD YOU SAY THAT NOW!\p Lium is MISSING and we have no idea where he is now. We can't leave him behind. No matter the cost, we must find him. I promised his mothe..."))
+	msgbox(format("???: {COLOR RED}HOW COULD YOU SAY THAT NOW!\p Lium is MISSING and we have no idea where he is now. We can't leave him behind. No matter the reason, we must find him. I promised his mothe..."))
 	waitmessage
 	delay(60)
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerHearsSuspiciousPeople)
@@ -115,7 +115,7 @@ script AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu {
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerHearsSuspiciousPeople)
 	waitmovement(0)
 	load_speech_bubble(OBJ_EVENT_ID_PLAYER)
-	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: So they've given up on getting that Pokémon, I doubt that their original plans were any good since that Pokémon ran away from them.\pMaybe I should find it and bring it to Professor {COLOR GREEN}Flora{COLOR DARK_GRAY} before they change their mind."))
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: So they've given up on getting that Pokémon, I doubt that their original plans were any good since that Pokémon ran away from them.\pMaybe I should find it and bring it to {COLOR GREEN}The Professor{COLOR DARK_GRAY} before they change their mind."))
 	destroy_speech_bubble
 	setvar(ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE, 2)
 	releaseall
@@ -123,6 +123,8 @@ script AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu {
 
 script AnconnaWoods_Lium {
 	msgbox(format("???: {COLOR BLUE}Deep Breaths.\pTake in Deep Breaths.\nI'll make it up.\pI can do this!"))
+	waitmessage
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: (This guy is probably deep in thought but he looks familiar..."))
 	closemessage
 }
 script Anconna_Woods_First_Lium_Fight {
@@ -130,7 +132,7 @@ script Anconna_Woods_First_Lium_Fight {
 	lockall
 	addobject(1)
 	#clearflag(FIRST_LIUM_ENCOUNTER)
-	msgbox(format("???: {COLOR BLUE}Um, Hold IT RIGHT THERE!!!"))
+	msgbox(format("???: {COLOR BLUE}Um...\pHold IT RIGHT THERE!!!"))
 	waitmessage
 	closemessage
 	applymovement(1, FirstLiumEncounter)
@@ -183,7 +185,7 @@ script Anconna_Woods_First_Lium_Fight_Won {
 	waitmovement(0)
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerThinksAboutFirstLiumEncounter)
 	waitmovement(0)
-	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: What was all that about?\pThat guy was obviously inexperienced but suspicious. Maybe I should tell {COLOR GREEN}Mom{COLOR DARK_GRAY} and Professor {COLOR GREEN}Flora{COLOR DARK_GRAY} about him soon.\pAnyways, Let's get you healed, Riolu."))
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: What was all that about?\pThat guy was obviously inexperienced but suspicious. Maybe I should tell {COLOR GREEN}Mom{COLOR DARK_GRAY} and {COLOR GREEN}The Professor{COLOR DARK_GRAY} about him soon.\pAnyways, Let's get you healed, Riolu."))
 	closemessage
 	#setflag(FIRST_LIUM_ENCOUNTER)
 	removeobject(1)
@@ -254,25 +256,25 @@ movement PlayerStillWantsBushSweet {
 }
 
 script AnconnaWoods_BugCatcher1 {
-	load_speech_bubble(2)
+	//load_speech_bubble(2)
 	trainerbattle_single(BUG_CATCHER_1, format("{COLOR BLUE}I just started raising Bug Pokemon.\pCan you help me train them?"), format("That loss doesn't count.\pThey're still grubs after all."))
 	msgbox(format("{COLOR BLUE}Almost Every Bug Type starts off as a larvae."), 2)
-	destroy_speech_bubble
+	//destroy_speech_bubble
 	closemessage
 }
 
 script AnconnaWoods_BugCatcher2 {
-	load_speech_bubble(3)
+	//load_speech_bubble(3)
 	trainerbattle_single(BUG_CATCHER_2, format("{COLOR BLUE}Bug Types grow pretty fast, but until they've reached their power spike.\pThey're pretty.....\pWeak."), format("I knew this would happen."))
 	msgbox(format("{COLOR BLUE}Don't ask me why I have a full team of cocoons.\pIts.....\pPrivate."))
-	destroy_speech_bubble
+	//destroy_speech_bubble
 	closemessage
 }
 
 script AnconnaWoods_BugCatcher3 {
-	load_speech_bubble(4)
+	//load_speech_bubble(4)
 	trainerbattle_single(BUG_CATCHER_3, format("{COLOR BLUE}Bugs are Great.\pThey grow fast and become powerful quickly.\pLemme show you a taste of what I mean."), format("But.....\pBugs are supposed to dominate early-game."))
 	msgbox(format("{COLOR BLUE}Maybe I should've evolved all my bugs.\pI'm sure I would've won then."))
-	destroy_speech_bubble
+	//destroy_speech_bubble
 	closemessage
 }

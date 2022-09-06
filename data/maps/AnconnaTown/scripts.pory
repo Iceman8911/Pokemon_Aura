@@ -5,6 +5,7 @@ AnconnaTown_MapScripts::
 script AnconnaTown_Cannot_Leave_Anconna_Town {
 	lockall
 	msgbox(format("Should I really ignore what just happened now?"))
+	closemessage
 	applymovement(OBJ_EVENT_ID_PLAYER, Walk_Down)
 	waitmovement(0)
 	releaseall
@@ -53,7 +54,7 @@ text ArceusSign {
 
 script AnconnaTown_EventScript_ProfessorLabSign {
 	lockall
-	msgbox("Professor Flora's Lab")
+	msgbox("Professor Maxilliam's Lab")
 	releaseall
 	end
 }

@@ -122,7 +122,7 @@ script AnconnaWoods_1_Found_Riolu {
     msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Riolu Riolu Riolu!!!"))
     waitmessage
     //givemon(SPECIES_RIOLU, 5, ITEM_FOCUS_SASH)
-    givecustommon(SPECIES_RIOLU, 5, ITEM_FOCUS_SASH, , NATURE_HASTY, 1, , , , , , , , 31, , 31, 31)
+    givecustommon(SPECIES_RIOLU, 5, ITEM_FOCUS_SASH, , NATURE_HASTY, 0, , , , , , , , 31, , 31, 31)
     msgbox(format("{COLOR DARK_GRAY}Riolu has joined your team!"))
     playfanfare(MUS_OBTAIN_ITEM)
     waitfanfare
