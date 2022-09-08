@@ -54,9 +54,9 @@ script Route01_Youngster_John {
 
 script Route01_Youngster_Joey {
     trainerbattle_single(YOUNGSTER_JOEY, format("{COLOR BLUE}You beat my brothers.\p Finally, someone worthy of my power.\pDon't go soft on me because I'm six. Let's see how you fare against my top-percentage {COLOR GREEN}Rattata!"), "That was AWESOME!!!")
-    load_speech_bubble(5)
+    //5)
     msgbox(format("{COLOR BLUE}That was a great fight.\pYou managed to win my full 31IV {COLOR GREEN}Rattata{COLOR BLUE}. You've got some real skill there.\pDon't think I'll take this sitting down though, I'm gonna train with {COLOR GREEN}Rattata{COLOR BLUE} and become the strongest trainer EVER."))
-    destroy_speech_bubble
+    //destroy_speech_bubble
     closemessage
 }
 

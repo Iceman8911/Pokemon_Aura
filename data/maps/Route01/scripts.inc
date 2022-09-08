@@ -66,9 +66,7 @@ Route01_Youngster_John_2:
 
 Route01_Youngster_Joey::
 	trainerbattle_single YOUNGSTER_JOEY, Route01_Youngster_Joey_Text_0, Route01_Youngster_Joey_Text_1
-	load_speech_bubble 5
 	msgbox Route01_Youngster_Joey_Text_2
-	destroy_speech_bubble
 	closemessage
 	return
 

@@ -21,15 +21,15 @@
       "x": 0,
       "y": 29,
       "elevation": 0,
-      "dest_map": "MAP_MURKY_GROVE",
-      "dest_warp_id": 1
+      "dest_map": "MAP_ROUTE02",
+      "dest_warp_id": 2
     },
     {
       "x": 0,
       "y": 30,
       "elevation": 0,
-      "dest_map": "MAP_MURKY_GROVE",
-      "dest_warp_id": 1
+      "dest_map": "MAP_ROUTE02",
+      "dest_warp_id": 3
     }
   ],
   "coord_events": [

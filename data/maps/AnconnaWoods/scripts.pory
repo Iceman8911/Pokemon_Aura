@@ -88,9 +88,9 @@ script AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu {
 	delay(60)
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerHearsSuspiciousPeople)
 	waitmovement(0)
-	load_speech_bubble(OBJ_EVENT_ID_PLAYER)
+	//OBJ_EVENT_ID_PLAYER)
 	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: That should be them.\p......\pSo one of them is missing....\pAnd their plan seems to be at a halt..."))
-	destroy_speech_bubble
+	//destroy_speech_bubble
 	waitmessage
 	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Rioluuuuuuuuuuuu!"))
 	waitmessage
@@ -114,9 +114,9 @@ script AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu {
 	delay(80)
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerHearsSuspiciousPeople)
 	waitmovement(0)
-	load_speech_bubble(OBJ_EVENT_ID_PLAYER)
+	//OBJ_EVENT_ID_PLAYER)
 	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: So they've given up on getting that Pokémon, I doubt that their original plans were any good since that Pokémon ran away from them.\pMaybe I should find it and bring it to {COLOR GREEN}The Professor{COLOR DARK_GRAY} before they change their mind."))
-	destroy_speech_bubble
+	//destroy_speech_bubble
 	setvar(ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE, 2)
 	releaseall
 }
@@ -139,31 +139,31 @@ script Anconna_Woods_First_Lium_Fight {
 	waitmovement(0)
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerTurnsToLium)
 	waitmovement(0)
-	load_speech_bubble(1)
+	//1)
 	msgbox(format("???: {COLOR BLUE}Huff-Puff\p(I'll never run like that again!\pHmm, I didn't think that'll actually stop him. What do I do now?)"))
-	destroy_speech_bubble
+	//destroy_speech_bubble
 	closemessage
 	applymovement(1, LiumRemembersHisMission)
 	waitmovement(0)
-	load_speech_bubble(1)
+	//1)
 	msgbox(format("???: {COLOR BLUE}Yeah, that's right. I ,uh, saw you in Anconna Woods with that rare Pokémon we've been looking for and ,uh, the boss said its my job to get that Pokémon back from you so hand it over."))
-	destroy_speech_bubble
+	//destroy_speech_bubble
 	closemessage
-	load_speech_bubble(OBJ_EVENT_ID_PLAYER)
+	//OBJ_EVENT_ID_PLAYER)
 	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: So you're 'Lium'.\pHmm.\pHow about,\pNO!"))
-	destroy_speech_bubble
+	//destroy_speech_bubble
 	closemessage
 	applymovement(1, LiumisAstonished)
 	waitmovement(0)
-	load_speech_bubble(1)
+	//1)
 	msgbox(format("Lium: {COLOR BLUE}Uh?\pHow do you know my name?"))
-	destroy_speech_bubble
+	//destroy_speech_bubble
 	closemessage
 	applymovement(1, LiumisAstonishedNot)
 	waitmovement(0)
-	load_speech_bubble(1)
+	//1)
 	msgbox(format("{COLOR BLUE}Nevermind, it doesn't matter.\p I ask again: Surrender that Pokémon now.\pIf you don't give it willingly, I'll have to take it by force."))
-	destroy_speech_bubble
+	//destroy_speech_bubble
 	#turnobject(OBJ_EVENT_ID_PLAYER, up)
 	cleartrainerflag(TRAINER_AQUA_GRUNT_LIUM)
 	#trainerbattle_single(TRAINER_AQUA_GRUNT_LIUM, "{PLAYER}: Do Your Worst!", "Poochyena, NOOOOO!", Anconna_Woods_First_Lium_Fight_Won)
@@ -177,9 +177,9 @@ text PlayerBattleLiumText {
 }
 
 script Anconna_Woods_First_Lium_Fight_Won {
-	load_speech_bubble(1)
+	//1)
 	msgbox(format("Lium: {COLOR BLUE}What have you done! You hurt my Pokémon and I have no way of getting back safe now.\pNo.\pNo.\pNo.\pNo.\pNOOO!\pI really messed up this time. I need to get out of here!"))
-	destroy_speech_bubble
+	//destroy_speech_bubble
 	closemessage
 	applymovement(1, FirstLiumEncounterEnd)
 	waitmovement(0)
@@ -256,25 +256,25 @@ movement PlayerStillWantsBushSweet {
 }
 
 script AnconnaWoods_BugCatcher1 {
-	//load_speech_bubble(2)
+	////2)
 	trainerbattle_single(BUG_CATCHER_1, format("{COLOR BLUE}I just started raising Bug Pokemon.\pCan you help me train them?"), format("That loss doesn't count.\pThey're still grubs after all."))
 	msgbox(format("{COLOR BLUE}Almost Every Bug Type starts off as a larvae."), 2)
-	//destroy_speech_bubble
+	////destroy_speech_bubble
 	closemessage
 }
 
 script AnconnaWoods_BugCatcher2 {
-	//load_speech_bubble(3)
+	////3)
 	trainerbattle_single(BUG_CATCHER_2, format("{COLOR BLUE}Bug Types grow pretty fast, but until they've reached their power spike.\pThey're pretty.....\pWeak."), format("I knew this would happen."))
 	msgbox(format("{COLOR BLUE}Don't ask me why I have a full team of cocoons.\pIts.....\pPrivate."))
-	//destroy_speech_bubble
+	////destroy_speech_bubble
 	closemessage
 }
 
 script AnconnaWoods_BugCatcher3 {
-	//load_speech_bubble(4)
+	////4)
 	trainerbattle_single(BUG_CATCHER_3, format("{COLOR BLUE}Bugs are Great.\pThey grow fast and become powerful quickly.\pLemme show you a taste of what I mean."), format("But.....\pBugs are supposed to dominate early-game."))
 	msgbox(format("{COLOR BLUE}Maybe I should've evolved all my bugs.\pI'm sure I would've won then."))
-	//destroy_speech_bubble
+	////destroy_speech_bubble
 	closemessage
 }

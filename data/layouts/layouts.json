@@ -4520,6 +4520,16 @@
       "secondary_tileset": "gTileset_Sub_Scandi_City",
       "border_filepath": "data/layouts/ScandiCity/border.bin",
       "blockdata_filepath": "data/layouts/ScandiCity/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE02",
+      "name": "Route02_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_Scandi_City",
+      "secondary_tileset": "gTileset_Sub_Scandi_City",
+      "border_filepath": "data/layouts/Route02/border.bin",
+      "blockdata_filepath": "data/layouts/Route02/map.bin"
     }
   ]
 }

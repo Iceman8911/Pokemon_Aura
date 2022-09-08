@@ -3,15 +3,15 @@ mapscripts AnconnaLake_MapScripts {}
 script AnconnaLake_FisherMan1 {
     //lock
     if(var(VAR_TEMP_0) == 0) {
-        load_speech_bubble(2)
+        //2)
         msgbox(format("{COLOR BLUE}Today's a great day for fishing isn't it, {COLOR GREEN}{PLAYER}."), 2)
-        destroy_speech_bubble
+        //destroy_speech_bubble
         setvar(VAR_TEMP_0, 1)
         closemessage
     } else {
-        load_speech_bubble(2)
+        //2)
         msgbox(format("{COLOR BLUE}So I invited my brothers over.\pWho knows what we'll catch today."), 2)
-        destroy_speech_bubble
+        //destroy_speech_bubble
         setvar(VAR_TEMP_0, 0)
         closemessage
     }
@@ -20,9 +20,9 @@ script AnconnaLake_FisherMan1 {
 
 script AnconnaLake_FisherMan2 {
     //lock
-    load_speech_bubble(1, 0xFF)
+    //1, 0xFF)
     msgbox(format("{COLOR BLUE}My Brothers and I,\pWe've been fishing together since...\p....\pWe've been fishing together for so long, I've even forgotten haha."), 2)
-    destroy_speech_bubble
+    //destroy_speech_bubble
     closemessage
     //release
 }
@@ -31,37 +31,37 @@ script AnconnaLake_FisherMan2 {
 script AnconnaLake_FisherMan3 {
     lockall
     if(var(OBTAINED_OLD_ROD) == 0) {
-        load_speech_bubble(3)
+        //3)
         msgbox(format("{COLOR BLUE}Hello there {COLOR GREEN}{PLAYER}{COLOR BLUE}, this weather's nice for some fishing.\pSay,\pDo you want to give a try?"), 2)
-        destroy_speech_bubble
+        //destroy_speech_bubble
         yesnobox(25, 0)
         if(var(VAR_RESULT) == 1) {
-            load_speech_bubble(OBJ_EVENT_ID_PLAYER)
+            //OBJ_EVENT_ID_PLAYER)
             msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Sure, it could be fun."))
-            destroy_speech_bubble
-            load_speech_bubble(3)
+            //destroy_speech_bubble
+            //3)
             msgbox(format("{COLOR BLUE}Thats nice. In fact, here's one of my {COLOR GREEN}Old Rods{COLOR BLUE}."))
-            destroy_speech_bubble
+            //destroy_speech_bubble
             giveitem(ITEM_OLD_ROD)
             setvar(OBTAINED_OLD_ROD, 1)
-            load_speech_bubble(3)
+            //3)
             msgbox(format("{COLOR BLUE}It's not the best but it's pretty great and you can keep it. It's only a spare after all."))
-            destroy_speech_bubble
+            //destroy_speech_bubble
             releaseall
         } else {
-            load_speech_bubble(OBJ_EVENT_ID_PLAYER)
+            //OBJ_EVENT_ID_PLAYER)
             msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Um, I'm not sure I might like it."))
-            destroy_speech_bubble
-            load_speech_bubble(3)
+            //destroy_speech_bubble
+            //3)
             msgbox(format("{COLOR BLUE}Oh.\pWell, in that case. I'll be seeing you later if you change your mind."))
-            destroy_speech_bubble
+            //destroy_speech_bubble
             releaseall
 
     }
     } else {
-        load_speech_bubble(3)
+        //3)
         msgbox(format("{COLOR BLUE}How are the fish biting, {COLOR GREEN}{PLAYER}?"), 2)
-        destroy_speech_bubble
+        //destroy_speech_bubble
     }
     releaseall
 }

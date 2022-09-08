@@ -92,9 +92,7 @@ AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu::
 	delay 60
 	applymovement OBJ_EVENT_ID_PLAYER, PlayerHearsSuspiciousPeople
 	waitmovement 0
-	load_speech_bubble OBJ_EVENT_ID_PLAYER
 	msgbox AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_3
-	destroy_speech_bubble
 	waitmessage
 	msgbox AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_4
 	waitmessage
@@ -118,9 +116,7 @@ AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu::
 	delay 80
 	applymovement OBJ_EVENT_ID_PLAYER, PlayerHearsSuspiciousPeople
 	waitmovement 0
-	load_speech_bubble OBJ_EVENT_ID_PLAYER
 	msgbox AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_13
-	destroy_speech_bubble
 	setvar ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE, 2
 	releaseall
 	return
@@ -149,40 +145,28 @@ Anconna_Woods_First_Lium_Fight_1:
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, PlayerTurnsToLium
 	waitmovement 0
-	load_speech_bubble 1
 	msgbox Anconna_Woods_First_Lium_Fight_Text_1
-	destroy_speech_bubble
 	closemessage
 	applymovement 1, LiumRemembersHisMission
 	waitmovement 0
-	load_speech_bubble 1
 	msgbox Anconna_Woods_First_Lium_Fight_Text_2
-	destroy_speech_bubble
 	closemessage
-	load_speech_bubble OBJ_EVENT_ID_PLAYER
 	msgbox Anconna_Woods_First_Lium_Fight_Text_3
-	destroy_speech_bubble
 	closemessage
 	applymovement 1, LiumisAstonished
 	waitmovement 0
-	load_speech_bubble 1
 	msgbox Anconna_Woods_First_Lium_Fight_Text_4
-	destroy_speech_bubble
 	closemessage
 	applymovement 1, LiumisAstonishedNot
 	waitmovement 0
-	load_speech_bubble 1
 	msgbox Anconna_Woods_First_Lium_Fight_Text_5
-	destroy_speech_bubble
 	cleartrainerflag TRAINER_AQUA_GRUNT_LIUM
 	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT, TRAINER_AQUA_GRUNT_LIUM, 1, PlayerBattleLiumText, Anconna_Woods_First_Lium_Fight_Text_6, Anconna_Woods_First_Lium_Fight_Won
 	return
 
 
 Anconna_Woods_First_Lium_Fight_Won::
-	load_speech_bubble 1
 	msgbox Anconna_Woods_First_Lium_Fight_Won_Text_0
-	destroy_speech_bubble
 	closemessage
 	applymovement 1, FirstLiumEncounterEnd
 	waitmovement 0

@@ -49,23 +49,19 @@ AnconnaTown_EventScript_ProfessorLabSign::
 
 AnconnaTown_EventScript_FatMan::
 	lockall
-	load_speech_bubble 2
 	msgbox AnconnaTown_EventScript_FatMan_Text_0, 2
 	waitmessage
-	destroy_speech_bubble
 	releaseall
 	end
 
 
 AnconnaTown_EventScript_LittleGirl::
 	lockall
-	load_speech_bubble 3
 	compare ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE, 1
 	goto_if_eq AnconnaTown_EventScript_LittleGirl_2
 	msgbox LittleGirl, 2
 	waitmessage
 AnconnaTown_EventScript_LittleGirl_1:
-	destroy_speech_bubble
 	releaseall
 	end
 
@@ -77,10 +73,8 @@ AnconnaTown_EventScript_LittleGirl_2:
 
 AnconnaTown_Woman::
 	lockall
-	load_speech_bubble 4
 	msgbox AnconnaTown_Woman_Text_0, 2
 	waitmessage
-	destroy_speech_bubble
 	releaseall
 	end
 

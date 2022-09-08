@@ -1079,3 +1079,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/Anconna_Town_PlayerHouse_Floor1/scripts.inc"
 
 	.include "data/maps/ScandiCity/scripts.inc"
+
+	.include "data/maps/Route02/scripts.inc"
