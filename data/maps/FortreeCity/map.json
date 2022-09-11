@@ -27,6 +27,7 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_2",
+      "in_connection": false,
       "x": 31,
       "y": 3,
       "elevation": 4,
@@ -40,6 +41,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
+      "in_connection": false,
       "x": 32,
       "y": 16,
       "elevation": 3,
@@ -53,6 +55,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
+      "in_connection": false,
       "x": 32,
       "y": 10,
       "elevation": 3,
@@ -66,6 +69,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_1",
+      "in_connection": false,
       "x": 11,
       "y": 14,
       "elevation": 4,
@@ -79,6 +83,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
+      "in_connection": false,
       "x": 8,
       "y": 10,
       "elevation": 3,
@@ -92,6 +97,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GAMEBOY_KID",
+      "in_connection": false,
       "x": 9,
       "y": 16,
       "elevation": 3,
@@ -105,6 +111,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_KECLEON",
+      "in_connection": false,
       "x": 25,
       "y": 8,
       "elevation": 3,

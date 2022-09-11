@@ -4414,8 +4414,8 @@
     {
       "id": "LAYOUT_ANCONNA_TOWN",
       "name": "AnconnaTown_Layout",
-      "width": 40,
-      "height": 40,
+      "width": 38,
+      "height": 36,
       "primary_tileset": "gTileset_Testing",
       "secondary_tileset": "gTileset_testing_but_secondary",
       "border_filepath": "data/layouts/AnconnaTown/border.bin",
@@ -4530,6 +4530,16 @@
       "secondary_tileset": "gTileset_Sub_Scandi_City",
       "border_filepath": "data/layouts/Route02/border.bin",
       "blockdata_filepath": "data/layouts/Route02/map.bin"
+    },
+    {
+      "id": "LAYOUT_ANCONNA_TOWN_HOUSE1",
+      "name": "AnconnaTown_House1_Layout",
+      "width": 14,
+      "height": 11,
+      "primary_tileset": "gTileset_House_Indoors",
+      "secondary_tileset": "gTileset_Indoor_AnconnaTown",
+      "border_filepath": "data/layouts/AnconnaTown_House1/border.bin",
+      "blockdata_filepath": "data/layouts/AnconnaTown_House1/map.bin"
     }
   ]
 }
