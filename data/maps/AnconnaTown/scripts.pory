@@ -32,7 +32,7 @@ script AnconnaTown_EventScript_Antidote {
 
 script AnconnaTown_Bidoof {
 	lockall
-	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Doof?\nBi Doof?\pDoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooof!"), 2)
+	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Doof?\nBi Doof?\pDooooooooooooooooooooooooooooo\poooooooooooooooooooooooooooooooooo\poooooooooooooooooooooooooooooo\pooooooooooooooooooooooooooooooof!"), 2)
 	waitmessage
 	releaseall
 	end
@@ -63,7 +63,7 @@ script AnconnaTown_EventScript_FatMan {
 	lockall
 	#msgbox(FatMan, 2) 
 	//2)
-	msgbox(format("{COLOR BLUE}The Power Of Science is Astonishing!!!\p {PLAYER}, Do you know that recently, 'ROM Hackers' have been able to update 17 year old"
+	msgbox(format("{COLOR BLUE}The Power Of Science is Astonishing!!!\p {COLOR GREEN}{PLAYER}{COLOR BLUE}, Do you know that recently, 'ROM Hackers' have been able to update 17 year old"
 	" games with future generation expansions to create retouched retro games such as the\l'ROM Hack' you're playing right now!\pSCIENCE!!!"), 2)
 	waitmessage
 	//destroy_speech_bubble
@@ -219,8 +219,8 @@ movement WalkLeft {
 }
 
 movement PanToMysteriousPeople{
-	walk_down * 3
-	walk_left * 6
+	walk_down * 5
+	walk_left * 4
 }
 
 movement LiumIsAshamed {

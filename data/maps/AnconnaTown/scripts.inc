@@ -186,8 +186,8 @@ PanToMysteriousPeople:
 	walk_down
 	walk_down
 	walk_down
-	walk_left
-	walk_left
+	walk_down
+	walk_down
 	walk_left
 	walk_left
 	walk_left
@@ -244,14 +244,17 @@ AnconnaTown_Cannot_Leave_Anconna_Town_Text_0:
 AnconnaTown_Bidoof_Text_0:
 	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Doof?\n"
 	.string "Bi Doof?\p"
-	.string "Doooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooof!$"
+	.string "Dooooooooooooooooooooooooooooo\p"
+	.string "oooooooooooooooooooooooooooooooooo\p"
+	.string "oooooooooooooooooooooooooooooo\p"
+	.string "ooooooooooooooooooooooooooooooof!$"
 
 AnconnaTown_EventScript_ProfessorLabSign_Text_0:
 	.string "Professor Maxilliam's Lab$"
 
 AnconnaTown_EventScript_FatMan_Text_0:
 	.string "{COLOR BLUE}The Power Of Science is Astonishing!!!\p"
-	.string "{PLAYER}, Do you know that recently,\n"
+	.string "{COLOR GREEN}{PLAYER}{COLOR BLUE}, Do you know that recently,\n"
 	.string "'ROM Hackers' have been able to update\l"
 	.string "17 year old games with future\l"
 	.string "generation expansions to create\l"

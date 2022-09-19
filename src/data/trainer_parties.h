@@ -12460,7 +12460,7 @@ static const struct TrainerMon sParty_MayLinkPlaceholder[] = {
 static const struct TrainerMon sParty_AquaGruntLium[] = {
     {
     .iv = 255,
-    .lvl = 9,
+    .lvl = 8,
     .species = SPECIES_POOCHYENA,
     .heldItem = ITEM_NONE,
     .moves = {MOVE_BITE, MOVE_TACKLE, MOVE_SAND_ATTACK, MOVE_HOWL}
@@ -12496,13 +12496,13 @@ static const struct TrainerMon sParty_YoungsterJohn[] = {
 static const struct TrainerMon sParty_YoungsterJoey[] = {
     {
     .iv = 255,
-    .lvl = 17,
+    .lvl = 14,
     .species = SPECIES_RATTATA,
     .gender = 1,
     .heldItem = ITEM_SILK_SCARF,
     .moves = {MOVE_HYPER_FANG, MOVE_FIRE_FANG, MOVE_ICE_FANG, MOVE_THUNDER_FANG},
     .shiny = 1,
-    .ability = 1,
+    .ability = 2,
     }
 };
 

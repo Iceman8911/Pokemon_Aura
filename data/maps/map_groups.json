@@ -1,6 +1,7 @@
 {
   "layouts_table_label": "gMapLayouts",
   "group_order": [
+    "gMapGroup_NewMaps",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorAnconnaTown",
     "gMapGroup_IndoorLittleroot",
@@ -36,6 +37,16 @@
     "gMapGroup_IndoorRoute123",
     "gMapGroup_IndoorRoute119",
     "gMapGroup_IndoorRoute124"
+  ],
+  "gMapGroup_NewMaps": [
+    "AnconnaTown",
+    "AnconnaWoods",
+    "Route01",
+    "AnconnaWoods_1",
+    "MurkyGrove",
+    "AnconnaLake",
+    "ScandiCity",
+    "Route02"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
@@ -94,22 +105,15 @@
     "Underwater_Route128",
     "Underwater_Route129",
     "Underwater_Route105",
-    "Underwater_Route125",
-    "AnconnaTown",
-    "AnconnaWoods",
-    "Route01",
-    "AnconnaWoods_1",
-    "MurkyGrove",
-    "AnconnaLake",
-    "ScandiCity",
-    "Route02"
+    "Underwater_Route125"
   ],
   "gMapGroup_IndoorAnconnaTown": [
     "AnconnaTown_PlayerHouse",
     "AnconnaTown_PlayerRoom",
     "AnconnaTown_PlayerHouse_GroundFloor",
     "Anconna_Town_PlayerHouse_Floor1",
-    "AnconnaTown_House1"
+    "AnconnaTown_House1",
+    "AnconnaTown_House2"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

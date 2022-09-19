@@ -1,4 +1,66 @@
-mapscripts AnconnaTown_PlayerHouse_GroundFloor_MapScripts {}
+mapscripts AnconnaTown_PlayerHouse_GroundFloor_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        
+    }
+}
+
+script PlayerCameDownstairsAfterWakingUp {
+        lockall
+        special(SpawnCameraObject)
+        applymovement(1, MumComesToMeetYouAtTheStairCase)
+        waitmovement(0)
+        msgbox(format("Mum: {COLOR RED}Good Morning, {COLOR GREEN}{PLAYER}{COLOR RED}.\nHow was your night?\p{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Yawn... \nA bit rough to be honest.\pMum: {COLOR RED}Then I'm sure this will cheer you up!"))
+        waitmessage
+        closemessage
+        applymovement(1, MumTakesYouToTheSofa)
+        applymovement(OBJ_EVENT_ID_PLAYER, YouWalkToTheSofa)
+        applymovement(OBJ_EVENT_ID_CAMERA, YouWalkToTheSofa)
+        waitmovement(0)
+        msgbox(format("Mum: {COLOR RED}Your Father and I have something special to give you!"))
+        waitmessage
+        closemessage
+        applymovement(2, DadWalksToYou)
+        waitmovement(0)
+        msgbox(format("Dad: {COLOR BLUE}That's right!.\nHere you go."))
+        waitmessage
+        msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY} recieved a pair of Running Shoes!"))
+        setflag(FLAG_RECEIVED_RUNNING_SHOES)
+        msgbox(format("Mum: {COLOR RED}This will make all your work faster!"))
+        waitmessage
+        msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: .....\pSo this is just a way of telling me to do more work."))
+        waitmessage
+        msgbox(format("Mum: {COLOR RED}:D\p.....\pMaybe.... "))
+        releaseall
+} 
+
+movement MumComesToMeetYouAtTheStairCase {
+    emote_exclamation_mark
+    delay_16
+    delay_16
+    walk_left
+    walk_up * 2
+    walk_right * 4
+    walk_up * 2
+}
+
+movement MumTakesYouToTheSofa {
+    walk_down * 3
+    walk_left * 7
+    face_down
+}
+
+movement YouWalkToTheSofa {
+    walk_down * 4
+    walk_left * 6
+    face_down
+}
+
+movement DadWalksToYou {
+    walk_right
+    walk_up
+    walk_right * 3
+    face_up
+}
 
 script AnconnaTown_PlayerHouse_Mum {
     lockall

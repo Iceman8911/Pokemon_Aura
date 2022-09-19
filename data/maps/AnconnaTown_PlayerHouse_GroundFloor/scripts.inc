@@ -1,6 +1,92 @@
 AnconnaTown_PlayerHouse_GroundFloor_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
 
+AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	return
+
+
+PlayerCameDownstairsAfterWakingUp::
+	lockall
+	special SpawnCameraObject
+	applymovement 1, MumComesToMeetYouAtTheStairCase
+	waitmovement 0
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_0
+	waitmessage
+	closemessage
+	applymovement 1, MumTakesYouToTheSofa
+	applymovement OBJ_EVENT_ID_PLAYER, YouWalkToTheSofa
+	applymovement OBJ_EVENT_ID_CAMERA, YouWalkToTheSofa
+	waitmovement 0
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_1
+	waitmessage
+	closemessage
+	applymovement 2, DadWalksToYou
+	waitmovement 0
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_2
+	waitmessage
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_3
+	setflag FLAG_RECEIVED_RUNNING_SHOES
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_4
+	waitmessage
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_5
+	waitmessage
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_6
+	releaseall
+	return
+
+
+MumComesToMeetYouAtTheStairCase:
+	emote_exclamation_mark
+	delay_16
+	delay_16
+	walk_left
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	step_end
+
+MumTakesYouToTheSofa:
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	face_down
+	step_end
+
+YouWalkToTheSofa:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	face_down
+	step_end
+
+DadWalksToYou:
+	walk_right
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	face_up
+	step_end
 
 AnconnaTown_PlayerHouse_Mum::
 	lockall
@@ -112,6 +198,39 @@ AnconnaTown_PlayerHouse_Drawer::
 	releaseall
 	return
 
+
+PlayerCameDownstairsAfterWakingUp_Text_0:
+	.string "Mum: {COLOR RED}Good Morning, {COLOR GREEN}{PLAYER}{COLOR RED}.\n"
+	.string "How was your night?\p"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Yawn...\n"
+	.string "A bit rough to be honest.\p"
+	.string "Mum: {COLOR RED}Then I'm sure this will cheer you\n"
+	.string "up!$"
+
+PlayerCameDownstairsAfterWakingUp_Text_1:
+	.string "Mum: {COLOR RED}Your Father and I have something\n"
+	.string "special to give you!$"
+
+PlayerCameDownstairsAfterWakingUp_Text_2:
+	.string "Dad: {COLOR BLUE}That's right!.\n"
+	.string "Here you go.$"
+
+PlayerCameDownstairsAfterWakingUp_Text_3:
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY} recieved a pair of Running\n"
+	.string "Shoes!$"
+
+PlayerCameDownstairsAfterWakingUp_Text_4:
+	.string "Mum: {COLOR RED}This will make all your work faster!$"
+
+PlayerCameDownstairsAfterWakingUp_Text_5:
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: .....\p"
+	.string "So this is just a way of telling me to do\n"
+	.string "more work.$"
+
+PlayerCameDownstairsAfterWakingUp_Text_6:
+	.string "Mum: {COLOR RED}:D\p"
+	.string ".....\p"
+	.string "Maybe....$"
 
 AnconnaTown_PlayerHouse_Mum_Text_0:
 	.string "This is a Placeholder. Tell my Creator\n"
