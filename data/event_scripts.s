@@ -1085,3 +1085,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/AnconnaTown_House1/scripts.inc"
 
 	.include "data/maps/AnconnaTown_House2/scripts.inc"
+
+	.include "data/maps/AnconnaTown_SiblingsRoom/scripts.inc"

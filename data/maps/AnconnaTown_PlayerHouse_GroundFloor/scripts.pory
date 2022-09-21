@@ -1,7 +1,5 @@
 mapscripts AnconnaTown_PlayerHouse_GroundFloor_MapScripts {
-    MAP_SCRIPT_ON_TRANSITION {
-        
-    }
+
 }
 
 script PlayerCameDownstairsAfterWakingUp {
@@ -21,50 +19,50 @@ script PlayerCameDownstairsAfterWakingUp {
         closemessage
         applymovement(2, DadWalksToYou)
         waitmovement(0)
+        applymovement(OBJ_EVENT_ID_PLAYER, FaceRight)
+        waitmovement(0)
         msgbox(format("Dad: {COLOR BLUE}That's right!.\nHere you go."))
         waitmessage
         msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY} recieved a pair of Running Shoes!"))
         setflag(FLAG_RECEIVED_RUNNING_SHOES)
-        msgbox(format("Mum: {COLOR RED}This will make all your work faster!"))
+        applymovement(OBJ_EVENT_ID_PLAYER, FaceLeft)
+        waitmovement(0)
+        msgbox(format("Mum: {COLOR RED}This will make all your work faster but please don't use run around in the house. It took a lot of work to make it this clean."))
         waitmessage
         msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: .....\pSo this is just a way of telling me to do more work."))
         waitmessage
-        msgbox(format("Mum: {COLOR RED}:D\p.....\pMaybe.... "))
+        msgbox(format("Mum: {COLOR RED}:D\p.....\pMaybe...."))
+        waitmessage
+        msgbox(format("Dad: {COLOR BLUE}Um, I remember now!"))
+        waitmessage
+        closemessage
+        applymovement(OBJ_EVENT_ID_PLAYER, FaceRight)
+        waitmovement(0)
+        msgbox(format("{COLOR BLUE}Your Mother and I need you to fetch a {COLOR GREEN}Big Mushroom{COLOR BLUE} and two {COLOR GREEN}Tiny Mushrooms{COLOR BLUE} from {COLOR GREEN}Anconna Woods{COLOR BLUE}. Remember to watch out for the fallen logs there too!"))
+        closemessage
+        applymovement(1, MumReturnsToSofa)
+        applymovement(2, DadReturnsToSofa)
+        waitmovement(0)
+        delay(90)
+        msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Sigh...\pI guess I'd better get going then."))
+        waitmessage
+        special(RemoveCameraObject)
+        addvar(GAME_PROGRESS, 1)
         releaseall
 } 
 
-movement MumComesToMeetYouAtTheStairCase {
-    emote_exclamation_mark
-    delay_16
-    delay_16
-    walk_left
-    walk_up * 2
-    walk_right * 4
-    walk_up * 2
-}
-
-movement MumTakesYouToTheSofa {
-    walk_down * 3
-    walk_left * 7
-    face_down
-}
-
-movement YouWalkToTheSofa {
-    walk_down * 4
-    walk_left * 6
-    face_down
-}
-
-movement DadWalksToYou {
-    walk_right
-    walk_up
-    walk_right * 3
-    face_up
-}
 
 script AnconnaTown_PlayerHouse_Mum {
     lockall
     msgbox(format("This is a Placeholder. Tell my Creator what you want me to say."))
+    releaseall
+}
+
+script AnconnaTown_PlayerHouse_Blissey {
+    lockall
+    msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Morning, Blissey."), 2)
+    waitmessage
+    msgbox(format("{COLOR GREEN}Bliisseyyy!"), 2)
     releaseall
 }
 
@@ -150,4 +148,52 @@ script AnconnaTown_PlayerHouse_Drawer {
     msgbox(format("Placeholder"))
     waitmessage
     releaseall
+}
+
+
+
+
+
+
+movement MumComesToMeetYouAtTheStairCase {
+    emote_exclamation_mark
+    delay_16
+    delay_16
+    walk_up * 2
+    walk_right * 4
+    walk_up
+}
+
+movement MumTakesYouToTheSofa {
+    walk_down * 2
+    walk_left * 7
+    face_right
+}
+
+movement YouWalkToTheSofa {
+    walk_down * 3
+    walk_left * 6
+}
+
+movement DadWalksToYou {
+    walk_down * 2
+    walk_right * 5
+    walk_up * 3
+    walk_left
+}
+
+movement MumReturnsToSofa {
+    walk_left * 2
+    walk_down
+    face_right
+}
+
+movement DadReturnsToSofa {
+    walk_right
+    walk_down
+    face_left
+}
+
+movement FaceRight {
+    face_right
 }

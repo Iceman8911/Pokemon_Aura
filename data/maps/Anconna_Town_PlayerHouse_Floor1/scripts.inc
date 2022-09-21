@@ -5,14 +5,14 @@ Anconna_Town_PlayerHouse_Floor1_MapScripts::
 PlayerHouse_Sibling_Room::
 	lockall
 	msgbox PlayerHouse_Sibling_Room_Text_0
-	applymovement OBJ_EVENT_ID_PLAYER, PlayerHouse_PlayerMoveDown
+	applymovement OBJ_EVENT_ID_PLAYER, PlayerHouse_PlayerMoveUp
 	waitmovement 0
 	releaseall
 	return
 
 
-PlayerHouse_PlayerMoveDown:
-	walk_down
+PlayerHouse_PlayerMoveUp:
+	walk_up
 	step_end
 
 PlayerHouse_Sibling_Room_Text_0:

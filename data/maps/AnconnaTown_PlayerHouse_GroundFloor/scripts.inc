@@ -1,9 +1,5 @@
 AnconnaTown_PlayerHouse_GroundFloor_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
-
-AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	return
 
 
 PlayerCameDownstairsAfterWakingUp::
@@ -23,74 +19,51 @@ PlayerCameDownstairsAfterWakingUp::
 	closemessage
 	applymovement 2, DadWalksToYou
 	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, FaceRight
+	waitmovement 0
 	msgbox PlayerCameDownstairsAfterWakingUp_Text_2
 	waitmessage
 	msgbox PlayerCameDownstairsAfterWakingUp_Text_3
 	setflag FLAG_RECEIVED_RUNNING_SHOES
+	applymovement OBJ_EVENT_ID_PLAYER, FaceLeft
+	waitmovement 0
 	msgbox PlayerCameDownstairsAfterWakingUp_Text_4
 	waitmessage
 	msgbox PlayerCameDownstairsAfterWakingUp_Text_5
 	waitmessage
 	msgbox PlayerCameDownstairsAfterWakingUp_Text_6
+	waitmessage
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_7
+	waitmessage
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, FaceRight
+	waitmovement 0
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_8
+	closemessage
+	applymovement 1, MumReturnsToSofa
+	applymovement 2, DadReturnsToSofa
+	waitmovement 0
+	delay 90
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_9
+	waitmessage
+	special RemoveCameraObject
+	addvar GAME_PROGRESS, 1
 	releaseall
 	return
 
 
-MumComesToMeetYouAtTheStairCase:
-	emote_exclamation_mark
-	delay_16
-	delay_16
-	walk_left
-	walk_up
-	walk_up
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_up
-	walk_up
-	step_end
-
-MumTakesYouToTheSofa:
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	face_down
-	step_end
-
-YouWalkToTheSofa:
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	face_down
-	step_end
-
-DadWalksToYou:
-	walk_right
-	walk_up
-	walk_right
-	walk_right
-	walk_right
-	face_up
-	step_end
-
 AnconnaTown_PlayerHouse_Mum::
 	lockall
 	msgbox AnconnaTown_PlayerHouse_Mum_Text_0
+	releaseall
+	return
+
+
+AnconnaTown_PlayerHouse_Blissey::
+	lockall
+	msgbox AnconnaTown_PlayerHouse_Blissey_Text_0, 2
+	waitmessage
+	msgbox AnconnaTown_PlayerHouse_Blissey_Text_1, 2
 	releaseall
 	return
 
@@ -199,6 +172,79 @@ AnconnaTown_PlayerHouse_Drawer::
 	return
 
 
+MumComesToMeetYouAtTheStairCase:
+	emote_exclamation_mark
+	delay_16
+	delay_16
+	walk_left
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	step_end
+
+MumTakesYouToTheSofa:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_left
+	walk_left
+	face_right
+	step_end
+
+YouWalkToTheSofa:
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_left
+	walk_left
+	step_end
+
+DadWalksToYou:
+	walk_right
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	step_end
+
+MumReturnsToSofa:
+	walk_left
+	walk_left
+	walk_down
+	walk_left
+	face_right
+	step_end
+
+DadReturnsToSofa:
+	walk_right
+	walk_down
+	walk_right
+	face_left
+	step_end
+
+FaceRight:
+	face_right
+	step_end
+
 PlayerCameDownstairsAfterWakingUp_Text_0:
 	.string "Mum: {COLOR RED}Good Morning, {COLOR GREEN}{PLAYER}{COLOR RED}.\n"
 	.string "How was your night?\p"
@@ -220,7 +266,10 @@ PlayerCameDownstairsAfterWakingUp_Text_3:
 	.string "Shoes!$"
 
 PlayerCameDownstairsAfterWakingUp_Text_4:
-	.string "Mum: {COLOR RED}This will make all your work faster!$"
+	.string "Mum: {COLOR RED}This will make all your work faster\n"
+	.string "but please don't use run around in the\l"
+	.string "house. It took a lot of work to make it\l"
+	.string "this clean.$"
 
 PlayerCameDownstairsAfterWakingUp_Text_5:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: .....\p"
@@ -232,9 +281,28 @@ PlayerCameDownstairsAfterWakingUp_Text_6:
 	.string ".....\p"
 	.string "Maybe....$"
 
+PlayerCameDownstairsAfterWakingUp_Text_7:
+	.string "Dad: {COLOR BLUE}Um, I remember now!$"
+
+PlayerCameDownstairsAfterWakingUp_Text_8:
+	.string "{COLOR BLUE}Your Mother and I need you to fetch a\n"
+	.string "{COLOR GREEN}Big Mushroom{COLOR BLUE} and two {COLOR GREEN}Tiny Mushrooms{COLOR BLUE}\l"
+	.string "from {COLOR GREEN}Anconna Woods{COLOR BLUE}. Remember to watch\l"
+	.string "out for the fallen logs there too!$"
+
+PlayerCameDownstairsAfterWakingUp_Text_9:
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Sigh...\p"
+	.string "I guess I'd better get going then.$"
+
 AnconnaTown_PlayerHouse_Mum_Text_0:
 	.string "This is a Placeholder. Tell my Creator\n"
 	.string "what you want me to say.$"
+
+AnconnaTown_PlayerHouse_Blissey_Text_0:
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Morning, Blissey.$"
+
+AnconnaTown_PlayerHouse_Blissey_Text_1:
+	.string "{COLOR GREEN}Bliisseyyy!$"
 
 AnconnaTown_PlayerHouse_TV_Text_0:
 	.string "Placeholder 1$"

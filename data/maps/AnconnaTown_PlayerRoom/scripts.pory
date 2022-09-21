@@ -1,1 +1,24 @@
 mapscripts AnconnaTown_PlayerRoom_MapScripts {}
+
+script AccessPlayerPC {
+    lockall
+    //special DoPCTurnOnEffect
+	playse(SE_PC_ON)
+	//msgbox gText_PlayerHouseBootPC, MSGBOX_DEFAULT
+	special(BedroomPC)
+	waitstate
+    releaseall
+}
+
+script CheckIfPlayerTookPotionOutOfBedroomPC {
+	lockall
+	checkitem(ITEM_POTION, 1)
+	if(!var(VAR_RESULT)) {
+		msgbox(format("I feel like I'm missing something. Maybe I should check my PC."))
+		applymovement(OBJ_EVENT_ID_PLAYER, Walk_Down)
+	}else{
+		addvar(GAME_PROGRESS, 1)
+	}
+	releaseall
+}
+

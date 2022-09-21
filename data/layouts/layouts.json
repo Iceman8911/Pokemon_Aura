@@ -4464,7 +4464,7 @@
     {
       "id": "LAYOUT_ANCONNA_TOWN_PLAYER_HOUSE_GROUND_FLOOR",
       "name": "AnconnaTown_PlayerHouse_GroundFloor_Layout",
-      "width": 19,
+      "width": 18,
       "height": 13,
       "primary_tileset": "gTileset_House_Indoors",
       "secondary_tileset": "gTileset_Indoor_AnconnaTown",
@@ -4505,7 +4505,7 @@
       "id": "LAYOUT_ANCONNA_TOWN_PLAYER_HOUSE_FLOOR1",
       "name": "Anconna_Town_PlayerHouse_Floor1_Layout",
       "width": 13,
-      "height": 5,
+      "height": 8,
       "primary_tileset": "gTileset_House_Indoors",
       "secondary_tileset": "gTileset_Indoor_AnconnaTown",
       "border_filepath": "data/layouts/Anconna_Town_PlayerHouse_Floor1/border.bin",
@@ -4550,6 +4550,16 @@
       "secondary_tileset": "gTileset_Indoor_AnconnaTown",
       "border_filepath": "data/layouts/AnconnaTown_House2/border.bin",
       "blockdata_filepath": "data/layouts/AnconnaTown_House2/map.bin"
+    },
+    {
+      "id": "LAYOUT_ANCONNA_TOWN_SIBLINGS_ROOM",
+      "name": "AnconnaTown_SiblingsRoom_Layout",
+      "width": 13,
+      "height": 11,
+      "primary_tileset": "gTileset_House_Indoors",
+      "secondary_tileset": "gTileset_Indoor_AnconnaTown",
+      "border_filepath": "data/layouts/AnconnaTown_SiblingsRoom/border.bin",
+      "blockdata_filepath": "data/layouts/AnconnaTown_SiblingsRoom/map.bin"
     }
   ]
 }

@@ -171,21 +171,21 @@
       "x": 29,
       "y": 14,
       "elevation": 0,
-      "dest_map": "MAP_ANCONNA_TOWN_HOUSE1",
+      "dest_map": "MAP_ANCONNA_TOWN_PLAYER_HOUSE",
       "dest_warp_id": 0
     },
     {
       "x": 28,
       "y": 23,
       "elevation": 0,
-      "dest_map": "MAP_ANCONNA_TOWN_HOUSE2",
+      "dest_map": "MAP_ANCONNA_TOWN_HOUSE1",
       "dest_warp_id": 0
     },
     {
       "x": 7,
       "y": 26,
       "elevation": 0,
-      "dest_map": "MAP_ANCONNA_TOWN_PLAYER_HOUSE",
+      "dest_map": "MAP_ANCONNA_TOWN_HOUSE2",
       "dest_warp_id": 0
     }
   ],
@@ -193,7 +193,7 @@
     {
       "type": "trigger",
       "x": 6,
-      "y": 15,
+      "y": 16,
       "elevation": 0,
       "var": "ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE",
       "var_value": "0",
@@ -202,7 +202,7 @@
     {
       "type": "trigger",
       "x": 17,
-      "y": 1,
+      "y": 2,
       "elevation": 0,
       "var": "FIRST_LIUM_FIGHT",
       "var_value": "0",
@@ -211,7 +211,7 @@
     {
       "type": "trigger",
       "x": 18,
-      "y": 1,
+      "y": 2,
       "elevation": 0,
       "var": "FIRST_LIUM_FIGHT",
       "var_value": "0",

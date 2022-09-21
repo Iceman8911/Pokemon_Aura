@@ -19,20 +19,37 @@
   "warp_events": [
     {
       "x": 2,
-      "y": 2,
+      "y": 5,
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_TOWN_PLAYER_HOUSE_FLOOR1",
       "dest_warp_id": 1
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 6,
+      "elevation": 0,
+      "var": "GAME_PROGRESS",
+      "var_value": "0",
+      "script": "CheckIfPlayerTookPotionOutOfBedroomPC"
+    },
+    {
+      "type": "trigger",
+      "x": 3,
+      "y": 5,
+      "elevation": 0,
+      "var": "GAME_PROGRESS",
+      "var_value": "0",
+      "script": "CheckIfPlayerTookPotionOutOfBedroomPC"
+    }
   ],
   "bg_events": [
     {
       "type": "sign",
       "x": 4,
-      "y": 2,
+      "y": 5,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "AnconnaTown_PlayerHouse_BookShelve"
@@ -40,7 +57,7 @@
     {
       "type": "sign",
       "x": 5,
-      "y": 2,
+      "y": 5,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "AnconnaTown_PlayerHouse_BookShelve"
@@ -48,7 +65,7 @@
     {
       "type": "sign",
       "x": 7,
-      "y": 4,
+      "y": 7,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "AnconnaTown_PlayerHouse_NES"
@@ -56,15 +73,15 @@
     {
       "type": "sign",
       "x": 8,
-      "y": 3,
+      "y": 6,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "AnconnaTown_PlayerHouse_TV"
     },
     {
       "type": "sign",
-      "x": 11,
-      "y": 2,
+      "x": 10,
+      "y": 5,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "AnconnaTown_PlayerHouse_Drawer"
@@ -72,10 +89,18 @@
     {
       "type": "sign",
       "x": 1,
-      "y": 8,
+      "y": 10,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "AnconnaTown_PlayerHouse_Dustbin"
+    },
+    {
+      "type": "sign",
+      "x": 11,
+      "y": 5,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "AccessPlayerPC"
     }
   ]
 }

@@ -30,13 +30,20 @@
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_TOWN_PLAYER_ROOM",
       "dest_warp_id": 0
+    },
+    {
+      "x": 10,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_ANCONNA_TOWN_SIBLINGS_ROOM",
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [
     {
       "type": "trigger",
-      "x": 4,
-      "y": 2,
+      "x": 10,
+      "y": 5,
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
