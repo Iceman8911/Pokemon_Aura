@@ -14,11 +14,22 @@ script CheckIfPlayerTookPotionOutOfBedroomPC {
 	lockall
 	checkitem(ITEM_POTION, 1)
 	if(!var(VAR_RESULT)) {
+		applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceDown)
+		waitmovement(0)
+		delay(30)
 		msgbox(format("I feel like I'm missing something. Maybe I should check my PC."))
 		applymovement(OBJ_EVENT_ID_PLAYER, Walk_Down)
+		waitmovement(0)
 	}else{
+		applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceDown)
+		waitmovement(0)
+		delay(30)
+		msgbox(format("That should be it.\pWell, Time to start the day."))
 		addvar(GAME_PROGRESS, 1)
 	}
 	releaseall
 }
 
+movement WalkInPlaceDown {
+	walk_in_place_faster_down
+}

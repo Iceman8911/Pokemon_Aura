@@ -1,7 +1,7 @@
-raw `
-AnconnaTown_MapScripts::
-	.byte 0
-`
+mapscripts AnconnaTown_MapScripts {
+	
+}
+
 script AnconnaTown_Cannot_Leave_Anconna_Town {
 	lockall
 	msgbox(format("Should I really ignore what just happened now?"))
@@ -194,6 +194,22 @@ script Anconna_Town_Discovered_Mysterious_People {
 	releaseall
 }
 
+script AnconnaTown_JustCameOutOfForest {
+	lockall
+	msgbox(format("(I still have to give the mushrooms back to my parents, right?)"))
+	applymovement(OBJ_EVENT_ID_PLAYER, WalkLeft)
+	waitmovement(0)
+	releaseall
+}
+
+script AnconnaTown_JustCameOutOfForest1 {
+	lockall
+	msgbox(format("(I still have to give the mushrooms back to my parents, right?)"))
+	applymovement(OBJ_EVENT_ID_PLAYER, Walk_Up)
+	waitmovement(0)
+	releaseall
+}
+
 movement Exclaim {
 	emote_exclamation_mark
 }
@@ -251,10 +267,19 @@ movement LiumLeaves {
 }
 
 movement ReversePan {
-	walk_fast_up * 3
-	walk_fast_right * 6
+	walk_fast_up * 5
+	walk_fast_right * 4
 }
 
 movement Walk_Down {
 	walk_down
+}
+
+movement Walk_Up {
+	walk_up
+}
+
+movement MumRunsToYouAtHome {
+	walk_fast_right * 3
+	walk_fast_down * 3
 }

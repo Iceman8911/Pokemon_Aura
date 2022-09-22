@@ -1,0 +1,5 @@
+0 = Just Starting Game
+1 = Can Go Downstairs
+2 = Gotten Task To Obtain Mushrooms
+3 = Gotten Riolu
+4 = Shown Riolu, Need To Meet Sister

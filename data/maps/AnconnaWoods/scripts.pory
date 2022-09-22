@@ -83,20 +83,20 @@ script AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu {
 	waitmessage
 	msgbox(format("???: {COLOR BLUE}I told you. Bringing fresh recruits to important missions is always a bad idea. Look at what that boy has done, he's messed everything up AGAIN. It's better we leave him here, serves him right."))
 	waitmessage
-	msgbox(format("???: {COLOR RED}HOW COULD YOU SAY THAT NOW!\p Lium is MISSING and we have no idea where he is now. We can't leave him behind. No matter the reason, we must find him. I promised his mothe..."))
+	msgbox(format("???: {COLOR RED}HOW COULD YOU BE SO SELFISH!\p Lium is MISSING and we have no idea where he is now. We can't leave him behind. No matter the reason, we must find him. I made a promise to his mothe..."))
 	waitmessage
 	delay(60)
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerHearsSuspiciousPeople)
 	waitmovement(0)
 	//OBJ_EVENT_ID_PLAYER)
-	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: That should be them.\p......\pSo one of them is missing....\pAnd their plan seems to be at a halt..."))
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: That should be them.\p......\pSo one of them is missing....\pAnd they don't seem to be moving forward..."))
 	//destroy_speech_bubble
 	waitmessage
 	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Rioluuuuuuuuuuuu!"))
 	waitmessage
 	msgbox(format("???: {COLOR BLUE}Forget Lium. That was the cry of the Pokémon we've been looking for, at least today wouldn't be a complete failure.\p You can keep looking for him, I'll go for something more reasonable."))
 	waitmessage
-	msgbox(format("???: {COLOR RED}I KNOW YOU'VE NEVER LIKED HIM.\pBUT HE'S ONE OF US!\pWe can't abandon him here, he's too young to survive here alone."))
+	msgbox(format("???: {COLOR RED}I KNOW YOU'VE NEVER LIKED HIM.\pBUT HE'S ONE OF US!\pWe can't abandon him here, he's too young to survive out here alone. What will happen if the residents in the other town find him here?"))
 	waitmessage
 	msgbox(format("???: {COLOR BLUE}You've made your choice, Alicia. Now, its time for me to claim my prize."))
 	closemessage
@@ -104,18 +104,18 @@ script AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu {
 	msgbox(format("{COLOR BLUE}.........\p.....\pDrat, where's my pokeball.\pI'm sure I brought it with me."))
 	waitmessage
 	delay(90)
-	msgbox(format("{COLOR BLUE}Oh no, he must have took it. When I get my hands on him, he's gonna be sorry."))
+	msgbox(format("{COLOR BLUE}Oh no, he must have took it.\pWhen I get my hands on him, he's gonna be very sorry."))
 	waitmessage
 	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Ri rio riolu riolu!"))
 	waitmessage
-	msgbox(format("Alicia: {COLOR RED}Now, I guess you have no other option than to help me find him since the Pokémon escaped us."))
+	msgbox(format("Alicia: {COLOR RED}Now, I guess you have no other option than to help me find him since that Pokémon escaped us."))
 	waitmessage
 	msgbox(format("???: (inaudible mumbling)"))
 	delay(80)
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerHearsSuspiciousPeople)
 	waitmovement(0)
 	//OBJ_EVENT_ID_PLAYER)
-	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: So they've given up on getting that Pokémon, I doubt that their original plans were any good since that Pokémon ran away from them.\pMaybe I should find it and bring it to {COLOR GREEN}The Professor{COLOR DARK_GRAY} before they change their mind."))
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: It seems like they've given up on getting that Pokémon, I doubt that their original plans were any good since it ran away from them.\pMaybe I should find it and bring it to {COLOR GREEN}The Professor{COLOR DARK_GRAY} before they change their mind. I'm sure he'll know what to do"))
 	//destroy_speech_bubble
 	setvar(ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE, 2)
 	releaseall
@@ -124,7 +124,7 @@ script AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu {
 script AnconnaWoods_Lium {
 	msgbox(format("???: {COLOR BLUE}Deep Breaths.\pTake in Deep Breaths.\nI'll make it up.\pI can do this!"))
 	waitmessage
-	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: (This guy is probably deep in thought but he looks familiar..."))
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: (This guy is probably deep in thought but he looks familiar...\pWait....)"))
 	closemessage
 }
 script Anconna_Woods_First_Lium_Fight {
@@ -140,7 +140,7 @@ script Anconna_Woods_First_Lium_Fight {
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerTurnsToLium)
 	waitmovement(0)
 	//1)
-	msgbox(format("???: {COLOR BLUE}Huff-Puff\p(I'll never run like that again!\pHmm, I didn't think that'll actually stop him. What do I do now?)"))
+	msgbox(format("???: {COLOR BLUE}Huff-Puff\p(That was exhausting!\pHmm, I didn't think that'll actually stop him. What do I do now?)"))
 	//destroy_speech_bubble
 	closemessage
 	applymovement(1, LiumRemembersHisMission)
@@ -162,7 +162,7 @@ script Anconna_Woods_First_Lium_Fight {
 	applymovement(1, LiumisAstonishedNot)
 	waitmovement(0)
 	//1)
-	msgbox(format("{COLOR BLUE}Nevermind, it doesn't matter.\p I ask again: Surrender that Pokémon now.\pIf you don't give it willingly, I'll have to take it by force."))
+	msgbox(format("{COLOR BLUE}Nevermind, it doesn't matter.\pI ask again: Surrender that Pokémon now.\pIf you don't give it willingly, I'll have to take it by force."))
 	//destroy_speech_bubble
 	#turnobject(OBJ_EVENT_ID_PLAYER, up)
 	cleartrainerflag(TRAINER_AQUA_GRUNT_LIUM)
@@ -185,7 +185,7 @@ script Anconna_Woods_First_Lium_Fight_Won {
 	waitmovement(0)
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerThinksAboutFirstLiumEncounter)
 	waitmovement(0)
-	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: What was all that about?\pThat guy was obviously inexperienced but suspicious. Maybe I should tell {COLOR GREEN}Mom{COLOR DARK_GRAY} and {COLOR GREEN}The Professor{COLOR DARK_GRAY} about him soon.\pAnyways, Let's get you healed, Riolu."))
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: What was all that about?\pThat guy was obviously inexperienced but suspicious and probably the guy those other people were looking for. Maybe I should tell {COLOR GREEN}Mom{COLOR DARK_GRAY} and {COLOR GREEN}The Professor{COLOR DARK_GRAY} about this too.\pAnyways, Let's get you healed, Riolu."))
 	closemessage
 	#setflag(FIRST_LIUM_ENCOUNTER)
 	removeobject(1)

@@ -327,17 +327,19 @@ AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_1:
 	.string "right.$"
 
 AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_2:
-	.string "???: {COLOR RED}HOW COULD YOU SAY THAT NOW!\p"
+	.string "???: {COLOR RED}HOW COULD YOU BE SO SELFISH!\p"
 	.string "Lium is MISSING and we have no idea\n"
 	.string "where he is now. We can't leave him\l"
 	.string "behind. No matter the reason, we must\l"
-	.string "find him. I promised his mothe...$"
+	.string "find him. I made a promise to his\l"
+	.string "mothe...$"
 
 AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_3:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: That should be them.\p"
 	.string "......\p"
 	.string "So one of them is missing....\p"
-	.string "And their plan seems to be at a halt...$"
+	.string "And they don't seem to be moving\n"
+	.string "forward...$"
 
 AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_4:
 	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Rioluuuuuuuuuuuu!$"
@@ -354,7 +356,9 @@ AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_6:
 	.string "???: {COLOR RED}I KNOW YOU'VE NEVER LIKED HIM.\p"
 	.string "BUT HE'S ONE OF US!\p"
 	.string "We can't abandon him here, he's too\n"
-	.string "young to survive here alone.$"
+	.string "young to survive out here alone. What\l"
+	.string "will happen if the residents in the\l"
+	.string "other town find him here?$"
 
 AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_7:
 	.string "???: {COLOR BLUE}You've made your choice, Alicia.\n"
@@ -367,8 +371,9 @@ AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_8:
 	.string "I'm sure I brought it with me.$"
 
 AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_9:
-	.string "{COLOR BLUE}Oh no, he must have took it. When I get\n"
-	.string "my hands on him, he's gonna be sorry.$"
+	.string "{COLOR BLUE}Oh no, he must have took it.\p"
+	.string "When I get my hands on him, he's gonna\n"
+	.string "be very sorry.$"
 
 AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_10:
 	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Ri rio riolu riolu!$"
@@ -376,19 +381,20 @@ AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_10:
 AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_11:
 	.string "Alicia: {COLOR RED}Now, I guess you have no other\n"
 	.string "option than to help me find him since\l"
-	.string "the Pokémon escaped us.$"
+	.string "that Pokémon escaped us.$"
 
 AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_12:
 	.string "???: (inaudible mumbling)$"
 
 AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_13:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: So they've given up on\n"
-	.string "getting that Pokémon, I doubt that\l"
-	.string "their original plans were any good\l"
-	.string "since that Pokémon ran away from them.\p"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: It seems like they've given\n"
+	.string "up on getting that Pokémon, I doubt\l"
+	.string "that their original plans were any good\l"
+	.string "since it ran away from them.\p"
 	.string "Maybe I should find it and bring it to\n"
 	.string "{COLOR GREEN}The Professor{COLOR DARK_GRAY} before they change\l"
-	.string "their mind.$"
+	.string "their mind. I'm sure he'll know what to\l"
+	.string "do$"
 
 AnconnaWoods_Lium_Text_0:
 	.string "???: {COLOR BLUE}Deep Breaths.\p"
@@ -398,7 +404,8 @@ AnconnaWoods_Lium_Text_0:
 
 AnconnaWoods_Lium_Text_1:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: (This guy is probably deep\n"
-	.string "in thought but he looks familiar...$"
+	.string "in thought but he looks familiar...\p"
+	.string "Wait....)$"
 
 Anconna_Woods_First_Lium_Fight_Text_0:
 	.string "???: {COLOR BLUE}Um...\p"
@@ -406,7 +413,7 @@ Anconna_Woods_First_Lium_Fight_Text_0:
 
 Anconna_Woods_First_Lium_Fight_Text_1:
 	.string "???: {COLOR BLUE}Huff-Puff\p"
-	.string "(I'll never run like that again!\p"
+	.string "(That was exhausting!\p"
 	.string "Hmm, I didn't think that'll actually stop\n"
 	.string "him. What do I do now?)$"
 
@@ -452,8 +459,10 @@ Anconna_Woods_First_Lium_Fight_Won_Text_0:
 Anconna_Woods_First_Lium_Fight_Won_Text_1:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: What was all that about?\p"
 	.string "That guy was obviously inexperienced\n"
-	.string "but suspicious. Maybe I should tell {COLOR GREEN}Mom{COLOR DARK_GRAY}\l"
-	.string "and {COLOR GREEN}The Professor{COLOR DARK_GRAY} about him soon.\p"
+	.string "but suspicious and probably the guy\l"
+	.string "those other people were looking for.\l"
+	.string "Maybe I should tell {COLOR GREEN}Mom{COLOR DARK_GRAY} and {COLOR GREEN}The\l"
+	.string "Professor{COLOR DARK_GRAY} about this too.\p"
 	.string "Anyways, Let's get you healed, Riolu.$"
 
 AnconnaWoods_BugCatcher1_Text_0:

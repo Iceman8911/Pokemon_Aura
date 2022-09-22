@@ -1,6 +1,7 @@
 AnconnaTown_MapScripts::
 	.byte 0
 
+
 AnconnaTown_Cannot_Leave_Anconna_Town::
 	lockall
 	msgbox AnconnaTown_Cannot_Leave_Anconna_Town_Text_0
@@ -160,6 +161,24 @@ Anconna_Town_Discovered_Mysterious_People::
 	return
 
 
+AnconnaTown_JustCameOutOfForest::
+	lockall
+	msgbox AnconnaTown_JustCameOutOfForest_Text_0
+	applymovement OBJ_EVENT_ID_PLAYER, WalkLeft
+	waitmovement 0
+	releaseall
+	return
+
+
+AnconnaTown_JustCameOutOfForest1::
+	lockall
+	msgbox AnconnaTown_JustCameOutOfForest_Text_0
+	applymovement OBJ_EVENT_ID_PLAYER, Walk_Up
+	waitmovement 0
+	releaseall
+	return
+
+
 Exclaim:
 	emote_exclamation_mark
 	step_end
@@ -225,8 +244,8 @@ ReversePan:
 	walk_fast_up
 	walk_fast_up
 	walk_fast_up
-	walk_fast_right
-	walk_fast_right
+	walk_fast_up
+	walk_fast_up
 	walk_fast_right
 	walk_fast_right
 	walk_fast_right
@@ -235,6 +254,19 @@ ReversePan:
 
 Walk_Down:
 	walk_down
+	step_end
+
+Walk_Up:
+	walk_up
+	step_end
+
+MumRunsToYouAtHome:
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
 	step_end
 
 AnconnaTown_Cannot_Leave_Anconna_Town_Text_0:
@@ -336,6 +368,10 @@ Anconna_Town_Discovered_Mysterious_People_Text_13:
 	.string "They also seemed to be in a hurry and\n"
 	.string "mentioned something about a plan.\p"
 	.string "What could that possibly mean?$"
+
+AnconnaTown_JustCameOutOfForest_Text_0:
+	.string "(I still have to give the mushrooms back\n"
+	.string "to my parents, right?)$"
 
 AnconnaSign::
 	.string "Anconna Town\n"

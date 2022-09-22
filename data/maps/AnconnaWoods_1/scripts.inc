@@ -37,6 +37,22 @@ NotFoundRiolu:
 	walk_up
 	step_end
 
+AnconnaWoods_1_NotFoundMushrooms::
+	lockall
+	goto_if_unset ANCONNA_WOODS_MUSHROOMS, AnconnaWoods_1_NotFoundMushrooms_2
+AnconnaWoods_1_NotFoundMushrooms_1:
+	releaseall
+	return
+
+AnconnaWoods_1_NotFoundMushrooms_2:
+	msgbox AnconnaWoods_1_NotFoundMushrooms_Text_0
+	waitmessage
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, NotFoundRiolu
+	waitmovement 0
+	goto AnconnaWoods_1_NotFoundMushrooms_1
+
+
 AnconnaWoods_1_Found_Riolu::
 	lockall
 	delay 30
@@ -85,6 +101,7 @@ AnconnaWoods_1_Found_Riolu::
 	playfanfare MUS_HEAL
 	waitfanfare
 	delay 15
+	removeitem ITEM_POTION, 1
 	msgbox AnconnaWoods_1_Found_Riolu_Text_10
 	applymovement OBJ_EVENT_ID_PLAYER, StepBackFromRiolu
 	msgbox AnconnaWoods_1_Found_Riolu_Text_11
@@ -119,6 +136,7 @@ AnconnaWoods_1_Found_Riolu::
 	fadescreen FADE_FROM_BLACK
 	msgbox AnconnaWoods_1_Found_Riolu_Text_19
 	setvar ANCONNA_WOODS_FOUND_RIOLU, 1
+	addvar GAME_PROGRESS, 1
 	releaseall
 	return
 
@@ -227,6 +245,10 @@ AnconnaWoods_1_Not_Found_Riolu_Text_0:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: I can't go into bushes yet.\n"
 	.string "Wild Pokémon may jump out at me.\p"
 	.string "There has to be another way.$"
+
+AnconnaWoods_1_NotFoundMushrooms_Text_0:
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: I'm sure those Mushrooms\n"
+	.string "are around here somewhere.$"
 
 AnconnaWoods_1_Found_Riolu_Text_0:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Huh?\p"

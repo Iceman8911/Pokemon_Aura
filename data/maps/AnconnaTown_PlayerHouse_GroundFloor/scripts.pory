@@ -1,5 +1,130 @@
 mapscripts AnconnaTown_PlayerHouse_GroundFloor_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        if(var(GAME_PROGRESS < 4)){
+            setflag(RIOLU_IS_IN_PLAYER_HOUSE)
+        } else {
+            clearflag(RIOLU_IS_IN_PLAYER_HOUSE)
+        }
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE[
+        GAME_PROGRESS, 3: EnterHouseWithRioluForFirstTime
+    ]
+}
 
+script EnterHouseWithRioluForFirstTime {
+    if(var(GAME_PROGRESS) == 3) {
+			lockall
+            delay(60)
+			applymovement(1, MumRunsToYouAtHome)
+			waitmovement(0)
+			msgbox(format("Mum: {COLOR RED}Waaah!!!"))
+			waitmessage
+			msgbox(format("{COLOR RED}I heard awful loud noises coming from that forest and I was just about to rush there to get you.\pWhat happened in there?"))
+            waitmessage
+            msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: About that....."))
+            waitmessage
+            closemessage
+            applymovement(OBJ_EVENT_ID_PLAYER, PlayerRunsToFather)
+            waitmovement(0)
+            msgbox(format("Here are the mushrooms you requested..."))
+            waitmessage
+            msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY} gave the mushrooms!"))
+            playfanfare(MUS_OBTAIN_ITEM)
+            waitfanfare
+            removeitem(ITEM_BIG_MUSHROOM, 1)
+            removeitem(ITEM_TINY_MUSHROOM, 2)
+            closemessage
+            applymovement(OBJ_EVENT_ID_PLAYER, PlayerRunsUpToTheTopOfTable)
+            waitmovement(0)
+            msgbox(format("Erhem..."))
+            waitmessage
+            closemessage
+            applymovement(2, FaceUp)
+            applymovement(1, MomRunsBackToTheTable)
+            waitmovement(0)
+            msgbox(format("Just outside our house, I overheard a group of {COLOR GREEN}three{COLOR DARK_GRAY} strange looking people talking about getting a particular Pokemon from the forest just before they entered it. I trailed them since they looked suspicious"
+            "and eventually I heard two voices shouting about someone going missing. Deeper into the forest where I was to get the mushrooms, I found....\pWell, its better to show it."))
+            waitmessage
+            closemessage
+            applymovement(OBJ_EVENT_ID_PLAYER, FaceRight)
+            msgbox(format("You can come out now, Riolu."))
+            waitmessage
+            closemessage
+            fadescreen(FADE_TO_WHITE)
+            clearflag(RIOLU_IS_IN_PLAYER_HOUSE)
+            addobject(4)
+            fadescreen(FADE_FROM_WHITE)
+            applymovement(4, RioluSearches)
+            waitmovement(0)
+            msgbox(format("{COLOR GREEN}Riiolu?"))
+            delay(30)
+            applymovement(OBJ_EVENT_ID_PLAYER, FaceDown)
+            waitmovement(0)
+            msgbox(format("I found it lost at the edge of the forest and one of those people tried to take it from me so we battled."))
+            applymovement(2, Surprised)
+            waitmovement(0)
+            msgbox(format("Dad:{COLOR BLUE} Wait, could it be...?!"))
+            waitmessage
+            closemessage
+            applymovement(2, FaceRight)
+            applymovement(1, FaceLeft)
+            waitmovement(0)
+            delay(60)
+            applymovement(2, FaceUp)
+            applymovement(1, FaceUp)
+            waitmovement(0)
+            msgbox(format("{COLOR BLUE}Nah, it couldn't be...."))
+            waitmessage
+            delay(30)
+            applymovement(1, MomExclaims)
+            waitmovement(0)
+            delay(25)
+            msgbox(format("Mom:{COLOR RED} It was VERY risky trying to go after them. What were you thinking?"))
+            waitmessage
+            closemessage
+            applymovement(1, WalkInPlaceUp)
+            waitmovement(0)
+            msgbox(format("{COLOR RED}However, you managed to save this Pokemon so at least it wasn't all in vain...\p....\pDo you remember that I was a scientist?"))
+            waitmessage
+            applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceDown)
+            waitmovement(0)
+            msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Yeah, but how does that relate to this. Shouldn't we call the police or something?\p"
+            "Mom:{COLOR RED} We will inform the authorities but in the mean time, your Father and I think it would be best if you meet up with an old colleague of mine in {COLOR GREEN}Scandi City{COLOR RED}."
+            "The fact that you now have a Riolu who trusts you and some proficiency in battling means that you should have little difficulty getting there."))
+            waitmessage
+            applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceDown)
+            waitmovement(0)
+            msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Are you sure that Riolu trusts me? It still looks a bit uncomfortable here."))
+            waitmessage
+            applymovement(1, WalkInPlaceUp)
+            waitmovement(0)
+            msgbox(format("Mom:{COLOR RED} I'm positive because Riolu are normally very distrusting Pokemon but this one followed you willingly.\p"
+            "Well, I'd better call her now. Her name's {COLOR GREEN}Professor Flora{COLOR RED} by the way."))
+            waitmessage
+            applymovement(1, WalkInPlaceUp)
+            waitmovement(0)
+            msgbox(format("{COLOR RED}I doubt you'd remember her since you were very young the first time you met so you might need to ask around."))
+            waitmessage
+            closemessage
+            delay(50)
+            applymovement(1, FaceDown)
+            waitmovement(0)            
+            msgbox(format("{COLOR RED}Sniff..sniff...\nMy little boy's leaving me alone now."))
+            waitmessage
+            closemessage
+            applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceDown)
+            waitmovement(0)
+            msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Y'know that I'm not a kid anymore."))
+            waitmessage
+            closemessage
+            applymovement(1, WalkInPlaceUp)
+            waitmovement(0)
+            msgbox(format("{COLOR RED}I know but we planned on giving you a starter Pokemon today so you won't be too lonely but seeing you leaving for now with this Riolu....it makes me tear up."))
+            waitmessage
+            msgbox(format("{COLOR RED}Well,\pThe earlier you go, the earlier you come back.\pGoodluck {COLOR GREEN}{PLAYER}{COLOR RED}!"))
+            addvar(GAME_PROGRESS, 1)
+            releaseall
+		}
 }
 
 script PlayerCameDownstairsAfterWakingUp {
@@ -24,6 +149,7 @@ script PlayerCameDownstairsAfterWakingUp {
         msgbox(format("Dad: {COLOR BLUE}That's right!.\nHere you go."))
         waitmessage
         msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY} recieved a pair of Running Shoes!"))
+        setflag(FLAG_SYS_B_DASH)
         setflag(FLAG_RECEIVED_RUNNING_SHOES)
         applymovement(OBJ_EVENT_ID_PLAYER, FaceLeft)
         waitmovement(0)
@@ -51,11 +177,77 @@ script PlayerCameDownstairsAfterWakingUp {
         releaseall
 } 
 
-
+script Riolu {
+    lockall
+    faceplayer
+    applymovement(4, Happy)
+    waitmovement(0)
+    msgbox(format("{COLOR GREEN}Rioooluu"))
+    waitmessage
+    msgbox(format("(It seems that Riolu feels safer with you around)"))
+    waitmessage
+    releaseall
+}
 script AnconnaTown_PlayerHouse_Mum {
     lockall
-    msgbox(format("This is a Placeholder. Tell my Creator what you want me to say."))
+    if(!flag(ANCONNA_WOODS_MUSHROOMS)) {
+        msgbox(format("Mum: {COLOR RED}Don't forget to bring the {COLOR GREEN}mushrooms{COLOR RED}."), 2)
+        waitmessage
+        msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Sigh..."), 2)
+        waitmessage
+        msgbox(format("Mum: {COLOR RED}Tehee..."), 2)
+        waitmessage
+        closemessage
+    } elif(var(GAME_PROGRESS) == 4) {
+        msgbox(format("Mum: {COLOR RED}If you ever need to heal up your Pokemon, my {COLOR GREEN}Blissey{COLOR RED} would gladly help.\pDon't worry, we'll tell your sister that you're leaving for now."), 2)
+        waitmessage
+    }
+    else {
+        random(2)
+        switch (var(VAR_RESULT)){
+            case 0:
+            msgbox(format("Mum: {COLOR RED}Its nice seeing you with Pokemon again sniff...sniff.."), 2)
+            break
+            case 1:
+            msgbox(format("Mum: {COLOR RED}Your going on your own journey now but remember that your Father and I will always be there for you."), 2)
+            break
+        }
+        
+    }
     releaseall
+}
+
+script AnconnaTown_PlayerHouse_Dad {
+    lockall
+    if(!flag(ANCONNA_WOODS_MUSHROOMS)) {
+        msgbox(format("Dad: {COLOR BLUE}Don't forget to bring the {COLOR GREEN}mushrooms{COLOR BLUE}."), 2)
+        waitmessage
+        msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Sigh..."), 2)
+        waitmessage
+        msgbox(format("Dad: {COLOR BLUE}Don't sigh, son. It's all for a good cause :)"), 2)
+        waitmessage
+        closemessage
+    }
+    elif(var(GAME_PROGRESS) == 4) {
+        msgbox(format("Dad: {COLOR BLUE}Well, your mother has said it all. If you ever forget how to {COLOR GREEN}Scandi City{COLOR BLUE}, you just need to pass through {COLOR GREEN}Route 01{COLOR BLUE} which is north of here and follow the path into {COLOR GREEN}Murky Grove{COLOR BLUE} then a short walk through {COLOR GREEN}Route 02{COLOR BLUE}. Goodluck!"), 2)
+        waitmessage 
+        closemessage
+    }
+    else {
+        random(2)
+        switch (var(VAR_RESULT)){
+            case 0:
+            msgbox(format("Dad: {COLOR BLUE}I guess you don't need your old man anymore."), 2)
+            applymovement(2, FaceLeft)
+            delay(45)
+            msgbox(format("{COLOR BLUE}They grow up so fast...sniff...sniff.."))
+            break
+            case 1:
+            msgbox(format("Dad: {COLOR BLUE}You might be on your own journey but I'll always be with you by the sidelines chipping in every step of the way."), 2)
+            break
+        }
+    releaseall
+    }
 }
 
 script AnconnaTown_PlayerHouse_Blissey {
@@ -63,6 +255,9 @@ script AnconnaTown_PlayerHouse_Blissey {
     msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Morning, Blissey."), 2)
     waitmessage
     msgbox(format("{COLOR GREEN}Bliisseyyy!"), 2)
+    if(flag(FLAG_SYS_POKEMON_GET)){
+        call(Common_EventScript_OutOfCenterPartyHeal)
+    }
     releaseall
 }
 
@@ -196,4 +391,61 @@ movement DadReturnsToSofa {
 
 movement FaceRight {
     face_right
+}
+
+movement PlayerRunsToFather {
+    walk_fast_left
+    walk_fast_up * 2
+    walk_fast_left * 7
+    walk_fast_up
+}
+
+movement PlayerRunsUpToTheTopOfTable {
+    walk_fast_left
+    walk_fast_up * 2
+    walk_fast_right * 3
+    face_down
+}
+
+movement RioluSearches {
+    face_up
+    delay_16
+    face_left
+    delay_16
+    face_right
+    delay_16
+    face_down
+    delay_16
+    emote_exclamation_mark
+}
+
+movement Surprised {
+    emote_exclamation_mark
+}
+
+movement FaceUp {
+    face_up
+}
+
+movement WalkInPlaceUp {
+    walk_in_place_up
+}
+
+movement FaceDown {
+    face_down
+}
+
+movement MomRunsBackToTheTable {
+    walk_fast_up * 3
+    walk_fast_left * 3
+    face_up
+}
+
+movement MomExclaims {
+    emote_exclamation_mark
+    jump_in_place_up
+}
+
+movement Happy {
+    emote_heart
 }

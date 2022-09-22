@@ -55,6 +55,18 @@ movement NotFoundRiolu {
     walk_up
 }
 
+script AnconnaWoods_1_NotFoundMushrooms {
+    lockall
+    if(!flag(ANCONNA_WOODS_MUSHROOMS)) {
+        msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: I'm sure those Mushrooms are around here somewhere."))
+        waitmessage
+        closemessage
+        applymovement(OBJ_EVENT_ID_PLAYER, NotFoundRiolu)
+        waitmovement(0)
+    }
+    releaseall
+}
+
 script AnconnaWoods_1_Found_Riolu {
     lockall
     delay(30)
@@ -103,6 +115,7 @@ script AnconnaWoods_1_Found_Riolu {
     playfanfare(MUS_HEAL)
     waitfanfare
     delay(15)
+    removeitem(ITEM_POTION, 1)
     msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Done!"))
     applymovement(OBJ_EVENT_ID_PLAYER, StepBackFromRiolu)
     msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Doesn't that feel much better?"))
@@ -138,6 +151,7 @@ script AnconnaWoods_1_Found_Riolu {
     fadescreen(FADE_FROM_BLACK)
     msgbox(format("(The poor little thing is lost, probably because of those people from before.\pLets see if there's anyway I can help.)"))
     setvar(ANCONNA_WOODS_FOUND_RIOLU, 1)
+    addvar(GAME_PROGRESS, 1)
     releaseall
 }
 
