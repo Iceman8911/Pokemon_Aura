@@ -192,19 +192,19 @@ void AddTextPrinterForMessage(bool8 allowSkippingDelayWithButtonPress)
 {
     void (*callback)(struct TextPrinterTemplate *, u16) = NULL;
     gTextFlags.canABSpeedUpPrint = allowSkippingDelayWithButtonPress;
-    AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetPlayerTextSpeedDelay(), callback, 2, 1, 3);
+    AddTextPrinterParameterized2(0, FONT_NORMAL, gSystemStringVar, GetPlayerTextSpeedDelay(), callback, 2, 1, 3);
 }
 
 void AddTextPrinterForMessage_2(bool8 allowSkippingDelayWithButtonPress)
 {
     gTextFlags.canABSpeedUpPrint = allowSkippingDelayWithButtonPress;
-    AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetPlayerTextSpeedDelay(), NULL, 2, 1, 3);
+    AddTextPrinterParameterized2(0, FONT_NORMAL, gSystemStringVar, GetPlayerTextSpeedDelay(), NULL, 2, 1, 3);
 }
 
 void AddTextPrinterWithCustomSpeedForMessage(bool8 allowSkippingDelayWithButtonPress, u8 speed)
 {
     gTextFlags.canABSpeedUpPrint = allowSkippingDelayWithButtonPress;
-    AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, speed, NULL, 2, 1, 3);
+    AddTextPrinterParameterized2(0, FONT_NORMAL, gSystemStringVar, speed, NULL, 2, 1, 3);
 }
 
 void LoadMessageBoxAndBorderGfx(void)
@@ -546,7 +546,7 @@ void RemoveMapNamePopUpWindow(void)
 void AddTextPrinterWithCallbackForMessage(bool8 canSpeedUp, void (*callback)(struct TextPrinterTemplate *, u16))
 {
     gTextFlags.canABSpeedUpPrint = canSpeedUp;
-    AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetPlayerTextSpeedDelay(), callback, 2, 1, 3);
+    AddTextPrinterParameterized2(0, FONT_NORMAL, gSystemStringVar, GetPlayerTextSpeedDelay(), callback, 2, 1, 3);
 }
 
 void EraseFieldMessageBox(bool8 copyToVram)
@@ -1605,7 +1605,10 @@ void PrintMenuTable(u8 windowId, u8 itemCount, const struct MenuAction *menuActi
     u32 i;
 
     for (i = 0; i < itemCount; i++)
-        AddTextPrinterParameterized(windowId, 1, menuActions[i].text, 8, (i * 16) + 1, TEXT_SKIP_DRAW, NULL);
+    {
+        StringExpandPlaceholders(gSystemStringVar, menuActions[i].text);
+        AddTextPrinterParameterized(windowId, 1, gSystemStringVar, 8, (i * 16) + 1, TEXT_SKIP_DRAW, NULL);
+    }
 
     CopyWindowToVram(windowId, COPYWIN_GFX);
 }
@@ -1669,7 +1672,10 @@ void PrintMenuGridTable(u8 windowId, u8 optionWidth, u8 columns, u8 rows, const 
     for (i = 0; i < rows; i++)
     {
         for (j = 0; j < columns; j++)
-            AddTextPrinterParameterized(windowId, 1, menuActions[(i * columns) + j].text, (optionWidth * j) + 8, (i * 16) + 1, TEXT_SKIP_DRAW, NULL);
+        {
+            StringExpandPlaceholders(gSystemStringVar, menuActions[(i * columns) + j].text);
+            AddTextPrinterParameterized(windowId, 1, gSystemStringVar, (optionWidth * j) + 8, (i * 16) + 1, TEXT_SKIP_DRAW, NULL);
+        }
     }
     CopyWindowToVram(windowId, COPYWIN_GFX);
 }
@@ -2002,9 +2008,9 @@ void PrintPlayerNameOnWindow(u8 windowId, const u8 *src, u16 x, u16 y)
     while (gSaveBlock2Ptr->playerName[count] != EOS)
         count++;
 
-    StringExpandPlaceholders(gStringVar4, src);
+    StringExpandPlaceholders(gSystemStringVar, src);
 
-    AddTextPrinterParameterized(windowId, 1, gStringVar4, x, y, TEXT_SKIP_DRAW, 0);
+    AddTextPrinterParameterized(windowId, 1, gSystemStringVar, x, y, TEXT_SKIP_DRAW, 0);
 }
 
 static void UnusedBlitBitmapRect(const struct Bitmap *src, struct Bitmap *dst, u16 srcX, u16 srcY, u16 dstX, u16 dstY, u16 width, u16 height)

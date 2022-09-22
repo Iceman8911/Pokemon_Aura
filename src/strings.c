@@ -1859,3 +1859,13 @@ const u8 gText_TeleportBattleFrontierFactory[] = _(" Battle Factory");
 const u8 gText_TeleportBattleFrontierArena[] = _(" Battle Arena");
 const u8 gText_TeleportBattleFrontierDome[] = _(" Battle Dome");
 const u8 gText_TeleportBattleFrontierCallback[] = _(" Return");
+
+
+//DYNAMIC MENUS SYSTEM
+
+const u8 gText_DynamicMenuString1[] = _("{STR_VAR_1}");
+const u8 gText_DynamicMenuString2[] = _("{STR_VAR_2}");
+const u8 gText_DynamicMenuString3[] = _("{STR_VAR_3}");
+const u8 gText_DynamicMenuString4[] = _("{STR_VAR_4}");
+const u8 gText_DynamicMenuString5[] = _("{STR_VAR_5}");
+const u8 gText_DynamicMenuString6[] = _("{STR_VAR_6}");

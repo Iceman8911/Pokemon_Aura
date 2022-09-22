@@ -3059,5 +3059,14 @@ extern const u8 gText_TeleportBattleFrontierFactory[];
 extern const u8 gText_TeleportBattleFrontierArena[];
 extern const u8 gText_TeleportBattleFrontierDome[];
 extern const u8 gText_TeleportBattleFrontierCallback[];
+//DYNAMIC MENUS SYSTEM
+
+extern const u8 gText_DynamicMenuString1[];
+extern const u8 gText_DynamicMenuString2[];
+extern const u8 gText_DynamicMenuString3[];
+extern const u8 gText_DynamicMenuString4[];
+extern const u8 gText_DynamicMenuString5[];
+extern const u8 gText_DynamicMenuString6[];
+extern const u8 gText_DynamicMenuString7[];
 
 #endif // GUARD_STRINGS_H

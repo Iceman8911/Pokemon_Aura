@@ -125,6 +125,11 @@
 #define MULTI_DEBUG_MENU                   114
 #define MULTI_TELEPORT_MAIN_MENU           115
 #define MULTI_TELEPORT_MENU_FRONTIER       116
+#define MULTI_DYNAMIC_2                    251
+#define MULTI_DYNAMIC_3                    252
+#define MULTI_DYNAMIC_4                    253
+#define MULTI_DYNAMIC_5                    254
+#define MULTI_DYNAMIC_6                    255
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

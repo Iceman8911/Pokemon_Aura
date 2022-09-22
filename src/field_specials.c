@@ -880,7 +880,7 @@ void PetalburgGymUnlockRoomDoors(void)
 
 void ShowFieldMessageStringVar4(void)
 {
-    ShowFieldMessage(gStringVar4);
+    ShowFieldMessage(gSystemStringVar);
 }
 
 void StorePlayerCoordsInVars(void)

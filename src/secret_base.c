@@ -1060,8 +1060,8 @@ static void ShowRegistryMenuDeleteConfirmation(u8 taskId)
     RemoveWindow(tActionWindowId);
     ScheduleBgCopyTilemapToVram(0);
     GetSecretBaseName(gStringVar1, tSelectedBaseId);
-    StringExpandPlaceholders(gStringVar4, gText_OkayToDeleteFromRegistry);
-    DisplayItemMessageOnField(taskId, gStringVar4, ShowRegistryMenuDeleteYesNo);
+    StringExpandPlaceholders(gSystemStringVar, gText_OkayToDeleteFromRegistry);
+    DisplayItemMessageOnField(taskId, gSystemStringVar, ShowRegistryMenuDeleteYesNo);
 }
 
 static void ShowRegistryMenuDeleteYesNo(u8 taskId)

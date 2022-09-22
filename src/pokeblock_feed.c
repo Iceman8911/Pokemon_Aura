@@ -865,14 +865,14 @@ static void Task_PrintAtePokeblockMessage(u8 taskId)
     PokeblockCopyName(pokeblock, gStringVar2);
 
     if (gPokeblockGain == 0)
-        StringExpandPlaceholders(gStringVar4, gText_Var1AteTheVar2);
+        StringExpandPlaceholders(gSystemStringVar, gText_Var1AteTheVar2);
     else if (gPokeblockGain > 0)
-        StringExpandPlaceholders(gStringVar4, gText_Var1HappilyAteVar2);
+        StringExpandPlaceholders(gSystemStringVar, gText_Var1HappilyAteVar2);
     else
-        StringExpandPlaceholders(gStringVar4, gText_Var1DisdainfullyAteVar2);
+        StringExpandPlaceholders(gSystemStringVar, gText_Var1DisdainfullyAteVar2);
 
     gTextFlags.canABSpeedUpPrint = TRUE;
-    AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetPlayerTextSpeedDelay(), NULL, 2, 1, 3);
+    AddTextPrinterParameterized2(0, FONT_NORMAL, gSystemStringVar, GetPlayerTextSpeedDelay(), NULL, 2, 1, 3);
     gTasks[taskId].func = Task_WaitForAtePokeblockMessage;
 }
 

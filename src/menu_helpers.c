@@ -126,11 +126,11 @@ void DisplayMessageAndContinueTask(u8 taskId, u8 windowId, u16 tileNum, u8 palet
     sMessageWindowId = windowId;
     DrawDialogFrameWithCustomTileAndPalette(windowId, TRUE, tileNum, paletteNum);
 
-    if (string != gStringVar4)
-        StringExpandPlaceholders(gStringVar4, string);
+    if (string != gSystemStringVar)
+        StringExpandPlaceholders(gSystemStringVar, string);
 
     gTextFlags.canABSpeedUpPrint = 1;
-    AddTextPrinterParameterized2(windowId, fontId, gStringVar4, textSpeed, NULL, 2, 1, 3);
+    AddTextPrinterParameterized2(windowId, fontId, gSystemStringVar, textSpeed, NULL, 2, 1, 3);
     sMessageNextTask = taskFunc;
     gTasks[taskId].func = Task_ContinueTaskAfterMessagePrints;
 }

@@ -3194,7 +3194,7 @@ static void BufferMonTrainerMemo(void)
 
     if (InBattleFactory() == TRUE || InSlateportBattleTent() == TRUE || IsInGamePartnerMon() == TRUE)
     {
-        DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, gText_XNature);
+        DynamicPlaceholderTextUtil_ExpandPlaceholders(gSystemStringVar, gText_XNature);
     }
     else
     {
@@ -3228,7 +3228,7 @@ static void BufferMonTrainerMemo(void)
             text = gText_XNatureObtainedInTrade;
         }
 
-        DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, text);
+        DynamicPlaceholderTextUtil_ExpandPlaceholders(gSystemStringVar, text);
         Free(metLevelString);
         Free(metLocationString);
     }
@@ -3236,7 +3236,7 @@ static void BufferMonTrainerMemo(void)
 
 static void PrintMonTrainerMemo(void)
 {
-    PrintTextOnWindow(AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_MEMO), gStringVar4, 0, 1, 0, 0);
+    PrintTextOnWindow(AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_MEMO), gSystemStringVar, 0, 1, 0, 0);
 }
 
 static void BufferNatureString(void)
@@ -3449,8 +3449,8 @@ static void PrintRibbonCount(void)
     else
     {
         ConvertIntToDecimalStringN(gStringVar1, sMonSummaryScreen->summary.ribbonCount, STR_CONV_MODE_RIGHT_ALIGN, 2);
-        StringExpandPlaceholders(gStringVar4, gText_RibbonsVar1);
-        text = gStringVar4;
+        StringExpandPlaceholders(gSystemStringVar, gText_RibbonsVar1);
+        text = gSystemStringVar;
     }
 
     x = GetStringCenterAlignXOffset(FONT_NORMAL, text, 70) + 6;
@@ -3484,11 +3484,16 @@ static void BufferLeftColumnStats(void)
     const s8 *natureMod = gNatureStatTable[sMonSummaryScreen->summary.nature];
 
     DynamicPlaceholderTextUtil_Reset();
-    BufferStat(currentHPString, 0, sMonSummaryScreen->summary.currentHP, 0, 3);
+    /*BufferStat(currentHPString, 0, sMonSummaryScreen->summary.currentHP, 0, 3);
     BufferStat(maxHPString, 0, sMonSummaryScreen->summary.maxHP, 1, 3);
     BufferStat(attackString, natureMod[STAT_ATK - 1], sMonSummaryScreen->summary.atk, 2, 7);
     BufferStat(defenseString, natureMod[STAT_DEF - 1], sMonSummaryScreen->summary.def, 3, 7);
-    DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, sStatsLeftColumnLayout);
+    DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, sStatsLeftColumnLayout); */
+    DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, currentHPString);
+    DynamicPlaceholderTextUtil_SetPlaceholderPtr(1, maxHPString);
+    DynamicPlaceholderTextUtil_SetPlaceholderPtr(2, attackString);
+    DynamicPlaceholderTextUtil_SetPlaceholderPtr(3, defenseString);
+    DynamicPlaceholderTextUtil_ExpandPlaceholders(gSystemStringVar, sStatsLeftColumnLayout);
 
     Free(currentHPString);
     Free(maxHPString);
@@ -3498,7 +3503,7 @@ static void BufferLeftColumnStats(void)
 
 static void PrintLeftColumnStats(void)
 {
-    PrintTextOnWindow(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_STATS_LEFT), gStringVar4, 4, 1, 0, 0);
+    PrintTextOnWindow(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_STATS_LEFT), gSystemStringVar, 4, 1, 0, 0);
 }
 
 static void BufferRightColumnStats(void)
@@ -3506,15 +3511,19 @@ static void BufferRightColumnStats(void)
     const s8 *natureMod = gNatureStatTable[sMonSummaryScreen->summary.nature];
 
     DynamicPlaceholderTextUtil_Reset();
-    BufferStat(gStringVar1, natureMod[STAT_SPATK - 1], sMonSummaryScreen->summary.spatk, 0, 3);
+   /* BufferStat(gStringVar1, natureMod[STAT_SPATK - 1], sMonSummaryScreen->summary.spatk, 0, 3);
     BufferStat(gStringVar2, natureMod[STAT_SPDEF - 1], sMonSummaryScreen->summary.spdef, 1, 3);
     BufferStat(gStringVar3, natureMod[STAT_SPEED - 1], sMonSummaryScreen->summary.speed, 2, 3);
-    DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, sStatsRightColumnLayout);
+    DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, sStatsRightColumnLayout); */
+    DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, gStringVar1);
+    DynamicPlaceholderTextUtil_SetPlaceholderPtr(1, gStringVar2);
+    DynamicPlaceholderTextUtil_SetPlaceholderPtr(2, gStringVar3);
+    DynamicPlaceholderTextUtil_ExpandPlaceholders(gSystemStringVar, sStatsRightColumnLayout);
 }
 
 static void PrintRightColumnStats(void)
 {
-    PrintTextOnWindow(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_STATS_RIGHT), gStringVar4, 2, 1, 0, 0);
+    PrintTextOnWindow(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_STATS_RIGHT), gSystemStringVar, 2, 1, 0, 0);
 }
 
 static void PrintExpPointsNextLevel(void)
@@ -3624,8 +3633,8 @@ static void PrintMoveNameAndPP(u8 moveIndex)
         DynamicPlaceholderTextUtil_Reset();
         DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, gStringVar1);
         DynamicPlaceholderTextUtil_SetPlaceholderPtr(1, gStringVar2);
-        DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, sMovesPPLayout);
-        text = gStringVar4;
+        DynamicPlaceholderTextUtil_ExpandPlaceholders(gSystemStringVar, sMovesPPLayout);
+        text = gSystemStringVar;
         ppState = GetCurrentPpToMaxPpState(summary->pp[moveIndex], pp) + 9;
         x = GetStringRightAlignXOffset(FONT_NORMAL, text, 44);
     }
@@ -3788,8 +3797,8 @@ static void PrintNewMoveDetailsOrCancelText(void)
         DynamicPlaceholderTextUtil_Reset();
         DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, gStringVar1);
         DynamicPlaceholderTextUtil_SetPlaceholderPtr(1, gStringVar1);
-        DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, sMovesPPLayout);
-        PrintTextOnWindow(windowId2, gStringVar4, GetStringRightAlignXOffset(FONT_NORMAL, gStringVar4, 44), 65, 0, 12);
+        DynamicPlaceholderTextUtil_ExpandPlaceholders(gSystemStringVar, sMovesPPLayout);
+        PrintTextOnWindow(windowId2, gSystemStringVar, GetStringRightAlignXOffset(FONT_NORMAL, gSystemStringVar, 44), 65, 0, 12);
     }
 }
 
