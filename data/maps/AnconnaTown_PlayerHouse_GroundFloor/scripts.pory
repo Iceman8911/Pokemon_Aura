@@ -4,19 +4,22 @@ mapscripts AnconnaTown_PlayerHouse_GroundFloor_MapScripts {
             setflag(RIOLU_IS_IN_PLAYER_HOUSE)
         } else {
             clearflag(RIOLU_IS_IN_PLAYER_HOUSE)
+            addobject(4)
         }
     }
     MAP_SCRIPT_ON_FRAME_TABLE[
+        GAME_PROGRESS, 1: PlayerCameDownstairsAfterWakingUp
         GAME_PROGRESS, 3: EnterHouseWithRioluForFirstTime
     ]
 }
 
 script EnterHouseWithRioluForFirstTime {
-    if(var(GAME_PROGRESS) == 3) {
 			lockall
             delay(60)
 			applymovement(1, MumRunsToYouAtHome)
 			waitmovement(0)
+            applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceDown)
+            waitmovement(0)
 			msgbox(format("Mum: {COLOR RED}Waaah!!!"))
 			waitmessage
 			msgbox(format("{COLOR RED}I heard awful loud noises coming from that forest and I was just about to rush there to get you.\pWhat happened in there?"))
@@ -124,7 +127,7 @@ script EnterHouseWithRioluForFirstTime {
             msgbox(format("{COLOR RED}Well,\pThe earlier you go, the earlier you come back.\pGoodluck {COLOR GREEN}{PLAYER}{COLOR RED}!"))
             addvar(GAME_PROGRESS, 1)
             releaseall
-		}
+
 }
 
 script PlayerCameDownstairsAfterWakingUp {
@@ -354,19 +357,19 @@ movement MumComesToMeetYouAtTheStairCase {
     emote_exclamation_mark
     delay_16
     delay_16
-    walk_up * 2
+    walk_up * 3
     walk_right * 4
     walk_up
 }
 
 movement MumTakesYouToTheSofa {
-    walk_down * 2
+    walk_down * 3
     walk_left * 7
     face_right
 }
 
 movement YouWalkToTheSofa {
-    walk_down * 3
+    walk_down * 4
     walk_left * 6
 }
 

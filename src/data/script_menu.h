@@ -822,6 +822,8 @@ static const struct MenuAction MultichoiceList_TeleportFrontier[]=
     {gText_TeleportBattleFrontierArena},
     {gText_TeleportBattleFrontierDome},
     {gText_TeleportBattleFrontierCallback},
+
+};
 static const struct MenuAction MultichoiceList_Dynamic2[] =
 {
     {gText_DynamicMenuString1},

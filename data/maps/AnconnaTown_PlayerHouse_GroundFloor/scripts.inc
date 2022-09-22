@@ -7,6 +7,7 @@ AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	compare GAME_PROGRESS < 4, 0
 	goto_if_ne AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 	clearflag RIOLU_IS_IN_PLAYER_HOUSE
+	addobject 4
 	return
 
 AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
@@ -14,16 +15,12 @@ AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 	return
 
 AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 GAME_PROGRESS, 1, PlayerCameDownstairsAfterWakingUp
 	map_script_2 GAME_PROGRESS, 3, EnterHouseWithRioluForFirstTime
 	.2byte 0
 
 
 EnterHouseWithRioluForFirstTime::
-	compare GAME_PROGRESS, 3
-	goto_if_eq EnterHouseWithRioluForFirstTime_1
-	return
-
-EnterHouseWithRioluForFirstTime_1:
 	lockall
 	delay 60
 	applymovement 1, MumRunsToYouAtHome
@@ -401,6 +398,7 @@ MumComesToMeetYouAtTheStairCase:
 	delay_16
 	walk_up
 	walk_up
+	walk_up
 	walk_right
 	walk_right
 	walk_right
@@ -409,6 +407,7 @@ MumComesToMeetYouAtTheStairCase:
 	step_end
 
 MumTakesYouToTheSofa:
+	walk_down
 	walk_down
 	walk_down
 	walk_left
@@ -422,6 +421,7 @@ MumTakesYouToTheSofa:
 	step_end
 
 YouWalkToTheSofa:
+	walk_down
 	walk_down
 	walk_down
 	walk_down
