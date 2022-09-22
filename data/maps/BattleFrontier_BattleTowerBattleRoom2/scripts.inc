@@ -70,12 +70,12 @@ BattleFrontier_BattleTowerBattleRoom2_EventScript_248FB4:: @ 8248FB4
 	delay 15
 	applymovement 1, BattleFrontier_BattleTowerBattleRoom2_Movement_249545
 	waitmovement 0
-	msgbox gStringVar4, MSGBOX_DEFAULT
+	msgbox gSystemStringVar, MSGBOX_DEFAULT
 	waitmessage
 	tower_getopponentintro 1
 	applymovement 4, BattleFrontier_BattleTowerBattleRoom2_Movement_249545
 	waitmovement 0
-	msgbox gStringVar4, MSGBOX_DEFAULT
+	msgbox gSystemStringVar, MSGBOX_DEFAULT
 	waitmessage
 	goto BattleFrontier_BattleTowerBattleRoom2_EventScript_249069
 
@@ -84,13 +84,13 @@ BattleFrontier_BattleTowerBattleRoom2_EventScript_249026:: @ 8249026
 	delay 15
 	applymovement 1, BattleFrontier_BattleTowerBattleRoom2_Movement_249545
 	waitmovement 0
-	messageautoscroll gStringVar4
+	messageautoscroll gSystemStringVar
 	waitmessage
 	delay 48
 	tower_getopponentintro 1
 	applymovement 4, BattleFrontier_BattleTowerBattleRoom2_Movement_249545
 	waitmovement 0
-	messageautoscroll gStringVar4
+	messageautoscroll gSystemStringVar
 	waitmessage
 	delay 48
 

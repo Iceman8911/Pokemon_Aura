@@ -388,7 +388,7 @@ static const struct OamData sOam_SliderHeart =
     .y = 0,
     .affineMode = ST_OAM_AFFINE_OFF,
     .objMode = ST_OAM_OBJ_NORMAL,
-    .mosaic = 0,
+    .mosaic = FALSE,
     .bpp = ST_OAM_4BPP,
     .shape = SPRITE_SHAPE(8x8),
     .x = 0,
@@ -473,7 +473,7 @@ static const struct OamData sOam_NextTurn =
     .y = 0,
     .affineMode = ST_OAM_AFFINE_OFF,
     .objMode = ST_OAM_OBJ_NORMAL,
-    .mosaic = 0,
+    .mosaic = FALSE,
     .bpp = ST_OAM_4BPP,
     .shape = SPRITE_SHAPE(32x8),
     .x = 0,
@@ -859,19 +859,19 @@ static const struct CompressedSpriteSheet sSpriteSheets_ContestantsTurnBlinkEffe
 static const struct SpritePalette sSpritePalettes_ContestantsTurnBlinkEffect[CONTESTANT_COUNT] =
 {
     {
-        .data = (u16*)(gHeap + 0x1A0A4),
+        .data = (u16 *)(gHeap + 0x1A0A4),
         .tag = TAG_BLINK_EFFECT_CONTESTANT0
     },
     {
-        .data = (u16*)(gHeap + 0x1A0C4),
+        .data = (u16 *)(gHeap + 0x1A0C4),
         .tag = TAG_BLINK_EFFECT_CONTESTANT1
     },
     {
-        .data = (u16*)(gHeap + 0x1A0E4),
+        .data = (u16 *)(gHeap + 0x1A0E4),
         .tag = TAG_BLINK_EFFECT_CONTESTANT2
     },
     {
-        .data = (u16*)(gHeap + 0x1A104),
+        .data = (u16 *)(gHeap + 0x1A104),
         .tag = TAG_BLINK_EFFECT_CONTESTANT3
     }
 };
@@ -1396,7 +1396,7 @@ static void Task_RaiseCurtainAtStart(u8 taskId)
         gTasks[taskId].data[0]++;
         break;
     case 1:
-        *(s16*)&gBattle_BG1_Y += 7;
+        *(s16 *)&gBattle_BG1_Y += 7;
         if ((s16)gBattle_BG1_Y <= DISPLAY_HEIGHT)
             break;
         gTasks[taskId].data[0]++;
@@ -1582,7 +1582,7 @@ static void Task_HandleMoveSelectInput(u8 taskId)
                 StringCopy(gDisplayedStringBattle, gText_AppealNumButItCantParticipate);
             ContestClearGeneralTextWindow();
             StringExpandPlaceholders(gSystemStringVar, gDisplayedStringBattle);
-            Contest_StartTextPrinter(gSystemStringVar, 0);
+            Contest_StartTextPrinter(gSystemStringVar, FALSE);
             gBattle_BG0_Y = 0;
             gBattle_BG2_Y = 0;
             gTasks[taskId].func = Task_TryShowMoveSelectScreen;
@@ -1814,7 +1814,7 @@ static void Task_DoAppeals(u8 taskId)
             else
                 StringCopy(gStringVar2, sInvalidContestMoveNames[eContestantStatus[contestant].moveCategory]);
             StringExpandPlaceholders(gSystemStringVar, gText_MonAppealedWithMove);
-            Contest_StartTextPrinter(gSystemStringVar, 1);
+            Contest_StartTextPrinter(gSystemStringVar, TRUE);
             gTasks[taskId].tState = APPEALSTATE_WAIT_USED_MOVE_MSG;
         }
         return;
@@ -2076,7 +2076,7 @@ static void Task_DoAppeals(u8 taskId)
                 ContestClearGeneralTextWindow();
                 StringCopy(gStringVar1, gContestMons[contestant].nickname);
                 StringExpandPlaceholders(gSystemStringVar, gText_MonCantAppealNextTurn);
-                Contest_StartTextPrinter(gSystemStringVar, 1);
+                Contest_StartTextPrinter(gSystemStringVar, TRUE);
             }
             gTasks[taskId].tState = APPEALSTATE_WAIT_SKIP_NEXT_TURN_MSG;
         }
@@ -2118,7 +2118,7 @@ static void Task_DoAppeals(u8 taskId)
             ContestClearGeneralTextWindow();
             StringCopy(gStringVar1, gContestMons[contestant].nickname);
             StringExpandPlaceholders(gSystemStringVar, gText_JudgeLookedAtMonExpectantly);
-            Contest_StartTextPrinter(gSystemStringVar, 1);
+            Contest_StartTextPrinter(gSystemStringVar, TRUE);
             DoJudgeSpeechBubble(JUDGE_SYMBOL_ONE_EXCLAMATION);
             gTasks[taskId].tCounter = 0;
             gTasks[taskId].tState = APPEALSTATE_WAIT_JUDGE_COMBO;
@@ -2231,7 +2231,7 @@ static void Task_DoAppeals(u8 taskId)
                     StringExpandPlaceholders(gSystemStringVar, gText_MonsXWentOverGreat);
                 else
                     StringExpandPlaceholders(gSystemStringVar, gText_MonsXGotTheCrowdGoing);
-                Contest_StartTextPrinter(gSystemStringVar, 1);
+                Contest_StartTextPrinter(gSystemStringVar, TRUE);
                 gTasks[taskId].tCounter = 0;
                 gTasks[taskId].data[11] = 0;
                 if (r3 < 0)
@@ -2753,8 +2753,8 @@ static void Task_ContestReturnToField(u8 taskId)
 
 static void FieldCB_ContestReturnToField(void)
 {
-    ScriptContext2_Disable();
-    EnableBothScriptContexts();
+    UnlockPlayerFieldControls();
+    ScriptContext_Enable();
 }
 
 static void TryPutPlayerLast(void)
@@ -2853,7 +2853,7 @@ void SetContestants(u8 contestType, u8 rank)
     u8 opponentsCount = 0;
     u8 opponents[100];
     bool8 allowPostgameContestants = FALSE;
-    const u8 * filter;
+    const u8 *filter;
 
     TryPutPlayerLast();
 
@@ -3009,7 +3009,7 @@ static void DrawContestantWindowText(void)
 
 static u8 *Contest_CopyStringWithColor(const u8 *string, u8 color)
 {
-    u8 * ptr = StringCopy(gDisplayedStringBattle, gText_ColorTransparent);
+    u8 *ptr = StringCopy(gDisplayedStringBattle, gText_ColorTransparent);
     ptr[-1] = color; // Overwrites the "{COLOR TRANSPARENT}" part of the string.
     ptr = StringCopy(ptr, string);
 
@@ -3121,7 +3121,7 @@ static u8 CreateContestantSprite(u16 species, u32 otId, u32 personality, u32 ind
     u8 spriteId;
     species = SanitizeSpecies(species);
 
-    HandleLoadSpecialPokePic(&gMonBackPicTable[species], gMonSpritesGfxPtr->sprites.ptr[B_POSITION_PLAYER_LEFT], species, personality);
+    HandleLoadSpecialPokePic(FALSE, gMonSpritesGfxPtr->sprites.ptr[B_POSITION_PLAYER_LEFT], species, personality);
 
     LoadCompressedPalette(GetMonSpritePalFromSpeciesAndPersonality(species, otId, personality), 0x120, 0x20);
     SetMultiuseSpriteTemplateToPokemon(species, B_POSITION_PLAYER_LEFT);
@@ -3663,7 +3663,7 @@ static void ContestPrintLinkStandby(void)
     gBattle_BG0_Y = 0;
     gBattle_BG2_Y = 0;
     ContestClearGeneralTextWindow();
-    Contest_StartTextPrinter(gText_LinkStandby4, 0);
+    Contest_StartTextPrinter(gText_LinkStandby4, FALSE);
 }
 
 static void FillContestantWindowBgs(void)
@@ -4574,7 +4574,7 @@ static void PrintAppealMoveResultText(u8 contestant, u8 stringId)
         StringCopy(gStringVar3, gText_Contest_Fear);
     StringExpandPlaceholders(gSystemStringVar, sAppealResultTexts[stringId]);
     ContestClearGeneralTextWindow();
-    Contest_StartTextPrinter(gSystemStringVar, 1);
+    Contest_StartTextPrinter(gSystemStringVar, TRUE);
 }
 
 void MakeContestantNervous(u8 p)

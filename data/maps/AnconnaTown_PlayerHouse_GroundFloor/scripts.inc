@@ -25,6 +25,8 @@ EnterHouseWithRioluForFirstTime::
 	delay 60
 	applymovement 1, MumRunsToYouAtHome
 	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, WalkInPlaceDown
+	waitmovement 0
 	msgbox EnterHouseWithRioluForFirstTime_Text_0
 	waitmessage
 	msgbox EnterHouseWithRioluForFirstTime_Text_1
