@@ -8,6 +8,7 @@ AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	goto_if_ne AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 	clearflag RIOLU_IS_IN_PLAYER_HOUSE
 	addobject 4
+	showobjectat 4, MAP_ANCONNA_TOWN_PLAYER_HOUSE_GROUND_FLOOR
 	return
 
 AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
@@ -25,12 +26,12 @@ EnterHouseWithRioluForFirstTime::
 	delay 60
 	applymovement 1, MumRunsToYouAtHome
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, WalkInPlaceDown
-	waitmovement 0
 	msgbox EnterHouseWithRioluForFirstTime_Text_0
 	waitmessage
 	msgbox EnterHouseWithRioluForFirstTime_Text_1
 	waitmessage
+	applymovement OBJ_EVENT_ID_PLAYER, WalkInPlaceDown
+	waitmovement 0
 	msgbox EnterHouseWithRioluForFirstTime_Text_2
 	waitmessage
 	closemessage
@@ -52,6 +53,8 @@ EnterHouseWithRioluForFirstTime::
 	applymovement 2, FaceUp
 	applymovement 1, MomRunsBackToTheTable
 	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, WalkInPlaceDown
+	waitmovement 0
 	msgbox EnterHouseWithRioluForFirstTime_Text_6
 	waitmessage
 	closemessage
@@ -66,6 +69,8 @@ EnterHouseWithRioluForFirstTime::
 	applymovement 4, RioluSearches
 	waitmovement 0
 	msgbox EnterHouseWithRioluForFirstTime_Text_8
+	playmoncry SPECIES_RIOLU, CRY_MODE_NORMAL
+	waitmoncry
 	delay 30
 	applymovement OBJ_EVENT_ID_PLAYER, FaceDown
 	waitmovement 0
@@ -99,7 +104,7 @@ EnterHouseWithRioluForFirstTime::
 	waitmovement 0
 	msgbox EnterHouseWithRioluForFirstTime_Text_14
 	waitmessage
-	applymovement OBJ_EVENT_ID_PLAYER, WalkInPlaceDown
+	applymovement OBJ_EVENT_ID_PLAYER, LookRightThenSpeakDown
 	waitmovement 0
 	msgbox EnterHouseWithRioluForFirstTime_Text_15
 	waitmessage
@@ -190,7 +195,8 @@ Riolu::
 	applymovement 4, Happy
 	waitmovement 0
 	msgbox Riolu_Text_0
-	waitmessage
+	playmoncry SPECIES_RIOLU, CRY_MODE_NORMAL
+	waitmoncry
 	msgbox Riolu_Text_1
 	waitmessage
 	releaseall
@@ -394,6 +400,23 @@ AnconnaTown_PlayerHouse_Drawer::
 	return
 
 
+AnconnaTown_TalkToSibling::
+	lockall
+	compare GAME_PROGRESS, 5
+	goto_if_lt AnconnaTown_TalkToSibling_2
+AnconnaTown_TalkToSibling_1:
+	releaseall
+	return
+
+AnconnaTown_TalkToSibling_2:
+	msgbox AnconnaTown_TalkToSibling_Text_0
+	waitmessage
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Walk_Up
+	waitmovement 0
+	goto AnconnaTown_TalkToSibling_1
+
+
 MumComesToMeetYouAtTheStairCase:
 	emote_exclamation_mark
 	delay_16
@@ -537,6 +560,18 @@ Happy:
 	emote_heart
 	step_end
 
+WalkUp:
+	walk_up
+	step_end
+
+LookRightThenSpeakDown:
+	face_right
+	delay_16
+	delay_16
+	delay_16
+	walk_in_place_down
+	step_end
+
 EnterHouseWithRioluForFirstTime_Text_0:
 	.string "Mum: {COLOR RED}Waaah!!!$"
 
@@ -604,7 +639,7 @@ EnterHouseWithRioluForFirstTime_Text_14:
 	.string "relate to this. Shouldn't we call the\l"
 	.string "police or something?\p"
 	.string "Mom:{COLOR RED} We will inform the authorities but\n"
-	.string "in the mean time, your Father and I\l"
+	.string "in the meantime, your Father and I\l"
 	.string "think it would be best if you meet up\l"
 	.string "with an old colleague of mine in {COLOR GREEN}Scandi\l"
 	.string "City{COLOR RED}. The fact that you now have a\l"
@@ -816,3 +851,8 @@ AnconnaTown_PlayerHouse_NES_Text_0:
 
 AnconnaTown_PlayerHouse_Drawer_Text_0:
 	.string "Placeholder$"
+
+AnconnaTown_TalkToSibling_Text_0:
+	.string "Shouldn't I meet my sis?\p"
+	.string "After all, I haven't even seen her\n"
+	.string "today.$"

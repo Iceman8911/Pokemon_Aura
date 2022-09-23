@@ -3,6 +3,13 @@ Anconna_Town_PlayerHouse_Floor1_MapScripts::
 
 
 PlayerHouse_Sibling_Room::
+	compare GAME_PROGRESS, 4
+	goto_if_ne PlayerHouse_Sibling_Room_1
+	lockall
+	releaseall
+	return
+
+PlayerHouse_Sibling_Room_1:
 	lockall
 	msgbox PlayerHouse_Sibling_Room_Text_0
 	applymovement OBJ_EVENT_ID_PLAYER, PlayerHouse_PlayerMoveUp

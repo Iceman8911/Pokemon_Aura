@@ -3,3 +3,4 @@
 2 = Gotten Task To Obtain Mushrooms
 3 = Gotten Riolu
 4 = Shown Riolu, Need To Meet Sister https://aryion.com/g4/view/603673
+5 = Met Sister, Leaving Anconna Town

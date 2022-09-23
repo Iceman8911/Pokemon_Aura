@@ -62,7 +62,7 @@
       "x": 9,
       "y": 7,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -97,12 +97,21 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 13,
-      "y": 4,
+      "x": 14,
+      "y": 12,
       "elevation": 0,
       "var": "GAME_PROGRESS",
-      "var_value": "1",
-      "script": "PlayerCameDownstairsAfterWakingUp"
+      "var_value": "4",
+      "script": "AnconnaTown_TalkToSibling"
+    },
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 12,
+      "elevation": 0,
+      "var": "GAME_PROGRESS",
+      "var_value": "4",
+      "script": "AnconnaTown_TalkToSibling"
     }
   ],
   "bg_events": [

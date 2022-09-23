@@ -89,7 +89,8 @@ AnconnaWoods_1_Found_Riolu::
 	msgbox AnconnaWoods_1_Found_Riolu_Text_5
 	waitmessage
 	msgbox AnconnaWoods_1_Found_Riolu_Text_6
-	waitmessage
+	playmoncry SPECIES_RIOLU, CRY_MODE_ENCOUNTER
+	waitmoncry
 	msgbox AnconnaWoods_1_Found_Riolu_Text_7
 	waitmessage
 	closemessage
@@ -109,7 +110,8 @@ AnconnaWoods_1_Found_Riolu::
 	applymovement 3, RioluTurnsAround
 	waitmovement 0
 	msgbox AnconnaWoods_1_Found_Riolu_Text_12
-	closemessage
+	playmoncry SPECIES_RIOLU, CRY_MODE_WEAK
+	waitmoncry
 	applymovement 3, RioluApproachesYou
 	waitmovement 0
 	msgbox AnconnaWoods_1_Found_Riolu_Text_13
@@ -119,7 +121,8 @@ AnconnaWoods_1_Found_Riolu::
 	waitmessage
 	msgbox AnconnaWoods_1_Found_Riolu_Text_15
 	msgbox AnconnaWoods_1_Found_Riolu_Text_16
-	waitmessage
+	playmoncry SPECIES_RIOLU, CRY_MODE_NORMAL
+	waitmoncry
 	givecustommon SPECIES_RIOLU, 5, ITEM_FOCUS_SASH, , NATURE_HASTY, 0, , , , , , , , 31, , 31, 31
 	msgbox AnconnaWoods_1_Found_Riolu_Text_17
 	playfanfare MUS_OBTAIN_ITEM

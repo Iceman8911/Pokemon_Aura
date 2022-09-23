@@ -5,6 +5,7 @@ mapscripts AnconnaTown_PlayerHouse_GroundFloor_MapScripts {
         } else {
             clearflag(RIOLU_IS_IN_PLAYER_HOUSE)
             addobject(4)
+            showobjectat(4, MAP_ANCONNA_TOWN_PLAYER_HOUSE_GROUND_FLOOR)
         }
     }
     MAP_SCRIPT_ON_FRAME_TABLE[
@@ -18,12 +19,13 @@ script EnterHouseWithRioluForFirstTime {
             delay(60)
 			applymovement(1, MumRunsToYouAtHome)
 			waitmovement(0)
-            applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceDown)
-            waitmovement(0)
+            
 			msgbox(format("Mum: {COLOR RED}Waaah!!!"))
 			waitmessage
 			msgbox(format("{COLOR RED}I heard awful loud noises coming from that forest and I was just about to rush there to get you.\pWhat happened in there?"))
             waitmessage
+            applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceDown)
+            waitmovement(0)
             msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: About that....."))
             waitmessage
             closemessage
@@ -45,6 +47,8 @@ script EnterHouseWithRioluForFirstTime {
             applymovement(2, FaceUp)
             applymovement(1, MomRunsBackToTheTable)
             waitmovement(0)
+            applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceDown)
+            waitmovement(0)
             msgbox(format("Just outside our house, I overheard a group of {COLOR GREEN}three{COLOR DARK_GRAY} strange looking people talking about getting a particular Pokemon from the forest just before they entered it. I trailed them since they looked suspicious"
             "and eventually I heard two voices shouting about someone going missing. Deeper into the forest where I was to get the mushrooms, I found....\pWell, its better to show it."))
             waitmessage
@@ -60,6 +64,8 @@ script EnterHouseWithRioluForFirstTime {
             applymovement(4, RioluSearches)
             waitmovement(0)
             msgbox(format("{COLOR GREEN}Riiolu?"))
+            playmoncry(SPECIES_RIOLU, CRY_MODE_NORMAL)
+            waitmoncry
             delay(30)
             applymovement(OBJ_EVENT_ID_PLAYER, FaceDown)
             waitmovement(0)
@@ -92,10 +98,10 @@ script EnterHouseWithRioluForFirstTime {
             applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceDown)
             waitmovement(0)
             msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Yeah, but how does that relate to this. Shouldn't we call the police or something?\p"
-            "Mom:{COLOR RED} We will inform the authorities but in the mean time, your Father and I think it would be best if you meet up with an old colleague of mine in {COLOR GREEN}Scandi City{COLOR RED}."
+            "Mom:{COLOR RED} We will inform the authorities but in the meantime, your Father and I think it would be best if you meet up with an old colleague of mine in {COLOR GREEN}Scandi City{COLOR RED}."
             "The fact that you now have a Riolu who trusts you and some proficiency in battling means that you should have little difficulty getting there."))
             waitmessage
-            applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceDown)
+            applymovement(OBJ_EVENT_ID_PLAYER, LookRightThenSpeakDown)
             waitmovement(0)
             msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Are you sure that Riolu trusts me? It still looks a bit uncomfortable here."))
             waitmessage
@@ -186,7 +192,8 @@ script Riolu {
     applymovement(4, Happy)
     waitmovement(0)
     msgbox(format("{COLOR GREEN}Rioooluu"))
-    waitmessage
+    playmoncry(SPECIES_RIOLU, CRY_MODE_NORMAL)
+    waitmoncry
     msgbox(format("(It seems that Riolu feels safer with you around)"))
     waitmessage
     releaseall
@@ -350,6 +357,17 @@ script AnconnaTown_PlayerHouse_Drawer {
 
 
 
+script AnconnaTown_TalkToSibling {
+    lockall
+    if (var(GAME_PROGRESS)< 5) {
+        msgbox(format("Shouldn't I meet my sis?\pAfter all, I haven't even seen her today."))
+        waitmessage
+        closemessage
+        applymovement(OBJ_EVENT_ID_PLAYER, Walk_Up)
+        waitmovement(0)
+    }
+    releaseall
+}
 
 
 
@@ -451,4 +469,16 @@ movement MomExclaims {
 
 movement Happy {
     emote_heart
+}
+
+movement WalkUp {
+    walk_up
+}
+
+movement LookRightThenSpeakDown {
+    face_right
+    delay_16
+    delay_16
+    delay_16
+    walk_in_place_down
 }

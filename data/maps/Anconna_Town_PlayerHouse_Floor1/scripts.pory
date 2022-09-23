@@ -1,11 +1,16 @@
 mapscripts Anconna_Town_PlayerHouse_Floor1_MapScripts {}
 
 script PlayerHouse_Sibling_Room {
+    if(var(GAME_PROGRESS) != 4) {
     lockall
     msgbox(format("Um,\pI don't think I should go in there..."))
     applymovement(OBJ_EVENT_ID_PLAYER, PlayerHouse_PlayerMoveUp)
     waitmovement(0)
     releaseall
+    } else {
+        lockall
+        releaseall
+    }
 }
 
 movement PlayerHouse_PlayerMoveUp {

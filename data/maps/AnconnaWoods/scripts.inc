@@ -95,7 +95,8 @@ AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu::
 	msgbox AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_3
 	waitmessage
 	msgbox AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_4
-	waitmessage
+	playmoncry SPECIES_RIOLU, CRY_MODE_NORMAL
+	waitmoncry
 	msgbox AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_5
 	waitmessage
 	msgbox AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_6
@@ -109,7 +110,8 @@ AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu::
 	msgbox AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_9
 	waitmessage
 	msgbox AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_10
-	waitmessage
+	playmoncry SPECIES_RIOLU, CRY_MODE_NORMAL
+	waitmoncry
 	msgbox AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_11
 	waitmessage
 	msgbox AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_12
@@ -390,11 +392,8 @@ AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_13:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: It seems like they've given\n"
 	.string "up on getting that Pokémon, I doubt\l"
 	.string "that their original plans were any good\l"
-	.string "since it ran away from them.\p"
-	.string "Maybe I should find it and bring it to\n"
-	.string "{COLOR GREEN}The Professor{COLOR DARK_GRAY} before they change\l"
-	.string "their mind. I'm sure he'll know what to\l"
-	.string "do$"
+	.string "since it ran away from them. I wonder\l"
+	.string "where it is now...$"
 
 AnconnaWoods_Lium_Text_0:
 	.string "???: {COLOR BLUE}Deep Breaths.\p"
@@ -460,9 +459,7 @@ Anconna_Woods_First_Lium_Fight_Won_Text_1:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: What was all that about?\p"
 	.string "That guy was obviously inexperienced\n"
 	.string "but suspicious and probably the guy\l"
-	.string "those other people were looking for.\l"
-	.string "Maybe I should tell {COLOR GREEN}Mom{COLOR DARK_GRAY} and {COLOR GREEN}The\l"
-	.string "Professor{COLOR DARK_GRAY} about this too.\p"
+	.string "those other people were looking for.\p"
 	.string "Anyways, Let's get you healed, Riolu.$"
 
 AnconnaWoods_BugCatcher1_Text_0:

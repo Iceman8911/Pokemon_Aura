@@ -1,1 +1,18 @@
 mapscripts AnconnaTown_SiblingsRoom_MapScripts {}
+
+script SisterBidoofAtHome {
+    lockall
+    faceplayer
+    applymovement(1, Happy)
+    msgbox(format("{COLOR GREEN}Bi Dooooff...\p{COLOR DARK_GRAY}(Bidoof looks very snug and happy)"), 2)
+    waitmessage
+    releaseall
+}
+
+script Anconna_Town_SisterAtHome {
+    lockall
+    msgbox(format("i literally don't have a good name atm... :/"))
+    msgbox(format("Sis:{COLOR RED}Where is it?"))
+    addvar(GAME_PROGRESS, 1)
+    releaseall
+}
