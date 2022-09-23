@@ -29,7 +29,8 @@ AnconnaTown_EventScript_Antidote::
 AnconnaTown_Bidoof::
 	lockall
 	msgbox AnconnaTown_Bidoof_Text_0, 2
-	waitmessage
+	playmoncry SPECIES_RIOLU, CRY_MODE_NORMAL
+	waitmoncry
 	releaseall
 	end
 

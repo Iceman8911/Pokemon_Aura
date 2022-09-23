@@ -5,7 +5,7 @@ AnconnaTown_SiblingsRoom_MapScripts::
 SisterBidoofAtHome::
 	lockall
 	faceplayer
-	applymovement 1, Happy
+	applymovement 2, Happy
 	msgbox SisterBidoofAtHome_Text_0, 2
 	waitmessage
 	releaseall

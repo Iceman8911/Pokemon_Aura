@@ -3,7 +3,7 @@ mapscripts AnconnaTown_SiblingsRoom_MapScripts {}
 script SisterBidoofAtHome {
     lockall
     faceplayer
-    applymovement(1, Happy)
+    applymovement(2, Happy)
     msgbox(format("{COLOR GREEN}Bi Dooooff...\p{COLOR DARK_GRAY}(Bidoof looks very snug and happy)"), 2)
     waitmessage
     releaseall
