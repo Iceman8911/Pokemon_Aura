@@ -151,3 +151,4 @@
 	.include "src/speech_bubble.o"
 	.include "src/dns.o"
 	.include "src/debug.o"
+	.include "src/quests.o"

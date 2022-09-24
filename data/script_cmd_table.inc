@@ -229,6 +229,9 @@ gScriptCmdTable::
 	.4byte ScrCmd_bufferitemnameplural      @ 0xe2
     .4byte ScrCmd_givecustommon				@ 0xe3
 	.4byte ScrCmd_bufferdynamicmulti        @ 0xe3
+	.4byte ScrCmd_questmenu                 @ 0xe3
+    .4byte ScrCmd_subquestmenu              @ 0xe4
+    .4byte ScrCmd_returnqueststate          @ 0xe5
 
 gScriptCmdTableEnd::
 	.4byte ScrCmd_nop
