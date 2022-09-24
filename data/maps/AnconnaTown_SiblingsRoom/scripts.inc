@@ -7,7 +7,8 @@ SisterBidoofAtHome::
 	faceplayer
 	applymovement 2, Happy
 	msgbox SisterBidoofAtHome_Text_0, 2
-	waitmessage
+	playmoncry SPECIES_RIOLU, CRY_MODE_NORMAL
+	waitmoncry
 	releaseall
 	return
 

@@ -1074,6 +1074,7 @@ struct SaveBlock1
     // sizeof: 0x3D88
     int *dexCaught;
     u8 dexSeen;
+
 };
 
 extern struct SaveBlock1* gSaveBlock1Ptr;
