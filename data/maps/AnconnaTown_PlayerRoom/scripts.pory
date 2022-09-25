@@ -10,6 +10,14 @@ script AccessPlayerPC {
     releaseall
 }
 
+script Quests{
+	lockall
+	setflag(FLAG_SYS_QUEST_MENU_GET)
+	msgbox("Quests unlocked")
+	closemessage
+	releaseall
+}
+
 script CheckIfPlayerTookPotionOutOfBedroomPC {
 	lockall
 	checkitem(ITEM_POTION, 1)

@@ -11,6 +11,15 @@ AccessPlayerPC::
 	return
 
 
+Quests::
+	lockall
+	setflag FLAG_SYS_QUEST_MENU_GET
+	msgbox Quests_Text_0
+	closemessage
+	releaseall
+	return
+
+
 CheckIfPlayerTookPotionOutOfBedroomPC::
 	lockall
 	checkitem ITEM_POTION, 1
@@ -38,6 +47,9 @@ CheckIfPlayerTookPotionOutOfBedroomPC_2:
 WalkInPlaceDown:
 	walk_in_place_faster_down
 	step_end
+
+Quests_Text_0:
+	.string "Quests unlocked$"
 
 CheckIfPlayerTookPotionOutOfBedroomPC_Text_0:
 	.string "I feel like I'm missing something. Maybe\n"

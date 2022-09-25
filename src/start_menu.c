@@ -164,7 +164,7 @@ static const struct WindowTemplate sPyramidFloorWindowTemplate_2 = {0, 1, 1, 0xA
 static const struct WindowTemplate sPyramidFloorWindowTemplate_1 = {0, 1, 1, 0xC, 4, 0xF, 8};
 
 static const u8 gText_MenuDebug[] = _("DEBUG");
-static const u8 sText_QuestMenu[] = _("QUESTS");
+static const u8 sText_QuestMenu[] = _("Quests");
 
 static const struct MenuAction sStartMenuItems[] =
 {

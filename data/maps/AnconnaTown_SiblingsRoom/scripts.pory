@@ -13,7 +13,11 @@ script SisterBidoofAtHome {
 script Anconna_Town_SisterAtHome {
     lockall
     msgbox(format("i literally don't have a good name atm... :/"))
-    msgbox(format("Sis:{COLOR RED}Where is it?"))
+    msgbox(format("Sis:{COLOR RED} Where is it?\p...\pWHERE THE HECK COULD THIS THIG E?"))
+    waitmessage
+    msgbox(format("(It does't seem like she oticed me, maye I should try callig her agai...)"))
+    addvar(VAR_TEMP_0, 1)
+    setflag(FLAG_SYS_QUEST_MENU_GET)
     addvar(GAME_PROGRESS, 1)
     releaseall
 }
