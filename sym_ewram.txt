@@ -152,3 +152,4 @@
 	.include "src/dns.o"
 	.include "src/debug.o"
 	.include "src/quests.o"
+	.include "src/field_pic.o"
