@@ -392,7 +392,57 @@ LittlerootTown_EventScript_GoSaveBirchTrigger::
 	releaseall
 	end
 
+
+LRT_OPT1:
+	.string "Option 1$"
+
+LRT_OPT2:
+	.string "Option 2$"
+
+LRT_OPT3:
+	.string "Option 3$"
+
+LRT_OPT4:
+	.string "Option 4$"
+
+LRT_OPT5:
+	.string "Option 5$"
+
+LRT_OPT6:
+	.string "Option 6$"
+
+LRT_TextBDM:
+	.string "Contents of the buffers:\p1: {STR_VAR_1}, 2: {STR_VAR_2}, 3: {STR_VAR_3},\n4: {STR_VAR_4}, 5: {STR_VAR_5}, 6: {STR_VAR_6}$"
+
+LRT_YouChose:
+	.string "You chose option number {STR_VAR_1}.$"
+
+LRT_GridMC:
+	.string "Displaying a dynamic grid multichoice.$"
+
+LRT_NormalMC:
+	.string "Displaying a dynamic multichoice.$"
+
 LittlerootTown_EventScript_TownSign::
+	lockall
+	msgbox LRT_GridMC
+	bufferdynamicmulti LRT_OPT1, LRT_OPT2, LRT_OPT3, LRT_OPT4, LRT_OPT5, LRT_OPT6
+	multichoicegrid 5, 5, MULTI_DYNAMIC_6, 3, 1
+	closemessage
+	msgbox LRT_TextBDM
+	addvar VAR_RESULT, 1
+	buffernumberstring 0, VAR_RESULT
+	msgbox LRT_YouChose
+	closemessage
+	msgbox LRT_NormalMC
+	bufferdynamicmulti LRT_OPT1, LRT_OPT2, LRT_OPT3, LRT_OPT4, LRT_OPT5, LRT_OPT6
+	multichoice 0, 0, MULTI_DYNAMIC_6, 1
+	closemessage
+	msgbox LRT_TextBDM
+	addvar VAR_RESULT, 1
+	buffernumberstring 0, VAR_RESULT
+	msgbox LRT_YouChose
+	closemessage
 	msgbox LittlerootTown_Text_TownSign, MSGBOX_SIGN
 	end
 

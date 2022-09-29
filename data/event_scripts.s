@@ -1091,6 +1091,8 @@ Common_EventScript_LegendaryFlewAway::
 
 	.include "data/maps/AnconnaTown_SiblingsRoom/scripts.inc"
 
+	.include "data/scripts/remember.inc"
+
 @@ Used by bufferdynamicmulti to ensure that there aren't any empty
 @@ empty strings buffered with bufferdynamicmulti to prevent crashes.
 RyuEmptyTextPtr:: 

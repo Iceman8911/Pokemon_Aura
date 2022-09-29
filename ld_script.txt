@@ -706,7 +706,7 @@ SECTIONS {
         src/gym_leader_rematch.o(.rodata);
         src/speech_bubble.o(.rodata);
         src/battle_transition_frontier.o(.rodata);
-        src/unk_transition.o(.rodata);
+        
 		src/field_pic.o(.rodata);
         src/text_input_strings.o(.rodata);
         src/fonts.o(.rodata);

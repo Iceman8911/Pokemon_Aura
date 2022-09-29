@@ -5,6 +5,17 @@ script AnconnaLake_FisherMan1 {
     if(var(VAR_TEMP_0) == 0) {
         //2)
         msgbox(format("{COLOR BLUE}Today's a great day for fishing isn't it, {COLOR GREEN}{PLAYER}."), 2)
+        waitmessage
+        bufferdynamicmulti("It sure is...","Not feeling like it actually...")
+        multichoice(25, 0,MULTI_DYNAMIC_2, 1)
+        switch(var(VAR_RESULT)) {
+            case 0:
+            msgbox(format("{COLOR BLUE}Ah, I knew it."))
+            case 1:
+            msgbox(format("{COLOR BLUE}Nah, I'm very sure of it."))
+            default:
+            msgbox(format("Didn't work bohoo"))
+        }
         //destroy_speech_bubble
         setvar(VAR_TEMP_0, 1)
         closemessage
@@ -27,6 +38,13 @@ script AnconnaLake_FisherMan2 {
     //release
 }
 
+text Yes {
+    "Yes"
+}
+
+text No {
+    "No"
+}
 
 script AnconnaLake_FisherMan3 {
     lockall
@@ -34,8 +52,10 @@ script AnconnaLake_FisherMan3 {
         //3)
         msgbox(format("{COLOR BLUE}Hello there {COLOR GREEN}{PLAYER}{COLOR BLUE}, this weather's nice for some fishing.\pSay,\pDo you want to give a try?"), 2)
         //destroy_speech_bubble
-        yesnobox(25, 0)
-        if(var(VAR_RESULT) == 1) {
+        closemessage
+        bufferdynamicmulti(Yes, No, Yes, No, Yes, No)
+        multichoice(0, 0, MULTI_DYNAMIC_6, 1)
+        if(var(VAR_RESULT) == 0) {
             //OBJ_EVENT_ID_PLAYER)
             msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Sure, it could be fun."))
             //destroy_speech_bubble

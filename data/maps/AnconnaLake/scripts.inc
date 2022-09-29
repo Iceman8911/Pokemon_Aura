@@ -5,16 +5,32 @@ AnconnaLake_MapScripts::
 AnconnaLake_FisherMan1::
 	compare VAR_TEMP_0, 0
 	goto_if_eq AnconnaLake_FisherMan1_1
-	msgbox AnconnaLake_FisherMan1_Text_1, 2
+	msgbox AnconnaLake_FisherMan1_Text_6, 2
 	setvar VAR_TEMP_0, 0
 	closemessage
 	return
 
 AnconnaLake_FisherMan1_1:
 	msgbox AnconnaLake_FisherMan1_Text_0, 2
+	waitmessage
+	bufferdynamicmulti AnconnaLake_FisherMan1_Text_1, AnconnaLake_FisherMan1_Text_2
+	multichoice 25, 0, MULTI_DYNAMIC_2, 1
+	switch VAR_RESULT
+	case 0, AnconnaLake_FisherMan1_6
+	case 1, AnconnaLake_FisherMan1_7
+	msgbox AnconnaLake_FisherMan1_Text_5
+AnconnaLake_FisherMan1_4:
 	setvar VAR_TEMP_0, 1
 	closemessage
 	return
+
+AnconnaLake_FisherMan1_6:
+	msgbox AnconnaLake_FisherMan1_Text_3
+	goto AnconnaLake_FisherMan1_4
+
+AnconnaLake_FisherMan1_7:
+	msgbox AnconnaLake_FisherMan1_Text_4
+	goto AnconnaLake_FisherMan1_4
 
 
 AnconnaLake_FisherMan2::
@@ -34,8 +50,10 @@ AnconnaLake_FisherMan3_1:
 
 AnconnaLake_FisherMan3_2:
 	msgbox AnconnaLake_FisherMan3_Text_0, 2
-	yesnobox 25, 0
-	compare VAR_RESULT, 1
+	closemessage
+	bufferdynamicmulti Yes, No, Yes, No, Yes, No
+	multichoice 0, 0, MULTI_DYNAMIC_6, 1
+	compare VAR_RESULT, 0
 	goto_if_eq AnconnaLake_FisherMan3_5
 	msgbox AnconnaLake_FisherMan3_Text_4
 	msgbox AnconnaLake_FisherMan3_Text_5
@@ -57,6 +75,21 @@ AnconnaLake_FisherMan1_Text_0:
 	.string "{COLOR GREEN}{PLAYER}.$"
 
 AnconnaLake_FisherMan1_Text_1:
+	.string "It sure is...$"
+
+AnconnaLake_FisherMan1_Text_2:
+	.string "Not feeling like it actually...$"
+
+AnconnaLake_FisherMan1_Text_3:
+	.string "{COLOR BLUE}Ah, I knew it.$"
+
+AnconnaLake_FisherMan1_Text_4:
+	.string "{COLOR BLUE}Nah, I'm very sure of it.$"
+
+AnconnaLake_FisherMan1_Text_5:
+	.string "Didn't work bohoo$"
+
+AnconnaLake_FisherMan1_Text_6:
 	.string "{COLOR BLUE}So I invited my brothers over.\p"
 	.string "Who knows what we'll catch today.$"
 
@@ -96,3 +129,9 @@ AnconnaLake_FisherMan3_Text_5:
 
 AnconnaLake_FisherMan3_Text_6:
 	.string "{COLOR BLUE}How are the fish biting, {COLOR GREEN}{PLAYER}?$"
+
+Yes::
+	.string "Yes$"
+
+No::
+	.string "No$"

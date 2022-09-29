@@ -2013,12 +2013,12 @@ void GenerateQuestLocation(s32 questId)
 		           sSideQuests[sStateDataPtr->parentQuest].subquests[questId].map);
 	}
 
-	StringExpandPlaceholders(gStringVar4, sText_ShowLocation);
+	StringExpandPlaceholders(gSystemStringVar, sText_ShowLocation);
 }
 void PrintQuestLocation(s32 questId)
 {
 	FillWindowPixelBuffer(1, 0);
-	QuestMenu_AddTextPrinterParameterized(1, 2, gStringVar4, 2, 3, 2, 0, 0,
+	QuestMenu_AddTextPrinterParameterized(1, 2, gSystemStringVar, 2, 3, 2, 0, 0,
 	                                      4);
 }
 void GenerateQuestFlavorText(s32 questId)
@@ -2273,11 +2273,11 @@ u8 GenerateSubquestState(u8 questId)
 	if (QuestMenu_GetSetSubquestState(parentQuest, FLAG_GET_COMPLETED,
 	                                  questId))
 	{
-		StringCopy(gStringVar4, sSideQuests[parentQuest].subquests[questId].type);
+		StringCopy(gSystemStringVar, sSideQuests[parentQuest].subquests[questId].type);
 	}
 	else
 	{
-		StringCopy(gStringVar4, sText_Empty);
+		StringCopy(gSystemStringVar, sText_Empty);
 	}
 
 	return 2;
@@ -2287,28 +2287,28 @@ u8 GenerateQuestState(u8 questId)
 {
 	if (QuestMenu_GetSetQuestState(questId, FLAG_GET_COMPLETED))
 	{
-		StringCopy(gStringVar4, sText_Complete);
+		StringCopy(gSystemStringVar, sText_Complete);
 		return 2;
 	}
 	else if (QuestMenu_GetSetQuestState(questId, FLAG_GET_REWARD))
 	{
-		StringCopy(gStringVar4, sText_Reward);
+		StringCopy(gSystemStringVar, sText_Reward);
 		return 1;
 	}
 	else if (QuestMenu_GetSetQuestState(questId, FLAG_GET_ACTIVE))
 	{
-		StringCopy(gStringVar4, sText_Active);
+		StringCopy(gSystemStringVar, sText_Active);
 		return 3;
 	}
 	else
 	{
-		StringCopy(gStringVar4, sText_Empty);
+		StringCopy(gSystemStringVar, sText_Empty);
 	}
 }
 
 void PrintQuestState(u8 windowId, u8 y, u8 colorIndex)
 {
-	QuestMenu_AddTextPrinterParameterized(windowId, 0, gStringVar4, 200, y, 0,
+	QuestMenu_AddTextPrinterParameterized(windowId, 0, gSystemStringVar, 200, y, 0,
 	                                      0, 0xFF, colorIndex);
 }
 
@@ -2419,8 +2419,8 @@ static void GenerateMenuContext(void)
 
 static void PrintNumQuests(void)
 {
-	StringExpandPlaceholders(gStringVar4, sText_QuestNumberDisplay);
-	QuestMenu_AddTextPrinterParameterized(2, 0, gStringVar4, 167, 1, 0, 1, 0,
+	StringExpandPlaceholders(gSystemStringVar, sText_QuestNumberDisplay);
+	QuestMenu_AddTextPrinterParameterized(2, 0, gSystemStringVar, 167, 1, 0, 1, 0,
 	                                      0);
 }
 static void PrintMenuContext(void)

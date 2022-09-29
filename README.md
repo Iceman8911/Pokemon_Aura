@@ -23,6 +23,55 @@ Close Menu: Closes the menu.
 
 You're free to clone/merge/replicate this feature as well as edit it however you like. Credit isn't necessary. Just be sure to share it with your friends!
 The menu itself is scripted in data/scripts/script_debug_menu.inc
+
+Dynamic Multichoices
+This is a feature branch that makes script multichoices (pory and standard!) much more sane to use and edit. Never have to add a whole multichoice menu to 4 different files again!
+
+It's pretty simple to use.
+
+First step is to
+bufferdynamicmulti string1, string2, string3, . . .
+(up to 6 strings can be specified. Missing strings will be filled automatically.) then
+multichoice Xloc Yloc, MULTI_DYNAMIC_Z, ignoreB
+where Z is the number of choices you want your menu to have. Other than this, it works exactly like the standard multichoice. This allows you to generate multichoices in your script rather than having to define new constants in other files for them. Example Porycript:
+
+text MNM_1 {
+    "Sweet"
+}
+
+text MNM_2 {
+    "Spicy"
+}
+
+text MNM_3 {
+    "Sour"
+}
+
+script myNewMultiScript {
+    msgbox("What's your favorite flavor?")
+    bufferdynamicmulti(MNM_1, MNM_2, MNM_3)
+    multichoice(0, 0, MULTI_DYNAMIC_3, 1)
+    switch (var(VAR_RESULT)) {
+        case 0:
+            msgbox("You chose Sweet!)
+            goto(sweetScriptActions)
+        case 1:
+            msgbox("You chose Spicy!)
+            goto(sweetScriptActions)
+        case 2:
+            msgbox("You chose Sour!)
+            goto(sweetScriptActions)
+    }
+    release
+    end
+}
+And this is all you need! No more tracking multiple files for basic multichoices!
+
+NOTICE FOR MERGING!
+BEFORE merging this, to save yourself a headache, replace EVERY INSTANCE of "gStringVar4" with "gSystemString"
+There should be NEAR 800 INSTANCES.
+
+
 # ORIGINAL README.MD BELOW
 # About this branch
 This branch adds 3 new pockets to the bag based on changes to it from later generations:

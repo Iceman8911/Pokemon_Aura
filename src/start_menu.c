@@ -51,6 +51,7 @@
 #include "constants/songs.h"
 
 extern u8 DebugMenuScript[];
+extern u8 Remember[];
 
 // Menu actions
 enum
@@ -70,6 +71,7 @@ enum
     MENU_ACTION_PYRAMID_BAG,
     MENU_ACTION_DEBUG,
     MENU_ACTION_QUEST_MENU,
+    MENU_ACTION_REMEMBER,
 };
 
 // Save status
@@ -112,6 +114,7 @@ static bool8 StartMenuBattlePyramidRetireCallback(void);
 static bool8 StartMenuBattlePyramidBagCallback(void);
 static bool8 StartMenuDebugCallback(void);
 static bool8 QuestMenuCallback(void);
+static bool8 RememberCallback(void);
 
 // Menu callbacks
 static bool8 SaveStartCallback(void);
@@ -163,6 +166,7 @@ static const u8 *const sPyramidFloorNames[FRONTIER_STAGES_PER_CHALLENGE + 1] =
 static const struct WindowTemplate sPyramidFloorWindowTemplate_2 = {0, 1, 1, 0xA, 4, 0xF, 8};
 static const struct WindowTemplate sPyramidFloorWindowTemplate_1 = {0, 1, 1, 0xC, 4, 0xF, 8};
 
+static const u8 sText_RememberText[] = _("Hmm..");
 static const u8 gText_MenuDebug[] = _("DEBUG");
 static const u8 sText_QuestMenu[] = _("Quests");
 
@@ -182,8 +186,8 @@ static const struct MenuAction sStartMenuItems[] =
     [MENU_ACTION_RETIRE_FRONTIER] = {gText_MenuRetire,  {.u8_void = StartMenuBattlePyramidRetireCallback}},
     [MENU_ACTION_PYRAMID_BAG]     = {gText_MenuBag,     {.u8_void = StartMenuBattlePyramidBagCallback}},
     [MENU_ACTION_DEBUG]           = {gText_MenuDebug,   {.u8_void = StartMenuDebugCallback}},
-
     [MENU_ACTION_QUEST_MENU]        = {sText_QuestMenu, {.u8_void = QuestMenuCallback}},
+    [MENU_ACTION_REMEMBER]        = {sText_RememberText, {.u8_void = RememberCallback}},
 };
 
 static const struct BgTemplate sBgTemplates_LinkBattleSave[] =
@@ -331,6 +335,7 @@ static void BuildNormalStartMenu(void)
     if (FlagGet(FLAG_SYS_QUEST_MENU_GET))
         AddStartMenuAction(MENU_ACTION_QUEST_MENU);
     
+    AddStartMenuAction(MENU_ACTION_REMEMBER);
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
     AddStartMenuAction(MENU_ACTION_EXIT);
@@ -634,7 +639,8 @@ static bool8 HandleStartMenuInput(void)
             && gMenuCallback != StartMenuExitCallback
             && gMenuCallback != StartMenuDebugCallback
             && gMenuCallback != StartMenuSafariZoneRetireCallback
-            && gMenuCallback != StartMenuBattlePyramidRetireCallback)
+            && gMenuCallback != StartMenuBattlePyramidRetireCallback
+            && gMenuCallback != RememberCallback)
         {
            FadeScreen(FADE_TO_BLACK, 0);
         }
@@ -794,6 +800,15 @@ static bool8 StartMenuSafariZoneRetireCallback(void)
     RemoveExtraStartMenuWindows();
     HideStartMenu();
     SafariZoneRetirePrompt();
+
+    return TRUE;
+}
+
+static bool8 RememberCallback(void)
+{
+    RemoveExtraStartMenuWindows();
+    HideStartMenu();
+    ScriptContext_SetupScript(Remember);
 
     return TRUE;
 }
@@ -1487,3 +1502,5 @@ static bool8 QuestMenuCallback(void)
     CreateTask(Task_QuestMenu_OpenFromStartMenu, 0);
     return TRUE;
 }
+
+

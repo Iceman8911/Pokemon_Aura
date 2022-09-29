@@ -450,7 +450,7 @@ static const u8 *ExpandPlaceholder_StringVar3(void)
 
 static const u8 *ExpandPlaceholder_StringVar4(void)
 {
-    return gSystemStringVar;
+    return gStringVar4;
 }
 
 static const u8 *ExpandPlaceholder_StringVar5(void)

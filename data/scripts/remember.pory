@@ -1,0 +1,22 @@
+script Remember{
+    lockall
+    delay(30)
+    applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceDown)
+    waitmovement(0)
+    delay(30)
+    switch (var(GAME_PROGRESS)) {
+        case 0:
+        msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Time to start the day!"))
+        case 1:
+        msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Time to start the day!"))
+        case 2:
+        msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Sigh..only the good mushrooms can be found in the deep parts of {COLOR GREEN}Anconna Forest{COLOR DARK_GRAY}..."))
+        case 3:
+        msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: This was unexpected...\pI probably need to show my parents this..."))
+        case 4:
+        msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: I'd better check up on little sister then...."))
+        case 5:
+        msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Time to go then....\p{COLOR GREEN}Riolu{COLOR DARK_GRAY}, are you with me?\p....\p{COLOR GREEN}Riol Rioluuuu!!{COLOR DARK_GRAY}"))
+    }
+    releaseall
+}
