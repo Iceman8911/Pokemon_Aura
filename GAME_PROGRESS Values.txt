@@ -2,8 +2,9 @@
 1 = Can Go Downstairs
 2 = Gotten Task To Obtain Mushrooms
 3 = Gotten Riolu
-4 = Shown Riolu, Need To Meet Sister https://aryion.com/g4/view/603673
+4 = Shown Riolu, Need To Meet Sister 
 5 = Met Sister, Leaving Anconna Town
+6 = Looking For Sister's Bidoof Comb
 
 
 
@@ -13,3 +14,81 @@
 
 
 Bonbon, Blossom, 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://aryion.com/g4/view/603673

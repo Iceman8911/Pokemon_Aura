@@ -145,48 +145,63 @@ PlayerCameDownstairsAfterWakingUp::
 	waitmovement 0
 	msgbox PlayerCameDownstairsAfterWakingUp_Text_0
 	waitmessage
+	bufferdynamicmulti PlayerCameDownstairsAfterWakingUp_Text_1, PlayerCameDownstairsAfterWakingUp_Text_2
+	multichoice 25, 10, MULTI_DYNAMIC_2, 1
+	switch VAR_RESULT
+	case 0, PlayerCameDownstairsAfterWakingUp_3
+	case 1, PlayerCameDownstairsAfterWakingUp_4
+PlayerCameDownstairsAfterWakingUp_1:
+	waitmessage
 	closemessage
 	applymovement 1, MumTakesYouToTheSofa
 	applymovement OBJ_EVENT_ID_PLAYER, YouWalkToTheSofa
 	applymovement OBJ_EVENT_ID_CAMERA, YouWalkToTheSofa
 	waitmovement 0
-	msgbox PlayerCameDownstairsAfterWakingUp_Text_1
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_5
 	waitmessage
 	closemessage
 	applymovement 2, DadWalksToYou
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, FaceRight
 	waitmovement 0
-	msgbox PlayerCameDownstairsAfterWakingUp_Text_2
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_6
 	waitmessage
-	msgbox PlayerCameDownstairsAfterWakingUp_Text_3
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_7
 	setflag FLAG_SYS_B_DASH
 	setflag FLAG_RECEIVED_RUNNING_SHOES
 	applymovement OBJ_EVENT_ID_PLAYER, FaceLeft
 	waitmovement 0
-	msgbox PlayerCameDownstairsAfterWakingUp_Text_4
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_8
 	waitmessage
-	msgbox PlayerCameDownstairsAfterWakingUp_Text_5
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_9
 	waitmessage
-	msgbox PlayerCameDownstairsAfterWakingUp_Text_6
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_10
 	waitmessage
-	msgbox PlayerCameDownstairsAfterWakingUp_Text_7
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_11
 	waitmessage
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, FaceRight
 	waitmovement 0
-	msgbox PlayerCameDownstairsAfterWakingUp_Text_8
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_12
 	closemessage
 	applymovement 1, MumReturnsToSofa
 	applymovement 2, DadReturnsToSofa
 	waitmovement 0
 	delay 90
-	msgbox PlayerCameDownstairsAfterWakingUp_Text_9
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_13
 	waitmessage
 	special RemoveCameraObject
 	addvar GAME_PROGRESS, 1
 	releaseall
 	return
+
+PlayerCameDownstairsAfterWakingUp_3:
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_3
+	goto PlayerCameDownstairsAfterWakingUp_1
+
+PlayerCameDownstairsAfterWakingUp_4:
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_4
+	goto PlayerCameDownstairsAfterWakingUp_1
 
 
 Riolu::
@@ -197,10 +212,26 @@ Riolu::
 	msgbox Riolu_Text_0
 	playmoncry SPECIES_RIOLU, CRY_MODE_NORMAL
 	waitmoncry
-	msgbox Riolu_Text_1
+	bufferdynamicmulti Riolu_Text_1, Riolu_Text_2
+	multichoice 25, 5, MULTI_DYNAMIC_2, 0
+	switch VAR_RESULT
+	case 0, Riolu_3
+Riolu_1:
+	msgbox Riolu_Text_5
 	waitmessage
 	releaseall
 	return
+
+Riolu_3:
+	applymovement 4, Happy
+	waitmovement 0
+	msgbox Riolu_Text_3
+	waitmessage
+	playmoncry SPECIES_RIOLU, CRY_MODE_NORMAL
+	waitmoncry
+	msgbox Riolu_Text_4
+	waitmessage
+	goto Riolu_1
 
 
 AnconnaTown_PlayerHouse_Mum::
@@ -688,50 +719,60 @@ EnterHouseWithRioluForFirstTime_Text_21:
 
 PlayerCameDownstairsAfterWakingUp_Text_0:
 	.string "Mum: {COLOR RED}Good Morning, {COLOR GREEN}{PLAYER}{COLOR RED}.\n"
-	.string "How was your night?\p"
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Yawn...\n"
-	.string "A bit rough to be honest.\p"
+	.string "How was your night?$"
+
+PlayerCameDownstairsAfterWakingUp_Text_1:
+	.string "A bit rough to be honest...$"
+
+PlayerCameDownstairsAfterWakingUp_Text_2:
+	.string "Not the best...$"
+
+PlayerCameDownstairsAfterWakingUp_Text_3:
 	.string "Mum: {COLOR RED}Then I'm sure this will cheer you\n"
 	.string "up!$"
 
-PlayerCameDownstairsAfterWakingUp_Text_1:
+PlayerCameDownstairsAfterWakingUp_Text_4:
+	.string "Mum: {COLOR RED}Well, I'm sure this will cheer you\n"
+	.string "up!$"
+
+PlayerCameDownstairsAfterWakingUp_Text_5:
 	.string "Mum: {COLOR RED}Your Father and I have something\n"
 	.string "special to give you!$"
 
-PlayerCameDownstairsAfterWakingUp_Text_2:
+PlayerCameDownstairsAfterWakingUp_Text_6:
 	.string "Dad: {COLOR BLUE}That's right!.\n"
 	.string "Here you go.$"
 
-PlayerCameDownstairsAfterWakingUp_Text_3:
+PlayerCameDownstairsAfterWakingUp_Text_7:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY} recieved a pair of Running\n"
 	.string "Shoes!$"
 
-PlayerCameDownstairsAfterWakingUp_Text_4:
+PlayerCameDownstairsAfterWakingUp_Text_8:
 	.string "Mum: {COLOR RED}This will make all your work faster\n"
 	.string "but please don't use run around in the\l"
 	.string "house. It took a lot of work to make it\l"
 	.string "this clean.$"
 
-PlayerCameDownstairsAfterWakingUp_Text_5:
+PlayerCameDownstairsAfterWakingUp_Text_9:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: .....\p"
 	.string "So this is just a way of telling me to do\n"
 	.string "more work.$"
 
-PlayerCameDownstairsAfterWakingUp_Text_6:
+PlayerCameDownstairsAfterWakingUp_Text_10:
 	.string "Mum: {COLOR RED}:D\p"
 	.string ".....\p"
 	.string "Maybe....$"
 
-PlayerCameDownstairsAfterWakingUp_Text_7:
+PlayerCameDownstairsAfterWakingUp_Text_11:
 	.string "Dad: {COLOR BLUE}Um, I remember now!$"
 
-PlayerCameDownstairsAfterWakingUp_Text_8:
+PlayerCameDownstairsAfterWakingUp_Text_12:
 	.string "{COLOR BLUE}Your Mother and I need you to fetch a\n"
 	.string "{COLOR GREEN}Big Mushroom{COLOR BLUE} and two {COLOR GREEN}Tiny Mushrooms{COLOR BLUE}\l"
 	.string "from {COLOR GREEN}Anconna Woods{COLOR BLUE}. Remember to watch\l"
 	.string "out for the fallen logs there too!$"
 
-PlayerCameDownstairsAfterWakingUp_Text_9:
+PlayerCameDownstairsAfterWakingUp_Text_13:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Sigh...\p"
 	.string "I guess I'd better get going then.$"
 
@@ -739,6 +780,18 @@ Riolu_Text_0:
 	.string "{COLOR GREEN}Rioooluu$"
 
 Riolu_Text_1:
+	.string "Pet It$"
+
+Riolu_Text_2:
+	.string "...$"
+
+Riolu_Text_3:
+	.string "{COLOR GREEN}Riooluuuuuuu$"
+
+Riolu_Text_4:
+	.string "Riolu let out a happy cry!$"
+
+Riolu_Text_5:
 	.string "(It seems that Riolu feels safer with\n"
 	.string "you around)$"
 

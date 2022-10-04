@@ -1856,7 +1856,7 @@
 	@ This lets you create custom menus at runtime using only stuff you can edit within the same script.
 	@ Prevents having to create whole new const menu stuffs in other files.
 	.macro bufferdynamicmulti, ptr1=RyuEmptyTextPtr, ptr2=RyuEmptyTextPtr, ptr3=RyuEmptyTextPtr, ptr4=RyuEmptyTextPtr, ptr5=RyuEmptyTextPtr, ptr6=RyuEmptyTextPtr
-	.byte 0xe3
+	.byte 0xe4
 	.4byte \ptr1
 	.4byte \ptr2
 	.4byte \ptr3
@@ -1866,13 +1866,13 @@
 	.endm
 
     .macro questmenu case:req, questId:req
-    .byte 0xe3
+    .byte 0xe5
     .byte \case
     .byte \questId
     .endm
 
     .macro subquestmenu case:req, parentId:req, childId:req
-    .byte 0xe4
+    .byte 0xe6
     .byte \case
     .2byte \parentId
     .2byte \childId
@@ -1880,7 +1880,7 @@
 
     @ Check the quest state and return a number associated with quest state
     .macro returnqueststate questId:req
-    .byte 0xe5
+    .byte 0xe7
     .byte \questId
     .endm
     

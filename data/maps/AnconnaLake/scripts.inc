@@ -12,9 +12,8 @@ AnconnaLake_FisherMan1::
 
 AnconnaLake_FisherMan1_1:
 	msgbox AnconnaLake_FisherMan1_Text_0, 2
-	waitmessage
 	bufferdynamicmulti AnconnaLake_FisherMan1_Text_1, AnconnaLake_FisherMan1_Text_2
-	multichoice 25, 0, MULTI_DYNAMIC_2, 1
+	multichoice 25, 10, MULTI_DYNAMIC_2, 1
 	switch VAR_RESULT
 	case 0, AnconnaLake_FisherMan1_6
 	case 1, AnconnaLake_FisherMan1_7
@@ -43,29 +42,28 @@ AnconnaLake_FisherMan3::
 	lockall
 	compare OBTAINED_OLD_ROD, 0
 	goto_if_eq AnconnaLake_FisherMan3_2
-	msgbox AnconnaLake_FisherMan3_Text_6, 2
+	msgbox AnconnaLake_FisherMan3_Text_8, 2
 AnconnaLake_FisherMan3_1:
 	releaseall
 	return
 
 AnconnaLake_FisherMan3_2:
 	msgbox AnconnaLake_FisherMan3_Text_0, 2
-	closemessage
-	bufferdynamicmulti Yes, No, Yes, No, Yes, No
-	multichoice 0, 0, MULTI_DYNAMIC_6, 1
+	bufferdynamicmulti AnconnaLake_FisherMan3_Text_1, AnconnaLake_FisherMan3_Text_2
+	multichoice 25, 10, MULTI_DYNAMIC_2, 0
 	compare VAR_RESULT, 0
 	goto_if_eq AnconnaLake_FisherMan3_5
-	msgbox AnconnaLake_FisherMan3_Text_4
-	msgbox AnconnaLake_FisherMan3_Text_5
+	msgbox AnconnaLake_FisherMan3_Text_6
+	msgbox AnconnaLake_FisherMan3_Text_7
 	releaseall
 	goto AnconnaLake_FisherMan3_1
 
 AnconnaLake_FisherMan3_5:
-	msgbox AnconnaLake_FisherMan3_Text_1
-	msgbox AnconnaLake_FisherMan3_Text_2
+	msgbox AnconnaLake_FisherMan3_Text_3
+	msgbox AnconnaLake_FisherMan3_Text_4
 	giveitem ITEM_OLD_ROD
 	setvar OBTAINED_OLD_ROD, 1
-	msgbox AnconnaLake_FisherMan3_Text_3
+	msgbox AnconnaLake_FisherMan3_Text_5
 	releaseall
 	goto AnconnaLake_FisherMan3_1
 
@@ -107,31 +105,31 @@ AnconnaLake_FisherMan3_Text_0:
 	.string "Do you want to give a try?$"
 
 AnconnaLake_FisherMan3_Text_1:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Sure, it could be fun.$"
+	.string "Yes$"
 
 AnconnaLake_FisherMan3_Text_2:
+	.string "No$"
+
+AnconnaLake_FisherMan3_Text_3:
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Sure, it could be fun.$"
+
+AnconnaLake_FisherMan3_Text_4:
 	.string "{COLOR BLUE}Thats nice. In fact, here's one of my {COLOR GREEN}Old\n"
 	.string "Rods{COLOR BLUE}.$"
 
-AnconnaLake_FisherMan3_Text_3:
+AnconnaLake_FisherMan3_Text_5:
 	.string "{COLOR BLUE}It's not the best but it's pretty great\n"
 	.string "and you can keep it. It's only a spare\l"
 	.string "after all.$"
 
-AnconnaLake_FisherMan3_Text_4:
+AnconnaLake_FisherMan3_Text_6:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Um, I'm not sure I might like\n"
 	.string "it.$"
 
-AnconnaLake_FisherMan3_Text_5:
+AnconnaLake_FisherMan3_Text_7:
 	.string "{COLOR BLUE}Oh.\p"
 	.string "Well, in that case. I'll be seeing you\n"
 	.string "later if you change your mind.$"
 
-AnconnaLake_FisherMan3_Text_6:
+AnconnaLake_FisherMan3_Text_8:
 	.string "{COLOR BLUE}How are the fish biting, {COLOR GREEN}{PLAYER}?$"
-
-Yes::
-	.string "Yes$"
-
-No::
-	.string "No$"
