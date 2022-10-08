@@ -3638,6 +3638,14 @@ static const u8 sTeachyTVDesc[] = _(
     "an advice program\n"
     "for Trainers.");
 
+//
+//
+static const u8 sBidoofCombDesc[] = _(
+    "A very ugly bidoof\n"
+    "themed comb.");
+//
+//
+
 // Story Key Items
 static const u8 sSSTicketDesc[] = _(
     "The ticket required\n"

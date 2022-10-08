@@ -1,16 +1,42 @@
 mapscripts Anconna_Town_PlayerHouse_Floor1_MapScripts {}
 
-script PlayerHouse_Sibling_Room {
-    if(var(GAME_PROGRESS) != 4) {
-    lockall
+script PlayerHouse_Sibling_Room  //This script prevents the playering from entering the sister's room early in the game
+{ 
+    //lockall
+    if(var(GAME_PROGRESS) < 4) {
+    
     msgbox(format("Um,\pI don't think I should go in there..."))
     applymovement(OBJ_EVENT_ID_PLAYER, PlayerHouse_PlayerMoveUp)
     waitmovement(0)
-    releaseall
-    } else {
-        lockall
-        releaseall
+    
+    } elif(var(GAME_PROGRESS) >= 4 && var(GAME_PROGRESS) < 8) {
+        addvar(VAR_TEMP_0, 1) //To allow u pass the trigger freely
     }
+    //releaseall
+}
+
+script PlayerHouse_PlayerLooksAtStaircaseBin {
+    lockall
+    if(var(GAME_PROGRESS) == 6) //if Player is currently looking for the ugly comb
+    {
+        if(var(VAR_COUNTER) <= 11)     //until the player has looked through all the stuff downstairs, nothing can be found
+        {
+            msgbox(format("Nothing here..."))
+            waitmessage
+        } elif(var(VAR_COUNTER) < 2000) 
+        {
+            msgbox(format("Nothing here...\pWait!\pI don't remember this being here."))
+            waitmessage
+            //to do
+            giveitem(ITEM_BIDOOF_COMB, 1)
+            addvar(VAR_COUNTER, 2000) //to default back to nothing
+            
+        }
+        else {
+        msgbox(format("Nothing here..."))
+        }
+    } 
+    releaseall
 }
 
 movement PlayerHouse_PlayerMoveUp {

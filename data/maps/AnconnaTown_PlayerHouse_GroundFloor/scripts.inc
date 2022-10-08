@@ -7,8 +7,6 @@ AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	compare GAME_PROGRESS < 4, 0
 	goto_if_ne AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 	clearflag RIOLU_IS_IN_PLAYER_HOUSE
-	addobject 4
-	showobjectat 4, MAP_ANCONNA_TOWN_PLAYER_HOUSE_GROUND_FLOOR
 	return
 
 AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
@@ -18,7 +16,21 @@ AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 GAME_PROGRESS, 1, PlayerCameDownstairsAfterWakingUp
 	map_script_2 GAME_PROGRESS, 3, EnterHouseWithRioluForFirstTime
+	map_script_2 VAR_TEMP_9, 0, ShowRioluInPlayerHouse
 	.2byte 0
+
+
+ShowRioluInPlayerHouse::
+	compare GAME_PROGRESS > 4, 0
+	goto_if_ne ShowRioluInPlayerHouse_2
+ShowRioluInPlayerHouse_1:
+	addvar VAR_TEMP_9, 1
+	return
+
+ShowRioluInPlayerHouse_2:
+	addobject 4
+	showobjectat 4, MAP_ANCONNA_TOWN_PLAYER_HOUSE_GROUND_FLOOR
+	goto ShowRioluInPlayerHouse_1
 
 
 EnterHouseWithRioluForFirstTime::
@@ -363,84 +375,211 @@ AnconnaTown_PlayerHouse_TV_7:
 
 AnconnaTown_PlayerHouse_Dishes::
 	lockall
-	msgbox AnconnaTown_PlayerHouse_Dishes_Text_0
+	compare GAME_PROGRESS, 6
+	goto_if_ne AnconnaTown_PlayerHouse_Dishes_2
+	compare GAME_PROGRESS, 6
+	goto_if_eq AnconnaTown_PlayerHouse_Dishes_3
+AnconnaTown_PlayerHouse_Dishes_1:
 	releaseall
 	return
+
+AnconnaTown_PlayerHouse_Dishes_2:
+	msgbox AnconnaTown_PlayerHouse_Dishes_Text_0
+	goto AnconnaTown_PlayerHouse_Dishes_1
+
+AnconnaTown_PlayerHouse_Dishes_3:
+	delay 50
+	msgbox AnconnaTown_PlayerHouse_Dishes_Text_1
+	addvar VAR_COUNTER, 1
+	goto AnconnaTown_PlayerHouse_Dishes_1
 
 
 AnconnaTown_PlayerHouse_Sink::
 	lockall
-	msgbox AnconnaTown_PlayerHouse_Sink_Text_0
+	compare GAME_PROGRESS, 6
+	goto_if_ne AnconnaTown_PlayerHouse_Sink_2
+	compare GAME_PROGRESS, 6
+	goto_if_eq AnconnaTown_PlayerHouse_Sink_3
+AnconnaTown_PlayerHouse_Sink_1:
 	releaseall
 	return
+
+AnconnaTown_PlayerHouse_Sink_2:
+	msgbox AnconnaTown_PlayerHouse_Sink_Text_0
+	goto AnconnaTown_PlayerHouse_Sink_1
+
+AnconnaTown_PlayerHouse_Sink_3:
+	delay 50
+	msgbox AnconnaTown_PlayerHouse_Sink_Text_1
+	addvar VAR_COUNTER, 1
+	goto AnconnaTown_PlayerHouse_Sink_1
 
 
 AnconnaTown_PlayerHouse_Fridge::
 	lockall
-	msgbox AnconnaTown_PlayerHouse_Fridge_Text_0
+	compare GAME_PROGRESS, 6
+	goto_if_ne AnconnaTown_PlayerHouse_Fridge_2
+	compare GAME_PROGRESS, 6
+	goto_if_eq AnconnaTown_PlayerHouse_Fridge_3
+AnconnaTown_PlayerHouse_Fridge_1:
 	waitmessage
 	releaseall
 	return
+
+AnconnaTown_PlayerHouse_Fridge_2:
+	msgbox AnconnaTown_PlayerHouse_Fridge_Text_0
+	goto AnconnaTown_PlayerHouse_Fridge_1
+
+AnconnaTown_PlayerHouse_Fridge_3:
+	msgbox AnconnaTown_PlayerHouse_Fridge_Text_1
+	delay 50
+	msgbox AnconnaTown_PlayerHouse_Sink_Text_1
+	addvar VAR_COUNTER, 1
+	goto AnconnaTown_PlayerHouse_Fridge_1
 
 
 AnconnaTown_PlayerHouse_Dustbin::
 	lockall
-	msgbox AnconnaTown_PlayerHouse_Dustbin_Text_0
+	compare GAME_PROGRESS, 6
+	goto_if_ne AnconnaTown_PlayerHouse_Dustbin_2
+	compare GAME_PROGRESS, 6
+	goto_if_eq AnconnaTown_PlayerHouse_Dustbin_3
+AnconnaTown_PlayerHouse_Dustbin_1:
 	waitmessage
 	releaseall
 	return
+
+AnconnaTown_PlayerHouse_Dustbin_2:
+	msgbox AnconnaTown_PlayerHouse_Dustbin_Text_0
+	goto AnconnaTown_PlayerHouse_Dustbin_1
+
+AnconnaTown_PlayerHouse_Dustbin_3:
+	delay 50
+	msgbox AnconnaTown_PlayerHouse_Dustbin_Text_1
+	addvar VAR_COUNTER, 1
+	goto AnconnaTown_PlayerHouse_Dustbin_1
 
 
 AnconnaTown_PlayerHouse_Plant::
 	lockall
-	msgbox AnconnaTown_PlayerHouse_Plant_Text_0
+	compare GAME_PROGRESS, 6
+	goto_if_ne AnconnaTown_PlayerHouse_Plant_2
+	compare GAME_PROGRESS, 6
+	goto_if_eq AnconnaTown_PlayerHouse_Plant_3
+AnconnaTown_PlayerHouse_Plant_1:
 	waitmessage
 	releaseall
 	return
+
+AnconnaTown_PlayerHouse_Plant_2:
+	msgbox AnconnaTown_PlayerHouse_Plant_Text_0
+	goto AnconnaTown_PlayerHouse_Plant_1
+
+AnconnaTown_PlayerHouse_Plant_3:
+	delay 50
+	msgbox AnconnaTown_PlayerHouse_Plant_Text_1
+	addvar VAR_COUNTER, 1
+	goto AnconnaTown_PlayerHouse_Plant_1
 
 
 AnconnaTown_PlayerHouse_Window::
 	lockall
-	msgbox AnconnaTown_PlayerHouse_Window_Text_0
+	compare GAME_PROGRESS, 6
+	goto_if_ne AnconnaTown_PlayerHouse_Window_2
+AnconnaTown_PlayerHouse_Window_1:
 	waitmessage
 	releaseall
 	return
+
+AnconnaTown_PlayerHouse_Window_2:
+	msgbox AnconnaTown_PlayerHouse_Window_Text_0
+	goto AnconnaTown_PlayerHouse_Window_1
 
 
 AnconnaTown_PlayerHouse_BookShelve::
 	lockall
-	msgbox AnconnaTown_PlayerHouse_BookShelve_Text_0
+	compare GAME_PROGRESS, 6
+	goto_if_ne AnconnaTown_PlayerHouse_BookShelve_2
+	compare GAME_PROGRESS, 6
+	goto_if_eq AnconnaTown_PlayerHouse_BookShelve_3
+AnconnaTown_PlayerHouse_BookShelve_1:
 	waitmessage
 	releaseall
 	return
+
+AnconnaTown_PlayerHouse_BookShelve_2:
+	msgbox AnconnaTown_PlayerHouse_BookShelve_Text_0
+	goto AnconnaTown_PlayerHouse_BookShelve_1
+
+AnconnaTown_PlayerHouse_BookShelve_3:
+	delay 50
+	msgbox AnconnaTown_PlayerHouse_BookShelve_Text_1
+	addvar VAR_COUNTER, 1
+	goto AnconnaTown_PlayerHouse_BookShelve_1
 
 
 AnconnaTown_PlayerHouse_NES::
 	lockall
-	msgbox AnconnaTown_PlayerHouse_NES_Text_0
+	compare GAME_PROGRESS, 6
+	goto_if_ne AnconnaTown_PlayerHouse_NES_2
+	compare GAME_PROGRESS, 6
+	goto_if_eq AnconnaTown_PlayerHouse_NES_3
+AnconnaTown_PlayerHouse_NES_1:
 	waitmessage
 	releaseall
 	return
+
+AnconnaTown_PlayerHouse_NES_2:
+	msgbox AnconnaTown_PlayerHouse_NES_Text_0
+	goto AnconnaTown_PlayerHouse_NES_1
+
+AnconnaTown_PlayerHouse_NES_3:
+	delay 50
+	msgbox AnconnaTown_PlayerHouse_NES_Text_1
+	goto AnconnaTown_PlayerHouse_NES_1
 
 
 AnconnaTown_PlayerHouse_Drawer::
 	lockall
-	msgbox AnconnaTown_PlayerHouse_Drawer_Text_0
+	compare GAME_PROGRESS, 6
+	goto_if_ne AnconnaTown_PlayerHouse_Drawer_2
+	compare GAME_PROGRESS, 6
+	goto_if_eq AnconnaTown_PlayerHouse_Drawer_3
+AnconnaTown_PlayerHouse_Drawer_1:
 	waitmessage
 	releaseall
 	return
+
+AnconnaTown_PlayerHouse_Drawer_2:
+	msgbox AnconnaTown_PlayerHouse_Drawer_Text_0
+	goto AnconnaTown_PlayerHouse_Drawer_1
+
+AnconnaTown_PlayerHouse_Drawer_3:
+	delay 50
+	msgbox AnconnaTown_PlayerHouse_Drawer_Text_1
+	goto AnconnaTown_PlayerHouse_Drawer_1
 
 
 AnconnaTown_TalkToSibling::
 	lockall
 	compare GAME_PROGRESS, 5
 	goto_if_lt AnconnaTown_TalkToSibling_2
+	compare GAME_PROGRESS, 7
+	goto_if_lt AnconnaTown_TalkToSibling_3
 AnconnaTown_TalkToSibling_1:
 	releaseall
 	return
 
 AnconnaTown_TalkToSibling_2:
 	msgbox AnconnaTown_TalkToSibling_Text_0
+	waitmessage
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Walk_Up
+	waitmovement 0
+	goto AnconnaTown_TalkToSibling_1
+
+AnconnaTown_TalkToSibling_3:
+	msgbox AnconnaTown_TalkToSibling_Text_1
 	waitmessage
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Walk_Up
@@ -702,7 +841,7 @@ EnterHouseWithRioluForFirstTime_Text_18:
 
 EnterHouseWithRioluForFirstTime_Text_19:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Y'know that I'm not a kid\n"
-	.string "anymore.$"
+	.string "anymore and I'll be back soon$"
 
 EnterHouseWithRioluForFirstTime_Text_20:
 	.string "{COLOR RED}I know but we planned on giving you a\n"
@@ -874,21 +1013,37 @@ AnconnaTown_PlayerHouse_Dishes_Text_0:
 	.string "Clean plates are arranged nicely on its\n"
 	.string "shelves.$"
 
+AnconnaTown_PlayerHouse_Dishes_Text_1:
+	.string "Nah, it isn't under here..$"
+
 AnconnaTown_PlayerHouse_Sink_Text_0:
 	.string "Something smells really delicious here.$"
+
+AnconnaTown_PlayerHouse_Sink_Text_1:
+	.string "Nah, it isn't in here..$"
 
 AnconnaTown_PlayerHouse_Fridge_Text_0:
 	.string "This should have cold drinks and\n"
 	.string "beverages in it.\p"
 	.string "Too bad I can't have any.$"
 
+AnconnaTown_PlayerHouse_Fridge_Text_1:
+	.string "I doubt its here but...$"
+
 AnconnaTown_PlayerHouse_Dustbin_Text_0:
 	.string "Huh, there's literally nothing here.\p"
 	.string "......\p"
 	.string "What am I even looking for in a dustbin?$"
 
+AnconnaTown_PlayerHouse_Dustbin_Text_1:
+	.string "This bin is empty...\p"
+	.string "Why am I still looking at it?$"
+
 AnconnaTown_PlayerHouse_Plant_Text_0:
 	.string "Its a potted plant.$"
+
+AnconnaTown_PlayerHouse_Plant_Text_1:
+	.string "Nah, it isn't beside this..$"
 
 AnconnaTown_PlayerHouse_Window_Text_0:
 	.string "It looks sunny outside.$"
@@ -897,15 +1052,28 @@ AnconnaTown_PlayerHouse_BookShelve_Text_0:
 	.string "Books covering a variety of subjects\n"
 	.string "are arranged neatly on the shelf.$"
 
+AnconnaTown_PlayerHouse_BookShelve_Text_1:
+	.string "Nah, it isn't beside any book here..$"
+
 AnconnaTown_PlayerHouse_NES_Text_0:
 	.string "My Old NES.\p"
 	.string ".....\p"
 	.string "I've had some good times with this.$"
 
+AnconnaTown_PlayerHouse_NES_Text_1:
+	.string "What exactly am I looking for here?$"
+
 AnconnaTown_PlayerHouse_Drawer_Text_0:
-	.string "Placeholder$"
+	.string "Clean clothes are neatly folded and\n"
+	.string "arranged within.$"
+
+AnconnaTown_PlayerHouse_Drawer_Text_1:
+	.string "Shouldn't I be looking downstairs?$"
 
 AnconnaTown_TalkToSibling_Text_0:
 	.string "Shouldn't I meet my sis?\p"
 	.string "After all, I haven't even seen her\n"
 	.string "today.$"
+
+AnconnaTown_TalkToSibling_Text_1:
+	.string "Can't leave without helping her...$"

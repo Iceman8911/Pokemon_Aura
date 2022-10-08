@@ -3,15 +3,22 @@ mapscripts AnconnaTown_PlayerHouse_GroundFloor_MapScripts {
         if(var(GAME_PROGRESS < 4)){
             setflag(RIOLU_IS_IN_PLAYER_HOUSE)   //prevent Riolu from appearing in your house at the beginning of the game
         } else {
-            clearflag(RIOLU_IS_IN_PLAYER_HOUSE)  //shows Riolu after bringing it home
-            addobject(4)
-            showobjectat(4, MAP_ANCONNA_TOWN_PLAYER_HOUSE_GROUND_FLOOR)
+            clearflag(RIOLU_IS_IN_PLAYER_HOUSE)  //clears the flag Riolu after bringing it home
         }
     }
     MAP_SCRIPT_ON_FRAME_TABLE[
         GAME_PROGRESS, 1: PlayerCameDownstairsAfterWakingUp   //starts the First cutscene where you will be given a task to get Musrooms
         GAME_PROGRESS, 3: EnterHouseWithRioluForFirstTime   //starts the cutscene where you show Riolu to your parents
+        VAR_TEMP_9, 0: ShowRioluInPlayerHouse      //actually shows Riolu in the player's house
     ]
+}
+
+script ShowRioluInPlayerHouse {
+    if(var(GAME_PROGRESS >4)) {
+        addobject(4)
+        showobjectat(4, MAP_ANCONNA_TOWN_PLAYER_HOUSE_GROUND_FLOOR)
+    }
+    addvar(VAR_TEMP_9, 1)   //to prevent the game from "hanging"
 }
 
 script EnterHouseWithRioluForFirstTime {
@@ -19,7 +26,6 @@ script EnterHouseWithRioluForFirstTime {
             delay(60)
 			applymovement(1, MumRunsToYouAtHome)
 			waitmovement(0)
-            
 			msgbox(format("Mum: {COLOR RED}Waaah!!!"))
 			waitmessage
 			msgbox(format("{COLOR RED}I heard awful loud noises coming from that forest and I was just about to rush there to get you.\pWhat happened in there?"))
@@ -123,7 +129,7 @@ script EnterHouseWithRioluForFirstTime {
             closemessage
             applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Y'know that I'm not a kid anymore."))
+            msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Y'know that I'm not a kid anymore and I'll be back soon"))
             waitmessage
             closemessage
             applymovement(1, WalkInPlaceUp)
@@ -222,7 +228,7 @@ script Riolu {
     waitmessage
     releaseall
 }
-script AnconnaTown_PlayerHouse_Mum {
+script AnconnaTown_PlayerHouse_Mum { //Mum's Script
     lockall
     if(!flag(ANCONNA_WOODS_MUSHROOMS)) {
         msgbox(format("Mum: {COLOR RED}Don't forget to bring the {COLOR GREEN}mushrooms{COLOR RED}."), 2)
@@ -251,7 +257,7 @@ script AnconnaTown_PlayerHouse_Mum {
     releaseall
 }
 
-script AnconnaTown_PlayerHouse_Dad {
+script AnconnaTown_PlayerHouse_Dad { //Dad's Script
     lockall
     if(!flag(ANCONNA_WOODS_MUSHROOMS)) {
         msgbox(format("Dad: {COLOR BLUE}Don't forget to bring the {COLOR GREEN}mushrooms{COLOR BLUE}."), 2)
@@ -318,77 +324,150 @@ script AnconnaTown_PlayerHouse_TV {
     releaseall
 }
 
+//All of the addvar here are to tell if the player has checked the items a certain number of times during the Bidoof Comb Quest
 script AnconnaTown_PlayerHouse_Dishes {
     lockall
-    msgbox(format("Clean plates are arranged nicely on its shelves."))
+    if(var(GAME_PROGRESS) != 6) 
+    {
+        msgbox(format("Clean plates are arranged nicely on its shelves."))
+    } 
+    elif (var(GAME_PROGRESS) == 6) 
+    {
+        delay(50)
+        msgbox(format("Nah, it isn't under here.."))
+        addvar(VAR_COUNTER, 1)
+    }
     releaseall
 }
 
 script AnconnaTown_PlayerHouse_Sink {
     lockall
-    msgbox(format("Something smells really delicious here."))
+    if(var(GAME_PROGRESS) != 6) {
+        msgbox(format("Something smells really delicious here."))
+    } 
+    elif (var(GAME_PROGRESS) == 6) 
+    {
+        delay(50)
+        msgbox(format("Nah, it isn't in here.."))
+        addvar(VAR_COUNTER, 1)
+    }
     releaseall
 }
 
 script AnconnaTown_PlayerHouse_Fridge {
     lockall
-    msgbox(format("This should have cold drinks and beverages in it.\pToo bad I can't have any."))
+    if(var(GAME_PROGRESS) != 6) {
+        msgbox(format("This should have cold drinks and beverages in it.\pToo bad I can't have any."))
+    } 
+    elif (var(GAME_PROGRESS) == 6) 
+    {
+        msgbox(format("I doubt its here but..."))
+        delay(50)
+        msgbox(format("Nah, it isn't in here.."))
+        addvar(VAR_COUNTER, 1)
+    }
     waitmessage
     releaseall
 }
 
 script AnconnaTown_PlayerHouse_Dustbin {
     lockall
-    msgbox(format("Huh, there's literally nothing here.\p......\pWhat am I even looking for in a dustbin?"))
+    if(var(GAME_PROGRESS) != 6) {
+        msgbox(format("Huh, there's literally nothing here.\p......\pWhat am I even looking for in a dustbin?"))
+    } 
+    elif (var(GAME_PROGRESS) == 6) 
+    {
+        delay(50)
+        msgbox(format("This bin is empty...\pWhy am I still looking at it?"))
+        addvar(VAR_COUNTER, 1)
+    }    
     waitmessage
     releaseall
 }
 
 script AnconnaTown_PlayerHouse_Plant {
     lockall
-    msgbox(format("Its a potted plant."))
+    if(var(GAME_PROGRESS) != 6) {
+        msgbox(format("Its a potted plant."))
+    } 
+    elif (var(GAME_PROGRESS) == 6) 
+    {
+        delay(50)
+        msgbox(format("Nah, it isn't beside this.."))
+        addvar(VAR_COUNTER, 1)
+    }
     waitmessage
     releaseall
 }
 
 script AnconnaTown_PlayerHouse_Window {
     lockall
-    msgbox(format("It looks sunny outside."))
+    if(var(GAME_PROGRESS) != 6) {
+        msgbox(format("It looks sunny outside."))
+    }
     waitmessage
     releaseall
 }
 
 script AnconnaTown_PlayerHouse_BookShelve {
     lockall
-    msgbox(format("Books covering a variety of subjects are arranged neatly on the shelf."))
+    if(var(GAME_PROGRESS) != 6) {
+        msgbox(format("Books covering a variety of subjects are arranged neatly on the shelf."))
+    } 
+    elif (var(GAME_PROGRESS) == 6) 
+    {
+        delay(50)
+        msgbox(format("Nah, it isn't beside any book here.."))
+        addvar(VAR_COUNTER, 1)
+    }
     waitmessage
     releaseall
 }
 
 script AnconnaTown_PlayerHouse_NES {
     lockall
-    msgbox(format("My Old NES.\p.....\pI've had some good times with this."))
+    if(var(GAME_PROGRESS) != 6) {
+        msgbox(format("My Old NES.\p.....\pI've had some good times with this."))
+    } 
+    elif (var(GAME_PROGRESS) == 6) 
+    {
+        delay(50)
+        msgbox(format("What exactly am I looking for here?"))
+    }
     waitmessage
     releaseall
 }
 
 script AnconnaTown_PlayerHouse_Drawer {
     lockall
-    msgbox(format("Placeholder"))
+    if(var(GAME_PROGRESS) != 6) {
+        msgbox(format("Clean clothes are neatly folded and arranged within."))
+    } 
+    elif (var(GAME_PROGRESS) == 6) 
+    {
+        delay(50)
+        msgbox(format("Shouldn't I be looking downstairs?"))
+    }
     waitmessage
     releaseall
 }
 
 
 
-script AnconnaTown_TalkToSibling {
+script AnconnaTown_TalkToSibling { //This script prevents the player from leaving the house before unlocking the mission
     lockall
-    if (var(GAME_PROGRESS)< 5) {
+    if (var(GAME_PROGRESS)< 5) { //This code might look funny but check the trigger at the Player house's doorstep
         msgbox(format("Shouldn't I meet my sis?\pAfter all, I haven't even seen her today."))
         waitmessage
         closemessage
         applymovement(OBJ_EVENT_ID_PLAYER, Walk_Up)
         waitmovement(0)
+    } elif (var(GAME_PROGRESS) < 7) { //Prevents the player from leaving without finishing the quest
+        msgbox(format("Can't leave without helping her..."))
+            waitmessage
+            closemessage
+            applymovement(OBJ_EVENT_ID_PLAYER, Walk_Up)
+            waitmovement(0)
     }
     releaseall
 }

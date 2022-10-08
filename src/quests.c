@@ -259,7 +259,7 @@ static const struct SubQuest sSubQuests1[QUEST_1_SUB_COUNT] =
 	      1,
 	      gText_SubQuest1_Name2,
 	      gText_SubQuest1_Desc2,
-	      gText_SideQuestMap2,
+	      gText_SideQuestMap_FIND_BIBBYS_COMB,
 	      OBJ_EVENT_GFX_WALLY,
 	      OBJECT,
 	      sText_Found
@@ -362,7 +362,7 @@ static const struct SubQuest sSubQuests2[QUEST_2_SUB_COUNT] =
 	      11,
 	      gText_SubQuest2_Name2,
 	      gText_SubQuest2_Desc2,
-	      gText_SideQuestMap2,
+	      gText_SideQuestMap_FIND_BIBBYS_COMB,
 	      OBJ_EVENT_GFX_WALLY,
 	      OBJECT,
 	      sText_Found
@@ -571,15 +571,15 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 	      NULL,
 	      0
 	),
-	side_quest(
-	      gText_SideQuestName_2,
-	      gText_SideQuestDesc_2,
-	      gText_SideQuestDoneDesc_2,
-	      gText_SideQuestMap2,
-	      OBJ_EVENT_GFX_WALLY,
+	side_quest(     //First Quest that you recieve
+	      gText_SideQuestName_FIND_BIBBYS_COMB,
+	      gText_SideQuestDesc_FIND_BIBBYS_COMB,
+	      gText_SideQuestDoneDesc_FIND_BIBBYS_COMB,
+	      gText_SideQuestMap_FIND_BIBBYS_COMB,
+	      OBJ_EVENT_GFX_ANABEL,
 	      OBJECT,
-	      sSubQuests1,
-	      QUEST_1_SUB_COUNT
+	      NULL,//sSubQuests1,
+	      0//QUEST_1_SUB_COUNT
 	),
 	side_quest(
 	      gText_SideQuestName_3,

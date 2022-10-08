@@ -5,6 +5,7 @@
 4 = Shown Riolu, Need To Meet Sister 
 5 = Met Sister, Leaving Anconna Town
 6 = Looking For Sister's Bidoof Comb
+7 = Found The Comb, Leaving Anconna Town
 
 
 

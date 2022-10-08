@@ -3001,7 +3001,7 @@ extern const u8 gText_QuestActive[];
 
 //names
 extern const u8 gText_SideQuestName_1[];
-extern const u8 gText_SideQuestName_2[];
+extern const u8 gText_SideQuestName_FIND_BIBBYS_COMB[];
 extern const u8 gText_SideQuestName_3[];
 extern const u8 gText_SideQuestName_4[];
 extern const u8 gText_SideQuestName_5[];
@@ -3033,7 +3033,7 @@ extern const u8 gText_SideQuestName_30[];
 
 //descriptions
 extern const u8 gText_SideQuestDesc_1[];
-extern const u8 gText_SideQuestDesc_2[];
+extern const u8 gText_SideQuestDesc_FIND_BIBBYS_COMB[];
 extern const u8 gText_SideQuestDesc_3[];
 extern const u8 gText_SideQuestDesc_4[];
 extern const u8 gText_SideQuestDesc_5[];
@@ -3065,7 +3065,7 @@ extern const u8 gText_SideQuestDesc_30[];
 
 //completed quest description
 extern const u8 gText_SideQuestDoneDesc_1[];
-extern const u8 gText_SideQuestDoneDesc_2[];
+extern const u8 gText_SideQuestDoneDesc_FIND_BIBBYS_COMB[];
 extern const u8 gText_SideQuestDoneDesc_3[];
 extern const u8 gText_SideQuestDoneDesc_4[];
 extern const u8 gText_SideQuestDoneDesc_5[];
@@ -3097,7 +3097,7 @@ extern const u8 gText_SideQuestDoneDesc_30[];
 
 //map
 extern const u8 gText_SideQuestMap1[];
-extern const u8 gText_SideQuestMap2[];
+extern const u8 gText_SideQuestMap_FIND_BIBBYS_COMB[];
 extern const u8 gText_SideQuestMap3[];
 extern const u8 gText_SideQuestMap4[];
 extern const u8 gText_SideQuestMap5[];

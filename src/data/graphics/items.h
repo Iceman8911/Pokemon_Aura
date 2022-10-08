@@ -1842,6 +1842,12 @@ const u32 gItemIconPalette_FameChecker[] = INCBIN_U32("graphics/items/icon_palet
 
 const u32 gItemIcon_TeachyTV[] = INCBIN_U32("graphics/items/icons/teachy_tv.4bpp.lz");
 const u32 gItemIconPalette_TeachyTV[] = INCBIN_U32("graphics/items/icon_palettes/teachy_tv.gbapal.lz");
+//
+//
+const u32 gItemIcon_BidoofComb[] = INCBIN_U32("graphics/items/icons/bidoof_comb.4bpp.lz");
+const u32 gItemIconPalette_BidoofComb[] = INCBIN_U32("graphics/items/icon_palettes/bidoof_comb.gbapal.lz");
+//
+//
 
 // Story Key Items
 

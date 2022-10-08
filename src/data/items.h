@@ -9469,6 +9469,23 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
+    //
+    //
+    [ITEM_BIDOOF_COMB] =
+    {
+        .name = _("Ugly Comb"),
+        .itemId = ITEM_BIDOOF_COMB,
+        .price = 0,
+        .description = sBidoofCombDesc,
+        .importance = 1,
+        .registrability = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+    },
+    //
+    //
+
 // Story Key Items
 
     [ITEM_SS_TICKET] =

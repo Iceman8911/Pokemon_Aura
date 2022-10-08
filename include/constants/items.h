@@ -895,6 +895,7 @@
 #define ITEM_FAME_CHECKER 725
 #define ITEM_TEACHY_TV 726
 
+
 // Story Key Items
 #define ITEM_SS_TICKET 727
 #define ITEM_EON_TICKET 728
@@ -928,7 +929,13 @@
 #define ITEM_RUBY 756
 #define ITEM_SAPPHIRE 757
 
-#define ITEMS_COUNT 758
+//
+//
+#define ITEM_BIDOOF_COMB 758
+//
+//
+
+#define ITEMS_COUNT 759
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // Range of berries given out by various NPCS

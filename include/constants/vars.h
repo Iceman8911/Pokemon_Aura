@@ -105,9 +105,9 @@
 #define OBTAINED_OLD_ROD            0x4056 // Unused Var
 #define VAR_PETALBURG_CITY_STATE             0x4057
 #define VAR_SLATEPORT_CITY_STATE             0x4058
-#define GAME_PROGRESS              0x4059 // Unused Var. U can use all Unused Vars Below
+#define GAME_PROGRESS              0x4059 // Unused Var
 #define VAR_RUSTBORO_CITY_STATE              0x405A
-#define VAR_FORTREE_CITY_STATE               0x405B // Unused Var
+#define VAR_COUNTER               0x405B // Unused Var. This Var is used as a counter for things like interactions, u should prolly set this to 0 for every new time u use it. U can use all Unused Vars Below
 #define VAR_LILYCOVE_CITY_STATE              0x405C // Unused Var
 #define VAR_MOSSDEEP_CITY_STATE              0x405D
 #define VAR_SOOTOPOLIS_CITY_STATE            0x405E

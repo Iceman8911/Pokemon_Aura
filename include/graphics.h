@@ -8618,6 +8618,14 @@ extern const u32 gItemIcon_FameChecker[];
 extern const u32 gItemIconPalette_FameChecker[];
 extern const u32 gItemIcon_TeachyTV[];
 extern const u32 gItemIconPalette_TeachyTV[];
+
+//
+//
+extern const u32 gItemIcon_BidoofComb[];
+extern const u32 gItemIconPalette_BidoofComb[];
+//
+//
+
 // Story Key Items
 extern const u32 gItemIcon_SSTicket[];
 extern const u32 gItemIconPalette_SSTicket[];

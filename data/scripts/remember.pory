@@ -1,4 +1,4 @@
-script Remember{
+script Remember{    //This is the script that will be run by the Start Menu Option "Hmm..." 
     lockall
     delay(30)
     applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceDown)
@@ -6,7 +6,6 @@ script Remember{
     delay(30)
     switch (var(GAME_PROGRESS)) {
         case 0:
-        msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Time to start the day!"))
         case 1:
         msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Time to start the day!"))
         case 2:
@@ -17,6 +16,16 @@ script Remember{
         msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: I'd better check up on little sister then...."))
         case 5:
         msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Time to go then....\p{COLOR GREEN}Riolu{COLOR DARK_GRAY}, are you with me?\p....\p{COLOR GREEN}Riol Rioluuuu!!{COLOR DARK_GRAY}"))
+        case 6:
+        checkitem(ITEM_BIDOOF_COMB, 1)
+        switch(var(VAR_RESULT)) {
+            case 0:
+            msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Where could that {COLOR GREEN}Bidoof's comb{COLOR DARK_GRAY} be..."))
+            case 1:
+            msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Gotta return this to her.."))
+        }
+        case 7:
+        msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: How did the comb get into the trash? Maybe I shouldn't tell her.\pI'd better get going though"))
     }
     releaseall
 }
