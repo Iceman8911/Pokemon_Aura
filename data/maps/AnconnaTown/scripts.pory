@@ -1,14 +1,41 @@
 mapscripts AnconnaTown_MapScripts {
-	
+	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+		//VAR_TEMP_2, 0 : AnconnaTown_SpawnProfessorMaxmilliam
+	]
+	MAP_SCRIPT_ON_TRANSITION {
+		if(var(VAR_TEMP_1) == 0) {
+			if(var(GAME_PROGRESS) != 7) {
+			//setobjectxy(9, 17, 10)
+			setflag(FLAG_TEMP_2) //Professor Maxmilliam uses this flag
+			}
+			addvar(VAR_TEMP_1, 1)
+		}
+	}
 }
 
-script AnconnaTown_Cannot_Leave_Anconna_Town {
-	lockall
-	msgbox(format("Should I really ignore what just happened now?"))
-	closemessage
-	applymovement(OBJ_EVENT_ID_PLAYER, Walk_Down)
-	waitmovement(0)
-	releaseall
+
+//script AnconnaTown_SpawnProfessorMaxmilliam {   //Since I'm not using a flag, I rather shift it somewhere else
+//	if(var(GAME_PROGRESS) == 7) {
+//		addobject(9)
+//		setobjectxy(9, 17, 10)
+//	} else {
+//		removeobject(9)  
+//	}
+//	addvar(VAR_TEMP_4, 1) //To prevent the game from hanging
+//}
+
+script AnconnaTown_Cannot_Leave_Anconna_Town {  //Prevents the player player from leaving Anconna Town In some Situations
+	if(var(FIRST_LIUM_FIGHT) == 0) {
+		lockall
+		msgbox(format("Should I really ignore what just happened now?"))
+		closemessage
+		applymovement(OBJ_EVENT_ID_PLAYER, Walk_Down)
+		waitmovement(0)
+		releaseall
+	} elif(var(GAME_PROGRESS) == 7) {
+		call(AnconnaTown_ProfessorMaxmilliam1)
+	}
+	addvar(VAR_TEMP_9, 1)
 }
 script AnconnaTown_EventScript_Sign {
 	lockall
@@ -32,8 +59,8 @@ script AnconnaTown_EventScript_Antidote {
 
 script AnconnaTown_Bidoof {
 	lockall
+	playmoncry(SPECIES_BIDOOF, CRY_MODE_NORMAL)
 	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Doof?\nBi Doof?\pDooooooooooooooooooooooooooooo\poooooooooooooooooooooooooooooooooo\poooooooooooooooooooooooooooooo\pooooooooooooooooooooooooooooooof!"), 2)
-	playmoncry(SPECIES_RIOLU, CRY_MODE_NORMAL)
     waitmoncry
 	releaseall
 	end
@@ -211,6 +238,88 @@ script AnconnaTown_JustCameOutOfForest1 {
 	releaseall
 }
 
+script AnconnaTown_ProfessorMaxmilliam {   //Called When Player Talks To Prof Maxmilliam
+	lockall
+	faceplayer
+	msgbox(format("???:{COLOR BLUE} Goodday, {COLOR GREEN}{PLAYER}{COLOR BLUE}. I am the current Field Researcher here, {COLOR GREEN}Professor Maxmilliam{COLOR BLUE}.\pI heard quite a ruckus coming from that forest and I saw you coming out of it.\n"
+	"Would you care to explain?"))
+	bufferdynamicmulti("I saw three people...", "I didn't see anything...")
+	multichoice(25, 7, MULTI_DYNAMIC_2, 1)
+	switch(var(VAR_RESULT)) {
+		case 0:
+		msgbox(format("Prof. Maxmilliam:{COLOR BLUE} I did see some suspicious people enter the forest earlier today. Nevertheless, I doubt you know anything about it."
+		"\pSince I took some of your time and it looks like you're heading out, take this as a compensation."))
+		giveitem(ITEM_POKE_BALL, 10)
+		msgbox(format("{COLOR BLUE}Don't bother yourself with this situation, I'll make sure this is handled well."))
+		waitmessage
+		case 1:
+		msgbox(format("Prof. Maxmilliam:{COLOR BLUE} Sigh..\pWell, I saw three strange-looking people enter the forest earlier today. Nevertheless, I doubt you know anything about it."
+		"\pSince I took some of your time and it looks like you're heading out, take this as a compensation."))
+		giveitem(ITEM_POKE_BALL, 10)
+		msgbox(format("{COLOR BLUE}Don't bother yourself with this situation, I'll make sure this is handled well."))
+		waitmessage
+	}
+	getplayerxy(VAR_TEMP_2, VAR_TEMP_3) //Gets the player's location
+	if(var(VAR_TEMP_2) == 18) {
+		applymovement(9, AnconnaTown_ProfMaxmilliamWalksBackToLab2)
+	} else {
+		applymovement(9, AnconnaTown_ProfMaxmilliamWalksBackToLab1)
+	}
+	waitmovement(0)
+	removeobject(9)
+	//setobjectxy(9, 32, 2)  //Since I'm not using a flag, I rather shift it somewhere else
+	addvar(GAME_PROGRESS, 1)
+	setflag(FLAG_TEMP_1)
+	releaseall
+}
+
+script AnconnaTown_ProfessorMaxmilliam1 {   //Called When Player Tries To Leave without talking To Prof Maxmilliam
+	lockall
+	getplayerxy(VAR_TEMP_2, VAR_TEMP_3) //Gets the player's location
+	if(var(VAR_TEMP_2) == 17) {      //Exact player location in porymap. Decides which movement Maxmilliam will take when meeting the player
+		applymovement(9, AnconnaTown_ProfMaxMilliamRunsToPlayer_1)
+	}else {
+		applymovement(9, AnconnaTown_ProfMaxMilliamRunsToPlayer_2)
+	}
+	waitmovement(0)
+	msgbox(format("???:{COLOR BLUE} WAIT!!!"))
+	waitmessage
+	closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER, Surprised)
+	applymovement(OBJ_EVENT_ID_PLAYER, FaceDown)
+	waitmovement(0)
+	msgbox(format("???:{COLOR BLUE} Huff-puff...\pErhem..\pGoodday, {COLOR GREEN}{PLAYER}{COLOR BLUE}. I am the current Field Researcher here, {COLOR GREEN}Professor Maxmilliam{COLOR BLUE}.\pI heard quite a ruckus coming from that forest and I saw you coming out of it.\n"
+	"Would you care to explain?"))
+	bufferdynamicmulti("I saw three people...", "I didn't see anything...")
+	multichoice(25, 7, MULTI_DYNAMIC_2, 1)
+	switch(var(VAR_RESULT)) {
+		case 0:
+		msgbox(format("Prof. Maxmilliam:{COLOR BLUE} I did see some suspicious people enter the forest earlier today. Nevertheless, I doubt you know anything about it."
+		"\pSince I took some of your time and it looks like you're heading out, take this as a compensation."))
+		giveitem(ITEM_POKE_BALL, 10)
+		msgbox(format("{COLOR BLUE}Don't bother yourself with this situation, I'll make sure this is handled well."))
+		waitmessage
+		case 1:
+		msgbox(format("Prof. Maxmilliam:{COLOR BLUE} Sigh..\pWell, I saw three strange-looking people enter the forest earlier today. Nevertheless, I doubt you know anything about it."
+		"\pSince I took some of your time and it looks like you're heading out, take this as a compensation."))
+		giveitem(ITEM_POKE_BALL, 10)
+		msgbox(format("{COLOR BLUE}Don't bother yourself with this situation, I'll make sure this is handled well."))
+		waitmessage
+		closemessage
+	}
+	if(var(VAR_TEMP_2) == 17) {
+		applymovement(9, AnconnaTown_ProfMaxmilliamWalksBackToLabAfterRunningToPlayer1)
+	} else {
+		applymovement(9, AnconnaTown_ProfMaxmilliamWalksBackToLabAfterRunningToPlayer2)
+	}
+	waitmovement(0)
+	removeobject(9)
+	//setobjectxy(9, 32, 2)  //Since I'm not using a flag, I rather shift it somewhere else
+	addvar(GAME_PROGRESS, 1)
+	setflag(FLAG_TEMP_1)
+	releaseall
+}
+
 movement Exclaim {
 	emote_exclamation_mark
 }
@@ -283,4 +392,39 @@ movement Walk_Up {
 movement MumRunsToYouAtHome {
 	walk_fast_right * 3
 	walk_fast_down * 3
+}
+
+movement AnconnaTown_ProfMaxMilliamRunsToPlayer_1 {
+	walk_fast_left * 2
+	walk_fast_up * 7
+	walk_right * 2
+	face_player
+}
+
+movement AnconnaTown_ProfMaxMilliamRunsToPlayer_2 {
+	walk_fast_left * 2
+	walk_fast_up * 7
+	walk_right * 3
+	face_player
+}
+
+movement AnconnaTown_ProfMaxmilliamWalksBackToLab1 {
+	walk_right * 4
+	walk_up
+}
+
+movement AnconnaTown_ProfMaxmilliamWalksBackToLab2 {
+	walk_down
+	walk_right * 4
+	walk_up * 2
+}
+
+movement AnconnaTown_ProfMaxmilliamWalksBackToLabAfterRunningToPlayer1 {
+	walk_left * 2
+	walk_down * 5
+}
+
+movement AnconnaTown_ProfMaxmilliamWalksBackToLabAfterRunningToPlayer2 {
+	walk_left * 3
+	walk_down * 5
 }

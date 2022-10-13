@@ -1,50 +1,58 @@
 mapscripts AnconnaWoods_1_MapScripts {
-#    MAP_SCRIPT_ON_TRANSITION: Hide_Mushroom_Sprite
+    MAP_SCRIPT_ON_TRANSITION: AnconnaWoods_1_ShowOrHideSpecialPokeballForRiolu_TRANSITION
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        FLAG_TEMP_9, 0 : AnconnaWoods_1_ShowOrHideSpecialPokeballForRiolu_FRAMETABLE
+    ]
 }
 
-#script Hide_Mushroom_Sprite {
-#    hideobjectat(2, MAP_ANCONNA_WOODS_1)
-#}
+script AnconnaWoods_1_ShowOrHideSpecialPokeballForRiolu_TRANSITION {  //Deals with the flags/vars
+    if(flag(RIOLU_ENCOUNTER)) {  //Player has encountered Riolu
+        //hideobjectat(2, MAP_ANCONNA_WOODS_1)
+        removeobject(4)
+        setflag(FLAG_TEMP_9)
+    } else {  //Player hasn't encountered Riolu
+        //Since, I'm using VAR_TEMP_9, there isn't really any need to clear it when loading into a map
+    }
+}
+
+script AnconnaWoods_1_ShowOrHideSpecialPokeballForRiolu_FRAMETABLE {
+    addobject(4)
+}
 
 script AnconnaWoods_1_BugGem {
     lockall
    # msgbox(FoundBugGem)
-    msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Why would anyone drop this here?\p""Well, Their Loss!"))
+    msgbox(format("Why would anyone drop this here?\pWell, Their Loss!"))
     waitmessage
     finditem(ITEM_BUG_GEM)
     releaseall
     end
 }
 
-text FoundBugGem {
-    "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Why would anyone drop this here?\p"
-    "Well, Their Loss!"
+script AnconnaWoods_1_SpecialPokeBallForRiolu {
+    lockall
+    finditem(ITEM_POKE_BALL)
+    msgbox(format("A pokeball...\nCould be useful.."))
+    waitmessage
+    releaseall
 }
+
 
 script AnconnaWoods_1_Mushrooms {
     lockall
-    msgbox(MushroomText_1)
-    waitmessage
     finditem(ITEM_BIG_MUSHROOM)
     finditem(ITEM_TINY_MUSHROOM, 2)
-    msgbox(MushroomText_2)
+    msgbox(format("Now that I've found them, I can finally leave."))
     waitmessage
     releaseall
     end
 }
 
-text MushroomText_1 {
-    "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Hmm, Some Mushrooms."
-}
-
-text MushroomText_2 {
-    "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Guess these could be handy."
-}
 
 script AnconnaWoods_1_Not_Found_Riolu {
     lockall
     #delay(30)
-    msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: I can't go into bushes yet. Wild Pokémon may jump out at me.\pThere has to be another way."))
+    msgbox(format("I can't go into bushes yet. Wild Pokémon may jump out at me.\pThere has to be another way."))
     closemessage
     applymovement(OBJ_EVENT_ID_PLAYER, NotFoundRiolu)
     waitmovement(0)
@@ -58,7 +66,7 @@ movement NotFoundRiolu {
 script AnconnaWoods_1_NotFoundMushrooms {
     lockall
     if(!flag(ANCONNA_WOODS_MUSHROOMS)) {
-        msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: I'm sure those Mushrooms are around here somewhere."))
+        msgbox(format("I'm sure those Mushrooms are around here somewhere."))
         waitmessage
         closemessage
         applymovement(OBJ_EVENT_ID_PLAYER, NotFoundRiolu)
@@ -68,7 +76,7 @@ script AnconnaWoods_1_NotFoundMushrooms {
 }
 
 script AnconnaWoods_1_Found_Riolu {
-    lockall
+    lock
     delay(30)
     applymovement(OBJ_EVENT_ID_PLAYER, PlayerConfused)
     waitmovement(0)
@@ -142,6 +150,7 @@ script AnconnaWoods_1_Found_Riolu {
     msgbox(format("{COLOR DARK_GRAY}Riolu has joined your team!"))
     playfanfare(MUS_OBTAIN_ITEM)
     waitfanfare
+    removeitem(ITEM_POKE_BALL)  //gets rid of the pokeball the player found earlier
     setflag(FLAG_SYS_POKEMON_GET)
     delay(40)
     msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: I'll take that as a yes.\pLets go to my house, Riolu."))
@@ -155,7 +164,7 @@ script AnconnaWoods_1_Found_Riolu {
     msgbox(format("(The poor little thing is lost, probably because of those people from before.\pLets see if there's anyway I can help.)"))
     setvar(ANCONNA_WOODS_FOUND_RIOLU, 1)
     addvar(GAME_PROGRESS, 1)
-    releaseall
+    release
 }
 
 movement AnconnaWoods_1You {

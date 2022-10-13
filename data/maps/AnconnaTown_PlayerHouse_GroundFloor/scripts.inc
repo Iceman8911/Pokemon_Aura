@@ -1,35 +1,28 @@
 AnconnaTown_PlayerHouse_GroundFloor_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
 	.byte 0
-
-AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	compare GAME_PROGRESS < 4, 0
-	goto_if_ne AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
-	clearflag RIOLU_IS_IN_PLAYER_HOUSE
-	return
-
-AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
-	setflag RIOLU_IS_IN_PLAYER_HOUSE
-	return
 
 AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 GAME_PROGRESS, 1, PlayerCameDownstairsAfterWakingUp
 	map_script_2 GAME_PROGRESS, 3, EnterHouseWithRioluForFirstTime
+	.2byte 0
+
+AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE:
 	map_script_2 VAR_TEMP_9, 0, ShowRioluInPlayerHouse
 	.2byte 0
 
 
 ShowRioluInPlayerHouse::
-	compare GAME_PROGRESS > 4, 0
-	goto_if_ne ShowRioluInPlayerHouse_2
+	compare GAME_PROGRESS, 4
+	goto_if_ge ShowRioluInPlayerHouse_2
+	removeobject 4
 ShowRioluInPlayerHouse_1:
 	addvar VAR_TEMP_9, 1
 	return
 
 ShowRioluInPlayerHouse_2:
 	addobject 4
-	showobjectat 4, MAP_ANCONNA_TOWN_PLAYER_HOUSE_GROUND_FLOOR
 	goto ShowRioluInPlayerHouse_1
 
 
@@ -146,6 +139,7 @@ EnterHouseWithRioluForFirstTime::
 	waitmessage
 	msgbox EnterHouseWithRioluForFirstTime_Text_21
 	addvar GAME_PROGRESS, 1
+	call ShowRioluInPlayerHouse
 	releaseall
 	return
 
@@ -155,10 +149,12 @@ PlayerCameDownstairsAfterWakingUp::
 	special SpawnCameraObject
 	applymovement 1, MumComesToMeetYouAtTheStairCase
 	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, FaceDown
+	waitmovement 0
 	msgbox PlayerCameDownstairsAfterWakingUp_Text_0
 	waitmessage
 	bufferdynamicmulti PlayerCameDownstairsAfterWakingUp_Text_1, PlayerCameDownstairsAfterWakingUp_Text_2
-	multichoice 25, 10, MULTI_DYNAMIC_2, 1
+	multichoice 25, 7, MULTI_DYNAMIC_2, 1
 	switch VAR_RESULT
 	case 0, PlayerCameDownstairsAfterWakingUp_3
 	case 1, PlayerCameDownstairsAfterWakingUp_4
@@ -189,6 +185,8 @@ PlayerCameDownstairsAfterWakingUp_1:
 	waitmessage
 	msgbox PlayerCameDownstairsAfterWakingUp_Text_10
 	waitmessage
+	applymovement 2, Surprised
+	waitmovement 0
 	msgbox PlayerCameDownstairsAfterWakingUp_Text_11
 	waitmessage
 	closemessage
@@ -221,8 +219,8 @@ Riolu::
 	faceplayer
 	applymovement 4, Happy
 	waitmovement 0
-	msgbox Riolu_Text_0
 	playmoncry SPECIES_RIOLU, CRY_MODE_NORMAL
+	msgbox Riolu_Text_0
 	waitmoncry
 	bufferdynamicmulti Riolu_Text_1, Riolu_Text_2
 	multichoice 25, 5, MULTI_DYNAMIC_2, 0
@@ -562,10 +560,12 @@ AnconnaTown_PlayerHouse_Drawer_3:
 
 AnconnaTown_TalkToSibling::
 	lockall
+	compare GAME_PROGRESS, 4
+	goto_if_eq AnconnaTown_TalkToSibling_2
 	compare GAME_PROGRESS, 5
-	goto_if_lt AnconnaTown_TalkToSibling_2
-	compare GAME_PROGRESS, 7
-	goto_if_lt AnconnaTown_TalkToSibling_3
+	goto_if_eq AnconnaTown_TalkToSibling_2
+	compare GAME_PROGRESS, 6
+	goto_if_eq AnconnaTown_TalkToSibling_3
 AnconnaTown_TalkToSibling_1:
 	releaseall
 	return
@@ -841,7 +841,7 @@ EnterHouseWithRioluForFirstTime_Text_18:
 
 EnterHouseWithRioluForFirstTime_Text_19:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Y'know that I'm not a kid\n"
-	.string "anymore and I'll be back soon$"
+	.string "anymore and I'll be back soon.$"
 
 EnterHouseWithRioluForFirstTime_Text_20:
 	.string "{COLOR RED}I know but we planned on giving you a\n"
@@ -853,7 +853,8 @@ EnterHouseWithRioluForFirstTime_Text_20:
 EnterHouseWithRioluForFirstTime_Text_21:
 	.string "{COLOR RED}Well,\p"
 	.string "The earlier you go, the earlier you come\n"
-	.string "back.\p"
+	.string "back. Don't explain to anyone outside\l"
+	.string "our family about this.\p"
 	.string "Goodluck {COLOR GREEN}{PLAYER}{COLOR RED}!$"
 
 PlayerCameDownstairsAfterWakingUp_Text_0:
@@ -900,7 +901,7 @@ PlayerCameDownstairsAfterWakingUp_Text_9:
 PlayerCameDownstairsAfterWakingUp_Text_10:
 	.string "Mum: {COLOR RED}:D\p"
 	.string ".....\p"
-	.string "Maybe....$"
+	.string "{FONT_SMALL}Maybe....$"
 
 PlayerCameDownstairsAfterWakingUp_Text_11:
 	.string "Dad: {COLOR BLUE}Um, I remember now!$"

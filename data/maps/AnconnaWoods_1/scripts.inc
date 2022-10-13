@@ -1,5 +1,26 @@
 AnconnaWoods_1_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, AnconnaWoods_1_ShowOrHideSpecialPokeballForRiolu_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, AnconnaWoods_1_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+AnconnaWoods_1_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 FLAG_TEMP_9, 0, AnconnaWoods_1_ShowOrHideSpecialPokeballForRiolu_FRAMETABLE
+	.2byte 0
+
+
+AnconnaWoods_1_ShowOrHideSpecialPokeballForRiolu_TRANSITION::
+	goto_if_set RIOLU_ENCOUNTER, AnconnaWoods_1_ShowOrHideSpecialPokeballForRiolu_TRANSITION_1
+	return
+
+AnconnaWoods_1_ShowOrHideSpecialPokeballForRiolu_TRANSITION_1:
+	removeobject 4
+	setflag FLAG_TEMP_9
+	return
+
+
+AnconnaWoods_1_ShowOrHideSpecialPokeballForRiolu_FRAMETABLE::
+	addobject 4
+	return
 
 
 AnconnaWoods_1_BugGem::
@@ -11,13 +32,20 @@ AnconnaWoods_1_BugGem::
 	end
 
 
+AnconnaWoods_1_SpecialPokeBallForRiolu::
+	lockall
+	finditem ITEM_POKE_BALL
+	msgbox AnconnaWoods_1_SpecialPokeBallForRiolu_Text_0
+	waitmessage
+	releaseall
+	return
+
+
 AnconnaWoods_1_Mushrooms::
 	lockall
-	msgbox MushroomText_1
-	waitmessage
 	finditem ITEM_BIG_MUSHROOM
 	finditem ITEM_TINY_MUSHROOM, 2
-	msgbox MushroomText_2
+	msgbox AnconnaWoods_1_Mushrooms_Text_0
 	waitmessage
 	releaseall
 	end
@@ -54,7 +82,7 @@ AnconnaWoods_1_NotFoundMushrooms_2:
 
 
 AnconnaWoods_1_Found_Riolu::
-	lockall
+	lock
 	delay 30
 	applymovement OBJ_EVENT_ID_PLAYER, PlayerConfused
 	waitmovement 0
@@ -127,6 +155,7 @@ AnconnaWoods_1_Found_Riolu::
 	msgbox AnconnaWoods_1_Found_Riolu_Text_17
 	playfanfare MUS_OBTAIN_ITEM
 	waitfanfare
+	removeitem ITEM_POKE_BALL
 	setflag FLAG_SYS_POKEMON_GET
 	delay 40
 	msgbox AnconnaWoods_1_Found_Riolu_Text_18
@@ -140,7 +169,7 @@ AnconnaWoods_1_Found_Riolu::
 	msgbox AnconnaWoods_1_Found_Riolu_Text_19
 	setvar ANCONNA_WOODS_FOUND_RIOLU, 1
 	addvar GAME_PROGRESS, 1
-	releaseall
+	release
 	return
 
 
@@ -240,18 +269,25 @@ RioluLikesYou:
 	step_end
 
 AnconnaWoods_1_BugGem_Text_0:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Why would anyone drop this\n"
-	.string "here?\p"
+	.string "Why would anyone drop this here?\p"
 	.string "Well, Their Loss!$"
 
+AnconnaWoods_1_SpecialPokeBallForRiolu_Text_0:
+	.string "A pokeball...\n"
+	.string "Could be useful..$"
+
+AnconnaWoods_1_Mushrooms_Text_0:
+	.string "Now that I've found them, I can finally\n"
+	.string "leave.$"
+
 AnconnaWoods_1_Not_Found_Riolu_Text_0:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: I can't go into bushes yet.\n"
-	.string "Wild Pokémon may jump out at me.\p"
+	.string "I can't go into bushes yet. Wild Pokémon\n"
+	.string "may jump out at me.\p"
 	.string "There has to be another way.$"
 
 AnconnaWoods_1_NotFoundMushrooms_Text_0:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: I'm sure those Mushrooms\n"
-	.string "are around here somewhere.$"
+	.string "I'm sure those Mushrooms are around\n"
+	.string "here somewhere.$"
 
 AnconnaWoods_1_Found_Riolu_Text_0:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Huh?\p"
@@ -332,13 +368,3 @@ AnconnaWoods_1_Found_Riolu_Text_19:
 	.string "(The poor little thing is lost, probably\n"
 	.string "because of those people from before.\p"
 	.string "Lets see if there's anyway I can help.)$"
-
-FoundBugGem::
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Why would anyone drop this here?\p"
-	.string "Well, Their Loss!$"
-
-MushroomText_1::
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Hmm, Some Mushrooms.$"
-
-MushroomText_2::
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Guess these could be handy.$"

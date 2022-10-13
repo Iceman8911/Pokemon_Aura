@@ -12460,10 +12460,10 @@ static const struct TrainerMon sParty_MayLinkPlaceholder[] = {
 static const struct TrainerMon sParty_AquaGruntLium[] = {
     {
     .iv = 255,
-    .lvl = 8,
+    .lvl = 9,
     .species = SPECIES_POOCHYENA,
-    .heldItem = ITEM_NONE,
-    .moves = {MOVE_BITE, MOVE_TACKLE, MOVE_SAND_ATTACK, MOVE_HOWL}
+    .heldItem = ITEM_ORAN_BERRY,
+    .moves = {MOVE_LEER, MOVE_HONE_CLAWS, MOVE_SAND_ATTACK, MOVE_HOWL}
     }
 };
 

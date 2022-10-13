@@ -169,6 +169,7 @@ Anconna_TownSiblingMainScript_25:
 	case 2, Anconna_TownSiblingMainScript_33
 	case 3, Anconna_TownSiblingMainScript_34
 Anconna_TownSiblingMainScript_30:
+	delay 45
 	msgbox Anconna_TownSiblingMainScript_Text_18
 	waitmessage
 	delay 45
@@ -183,7 +184,12 @@ Anconna_TownSiblingMainScript_35:
 	giveitem ITEM_RARE_CANDY, 1
 	msgbox Anconna_TownSiblingMainScript_Text_20
 	waitmessage
-	applymovement OBJ_EVENT_ID_PLAYER, FaceDown
+	fadescreen FADE_TO_BLACK
+	removeobject 3
+	applymovement 1, FaceUp
+	waitmovement 0
+	fadescreen FADE_FROM_BLACK
+	applymovement OBJ_EVENT_ID_PLAYER, Walk_Down
 	waitmovement 0
 	completequest QUEST_FIND_BIBBYS_COMB
 	addvar GAME_PROGRESS, 1
@@ -306,7 +312,7 @@ Anconna_Town_SisterLostSomething_1_11:
 	msgbox Anconna_Town_SisterLostSomething_1_Text_11
 	setflag FLAG_SYS_QUEST_MENU_GET
 	call FindBibbyCombQuest
-	addvar GAME_PROGRESS, 1
+	addvar GAME_PROGRESS, 2
 	setvar VAR_TEMP_0, 0
 	return
 

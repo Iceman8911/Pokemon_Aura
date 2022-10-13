@@ -3,9 +3,10 @@
 2 = Gotten Task To Obtain Mushrooms
 3 = Gotten Riolu
 4 = Shown Riolu, Need To Meet Sister 
-5 = Met Sister, Leaving Anconna Town
+5 = Met Sister, *Leaving Anconna Town (skipped)
 6 = Looking For Sister's Bidoof Comb
 7 = Found The Comb, Leaving Anconna Town
+8 = Met Professor Maxmilliam
 
 
 

@@ -3,26 +3,29 @@ Anconna_Town_PlayerHouse_Floor1_MapScripts::
 
 
 PlayerHouse_Sibling_Room::
+	lockall
 	compare GAME_PROGRESS, 4
-	goto_if_lt PlayerHouse_Sibling_Room_1
+	goto_if_lt PlayerHouse_Sibling_Room_2
 	compare GAME_PROGRESS, 4
-	goto_if_ge PlayerHouse_Sibling_Room_3
-	return
-
+	goto_if_ge PlayerHouse_Sibling_Room_4
 PlayerHouse_Sibling_Room_1:
-	msgbox PlayerHouse_Sibling_Room_Text_0
-	applymovement OBJ_EVENT_ID_PLAYER, PlayerHouse_PlayerMoveUp
-	waitmovement 0
+	releaseall
 	return
 
 PlayerHouse_Sibling_Room_2:
-	addvar VAR_TEMP_0, 1
-	return
+	msgbox PlayerHouse_Sibling_Room_Text_0
+	applymovement OBJ_EVENT_ID_PLAYER, PlayerHouse_PlayerMoveUp
+	waitmovement 0
+	goto PlayerHouse_Sibling_Room_1
 
 PlayerHouse_Sibling_Room_3:
+	addvar VAR_TEMP_0, 1
+	goto PlayerHouse_Sibling_Room_1
+
+PlayerHouse_Sibling_Room_4:
 	compare GAME_PROGRESS, 8
-	goto_if_lt PlayerHouse_Sibling_Room_2
-	return
+	goto_if_lt PlayerHouse_Sibling_Room_3
+	goto PlayerHouse_Sibling_Room_1
 
 
 PlayerHouse_PlayerLooksAtStaircaseBin::

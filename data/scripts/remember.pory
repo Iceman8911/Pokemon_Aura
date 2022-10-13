@@ -4,6 +4,8 @@ script Remember{    //This is the script that will be run by the Start Menu Opti
     applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceDown)
     waitmovement(0)
     delay(30)
+    buffernumberstring(0, GAME_PROGRESS)
+    msgbox("The Value Of Game_Progress is {STR_VAR_1}.  ")
     switch (var(GAME_PROGRESS)) {
         case 0:
         case 1:
@@ -25,7 +27,9 @@ script Remember{    //This is the script that will be run by the Start Menu Opti
             msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Gotta return this to her.."))
         }
         case 7:
-        msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: How did the comb get into the trash? Maybe I shouldn't tell her.\pI'd better get going though"))
+        msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: I'd better get going now.."))
+        case 8:
+        msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: {COLOR GREEN}Scandi City{COLOR DARK_GRAY} is just beyond {COLOR GREEN}Route 01{COLOR DARK_GRAY} and {COLOR GREEN}Murky Grove{COLOR DARK_GRAY}, right?"))
     }
     releaseall
 }

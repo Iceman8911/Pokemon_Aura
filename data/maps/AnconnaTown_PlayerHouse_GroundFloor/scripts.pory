@@ -1,24 +1,32 @@
 mapscripts AnconnaTown_PlayerHouse_GroundFloor_MapScripts {
-    MAP_SCRIPT_ON_TRANSITION {
-        if(var(GAME_PROGRESS < 4)){
-            setflag(RIOLU_IS_IN_PLAYER_HOUSE)   //prevent Riolu from appearing in your house at the beginning of the game
-        } else {
-            clearflag(RIOLU_IS_IN_PLAYER_HOUSE)  //clears the flag Riolu after bringing it home
-        }
-    }
+//    MAP_SCRIPT_ON_TRANSITION {
+//        if(var(GAME_PROGRESS < 4)){
+//           setflag(RIOLU_IS_IN_PLAYER_HOUSE)   //prevent Riolu from appearing in your house at the beginning of the game
+//        } else {
+//            clearflag(RIOLU_IS_IN_PLAYER_HOUSE)  //clears the flag Riolu after bringing it home
+//        }
+//    } 
     MAP_SCRIPT_ON_FRAME_TABLE[
         GAME_PROGRESS, 1: PlayerCameDownstairsAfterWakingUp   //starts the First cutscene where you will be given a task to get Musrooms
         GAME_PROGRESS, 3: EnterHouseWithRioluForFirstTime   //starts the cutscene where you show Riolu to your parents
-        VAR_TEMP_9, 0: ShowRioluInPlayerHouse      //actually shows Riolu in the player's house
+        //VAR_TEMP_9, 0: ShowRioluInPlayerHouse      //actually shows Riolu in the player's house
+        //GAME_PROGRESS, 4: ShowRioluInPlayerHouse      //actually shows Riolu in the player's house
+    ]
+
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[
+        VAR_TEMP_9, 0 : ShowRioluInPlayerHouse    //it should work proerly if I include it here
     ]
 }
 
 script ShowRioluInPlayerHouse {
-    if(var(GAME_PROGRESS >4)) {
+    if(var(GAME_PROGRESS) >= 4) {
         addobject(4)
-        showobjectat(4, MAP_ANCONNA_TOWN_PLAYER_HOUSE_GROUND_FLOOR)
+        //showobjectat(4, MAP_ANCONNA_TOWN_PLAYER_HOUSE_GROUND_FLOOR)
+    } else {
+        removeobject(4)
     }
     addvar(VAR_TEMP_9, 1)   //to prevent the game from "hanging"
+    return
 }
 
 script EnterHouseWithRioluForFirstTime {
@@ -129,15 +137,16 @@ script EnterHouseWithRioluForFirstTime {
             closemessage
             applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Y'know that I'm not a kid anymore and I'll be back soon"))
+            msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Y'know that I'm not a kid anymore and I'll be back soon."))
             waitmessage
             closemessage
             applymovement(1, WalkInPlaceUp)
             waitmovement(0)
             msgbox(format("{COLOR RED}I know but we planned on giving you a starter Pokemon today so you won't be too lonely but seeing you leaving for now with this Riolu....it makes me tear up."))
             waitmessage
-            msgbox(format("{COLOR RED}Well,\pThe earlier you go, the earlier you come back.\pGoodluck {COLOR GREEN}{PLAYER}{COLOR RED}!"))
+            msgbox(format("{COLOR RED}Well,\pThe earlier you go, the earlier you come back. Don't explain to anyone outside our family about this.\pGoodluck {COLOR GREEN}{PLAYER}{COLOR RED}!"))
             addvar(GAME_PROGRESS, 1)
+            call(ShowRioluInPlayerHouse)  //Prolly easier to call it after the cutscene
             releaseall
 
 }
@@ -147,10 +156,12 @@ script PlayerCameDownstairsAfterWakingUp {
         special(SpawnCameraObject)
         applymovement(1, MumComesToMeetYouAtTheStairCase)
         waitmovement(0)
+        applymovement(OBJ_EVENT_ID_PLAYER, FaceDown)
+        waitmovement(0)
         msgbox(format("Mum: {COLOR RED}Good Morning, {COLOR GREEN}{PLAYER}{COLOR RED}.\nHow was your night?"))
         waitmessage
         bufferdynamicmulti("A bit rough to be honest...", "Not the best...")
-        multichoice(25, 10, MULTI_DYNAMIC_2, 1)
+        multichoice(25, 7, MULTI_DYNAMIC_2, 1)
         switch (var(VAR_RESULT)) {
             case 0:
             msgbox(format("Mum: {COLOR RED}Then I'm sure this will cheer you up!"))
@@ -181,8 +192,10 @@ script PlayerCameDownstairsAfterWakingUp {
         waitmessage
         msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: .....\pSo this is just a way of telling me to do more work."))
         waitmessage
-        msgbox(format("Mum: {COLOR RED}:D\p.....\pMaybe...."))
+        msgbox(format("Mum: {COLOR RED}:D\p.....\p{FONT_SMALL}Maybe...."))
         waitmessage
+        applymovement(2, Surprised)
+        waitmovement(0)
         msgbox(format("Dad: {COLOR BLUE}Um, I remember now!"))
         waitmessage
         closemessage
@@ -206,8 +219,8 @@ script Riolu {
     faceplayer
     applymovement(4, Happy)
     waitmovement(0)
-    msgbox(format("{COLOR GREEN}Rioooluu"))
     playmoncry(SPECIES_RIOLU, CRY_MODE_NORMAL)
+    msgbox(format("{COLOR GREEN}Rioooluu"))
     waitmoncry
     bufferdynamicmulti("Pet It", "...")
     multichoice(25, 5, MULTI_DYNAMIC_2, 0)
@@ -456,18 +469,18 @@ script AnconnaTown_PlayerHouse_Drawer {
 
 script AnconnaTown_TalkToSibling { //This script prevents the player from leaving the house before unlocking the mission
     lockall
-    if (var(GAME_PROGRESS)< 5) { //This code might look funny but check the trigger at the Player house's doorstep
+    if (var(GAME_PROGRESS) == 4 || var(GAME_PROGRESS) == 5) { //This code might look funny but check the trigger at the Player house's doorstep
         msgbox(format("Shouldn't I meet my sis?\pAfter all, I haven't even seen her today."))
         waitmessage
         closemessage
         applymovement(OBJ_EVENT_ID_PLAYER, Walk_Up)
         waitmovement(0)
-    } elif (var(GAME_PROGRESS) < 7) { //Prevents the player from leaving without finishing the quest
+    } elif(var(GAME_PROGRESS) == 6) { //Prevents the player from leaving without finishing the quest
         msgbox(format("Can't leave without helping her..."))
-            waitmessage
-            closemessage
-            applymovement(OBJ_EVENT_ID_PLAYER, Walk_Up)
-            waitmovement(0)
+        waitmessage
+        closemessage
+        applymovement(OBJ_EVENT_ID_PLAYER, Walk_Up)
+        waitmovement(0)
     }
     releaseall
 }
