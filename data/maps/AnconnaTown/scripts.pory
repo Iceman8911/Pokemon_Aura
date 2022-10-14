@@ -275,6 +275,9 @@ script AnconnaTown_ProfessorMaxmilliam {   //Called When Player Talks To Prof Ma
 
 script AnconnaTown_ProfessorMaxmilliam1 {   //Called When Player Tries To Leave without talking To Prof Maxmilliam
 	lockall
+	msgbox(format("???:{COLOR BLUE} WAIT!!!"))
+	waitmessage
+	closemessage
 	getplayerxy(VAR_TEMP_2, VAR_TEMP_3) //Gets the player's location
 	if(var(VAR_TEMP_2) == 17) {      //Exact player location in porymap. Decides which movement Maxmilliam will take when meeting the player
 		applymovement(9, AnconnaTown_ProfMaxMilliamRunsToPlayer_1)
@@ -282,9 +285,6 @@ script AnconnaTown_ProfessorMaxmilliam1 {   //Called When Player Tries To Leave 
 		applymovement(9, AnconnaTown_ProfMaxMilliamRunsToPlayer_2)
 	}
 	waitmovement(0)
-	msgbox(format("???:{COLOR BLUE} WAIT!!!"))
-	waitmessage
-	closemessage
 	applymovement(OBJ_EVENT_ID_PLAYER, Surprised)
 	applymovement(OBJ_EVENT_ID_PLAYER, FaceDown)
 	waitmovement(0)
@@ -398,6 +398,7 @@ movement AnconnaTown_ProfMaxMilliamRunsToPlayer_1 {
 	walk_fast_left * 2
 	walk_fast_up * 7
 	walk_right * 2
+	walk_up
 	face_player
 }
 
@@ -405,6 +406,7 @@ movement AnconnaTown_ProfMaxMilliamRunsToPlayer_2 {
 	walk_fast_left * 2
 	walk_fast_up * 7
 	walk_right * 3
+	walk_up
 	face_player
 }
 
@@ -420,11 +422,13 @@ movement AnconnaTown_ProfMaxmilliamWalksBackToLab2 {
 }
 
 movement AnconnaTown_ProfMaxmilliamWalksBackToLabAfterRunningToPlayer1 {
+	walk_down
 	walk_left * 2
 	walk_down * 5
 }
 
 movement AnconnaTown_ProfMaxmilliamWalksBackToLabAfterRunningToPlayer2 {
+	walk_down
 	walk_left * 3
 	walk_down * 5
 }

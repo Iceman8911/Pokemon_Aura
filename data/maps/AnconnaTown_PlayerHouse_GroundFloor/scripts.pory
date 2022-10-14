@@ -29,6 +29,10 @@ script ShowRioluInPlayerHouse {
     return
 }
 
+script AnconnaTown_MakeRioluAFollower {
+    setfollower(4, RIOLU_IS_A_FOLLOWER)
+    addvar(GAME_PROGRESS, 1)//GAME_PROGRESS is now 9
+}
 script EnterHouseWithRioluForFirstTime {
 			lockall
             delay(60)

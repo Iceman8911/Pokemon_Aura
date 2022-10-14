@@ -26,6 +26,12 @@ ShowRioluInPlayerHouse_2:
 	goto ShowRioluInPlayerHouse_1
 
 
+AnconnaTown_MakeRioluAFollower::
+	setfollower 4, RIOLU_IS_A_FOLLOWER
+	addvar GAME_PROGRESS, 1
+	return
+
+
 EnterHouseWithRioluForFirstTime::
 	lockall
 	delay 60

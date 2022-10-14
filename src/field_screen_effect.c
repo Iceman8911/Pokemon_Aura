@@ -283,7 +283,7 @@ void FieldCB_DefaultWarpExit(void)
     
     FollowMe_WarpSetEnd();
     
-    ScriptContext_Enable();
+    //ScriptContext_Enable();
 }
 
 void FieldCB_WarpExitFadeFromWhite(void)

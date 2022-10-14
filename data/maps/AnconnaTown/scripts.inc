@@ -257,15 +257,15 @@ AnconnaTown_ProfessorMaxmilliam_6:
 
 AnconnaTown_ProfessorMaxmilliam1::
 	lockall
+	msgbox AnconnaTown_ProfessorMaxmilliam1_Text_0
+	waitmessage
+	closemessage
 	getplayerxy VAR_TEMP_2, VAR_TEMP_3
 	compare VAR_TEMP_2, 17
 	goto_if_eq AnconnaTown_ProfessorMaxmilliam1_2
 	applymovement 9, AnconnaTown_ProfMaxMilliamRunsToPlayer_2
 AnconnaTown_ProfessorMaxmilliam1_1:
 	waitmovement 0
-	msgbox AnconnaTown_ProfessorMaxmilliam1_Text_0
-	waitmessage
-	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Surprised
 	applymovement OBJ_EVENT_ID_PLAYER, FaceDown
 	waitmovement 0
@@ -413,6 +413,7 @@ AnconnaTown_ProfMaxMilliamRunsToPlayer_1:
 	walk_fast_up
 	walk_right
 	walk_right
+	walk_up
 	face_player
 	step_end
 
@@ -429,6 +430,7 @@ AnconnaTown_ProfMaxMilliamRunsToPlayer_2:
 	walk_right
 	walk_right
 	walk_right
+	walk_up
 	face_player
 	step_end
 
@@ -451,6 +453,7 @@ AnconnaTown_ProfMaxmilliamWalksBackToLab2:
 	step_end
 
 AnconnaTown_ProfMaxmilliamWalksBackToLabAfterRunningToPlayer1:
+	walk_down
 	walk_left
 	walk_left
 	walk_down
@@ -461,6 +464,7 @@ AnconnaTown_ProfMaxmilliamWalksBackToLabAfterRunningToPlayer1:
 	step_end
 
 AnconnaTown_ProfMaxmilliamWalksBackToLabAfterRunningToPlayer2:
+	walk_down
 	walk_left
 	walk_left
 	walk_left

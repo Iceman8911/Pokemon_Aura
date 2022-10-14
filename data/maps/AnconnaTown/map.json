@@ -142,7 +142,7 @@
       "in_connection": false,
       "x": 17,
       "y": 10,
-      "elevation": 3,
+      "elevation": 4,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
@@ -217,7 +217,7 @@
     {
       "type": "trigger",
       "x": 17,
-      "y": 2,
+      "y": 1,
       "elevation": 0,
       "var": "VAR_TEMP_9",
       "var_value": "0",
@@ -226,7 +226,7 @@
     {
       "type": "trigger",
       "x": 18,
-      "y": 2,
+      "y": 1,
       "elevation": 0,
       "var": "VAR_TEMP_9",
       "var_value": "0",
@@ -294,6 +294,16 @@
       "var": "GAME_PROGRESS",
       "var_value": "3",
       "script": "AnconnaTown_JustCameOutOfForest"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 0,
+      "elevation": 0,
+      "var": "GAME_PROGRESS",
+      "var_value": "8",
+      "script": "AnconnaTown_MakeRioluAFollower",
+      "": "Makes Riolu The Player's Follower after dealing with Early game"
     }
   ],
   "bg_events": [
