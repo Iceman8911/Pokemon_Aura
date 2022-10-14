@@ -207,6 +207,8 @@ void NewGameInitData(void)
     ResetContestLinkResults();
     gSaveBlock2Ptr->autoRun = FALSE;
     QuestMenu_ResetMenuSaveData();
+    
+    memset(&gSaveBlock2Ptr->follower, 0, sizeof(gSaveBlock2Ptr->follower));
 }
 
 static void ResetMiniGamesRecords(void)

@@ -1850,6 +1850,28 @@
     
     .macro givemonmoves species:req, level:req, move1:req, move2:req, move3:req, move4:req
     customgivemon \species, \level, 0, 0, NUM_NATURES, 0xFF, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \move1, \move2, \move3, \move4, 0
+	.endm
+
+    @ sets an NPC up to follow the player
+    .macro setfollower localId:req, flags:req
+    .byte 0xe3
+    .byte \localId
+    .2byte \flags
+    .endm
+    
+    @ remove the following NPC (assumes there will only ever be one)
+    .macro destroyfollower
+    .byte 0xe4
+    .endm
+    
+    @ makes the player and follower face one another
+    .macro facefollower
+    .byte 0xe5
+    .endm
+    
+    @ checks if you have a follower. returns the result to VAR_RESULT
+    .macro checkfollower
+    .byte 0xe6
     .endm
 
 	@ buffer up to 6 supplied strings for use with MULTI_DYNAMIC_X
