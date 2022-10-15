@@ -324,7 +324,7 @@ struct BaseStats
             u8 safariZoneFleeRate;
             u8 bodyColor : 7;
             u8 noFlip : 1;
-            u8 flags;
+            u16 flags;
 };
 
 #include "constants/battle_config.h"
@@ -567,5 +567,6 @@ void CreateShinyMonWithNature(struct Pokemon *mon, u16 species, u8 level, u8 nat
 u8 SendMonToPC(struct Pokemon* mon);
 bool32 ShouldShowFemaleDifferences(u16 species, u32 personality);
 void TryToSetBattleFormChangeMoves(struct Pokemon *mon);
+u32 GetMonFriendshipScore(struct Pokemon *pokemon);
 
 #endif // GUARD_POKEMON_H

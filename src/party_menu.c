@@ -242,7 +242,6 @@ static bool8 AllocPartyMenuBgGfx(void);
 static void InitPartyMenuWindows(u8);
 static void InitPartyMenuBoxes(u8);
 static void LoadPartyMenuPokeballGfx(void);
-static void LoadPartyMenuAilmentGfx(void);
 static bool8 CreatePartyMonSpritesLoop(void);
 static bool8 RenderPartyMenuBoxes(void);
 static void CreateCancelConfirmPokeballSprites(void);
@@ -2859,7 +2858,7 @@ static bool8 TryMovePartySlot(s16 x, s16 width, u8 *leftMove, u8 *newX, u8 *newW
 {
     if (x + width < 0)
         return FALSE;
-    if (x > 31)
+    if (x >= 32)
         return FALSE;
 
     if (x < 0)
@@ -2872,7 +2871,7 @@ static bool8 TryMovePartySlot(s16 x, s16 width, u8 *leftMove, u8 *newX, u8 *newW
     {
         *leftMove = 0;
         *newX = x;
-        if (x + width > 31)
+        if (x + width >= 32)
             *newWidth = 32 - x;
         else
             *newWidth = width;
@@ -3588,8 +3587,11 @@ static void CursorCb_Register(u8 taskId)
 
     switch (CanRegisterMonForTradingBoard(*(struct RfuGameCompatibilityData *)GetHostRfuGameData(), species2, species, isEventLegal))
     {
-    case CANT_REGISTER_MON:
+    case CANT_REGISTER_MON_NOW:
         StringExpandPlaceholders(gSystemStringVar, gText_PkmnCantBeTradedNow);
+        break;
+    case CANT_REGISTER_MON:
+        //StringExpandPlaceholders(gSystemStringVar, gText_PkmnCantBeTraded);
         break;
     case CANT_REGISTER_EGG:
         StringExpandPlaceholders(gSystemStringVar, gText_EggCantBeTradedNow);
@@ -3643,7 +3645,7 @@ static void CursorCb_Trade2(u8 taskId)
         StringExpandPlaceholders(gSystemStringVar, gText_OnlyPkmnForBattle);
         break;
     case CANT_TRADE_NATIONAL:
-        StringExpandPlaceholders(gSystemStringVar, gText_PkmnCantBeTradedNow);
+        //StringExpandPlaceholders(gSystemStringVar, gText_PkmnCantBeTradedNow);
         break;
     case CANT_TRADE_EGG_YET:
         StringExpandPlaceholders(gSystemStringVar, gText_EggCantBeTradedNow);
@@ -4181,7 +4183,7 @@ static void CreatePartyMonStatusSprite(struct Pokemon *mon, struct PartyMenuBox 
 {
     if (GetMonData(mon, MON_DATA_SPECIES) != SPECIES_NONE)
     {
-        menuBox->statusSpriteId = CreateSprite(&sSpriteTemplate_StatusIcons, menuBox->spriteCoords[4], menuBox->spriteCoords[5], 0);
+        menuBox->statusSpriteId = CreateSprite(&gSpriteTemplate_StatusIcons, menuBox->spriteCoords[4], menuBox->spriteCoords[5], 0);
         SetPartyMonAilmentGfx(mon, menuBox);
     }
 }
@@ -4190,7 +4192,7 @@ static void CreatePartyMonStatusSpriteParameterized(u16 species, u8 status, stru
 {
     if (species != SPECIES_NONE)
     {
-        menuBox->statusSpriteId = CreateSprite(&sSpriteTemplate_StatusIcons, menuBox->spriteCoords[4], menuBox->spriteCoords[5], 0);
+        menuBox->statusSpriteId = CreateSprite(&gSpriteTemplate_StatusIcons, menuBox->spriteCoords[4], menuBox->spriteCoords[5], 0);
         UpdatePartyMonAilmentGfx(status, menuBox);
         gSprites[menuBox->statusSpriteId].oam.priority = 0;
     }
@@ -4216,7 +4218,7 @@ static void UpdatePartyMonAilmentGfx(u8 status, struct PartyMenuBox *menuBox)
     }
 }
 
-static void LoadPartyMenuAilmentGfx(void)
+void LoadPartyMenuAilmentGfx(void)
 {
     LoadCompressedSpriteSheet(&sSpriteSheet_StatusIcons);
     LoadCompressedSpritePalette(&sSpritePalette_StatusIcons);
@@ -4913,13 +4915,13 @@ bool8 MonKnowsMove(struct Pokemon *mon, u16 move)
     return FALSE;
 }
 
-bool8 BoxMonKnowsMove(struct BoxPokemon *mon, u16 move)
+bool8 BoxMonKnowsMove(struct BoxPokemon *boxMon, u16 move)
 {
     u8 i;
 
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
-        if (GetMonData(mon, MON_DATA_MOVE1 + i) == move)
+        if (GetBoxMonData(boxMon, MON_DATA_MOVE1 + i) == move)
             return TRUE;
     }
     return FALSE;
@@ -6183,10 +6185,10 @@ void ChooseMonForWirelessMinigame(void)
 
 static u8 GetPartyLayoutFromBattleType(void)
 {
-    if (!IsDoubleBattle() || gPlayerPartyCount == 1) // Draw the single layout in a double battle where the player has only one pokemon.
-        return PARTY_LAYOUT_SINGLE;
     if (IsMultiBattle() == TRUE)
         return PARTY_LAYOUT_MULTI;
+    if (!IsDoubleBattle() || gPlayerPartyCount == 1) // Draw the single layout in a double battle where the player has only one pokemon.
+        return PARTY_LAYOUT_SINGLE;
     return PARTY_LAYOUT_DOUBLE;
 }
 

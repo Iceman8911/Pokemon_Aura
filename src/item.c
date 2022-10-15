@@ -884,6 +884,7 @@ const u8 *ItemId_GetName(u16 itemId)
     return gItems[SanitizeItemId(itemId)].name;
 }
 
+// Unused
 u16 ItemId_GetId(u16 itemId)
 {
     return gItems[SanitizeItemId(itemId)].itemId;
@@ -914,7 +915,7 @@ u8 ItemId_GetImportance(u16 itemId)
     return gItems[SanitizeItemId(itemId)].importance;
 }
 
-// unused
+// Unused
 u8 ItemId_GetRegistrability(u16 itemId)
 {
     return gItems[SanitizeItemId(itemId)].registrability;
