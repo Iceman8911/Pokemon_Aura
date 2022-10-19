@@ -12,6 +12,9 @@ AnconnaTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 	compare GAME_PROGRESS, 7
 	goto_if_ne AnconnaTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
 AnconnaTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_3:
+	compare GAME_PROGRESS, 8
+	goto_if_ne AnconnaTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_7
+AnconnaTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_6:
 	addvar VAR_TEMP_1, 1
 	return
 
@@ -19,8 +22,89 @@ AnconnaTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
 	setflag FLAG_TEMP_2
 	goto AnconnaTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_3
 
+AnconnaTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_7:
+	setflag FLAG_TEMP_3
+	goto AnconnaTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_6
+
 AnconnaTown_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE:
 	.2byte 0
+
+
+AnconnaTown_CannotEnterLab::
+	compare GAME_PROGRESS, 9
+	goto_if_lt AnconnaTown_CannotEnterLab_2
+AnconnaTown_CannotEnterLab_1:
+	addvar VAR_TEMP_3, 1
+	return
+
+AnconnaTown_CannotEnterLab_2:
+	lockall
+	msgbox AnconnaTown_CannotEnterLab_Text_0
+	waitmessage
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Walk_Down
+	waitmovement 0
+	releaseall
+	goto AnconnaTown_CannotEnterLab_1
+
+
+AnconnaTown_MakeRioluAFollower::
+	addobject 10
+	applymovement OBJ_EVENT_ID_PLAYER, Surprised
+	waitmovement 0
+	msgbox AnconnaTown_MakeRioluAFollower_Text_0
+	waitmessage
+	fadescreen FADE_TO_WHITE
+	clearflag FLAG_TEMP_3
+	getplayerxy VAR_TEMP_2, VAR_TEMP_3
+	compare VAR_TEMP_2, 17
+	goto_if_eq AnconnaTown_MakeRioluAFollower_2
+	setobjectxy 10, 17, 0
+	applymovement OBJ_EVENT_ID_PLAYER, FaceLeft
+	waitmovement 0
+	applymovement 10, FacePlayer
+	waitmovement 0
+AnconnaTown_MakeRioluAFollower_1:
+	delay 30
+	fadescreen FADE_FROM_WHITE
+	playmoncry SPECIES_RIOLU, CRY_MODE_NORMAL
+	msgbox AnconnaTown_MakeRioluAFollower_Text_1
+	waitmoncry
+	compare VAR_TEMP_2, 17
+	goto_if_eq AnconnaTown_MakeRioluAFollower_6
+	applymovement OBJ_EVENT_ID_PLAYER, WalkInPlaceLeft
+AnconnaTown_MakeRioluAFollower_5:
+	waitmovement 0
+	msgbox AnconnaTown_MakeRioluAFollower_Text_2
+	waitmessage
+	delay 20
+	compare VAR_TEMP_2, 17
+	goto_if_eq AnconnaTown_MakeRioluAFollower_10
+	applymovement 10, WalkInPlaceRight
+AnconnaTown_MakeRioluAFollower_9:
+	waitmovement 0
+	msgbox AnconnaTown_MakeRioluAFollower_Text_3
+	waitmessage
+	closemessage
+	setfollower 10, RIOLU_IS_A_FOLLOWER
+	addvar GAME_PROGRESS, 1
+	return
+
+AnconnaTown_MakeRioluAFollower_2:
+	setobjectxy 10, 18, 0
+	applymovement OBJ_EVENT_ID_PLAYER, FaceRight
+	waitmovement 0
+	applymovement 10, FacePlayer
+	waitmovement 0
+	goto AnconnaTown_MakeRioluAFollower_1
+
+AnconnaTown_MakeRioluAFollower_6:
+	applymovement OBJ_EVENT_ID_PLAYER, WalkInPlaceRight
+	goto AnconnaTown_MakeRioluAFollower_5
+
+AnconnaTown_MakeRioluAFollower_10:
+	applymovement 10, WalkInPlaceLeft
+	goto AnconnaTown_MakeRioluAFollower_9
 
 
 AnconnaTown_Cannot_Leave_Anconna_Town::
@@ -190,6 +274,8 @@ Anconna_Town_Discovered_Mysterious_People::
 	applymovement OBJ_EVENT_ID_CAMERA, ReversePan
 	waitmovement 0
 	special RemoveCameraObject
+	applymovement OBJ_EVENT_ID_PLAYER, WalkInPlaceDown
+	waitmovement 0
 	msgbox Anconna_Town_Discovered_Mysterious_People_Text_13
 	setvar ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE, 1
 	releaseall
@@ -224,6 +310,7 @@ AnconnaTown_ProfessorMaxmilliam::
 	case 0, AnconnaTown_ProfessorMaxmilliam_3
 	case 1, AnconnaTown_ProfessorMaxmilliam_4
 AnconnaTown_ProfessorMaxmilliam_1:
+	closemessage
 	getplayerxy VAR_TEMP_2, VAR_TEMP_3
 	compare VAR_TEMP_2, 18
 	goto_if_eq AnconnaTown_ProfessorMaxmilliam_6
@@ -231,8 +318,23 @@ AnconnaTown_ProfessorMaxmilliam_1:
 AnconnaTown_ProfessorMaxmilliam_5:
 	waitmovement 0
 	removeobject 9
-	addvar GAME_PROGRESS, 1
+	delay 20
+	applymovement OBJ_EVENT_ID_PLAYER, WalkInPlaceRight
+	waitmovement 0
+	msgbox AnconnaTown_ProfessorMaxmilliam_Text_6
+	waitmessage
+	closemessage
+	compare VAR_TEMP_2, 18
+	goto_if_eq AnconnaTown_ProfessorMaxmilliam_16
+AnconnaTown_ProfessorMaxmilliam_14:
+	compare VAR_TEMP_2, 17
+	goto_if_eq AnconnaTown_ProfessorMaxmilliam_13
+AnconnaTown_ProfessorMaxmilliam_12:
+	applymovement OBJ_EVENT_ID_PLAYER, AnconnaTown_PlayerWalksToLab3
+AnconnaTown_ProfessorMaxmilliam_9:
+	waitmovement 0
 	setflag FLAG_TEMP_1
+	warp MAP_ANCONNA_TOWN_LAB, 0
 	releaseall
 	return
 
@@ -254,11 +356,31 @@ AnconnaTown_ProfessorMaxmilliam_6:
 	applymovement 9, AnconnaTown_ProfMaxmilliamWalksBackToLab2
 	goto AnconnaTown_ProfessorMaxmilliam_5
 
+AnconnaTown_ProfessorMaxmilliam_10:
+	applymovement OBJ_EVENT_ID_PLAYER, AnconnaTown_PlayerWalksToLab1
+	goto AnconnaTown_ProfessorMaxmilliam_9
+
+AnconnaTown_ProfessorMaxmilliam_11:
+	applymovement OBJ_EVENT_ID_PLAYER, AnconnaTown_PlayerWalksToLab2
+	goto AnconnaTown_ProfessorMaxmilliam_9
+
+AnconnaTown_ProfessorMaxmilliam_13:
+	compare VAR_TEMP_3, 11
+	goto_if_eq AnconnaTown_ProfessorMaxmilliam_11
+	goto AnconnaTown_ProfessorMaxmilliam_12
+
+AnconnaTown_ProfessorMaxmilliam_16:
+	compare VAR_TEMP_3, 10
+	goto_if_eq AnconnaTown_ProfessorMaxmilliam_10
+	goto AnconnaTown_ProfessorMaxmilliam_14
+
 
 AnconnaTown_ProfessorMaxmilliam1::
 	lockall
 	msgbox AnconnaTown_ProfessorMaxmilliam1_Text_0
 	waitmessage
+	applymovement OBJ_EVENT_ID_PLAYER, Surprised
+	waitmovement 0
 	closemessage
 	getplayerxy VAR_TEMP_2, VAR_TEMP_3
 	compare VAR_TEMP_2, 17
@@ -266,7 +388,6 @@ AnconnaTown_ProfessorMaxmilliam1::
 	applymovement 9, AnconnaTown_ProfMaxMilliamRunsToPlayer_2
 AnconnaTown_ProfessorMaxmilliam1_1:
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Surprised
 	applymovement OBJ_EVENT_ID_PLAYER, FaceDown
 	waitmovement 0
 	msgbox AnconnaTown_ProfessorMaxmilliam1_Text_1
@@ -276,14 +397,29 @@ AnconnaTown_ProfessorMaxmilliam1_1:
 	case 0, AnconnaTown_ProfessorMaxmilliam1_7
 	case 1, AnconnaTown_ProfessorMaxmilliam1_8
 AnconnaTown_ProfessorMaxmilliam1_5:
+	closemessage
 	compare VAR_TEMP_2, 17
 	goto_if_eq AnconnaTown_ProfessorMaxmilliam1_10
 	applymovement 9, AnconnaTown_ProfMaxmilliamWalksBackToLabAfterRunningToPlayer2
 AnconnaTown_ProfessorMaxmilliam1_9:
 	waitmovement 0
 	removeobject 9
-	addvar GAME_PROGRESS, 1
+	delay 20
+	applymovement OBJ_EVENT_ID_PLAYER, WalkInPlaceDown
+	waitmovement 0
+	msgbox AnconnaTown_ProfessorMaxmilliam_Text_6
+	waitmessage
+	closemessage
+	special SpawnCameraObject
+	compare VAR_TEMP_2, 17
+	goto_if_eq AnconnaTown_ProfessorMaxmilliam1_14
+	applymovement OBJ_EVENT_ID_PLAYER, AnconnaTown_PlayerWalksToLab5
+	applymovement OBJ_EVENT_ID_CAMERA, AnconnaTown_PlayerWalksToLab5
+AnconnaTown_ProfessorMaxmilliam1_13:
+	waitmovement 0
+	special RemoveCameraObject
 	setflag FLAG_TEMP_1
+	warp MAP_ANCONNA_TOWN_LAB, 0
 	releaseall
 	return
 
@@ -294,7 +430,7 @@ AnconnaTown_ProfessorMaxmilliam1_2:
 AnconnaTown_ProfessorMaxmilliam1_7:
 	msgbox AnconnaTown_ProfessorMaxmilliam_Text_3
 	giveitem ITEM_POKE_BALL, 10
-	msgbox AnconnaTown_ProfessorMaxmilliam_Text_4
+	msgbox AnconnaTown_ProfessorMaxmilliam1_Text_2
 	waitmessage
 	goto AnconnaTown_ProfessorMaxmilliam1_5
 
@@ -303,12 +439,16 @@ AnconnaTown_ProfessorMaxmilliam1_8:
 	giveitem ITEM_POKE_BALL, 10
 	msgbox AnconnaTown_ProfessorMaxmilliam_Text_4
 	waitmessage
-	closemessage
 	goto AnconnaTown_ProfessorMaxmilliam1_5
 
 AnconnaTown_ProfessorMaxmilliam1_10:
 	applymovement 9, AnconnaTown_ProfMaxmilliamWalksBackToLabAfterRunningToPlayer1
 	goto AnconnaTown_ProfessorMaxmilliam1_9
+
+AnconnaTown_ProfessorMaxmilliam1_14:
+	applymovement OBJ_EVENT_ID_PLAYER, AnconnaTown_PlayerWalksToLab4
+	applymovement OBJ_EVENT_ID_CAMERA, AnconnaTown_PlayerWalksToLab4
+	goto AnconnaTown_ProfessorMaxmilliam1_13
 
 
 Exclaim:
@@ -475,6 +615,100 @@ AnconnaTown_ProfMaxmilliamWalksBackToLabAfterRunningToPlayer2:
 	walk_down
 	step_end
 
+FacePlayer:
+	face_player
+	step_end
+
+AnconnaTown_PlayerWalksToLab1:
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	step_end
+
+AnconnaTown_PlayerWalksToLab2:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	step_end
+
+AnconnaTown_PlayerWalksToLab3:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	step_end
+
+AnconnaTown_PlayerWalksToLab4:
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	step_end
+
+AnconnaTown_PlayerWalksToLab5:
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	step_end
+
+AnconnaTown_CannotEnterLab_Text_0:
+	.string "There's no real reason to be in there\n"
+	.string "now, I'll probably be a nuance.$"
+
+AnconnaTown_MakeRioluAFollower_Text_0:
+	.string "Huh?!$"
+
+AnconnaTown_MakeRioluAFollower_Text_1:
+	.string "{COLOR GREEN}Rioluuuuuu!!$"
+
+AnconnaTown_MakeRioluAFollower_Text_2:
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Geeezz!\p"
+	.string "You can't just be coming out like that.\n"
+	.string "You could've signaled me better if you\l"
+	.string "wanted to stay out.\p"
+	.string "Since I'm a new trainer, I guess you can\n"
+	.string "stay out...\p"
+	.string "But no causing trouble, okay?$"
+
+AnconnaTown_MakeRioluAFollower_Text_3:
+	.string "(Riolu nods)$"
+
 AnconnaTown_Cannot_Leave_Anconna_Town_Text_0:
 	.string "Should I really ignore what just\n"
 	.string "happened now?$"
@@ -603,9 +837,12 @@ AnconnaTown_ProfessorMaxmilliam_Text_3:
 	.string "as a compensation.$"
 
 AnconnaTown_ProfessorMaxmilliam_Text_4:
-	.string "{COLOR BLUE}Don't bother yourself with this\n"
-	.string "situation, I'll make sure this is\l"
-	.string "handled well.$"
+	.string "{COLOR BLUE}Say...\p"
+	.string "You don't even have a Pokedex! How do\n"
+	.string "you expect to be informed of the wild\l"
+	.string "pokemon ahead.\p"
+	.string "Come with me to my lab and I'll lend you\n"
+	.string "one for now.$"
 
 AnconnaTown_ProfessorMaxmilliam_Text_5:
 	.string "Prof. Maxmilliam:{COLOR BLUE} Sigh..\p"
@@ -616,6 +853,9 @@ AnconnaTown_ProfessorMaxmilliam_Text_5:
 	.string "Since I took some of your time and it\n"
 	.string "looks like you're heading out, take this\l"
 	.string "as a compensation.$"
+
+AnconnaTown_ProfessorMaxmilliam_Text_6:
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: He does have a point...$"
 
 AnconnaTown_ProfessorMaxmilliam1_Text_0:
 	.string "???:{COLOR BLUE} WAIT!!!$"
@@ -629,6 +869,11 @@ AnconnaTown_ProfessorMaxmilliam1_Text_1:
 	.string "I heard quite a ruckus coming from that\n"
 	.string "forest and I saw you coming out of it.\n"
 	.string "Would you care to explain?$"
+
+AnconnaTown_ProfessorMaxmilliam1_Text_2:
+	.string "{COLOR BLUE}Don't bother yourself with this\n"
+	.string "situation, I'll make sure this is\l"
+	.string "handled well.$"
 
 AnconnaSign::
 	.string "Anconna Town\n"

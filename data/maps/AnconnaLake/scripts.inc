@@ -5,7 +5,7 @@ AnconnaLake_MapScripts::
 AnconnaLake_FisherMan1::
 	compare VAR_TEMP_0, 0
 	goto_if_eq AnconnaLake_FisherMan1_1
-	msgbox AnconnaLake_FisherMan1_Text_6, 2
+	msgbox AnconnaLake_FisherMan1_Text_5, 2
 	setvar VAR_TEMP_0, 0
 	closemessage
 	return
@@ -17,7 +17,6 @@ AnconnaLake_FisherMan1_1:
 	switch VAR_RESULT
 	case 0, AnconnaLake_FisherMan1_6
 	case 1, AnconnaLake_FisherMan1_7
-	msgbox AnconnaLake_FisherMan1_Text_5
 AnconnaLake_FisherMan1_4:
 	setvar VAR_TEMP_0, 1
 	closemessage
@@ -49,6 +48,7 @@ AnconnaLake_FisherMan3_1:
 
 AnconnaLake_FisherMan3_2:
 	msgbox AnconnaLake_FisherMan3_Text_0, 2
+	waitmessage
 	bufferdynamicmulti AnconnaLake_FisherMan3_Text_1, AnconnaLake_FisherMan3_Text_2
 	multichoice 25, 10, MULTI_DYNAMIC_2, 0
 	compare VAR_RESULT, 0
@@ -85,9 +85,6 @@ AnconnaLake_FisherMan1_Text_4:
 	.string "{COLOR BLUE}Nah, I'm very sure of it.$"
 
 AnconnaLake_FisherMan1_Text_5:
-	.string "Didn't work bohoo$"
-
-AnconnaLake_FisherMan1_Text_6:
 	.string "{COLOR BLUE}So I invited my brothers over.\p"
 	.string "Who knows what we'll catch today.$"
 

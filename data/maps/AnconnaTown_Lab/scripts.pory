@@ -1,0 +1,92 @@
+mapscripts AnconnaTown_Lab_MapScripts {
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        GAME_PROGRESS, 7 : AnconnaLab_RecievePokedexFromMaxilliamCutscene
+    ]
+}
+
+script AnconnaLab_CannotGoUpstairs {
+    lockall
+    msgbox(format("This should probably lead to somewhere private so I won't go there"))
+    waitmessage
+    closemessage
+    applymovement(OBJ_EVENT_ID_PLAYER, WalkLeft)
+    waitmovement(0)
+    releaseall
+}
+
+script AnconnaLab_ProfMaxmilliam {
+    lockall
+    msgbox(format("{COLOR BLUE}Don't worry about what happened, I'll make sure its resolved quickly."), 2)
+    waitmessage
+    releaseall
+}
+
+script AnconnaLab_Professor1{
+    lockall
+    msgbox(format("{COLOR BLUE}So much to do in such little time..\pSigh.."))
+    waitmessage
+    releaseall 
+}
+
+script AnconnaLab_Professor2{
+    lockall
+    msgbox(format("{COLOR BLUE}We're researching on the variety of wild pokemon here and its pretty interesting."), 2)
+    waitmessage
+    releaseall 
+}
+
+script AnconnaLab_Professor3{
+    lockall
+    msgbox(format("{COLOR BLUE}My job is to keep tabs on all the results we get from our experiments."), 2)
+    waitmessage
+    releaseall 
+}
+
+script AnconnaLab_RecievePokedexFromMaxilliamCutscene {
+    lockall
+    special(SpawnCameraObject)
+    applymovement(OBJ_EVENT_ID_CAMERA, PlayerWalksUpToMaxmilliamToRecievePokedex)
+    applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalksUpToMaxmilliamToRecievePokedex)
+	waitmovement(0)
+    applymovement(1, WalkInPlaceDown)
+    waitmovement(0)
+    msgbox(format("Prof. Maxmilliam:{COLOR BLUE} Ahh, here it is.\nThe Custom {COLOR GREEN}PokeDex{COLOR BLUE}.\pMake sure to return it once you're done."))
+    waitmessage
+    playfanfare(MUS_OBTAIN_ITEM)
+    msgbox(format("{PLAYER} has received a Pokedex!"))
+    setflag(FLAG_SYS_POKEDEX_GET)
+    waitfanfare
+    msgbox(format("{COLOR BLUE}Now that you're well equipped, goodluck. Don't worry about what happened in the forest, I'll make sure its resolved quickly."))
+    waitmessage
+    special(RemoveCameraObject)
+    addvar(GAME_PROGRESS, 1) //should be 8 here
+    releaseall
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+movement PlayerWalksUpToMaxmilliamToRecievePokedex {
+    walk_up * 7
+    walk_right * 3
+    face_up
+}

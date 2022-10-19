@@ -8,6 +8,10 @@ mapscripts AnconnaTown_MapScripts {
 			//setobjectxy(9, 17, 10)
 			setflag(FLAG_TEMP_2) //Professor Maxmilliam uses this flag
 			}
+			if(var(GAME_PROGRESS) != 8) {
+			//setobjectxy(9, 17, 10)
+			setflag(FLAG_TEMP_3) //AnconnaTown Riolu uses this flag
+			}
 			addvar(VAR_TEMP_1, 1)
 		}
 	}
@@ -23,6 +27,67 @@ mapscripts AnconnaTown_MapScripts {
 //	}
 //	addvar(VAR_TEMP_4, 1) //To prevent the game from hanging
 //}
+script AnconnaTown_CannotEnterLab {
+	if(var(GAME_PROGRESS) < 9) {
+		lockall
+		msgbox(format("There's no real reason to be in there now, I'll probably be a nuance."))
+		waitmessage
+		closemessage
+		applymovement(OBJ_EVENT_ID_PLAYER, Walk_Down)
+		waitmovement(0)
+		releaseall
+	}
+	addvar(VAR_TEMP_3, 1)
+}
+script AnconnaTown_MakeRioluAFollower {
+	addobject(10)
+	applymovement(OBJ_EVENT_ID_PLAYER, Surprised)
+	waitmovement(0)
+	msgbox(format("Huh?!"))
+	waitmessage
+	fadescreen(FADE_TO_WHITE)
+	clearflag(FLAG_TEMP_3)
+	getplayerxy(VAR_TEMP_2, VAR_TEMP_3) //Gets the player's location
+	if(var(VAR_TEMP_2) == 17) {
+		setobjectxy(10, 18, 0)
+		applymovement(OBJ_EVENT_ID_PLAYER, FaceRight)
+		waitmovement(0)
+		applymovement(10, FacePlayer)
+		waitmovement(0)
+	} else {
+		setobjectxy(10, 17, 0)
+		applymovement(OBJ_EVENT_ID_PLAYER, FaceLeft)
+		waitmovement(0)
+		applymovement(10, FacePlayer)
+		waitmovement(0)
+	}
+	delay(30)
+	fadescreen(FADE_FROM_WHITE)
+	playmoncry(SPECIES_RIOLU, CRY_MODE_NORMAL)
+	msgbox(format("{COLOR GREEN}Rioluuuuuu!!"))
+	waitmoncry
+	if(var(VAR_TEMP_2) == 17) {
+		applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceRight)
+	} else {
+		applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceLeft)
+	}
+	waitmovement(0)
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Geeezz!\pYou can't just be coming out like that. You could've signaled me better if you wanted to stay out."
+	"\pSince I'm a new trainer, I guess you can stay out...\pBut no causing trouble, okay?"))
+	waitmessage
+	delay(20)
+	if(var(VAR_TEMP_2) == 17) {
+		applymovement(10, WalkInPlaceLeft)
+	} else {
+		applymovement(10, WalkInPlaceRight)
+	}
+	waitmovement(0)
+	msgbox(format("(Riolu nods)"))
+	waitmessage
+	closemessage
+    setfollower(10, RIOLU_IS_A_FOLLOWER)
+    addvar(GAME_PROGRESS, 1)//GAME_PROGRESS is now 9
+}
 
 script AnconnaTown_Cannot_Leave_Anconna_Town {  //Prevents the player player from leaving Anconna Town In some Situations
 	if(var(FIRST_LIUM_FIGHT) == 0) {
@@ -217,6 +282,8 @@ script Anconna_Town_Discovered_Mysterious_People {
 	applymovement(OBJ_EVENT_ID_CAMERA, ReversePan)
 	waitmovement(0)
 	special(RemoveCameraObject)
+	applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceDown)
+	waitmovement(0)
 	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Who the heck are they?\pAnd why are they entering our forest?\pI haven't seen them around this place before.\pHmm.\pThey also seemed to be in a hurry and mentioned something about a plan.\pWhat could that possibly mean?"))
 	setvar(ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE, 1)
 	releaseall
@@ -250,15 +317,18 @@ script AnconnaTown_ProfessorMaxmilliam {   //Called When Player Talks To Prof Ma
 		msgbox(format("Prof. Maxmilliam:{COLOR BLUE} I did see some suspicious people enter the forest earlier today. Nevertheless, I doubt you know anything about it."
 		"\pSince I took some of your time and it looks like you're heading out, take this as a compensation."))
 		giveitem(ITEM_POKE_BALL, 10)
-		msgbox(format("{COLOR BLUE}Don't bother yourself with this situation, I'll make sure this is handled well."))
+		//msgbox(format("{COLOR BLUE}Don't bother yourself with this situation, I'll make sure this is handled well."))
+		msgbox(format("{COLOR BLUE}Say...\pYou don't even have a Pokedex! How do you expect to be informed of the wild pokemon ahead.\pCome with me to my lab and I'll lend you one for now."))
 		waitmessage
 		case 1:
 		msgbox(format("Prof. Maxmilliam:{COLOR BLUE} Sigh..\pWell, I saw three strange-looking people enter the forest earlier today. Nevertheless, I doubt you know anything about it."
 		"\pSince I took some of your time and it looks like you're heading out, take this as a compensation."))
 		giveitem(ITEM_POKE_BALL, 10)
-		msgbox(format("{COLOR BLUE}Don't bother yourself with this situation, I'll make sure this is handled well."))
+		//msgbox(format("{COLOR BLUE}Don't bother yourself with this situation, I'll make sure this is handled well."))
+		msgbox(format("{COLOR BLUE}Say...\pYou don't even have a Pokedex! How do you expect to be informed of the wild pokemon ahead.\pCome with me to my lab and I'll lend you one for now."))
 		waitmessage
 	}
+	closemessage
 	getplayerxy(VAR_TEMP_2, VAR_TEMP_3) //Gets the player's location
 	if(var(VAR_TEMP_2) == 18) {
 		applymovement(9, AnconnaTown_ProfMaxmilliamWalksBackToLab2)
@@ -267,9 +337,27 @@ script AnconnaTown_ProfessorMaxmilliam {   //Called When Player Talks To Prof Ma
 	}
 	waitmovement(0)
 	removeobject(9)
-	//setobjectxy(9, 32, 2)  //Since I'm not using a flag, I rather shift it somewhere else
-	addvar(GAME_PROGRESS, 1)
+	delay(20)
+	applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceRight)
+	waitmovement(0)
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: He does have a point..."))
+	waitmessage
+	closemessage
+	if(var(VAR_TEMP_2) == 18 && var(VAR_TEMP_3) == 10) {
+		applymovement(OBJ_EVENT_ID_PLAYER, AnconnaTown_PlayerWalksToLab1)
+	} elif(var(VAR_TEMP_2) == 17 && var(VAR_TEMP_3) == 11) {
+		applymovement(OBJ_EVENT_ID_PLAYER, AnconnaTown_PlayerWalksToLab2)
+	} else {
+		applymovement(OBJ_EVENT_ID_PLAYER, AnconnaTown_PlayerWalksToLab3)
+	}
+	waitmovement(0)
+	//addvar(GAME_PROGRESS, 1)
 	setflag(FLAG_TEMP_1)
+	warp(MAP_ANCONNA_TOWN_LAB, 0)
+	//applymovement(OBJ_EVENT_ID_PLAYER, WalkUp)
+	//waitmovement(0)
+	//setobjectxy(9, 32, 2)  //Since I'm not using a flag, I rather shift it somewhere else
+	
 	releaseall
 }
 
@@ -277,6 +365,8 @@ script AnconnaTown_ProfessorMaxmilliam1 {   //Called When Player Tries To Leave 
 	lockall
 	msgbox(format("???:{COLOR BLUE} WAIT!!!"))
 	waitmessage
+	applymovement(OBJ_EVENT_ID_PLAYER, Surprised)
+	waitmovement(0)
 	closemessage
 	getplayerxy(VAR_TEMP_2, VAR_TEMP_3) //Gets the player's location
 	if(var(VAR_TEMP_2) == 17) {      //Exact player location in porymap. Decides which movement Maxmilliam will take when meeting the player
@@ -285,7 +375,6 @@ script AnconnaTown_ProfessorMaxmilliam1 {   //Called When Player Tries To Leave 
 		applymovement(9, AnconnaTown_ProfMaxMilliamRunsToPlayer_2)
 	}
 	waitmovement(0)
-	applymovement(OBJ_EVENT_ID_PLAYER, Surprised)
 	applymovement(OBJ_EVENT_ID_PLAYER, FaceDown)
 	waitmovement(0)
 	msgbox(format("???:{COLOR BLUE} Huff-puff...\pErhem..\pGoodday, {COLOR GREEN}{PLAYER}{COLOR BLUE}. I am the current Field Researcher here, {COLOR GREEN}Professor Maxmilliam{COLOR BLUE}.\pI heard quite a ruckus coming from that forest and I saw you coming out of it.\n"
@@ -303,10 +392,11 @@ script AnconnaTown_ProfessorMaxmilliam1 {   //Called When Player Tries To Leave 
 		msgbox(format("Prof. Maxmilliam:{COLOR BLUE} Sigh..\pWell, I saw three strange-looking people enter the forest earlier today. Nevertheless, I doubt you know anything about it."
 		"\pSince I took some of your time and it looks like you're heading out, take this as a compensation."))
 		giveitem(ITEM_POKE_BALL, 10)
-		msgbox(format("{COLOR BLUE}Don't bother yourself with this situation, I'll make sure this is handled well."))
+		//msgbox(format("{COLOR BLUE}Don't bother yourself with this situation, I'll make sure this is handled well."))
+		msgbox(format("{COLOR BLUE}Say...\pYou don't even have a Pokedex! How do you expect to be informed of the wild pokemon ahead.\pCome with me to my lab and I'll lend you one for now."))
 		waitmessage
-		closemessage
 	}
+	closemessage
 	if(var(VAR_TEMP_2) == 17) {
 		applymovement(9, AnconnaTown_ProfMaxmilliamWalksBackToLabAfterRunningToPlayer1)
 	} else {
@@ -314,9 +404,29 @@ script AnconnaTown_ProfessorMaxmilliam1 {   //Called When Player Tries To Leave 
 	}
 	waitmovement(0)
 	removeobject(9)
-	//setobjectxy(9, 32, 2)  //Since I'm not using a flag, I rather shift it somewhere else
-	addvar(GAME_PROGRESS, 1)
+	delay(20)
+	applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceDown)
+	waitmovement(0)
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: He does have a point..."))
+	waitmessage
+	closemessage
+	special(SpawnCameraObject)
+	if(var(VAR_TEMP_2) == 17 ) {
+		applymovement(OBJ_EVENT_ID_PLAYER, AnconnaTown_PlayerWalksToLab4)
+		applymovement(OBJ_EVENT_ID_CAMERA, AnconnaTown_PlayerWalksToLab4)
+	} else {
+		applymovement(OBJ_EVENT_ID_PLAYER, AnconnaTown_PlayerWalksToLab5)
+		applymovement(OBJ_EVENT_ID_CAMERA, AnconnaTown_PlayerWalksToLab5)
+	}
+	waitmovement(0)
+	special(RemoveCameraObject)
+	//addvar(GAME_PROGRESS, 1)
 	setflag(FLAG_TEMP_1)
+	warp(MAP_ANCONNA_TOWN_LAB, 0)
+	//applymovement(OBJ_EVENT_ID_PLAYER, WalkUp)
+	//waitmovement(0)
+	//setobjectxy(9, 32, 2)  //Since I'm not using a flag, I rather shift it somewhere else
+	
 	releaseall
 }
 
@@ -432,3 +542,44 @@ movement AnconnaTown_ProfMaxmilliamWalksBackToLabAfterRunningToPlayer2 {
 	walk_left * 3
 	walk_down * 5
 }
+
+movement FacePlayer {
+	face_player
+}
+
+movement AnconnaTown_PlayerWalksToLab1 {
+	walk_right * 3
+	walk_up
+}
+
+movement AnconnaTown_PlayerWalksToLab2 {
+	walk_right * 5
+	walk_up * 2
+}
+
+movement AnconnaTown_PlayerWalksToLab3 {
+	walk_right * 4
+	walk_up
+}
+
+movement AnconnaTown_PlayerWalksToLab4 {
+	walk_down * 3
+	walk_left
+	walk_down * 3
+	walk_left
+	walk_down * 3
+	walk_right * 6
+	walk_up
+}
+
+movement AnconnaTown_PlayerWalksToLab5 {
+	walk_left
+	walk_down * 3
+	walk_left
+	walk_down * 3
+	walk_left
+	walk_down * 3
+	walk_right * 6
+	walk_up
+}
+

@@ -15,7 +15,8 @@ AnconnaTown_PlayerHouse_GroundFloor_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
 
 ShowRioluInPlayerHouse::
 	compare GAME_PROGRESS, 4
-	goto_if_ge ShowRioluInPlayerHouse_2
+	goto_if_ge ShowRioluInPlayerHouse_4
+ShowRioluInPlayerHouse_3:
 	removeobject 4
 ShowRioluInPlayerHouse_1:
 	addvar VAR_TEMP_9, 1
@@ -25,11 +26,10 @@ ShowRioluInPlayerHouse_2:
 	addobject 4
 	goto ShowRioluInPlayerHouse_1
 
-
-AnconnaTown_MakeRioluAFollower::
-	setfollower 4, RIOLU_IS_A_FOLLOWER
-	addvar GAME_PROGRESS, 1
-	return
+ShowRioluInPlayerHouse_4:
+	compare GAME_PROGRESS, 9
+	goto_if_lt ShowRioluInPlayerHouse_2
+	goto ShowRioluInPlayerHouse_3
 
 
 EnterHouseWithRioluForFirstTime::
@@ -599,11 +599,11 @@ MumComesToMeetYouAtTheStairCase:
 	delay_16
 	walk_up
 	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
 	walk_up
-	walk_right
-	walk_right
-	walk_right
-	walk_right
 	walk_up
 	step_end
 

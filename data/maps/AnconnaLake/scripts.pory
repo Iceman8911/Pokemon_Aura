@@ -12,8 +12,6 @@ script AnconnaLake_FisherMan1 {
             msgbox(format("{COLOR BLUE}Ah, I knew it."))
             case 1:
             msgbox(format("{COLOR BLUE}Nah, I'm very sure of it."))
-            default:
-            msgbox(format("Didn't work bohoo"))
         }
         //destroy_speech_bubble
         setvar(VAR_TEMP_0, 1)
@@ -43,6 +41,7 @@ script AnconnaLake_FisherMan3 {
     if(var(OBTAINED_OLD_ROD) == 0) {
         //3)
         msgbox(format("{COLOR BLUE}Hello there {COLOR GREEN}{PLAYER}{COLOR BLUE}, this weather's nice for some fishing.\pSay,\pDo you want to give a try?"), 2)
+        waitmessage
         //destroy_speech_bubble
         bufferdynamicmulti("Yes", "No")
         multichoice(25, 10, MULTI_DYNAMIC_2, 0)

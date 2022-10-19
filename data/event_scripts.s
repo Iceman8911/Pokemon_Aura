@@ -1100,3 +1100,5 @@ RyuEmptyTextPtr::
 		.string " $"
 
 
+
+	.include "data/maps/AnconnaTown_Lab/scripts.inc"

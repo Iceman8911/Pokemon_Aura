@@ -16,6 +16,7 @@ Remember::
 	case 6, Remember_8
 	case 7, Remember_9
 	case 8, Remember_10
+	case 9, Remember_10
 Remember_1:
 	releaseall
 	return

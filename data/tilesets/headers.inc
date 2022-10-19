@@ -907,3 +907,25 @@ gTileset_Sub_Scandi_City::
 	.4byte gMetatiles_Sub_Scandi_City
 	.4byte gMetatileAttributes_Sub_Scandi_City
 	.4byte NULL
+
+	.align 2
+gTileset_Lab_Primary::
+	.byte TRUE @ is compressed
+	.byte FALSE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Lab_Primary
+	.4byte gTilesetPalettes_Lab_Primary
+	.4byte gMetatiles_Lab_Primary
+	.4byte gMetatileAttributes_Lab_Primary
+	.4byte NULL
+
+	.align 2
+gTileset_Lab_Secondary::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Lab_Secondary
+	.4byte gTilesetPalettes_Lab_Secondary
+	.4byte gMetatiles_Lab_Secondary
+	.4byte gMetatileAttributes_Lab_Secondary
+	.4byte NULL

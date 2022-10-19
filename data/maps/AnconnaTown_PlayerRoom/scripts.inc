@@ -5,7 +5,7 @@ AnconnaTown_PlayerRoom_MapScripts::
 AccessPlayerPC::
 	lockall
 	playse SE_PC_ON
-	special BedroomPC
+	special PlayerPC
 	waitstate
 	releaseall
 	return

@@ -19,9 +19,12 @@ mapscripts AnconnaTown_PlayerHouse_GroundFloor_MapScripts {
 }
 
 script ShowRioluInPlayerHouse {
-    if(var(GAME_PROGRESS) >= 4) {
-        addobject(4)
-        //showobjectat(4, MAP_ANCONNA_TOWN_PLAYER_HOUSE_GROUND_FLOOR)
+    if(var(GAME_PROGRESS) >= 4 && var(GAME_PROGRESS) < 9) {
+        //if(!flag(RIOLU_IS_A_FOLLOWER)) {
+            addobject(4)
+            //showobjectat(4, MAP_ANCONNA_TOWN_PLAYER_HOUSE_GROUND_FLOOR)
+        //}
+        
     } else {
         removeobject(4)
     }
@@ -29,10 +32,7 @@ script ShowRioluInPlayerHouse {
     return
 }
 
-script AnconnaTown_MakeRioluAFollower {
-    setfollower(4, RIOLU_IS_A_FOLLOWER)
-    addvar(GAME_PROGRESS, 1)//GAME_PROGRESS is now 9
-}
+
 script EnterHouseWithRioluForFirstTime {
 			lockall
             delay(60)
@@ -495,9 +495,9 @@ movement MumComesToMeetYouAtTheStairCase {
     emote_exclamation_mark
     delay_16
     delay_16
-    walk_up * 3
+    walk_up * 2
     walk_right * 4
-    walk_up
+    walk_up * 2
 }
 
 movement MumTakesYouToTheSofa {

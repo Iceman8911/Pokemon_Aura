@@ -1869,3 +1869,43 @@ gTilesetPalettes_Sub_Scandi_City::
 	.align 2
 gTilesetTiles_Sub_Scandi_City::
 	.incbin "data/tilesets/secondary/sub_scandi_city/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_Lab_Primary::
+	.incbin "data/tilesets/primary/lab_primary/palettes/00.gbapal"
+	.incbin "data/tilesets/primary/lab_primary/palettes/01.gbapal"
+	.incbin "data/tilesets/primary/lab_primary/palettes/02.gbapal"
+	.incbin "data/tilesets/primary/lab_primary/palettes/03.gbapal"
+	.incbin "data/tilesets/primary/lab_primary/palettes/04.gbapal"
+	.incbin "data/tilesets/primary/lab_primary/palettes/05.gbapal"
+	.incbin "data/tilesets/primary/lab_primary/palettes/06.gbapal"
+	.incbin "data/tilesets/primary/lab_primary/palettes/07.gbapal"
+	.incbin "data/tilesets/primary/lab_primary/palettes/08.gbapal"
+	.incbin "data/tilesets/primary/lab_primary/palettes/09.gbapal"
+	.incbin "data/tilesets/primary/lab_primary/palettes/10.gbapal"
+	.incbin "data/tilesets/primary/lab_primary/palettes/11.gbapal"
+	.incbin "data/tilesets/primary/lab_primary/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_Lab_Primary::
+	.incbin "data/tilesets/primary/lab_primary/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_Lab_Secondary::
+	.incbin "data/tilesets/secondary/lab_secondary/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/lab_secondary/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/lab_secondary/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/lab_secondary/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/lab_secondary/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/lab_secondary/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/lab_secondary/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/lab_secondary/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/lab_secondary/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/lab_secondary/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/lab_secondary/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/lab_secondary/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/lab_secondary/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_Lab_Secondary::
+	.incbin "data/tilesets/secondary/lab_secondary/tiles.4bpp.lz"

@@ -7,7 +7,7 @@
 6 = Looking For Sister's Bidoof Comb
 7 = Found The Comb, Leaving Anconna Town
 8 = Met Professor Maxmilliam
-9 = FINALLY in Route 1
+9 = FINALLY in Route 1, Riolu is now A Follower
 
 
 

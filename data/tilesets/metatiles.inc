@@ -608,3 +608,17 @@ gMetatiles_Sub_Scandi_City::
 	.align 1
 gMetatileAttributes_Sub_Scandi_City::
 	.incbin "data/tilesets/secondary/sub_scandi_city/metatile_attributes.bin"
+	.align 1
+gMetatiles_Lab_Primary::
+	.incbin "data/tilesets/primary/lab_primary/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Lab_Primary::
+	.incbin "data/tilesets/primary/lab_primary/metatile_attributes.bin"
+	.align 1
+gMetatiles_Lab_Secondary::
+	.incbin "data/tilesets/secondary/lab_secondary/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Lab_Secondary::
+	.incbin "data/tilesets/secondary/lab_secondary/metatile_attributes.bin"
