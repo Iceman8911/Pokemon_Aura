@@ -55,6 +55,7 @@ script AnconnaLab_RecievePokedexFromMaxilliamCutscene {
     playfanfare(MUS_OBTAIN_ITEM)
     msgbox(format("{PLAYER} has received a Pokedex!"))
     setflag(FLAG_SYS_POKEDEX_GET)
+    setflag(FLAG_SYS_NATIONAL_DEX)
     waitfanfare
     msgbox(format("{COLOR BLUE}Now that you're well equipped, goodluck. Don't worry about what happened in the forest, I'll make sure its resolved quickly."))
     waitmessage

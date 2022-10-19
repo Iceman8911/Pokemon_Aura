@@ -63,6 +63,7 @@ AnconnaLab_RecievePokedexFromMaxilliamCutscene::
 	playfanfare MUS_OBTAIN_ITEM
 	msgbox AnconnaLab_RecievePokedexFromMaxilliamCutscene_Text_1
 	setflag FLAG_SYS_POKEDEX_GET
+	setflag FLAG_SYS_NATIONAL_DEX
 	waitfanfare
 	msgbox AnconnaLab_RecievePokedexFromMaxilliamCutscene_Text_2
 	waitmessage
