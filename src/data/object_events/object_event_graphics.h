@@ -376,6 +376,10 @@ const u16 gObjectEventPal_Lugia[] = INCBIN_U16("graphics/object_events/palettes/
 const u32 gObjectEventPic_HoOh[] = INCBIN_U32("graphics/object_events/pics/pokemon/ho_oh.4bpp");
 const u16 gObjectEventPal_HoOh[] = INCBIN_U16("graphics/object_events/palettes/ho_oh.gbapal");
 
+//My New Overworlds
+const u32 gObjectEventPic_New_Collector[] = INCBIN_U32("graphics/object_events/pics/new_people_overworlds/collector.4bpp");
+const u16 gObjectEventPalette_New_Collector[] = INCBIN_U16("graphics/object_events/pics/new_people_overworlds/collector.gbapal");
+
 //Pokemon overworlds
 const u32 gObjectEventPic_Pokemon_Species_001[] = INCBIN_U32("graphics/object_events/pics/pokemon/species/001.4bpp");
 const u16 gObjectEventPalette_Pokemon_Species_001[] = INCBIN_U16("graphics/object_events/pics/pokemon/species/001.gbapal");

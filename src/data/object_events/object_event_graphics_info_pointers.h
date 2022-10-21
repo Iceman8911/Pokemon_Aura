@@ -238,6 +238,9 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RubySapphireMay;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lugia;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoOh;
 
+//My New Overworlds
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_New_Collector;
+
 //Pokemon overworlds
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Pokemon_Species_001;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Pokemon_Species_002;
@@ -1336,6 +1339,10 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_LINK_RS_MAY] =              &gObjectEventGraphicsInfo_RubySapphireMay,
     [OBJ_EVENT_GFX_LUGIA] =                    &gObjectEventGraphicsInfo_Lugia,
     [OBJ_EVENT_GFX_HOOH] =                     &gObjectEventGraphicsInfo_HoOh,
+
+    //My New Overworlds
+    [OBJ_EVENT_GFX_NEW_COLLECTOR] =  &gObjectEventGraphicsInfo_New_Collector,
+
     //Pokemon overworlds
     [OBJ_EVENT_GFX_POKEMON_001] = 	&gObjectEventGraphicsInfo_Pokemon_Species_001,
     [OBJ_EVENT_GFX_POKEMON_002] = 	&gObjectEventGraphicsInfo_Pokemon_Species_002,

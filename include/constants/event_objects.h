@@ -241,7 +241,10 @@
 #define OBJ_EVENT_GFX_LUGIA                      237
 #define OBJ_EVENT_GFX_HOOH                       238
 
-#define NUM_REGULAR_OBJ_EVENT_GFX                (OBJ_EVENT_GFX_HOOH + 1)
+//My New Overworlds
+#define OBJ_EVENT_GFX_NEW_COLLECTOR              239
+
+#define NUM_REGULAR_OBJ_EVENT_GFX                (OBJ_EVENT_GFX_NEW_COLLECTOR + 1)
 
 //Pokemon overworlds
 #define OBJ_EVENT_GFX_POKEMON_001		(NUM_REGULAR_OBJ_EVENT_GFX + 0)
