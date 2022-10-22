@@ -246,6 +246,9 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoOh = {0xFFFF, OB
 
 //My New Overworlds
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_New_Collector = { 0xFFFF, OBJ_EVENT_PAL_NEW_COLLECTOR, OBJ_EVENT_PAL_TAG_NONE, 512, 32, 32, 0, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_FOOT, &gObjectEventBaseOam_32x32, sOamTables_32x32, sAnimTable_Standard, gObjectEventPicTable_New_Collector, gDummySpriteAffineAnimTable};
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_New_Fat_Man = { 0xFFFF, OBJ_EVENT_PAL_NEW_FAT_MAN, OBJ_EVENT_PAL_TAG_NONE, 512, 32, 32, 0, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_FOOT, &gObjectEventBaseOam_32x32, sOamTables_32x32, sAnimTable_Standard, gObjectEventPicTable_New_Fat_Man, gDummySpriteAffineAnimTable};
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_New_Boy = { 0xFFFF, OBJ_EVENT_PAL_NEW_BOY, OBJ_EVENT_PAL_TAG_NONE, 512, 32, 32, 0, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_FOOT, &gObjectEventBaseOam_32x32, sOamTables_32x32, sAnimTable_Standard, gObjectEventPicTable_New_Boy, gDummySpriteAffineAnimTable};
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_New_Twin = { 0xFFFF, OBJ_EVENT_PAL_NEW_TWIN, OBJ_EVENT_PAL_TAG_NONE, 512, 32, 32, 0, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_FOOT, &gObjectEventBaseOam_32x32, sOamTables_32x32, sAnimTable_Standard, gObjectEventPicTable_New_Twin, gDummySpriteAffineAnimTable};
 
 //Pokemon overworlds
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Pokemon_Species_001 = { 0xFFFF, OBJ_EVENT_PAL_TAG_POKEMON_001, OBJ_EVENT_PAL_TAG_NONE, 512, 32, 32, 0, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_FOOT, &gObjectEventBaseOam_32x32, sOamTables_32x32, sAnimTable_PokemonSpecies, gObjectEventPicTable_Pokemon_Species_001, gDummySpriteAffineAnimTable};

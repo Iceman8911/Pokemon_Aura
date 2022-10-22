@@ -1342,6 +1342,9 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
 
     //My New Overworlds
     [OBJ_EVENT_GFX_NEW_COLLECTOR] =  &gObjectEventGraphicsInfo_New_Collector,
+    [OBJ_EVENT_GFX_NEW_FAT_MAN] =  &gObjectEventGraphicsInfo_New_Fat_Man,
+    [OBJ_EVENT_GFX_NEW_BOY] =  &gObjectEventGraphicsInfo_New_Boy,
+    [OBJ_EVENT_GFX_NEW_TWIN] =  &gObjectEventGraphicsInfo_New_Twin,
 
     //Pokemon overworlds
     [OBJ_EVENT_GFX_POKEMON_001] = 	&gObjectEventGraphicsInfo_Pokemon_Species_001,

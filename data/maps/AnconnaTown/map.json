@@ -40,7 +40,7 @@
       "flag": "ANCONNA_TOWN_ANTIDOTE"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_NEW_COLLECTOR",
+      "graphics_id": "OBJ_EVENT_GFX_NEW_FAT_MAN",
       "in_connection": false,
       "x": 23,
       "y": 23,
@@ -54,7 +54,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TWIN",
+      "graphics_id": "OBJ_EVENT_GFX_NEW_TWIN",
       "in_connection": false,
       "x": 14,
       "y": 26,

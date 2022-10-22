@@ -445,6 +445,9 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 
 //My New Overworlds
 #define OBJ_EVENT_PAL_NEW_COLLECTOR               0x1123
+#define OBJ_EVENT_PAL_NEW_FAT_MAN                 0x1124
+#define OBJ_EVENT_PAL_NEW_BOY                     0x1125
+#define OBJ_EVENT_PAL_NEW_TWIN                    0x1126
 
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
@@ -1345,6 +1348,9 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {NULL,                                  0x0000},
     //My New Overworlds
     {gObjectEventPalette_New_Collector, OBJ_EVENT_PAL_NEW_COLLECTOR},
+    {gObjectEventPalette_New_Fat_Man, OBJ_EVENT_PAL_NEW_FAT_MAN},
+    {gObjectEventPalette_New_Boy, OBJ_EVENT_PAL_NEW_BOY},
+    {gObjectEventPalette_New_Twin, OBJ_EVENT_PAL_NEW_TWIN},
 
     //Pokemon overworlds 
     {gObjectEventPalette_Pokemon_Species_001, OBJ_EVENT_PAL_TAG_POKEMON_001},

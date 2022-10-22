@@ -2186,6 +2186,42 @@ const struct SpriteFrameImage gObjectEventPicTable_New_Collector[] = {
     overworld_frame(gObjectEventPic_New_Collector, 4, 4, 8),
 };
 
+const struct SpriteFrameImage gObjectEventPicTable_New_Fat_Man[] = {
+    overworld_frame(gObjectEventPic_New_Fat_Man, 4, 4, 0),
+    overworld_frame(gObjectEventPic_New_Fat_Man, 4, 4, 1),
+    overworld_frame(gObjectEventPic_New_Fat_Man, 4, 4, 2),
+    overworld_frame(gObjectEventPic_New_Fat_Man, 4, 4, 3),
+    overworld_frame(gObjectEventPic_New_Fat_Man, 4, 4, 4),
+    overworld_frame(gObjectEventPic_New_Fat_Man, 4, 4, 5),
+    overworld_frame(gObjectEventPic_New_Fat_Man, 4, 4, 6),
+    overworld_frame(gObjectEventPic_New_Fat_Man, 4, 4, 7),
+    overworld_frame(gObjectEventPic_New_Fat_Man, 4, 4, 8),
+};
+
+const struct SpriteFrameImage gObjectEventPicTable_New_Boy[] = {
+    overworld_frame(gObjectEventPic_New_Boy, 4, 4, 0),
+    overworld_frame(gObjectEventPic_New_Boy, 4, 4, 1),
+    overworld_frame(gObjectEventPic_New_Boy, 4, 4, 2),
+    overworld_frame(gObjectEventPic_New_Boy, 4, 4, 3),
+    overworld_frame(gObjectEventPic_New_Boy, 4, 4, 4),
+    overworld_frame(gObjectEventPic_New_Boy, 4, 4, 5),
+    overworld_frame(gObjectEventPic_New_Boy, 4, 4, 6),
+    overworld_frame(gObjectEventPic_New_Boy, 4, 4, 7),
+    overworld_frame(gObjectEventPic_New_Boy, 4, 4, 8),
+};
+
+const struct SpriteFrameImage gObjectEventPicTable_New_Twin[] = {
+    overworld_frame(gObjectEventPic_New_Twin, 4, 4, 0),
+    overworld_frame(gObjectEventPic_New_Twin, 4, 4, 1),
+    overworld_frame(gObjectEventPic_New_Twin, 4, 4, 2),
+    overworld_frame(gObjectEventPic_New_Twin, 4, 4, 3),
+    overworld_frame(gObjectEventPic_New_Twin, 4, 4, 4),
+    overworld_frame(gObjectEventPic_New_Twin, 4, 4, 5),
+    overworld_frame(gObjectEventPic_New_Twin, 4, 4, 6),
+    overworld_frame(gObjectEventPic_New_Twin, 4, 4, 7),
+    overworld_frame(gObjectEventPic_New_Twin, 4, 4, 8),
+};
+
 
 //Pokemon overworlds
 const struct SpriteFrameImage gObjectEventPicTable_Pokemon_Species_001[] = {

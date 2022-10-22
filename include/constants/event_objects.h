@@ -243,8 +243,11 @@
 
 //My New Overworlds
 #define OBJ_EVENT_GFX_NEW_COLLECTOR              239
+#define OBJ_EVENT_GFX_NEW_FAT_MAN                240
+#define OBJ_EVENT_GFX_NEW_BOY                    241
+#define OBJ_EVENT_GFX_NEW_TWIN                   242
 
-#define NUM_REGULAR_OBJ_EVENT_GFX                (OBJ_EVENT_GFX_NEW_COLLECTOR + 1)
+#define NUM_REGULAR_OBJ_EVENT_GFX                (OBJ_EVENT_GFX_NEW_TWIN + 1)
 
 //Pokemon overworlds
 #define OBJ_EVENT_GFX_POKEMON_001		(NUM_REGULAR_OBJ_EVENT_GFX + 0)

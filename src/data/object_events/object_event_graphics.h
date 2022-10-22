@@ -380,6 +380,16 @@ const u16 gObjectEventPal_HoOh[] = INCBIN_U16("graphics/object_events/palettes/h
 const u32 gObjectEventPic_New_Collector[] = INCBIN_U32("graphics/object_events/pics/new_people_overworlds/collector.4bpp");
 const u16 gObjectEventPalette_New_Collector[] = INCBIN_U16("graphics/object_events/pics/new_people_overworlds/collector.gbapal");
 
+const u32 gObjectEventPic_New_Fat_Man[] = INCBIN_U32("graphics/object_events/pics/new_people_overworlds/fat_man.4bpp");
+const u16 gObjectEventPalette_New_Fat_Man[] = INCBIN_U16("graphics/object_events/pics/new_people_overworlds/fat_man.gbapal");
+
+const u32 gObjectEventPic_New_Boy[] = INCBIN_U32("graphics/object_events/pics/new_people_overworlds/boy.4bpp");
+const u16 gObjectEventPalette_New_Boy[] = INCBIN_U16("graphics/object_events/pics/new_people_overworlds/boy.gbapal");
+
+const u32 gObjectEventPic_New_Twin [] = INCBIN_U32("graphics/object_events/pics/new_people_overworlds/twin.4bpp");
+const u16 gObjectEventPalette_New_Twin[] = INCBIN_U16("graphics/object_events/pics/new_people_overworlds/twin.gbapal");
+
+
 //Pokemon overworlds
 const u32 gObjectEventPic_Pokemon_Species_001[] = INCBIN_U32("graphics/object_events/pics/pokemon/species/001.4bpp");
 const u16 gObjectEventPalette_Pokemon_Species_001[] = INCBIN_U16("graphics/object_events/pics/pokemon/species/001.gbapal");
