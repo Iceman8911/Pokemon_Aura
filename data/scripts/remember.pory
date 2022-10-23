@@ -32,5 +32,9 @@ script Remember{    //This is the script that will be run by the Start Menu Opti
         case 9:
         msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: {COLOR GREEN}Scandi City{COLOR DARK_GRAY} is just beyond {COLOR GREEN}Route 01{COLOR DARK_GRAY} and {COLOR GREEN}Murky Grove{COLOR DARK_GRAY}, right?"))
     }
+    special(NameSibling)
+    waitstate
+    msgbox(format("Your Sibling's Name is {SIBLING}"))
+    waitmessage
     releaseall
 }

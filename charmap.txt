@@ -340,15 +340,16 @@ STR_VAR_5      = FD 06
 STR_VAR_6      = FD 07
 KUN            = FD 08
 RIVAL          = FD 09
+SIBLING        = FD 0A
 @ version-dependent strings (originally made for Ruby/Sapphire differences)
 @ Emerald uses the Sapphire strings (except for VERSION).
-VERSION        = FD 0A @ "EMERALD"
-AQUA           = FD 0B
-MAGMA          = FD 0C
-ARCHIE         = FD 0D
-MAXIE          = FD 0E
-KYOGRE         = FD 0F
-GROUDON        = FD 10
+VERSION        = FD 0B @ "EMERALD"
+AQUA           = FD 0C
+MAGMA          = FD 0D
+ARCHIE         = FD 0E
+MAXIE          = FD 0F
+KYOGRE         = FD 10
+GROUDON        = FD 11
 
 @ battle string placeholders
 
