@@ -199,6 +199,13 @@ AnconnaTown_Woman::
 	end
 
 
+AnconnaTown_Boy::
+	lockall
+	msgbox AnconnaTown_Boy_Text_0
+	releaseall
+	return
+
+
 Anconna_Town_Discovered_Mysterious_People::
 	lockall
 	applymovement OBJ_EVENT_ID_PLAYER, Exclaim
@@ -741,6 +748,14 @@ AnconnaTown_EventScript_LittleGirl_Text_0:
 AnconnaTown_Woman_Text_0:
 	.string "{COLOR RED}I love this town!\p"
 	.string "It's so simple and peaceful to live in.$"
+
+AnconnaTown_Boy_Text_0:
+	.string "{COLOR BLUE}Mommy told me that a lot of bad people\n"
+	.string "used to come to the forest long before\l"
+	.string "to chop down trees and scare away the\l"
+	.string "Pokemon.\p"
+	.string "I'm glad they stopped coming here so\n"
+	.string "now I can play with Pokemon.$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_0:
 	.string "???: {COLOR BLUE}Erhem.\p"

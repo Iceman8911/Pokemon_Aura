@@ -640,7 +640,7 @@ Anconna_TownSiblingMainScript_Text_0:
 	.string ":/$"
 
 Anconna_TownSiblingMainScript_Text_1:
-	.string "Sis:{COLOR RED} Where is it?\p"
+	.string "{SIBLING}:{COLOR RED} Where is it?\p"
 	.string "...\p"
 	.string "WHERE THE HECK COULD THIS THING BE?$"
 
@@ -649,10 +649,10 @@ Anconna_TownSiblingMainScript_Text_2:
 	.string "maybe I should try calling her again...)$"
 
 Anconna_TownSiblingMainScript_Text_3:
-	.string "Sis:{COLOR RED} Did you find it yet?$"
+	.string "{SIBLING}:{COLOR RED} Did you find it yet?$"
 
 Anconna_TownSiblingMainScript_Text_4:
-	.string "Sis:{COLOR RED} Have you found it yet?$"
+	.string "{SIBLING}:{COLOR RED} Have you found it yet?$"
 
 Anconna_TownSiblingMainScript_Text_5:
 	.string "Yeah$"
@@ -664,14 +664,15 @@ Anconna_TownSiblingMainScript_Text_7:
 	.string ".....$"
 
 Anconna_TownSiblingMainScript_Text_8:
-	.string "Sis:{COLOR RED} Yay :D!!!\n"
+	.string "{SIBLING}:{COLOR RED} Yay :D!!!\n"
 	.string "You found it!$"
 
 Anconna_TownSiblingMainScript_Text_9:
 	.string "You returned the Ugly Comb!$"
 
 Anconna_TownSiblingMainScript_Text_10:
-	.string "Sis:{COLOR RED} By the way, where did you find it?\p"
+	.string "{SIBLING}:{COLOR RED} By the way, where did you\n"
+	.string "find it?\p"
 	.string "It was a secret gift I made for {COLOR GREEN}Bibby{COLOR RED} so\n"
 	.string "I have no idea how it got lost...$"
 
@@ -685,9 +686,9 @@ Anconna_TownSiblingMainScript_Text_13:
 	.string "It was in the trash bin..$"
 
 Anconna_TownSiblingMainScript_Text_14:
-	.string "Sis:{COLOR RED} Anyways, I believe you wanted to\n"
-	.string "show me something since you came here\l"
-	.string "in the first place.$"
+	.string "{SIBLING}:{COLOR RED} Anyways, I believe you\n"
+	.string "wanted to show me something since you\l"
+	.string "came here in the first place.$"
 
 Anconna_TownSiblingMainScript_Text_15:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Yeah, about that..$"
@@ -696,52 +697,53 @@ Anconna_TownSiblingMainScript_Text_16:
 	.string "You can come out now, Riolu.$"
 
 Anconna_TownSiblingMainScript_Text_17:
-	.string "Sis:{COLOR RED} Eeek!\p"
+	.string "{SIBLING}:{COLOR RED} Eeek!\p"
 	.string "You got yourself a Pokemon! And its\n"
 	.string "really cute :3\p"
 	.string "Aww, lemme hug it!$"
 
 Anconna_TownSiblingMainScript_Text_18:
-	.string "Sis:{COLOR RED} Ouch :(\p"
+	.string "{SIBLING}:{COLOR RED} Ouch :(\p"
 	.string "I just wanted to hug it.$"
 
 Anconna_TownSiblingMainScript_Text_19:
-	.string "Sis:{COLOR RED} Its really strong though so take\n"
-	.string "care of the little guy.\p"
+	.string "{SIBLING}:{COLOR RED} Its really strong though so\n"
+	.string "take care of the little guy.\p"
 	.string "Since {COLOR GREEN}Bibby{COLOR RED} and I don't train much, I'd\n"
 	.string "like you both to have this. Take it as a\l"
 	.string "reward for helping me earlier.$"
 
 Anconna_TownSiblingMainScript_Text_20:
-	.string "Sis:{COLOR RED} Thanks again for helping me find\n"
-	.string "{COLOR GREEN}Bibby's{COLOR RED} comb. Now I can make him look\l"
-	.string "all pretty again.$"
+	.string "{SIBLING}:{COLOR RED} Thanks again for helping me\n"
+	.string "find {COLOR GREEN}Bibby's{COLOR RED} comb. Now I can make him\l"
+	.string "look all pretty again.$"
 
 Anconna_TownSiblingMainScript_Text_21:
-	.string "Sis:{COLOR RED} If you didn't find it, why did you\n"
-	.string "still say yes?$"
+	.string "{SIBLING}:{COLOR RED} If you didn't find it, why\n"
+	.string "did you still say yes?$"
 
 Anconna_TownSiblingMainScript_Text_22:
-	.string "Sis:{COLOR RED} Try checking {COLOR GREEN}everywhere{COLOR RED} again. Who\n"
-	.string "knows where it might be...$"
+	.string "{SIBLING}:{COLOR RED} Try checking {COLOR GREEN}everywhere{COLOR RED}\n"
+	.string "again. Who knows where it might be...$"
 
 Anconna_TownSiblingMainScript_Text_23:
-	.string "Sis:{COLOR RED} Hmm, what should {COLOR GREEN}Bibby{COLOR RED} and I do...$"
+	.string "{SIBLING}:{COLOR RED} Hmm, what should {COLOR GREEN}Bibby{COLOR RED} and\n"
+	.string "I do...$"
 
 Anconna_Town_SisterLostSomething_1_Text_0:
 	.string "(How should I call her...)$"
 
 Anconna_Town_SisterLostSomething_1_Text_1:
-	.string "SIS!$"
+	.string "{SIBLING}!$"
 
 Anconna_Town_SisterLostSomething_1_Text_2:
 	.string "HELLO?!$"
 
 Anconna_Town_SisterLostSomething_1_Text_3:
-	.string "Sis:{COLOR RED} WHAT DO YOU WANT?!!$"
+	.string "{SIBLING}:{COLOR RED} WHAT DO YOU WANT?!!$"
 
 Anconna_Town_SisterLostSomething_1_Text_4:
-	.string "Sis:{COLOR RED} Oh\p"
+	.string "{SIBLING}:{COLOR RED} Oh\p"
 	.string "I'm sorry about that. Its just that I'm\n"
 	.string "in an awful mood now.\p"
 	.string "I lost {COLOR GREEN}Bibby's{COLOR RED} new hair brush and I can't\n"
@@ -753,8 +755,8 @@ Anconna_Town_SisterLostSomething_1_Text_5:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Um, he looks norm-$"
 
 Anconna_Town_SisterLostSomething_1_Text_6:
-	.string "Sis:{COLOR RED} He might look like normal now but\n"
-	.string "once he finds out...$"
+	.string "{SIBLING}:{COLOR RED} He might look like normal\n"
+	.string "now but once he finds out...$"
 
 Anconna_Town_SisterLostSomething_1_Text_7:
 	.string "{COLOR RED}Sob sob...$"
@@ -767,7 +769,7 @@ Anconna_Town_SisterLostSomething_1_Text_9:
 	.string "downstai-$"
 
 Anconna_Town_SisterLostSomething_1_Text_10:
-	.string "Sis:{COLOR RED} Thanks :D\p"
+	.string "{SIBLING}:{COLOR RED} Thanks :D\p"
 	.string "I'll keep on looking upstairs while you\n"
 	.string "look downstairs.$"
 
@@ -781,11 +783,11 @@ FindBibbyCombQuest_Text_0:
 	.string "Section in the menu.$"
 
 PlayerTellsSiblingAboutBidoofComb_Text_0:
-	.string "Sis:{COLOR RED} Huh, I have no idea how it got\n"
-	.string "there.$"
+	.string "{SIBLING}:{COLOR RED} Huh, I have no idea how it\n"
+	.string "got there.$"
 
 PlayerTellsSiblingAboutBidoofComb_Text_1:
-	.string "Sis:{COLOR RED} ......\p"
+	.string "{SIBLING}:{COLOR RED} ......\p"
 	.string "Pffffft! That's impossible!\n"
 	.string "Be serious, where did you actually find\l"
 	.string "it?$"
@@ -794,7 +796,7 @@ SpawnRioluInSiblingsRoom_Text_0:
 	.string "{COLOR GREEN}Rioluuuuuuu$"
 
 RioluPunchesSiblingLol_Text_0:
-	.string "Sis:{COLOR RED} So warm...$"
+	.string "{SIBLING}:{COLOR RED} So warm...$"
 
 RioluPunchesSiblingLol_Text_1:
 	.string "{COLOR GREEN}Riooluuuu!$"
