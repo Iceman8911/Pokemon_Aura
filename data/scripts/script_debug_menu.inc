@@ -1,3 +1,25 @@
+DebugMenuu::
+	msgbox DebugMenuu_Text_0
+	bufferdynamicmulti DebugMenuu_Text_1, DebugMenuu_Text_2
+	multichoice 25, 7, MULTI_DYNAMIC_2, 0
+	switch VAR_RESULT
+	case 0, DebugMenuu_2
+	case 1, DebugMenuu_3
+	return
+
+DebugMenuu_2:
+	call DebugMenuScript
+	return
+
+DebugMenuu_3:
+	call ShitScript
+	return
+
+
+ShitScript::
+	return
+
+
 DebugMenuScript::
     lockall
     multichoicedefault 0, 0, MULTI_DEBUG_MENU, 8, 1
@@ -372,3 +394,13 @@ DebugMenu_CheckSaveFileSize::
 
 SaveFileSizeMsg:
     .string "SaveBlock1 size is {STR_VAR_1}/15872 bytes.\nSaveBlock2 size is {STR_VAR_2}/3968 bytes.$"
+
+DebugMenuu_Text_0:
+	.string "Do you wish to access Ryhouji's debug\n"
+	.string "menu or my sh .$"
+
+DebugMenuu_Text_1:
+	.string "EE Dev$"
+
+DebugMenuu_Text_2:
+	.string "Hot Sh$"

@@ -1,0 +1,65 @@
+script IcemanDebugMenu {
+    lockall
+    msgbox(format("Loading Debug Menu...."))
+    msgbox(format("What do you want to do?"))
+    bufferdynamicmulti("Teleport", "Set Flags And Vars", "Give Mon", "Rare Candies?")
+    multichoice(25, 5, MULTI_DYNAMIC_3, 0)
+    call(IcemanDebugSwitch)
+    releaseall
+}
+
+script IcemanDebugSwitch {
+    switch(var(VAR_RESULT)) {
+        case 0:  //nested switch that deals with the teleport stuff
+            bufferdynamicmulti("Anconna", "Scandi") //Main Maps Here
+            multichoice(25, 7, MULTI_DYNAMIC_2, 0)
+            switch(var(VAR_RESULT)) {
+                case 0:
+                    bufferdynamicmulti("Anconna Town", "Anconna Woods", "Anconna Woods_1", "Route 01", "Anconna Lake", "Murky Grove") //Sub Maps
+                    multichoice(25, 3, MULTI_DYNAMIC_6, 0)
+                    switch(var(VAR_RESULT)) {
+                        case 0:
+                            warp(MAP_ANCONNA_TOWN, 0)
+                        case 1:
+                            warp(MAP_ANCONNA_WOODS, 0)
+                        case 2:
+                            warp(MAP_ANCONNA_WOODS_1, 0)
+                        case 3:
+                            warp(MAP_ROUTE01, 0)
+                        case 4:
+                            warp(MAP_ANCONNA_LAKE, 25, 4)
+                        case 5:
+                            warp(MAP_MURKY_GROVE, 0)
+                    }
+                case 1:
+                    bufferdynamicmulti("Route 02", "Scandi City") //Sub Maps
+                    multichoice(25, 3, MULTI_DYNAMIC_2, 0)
+                    switch(var(VAR_RESULT)) {
+                        case 0:
+                            warp(MAP_ROUTE02, 0)
+                        case 1:
+                            warp(MAP_SCANDI_CITY, 0)
+
+                    }
+            }
+        case 1:
+            //important flags
+            setflag(FLAG_SYS_POKEMON_GET)
+            setflag(FLAG_SYS_POKEDEX_GET)
+            setflag(FLAG_SYS_B_DASH)
+            setflag(RIOLU_ENCOUNTER)
+            setflag(FIRST_LIUM_ENCOUNTER)
+            setflag(ANCONNA_TOWN_MYSTERIOUS_PEOPLE)
+            setflag(RIOLU_IS_IN_PLAYER_HOUSE)
+            //important vars
+            setvar(ANCONNA_WOODS_FOUND_RIOLU, 1)
+            setvar(FIRST_LIUM_FIGHT, 1)
+            setvar(ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE, 1)
+            setvar(GAME_PROGRESS, 7)
+        case 2:
+            givecustommon(SPECIES_RIOLU, 5, ITEM_FOCUS_SASH, , NATURE_HASTY, 0, , , , , , , , 31, , 31, 31)
+            setflag(FLAG_SYS_POKEMON_GET)
+    }
+
+    return
+}

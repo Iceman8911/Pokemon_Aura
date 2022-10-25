@@ -39,6 +39,7 @@ script AnconnaLab_Professor3{
     lockall
     msgbox(format("{COLOR BLUE}My job is to keep tabs on all the results we get from our experiments."), 2)
     waitmessage
+    applymovement(4, FaceUp)
     releaseall 
 }
 

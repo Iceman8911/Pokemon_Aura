@@ -755,7 +755,7 @@ AnconnaTown_Boy_Text_0:
 	.string "to chop down trees and scare away the\l"
 	.string "Pokemon.\p"
 	.string "I'm glad they stopped coming here so\n"
-	.string "now I can play with Pokemon.$"
+	.string "now I can play with Pokemon!$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_0:
 	.string "???: {COLOR BLUE}Erhem.\p"

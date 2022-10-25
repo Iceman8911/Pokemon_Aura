@@ -622,3 +622,17 @@ gMetatiles_Lab_Secondary::
 	.align 1
 gMetatileAttributes_Lab_Secondary::
 	.incbin "data/tilesets/secondary/lab_secondary/metatile_attributes.bin"
+	.align 1
+gMetatiles_Tileset_AnconnaTown::
+	.incbin "data/tilesets/primary/tileset_anconnatown/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Tileset_AnconnaTown::
+	.incbin "data/tilesets/primary/tileset_anconnatown/metatile_attributes.bin"
+	.align 1
+gMetatiles_AnconnaTown_but_secondary::
+	.incbin "data/tilesets/secondary/anconnatown_but_secondary/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_AnconnaTown_but_secondary::
+	.incbin "data/tilesets/secondary/anconnatown_but_secondary/metatile_attributes.bin"

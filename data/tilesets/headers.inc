@@ -929,3 +929,25 @@ gTileset_Lab_Secondary::
 	.4byte gMetatiles_Lab_Secondary
 	.4byte gMetatileAttributes_Lab_Secondary
 	.4byte NULL
+
+	.align 2
+gTileset_Tileset_AnconnaTown::
+	.byte TRUE @ is compressed
+	.byte FALSE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Tileset_AnconnaTown
+	.4byte gTilesetPalettes_Tileset_AnconnaTown
+	.4byte gMetatiles_Tileset_AnconnaTown
+	.4byte gMetatileAttributes_Tileset_AnconnaTown
+	.4byte NULL
+
+	.align 2
+gTileset_AnconnaTown_but_secondary::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_AnconnaTown_but_secondary
+	.4byte gTilesetPalettes_AnconnaTown_but_secondary
+	.4byte gMetatiles_AnconnaTown_but_secondary
+	.4byte gMetatileAttributes_AnconnaTown_but_secondary
+	.4byte InitTilesetAnim_gTileset_AnconnaTown_but_secondary

@@ -51,6 +51,7 @@
 #include "constants/songs.h"
 
 extern u8 DebugMenuScript[];
+extern u8 IcemanDebugMenu[];
 extern u8 Remember[];
 
 // Menu actions
@@ -653,6 +654,14 @@ static bool8 HandleStartMenuInput(void)
         HideStartMenu();
         ScriptContext_Enable();
         ScriptContext_SetupScript(DebugMenuScript);
+        return TRUE;
+    }
+
+    if (JOY_NEW(L_BUTTON))  //My Debug Menu :)
+    {
+        HideStartMenu();
+        ScriptContext_Enable();
+        ScriptContext_SetupScript(IcemanDebugMenu);
         return TRUE;
     }
 

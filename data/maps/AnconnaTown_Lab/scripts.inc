@@ -46,6 +46,7 @@ AnconnaLab_Professor3::
 	lockall
 	msgbox AnconnaLab_Professor3_Text_0, 2
 	waitmessage
+	applymovement 4, FaceUp
 	releaseall
 	return
 

@@ -53,7 +53,6 @@ script Anconna_Town_SisterAtHome {
 script Anconna_TownSiblingMainScript {
     if(var(GAME_PROGRESS) < 6) 
     { //If you just entered the room for the first time
-        msgbox(format("i literally don't have a good name atm... :/"))
         msgbox(format("{SIBLING}:{COLOR RED} Where is it?\p...\pWHERE THE HECK COULD THIS THING BE?"))
         waitmessage
         msgbox(format("(It does't seem like she noticed me, maybe I should try calling her again...)"))

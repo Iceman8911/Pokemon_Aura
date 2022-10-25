@@ -24,6 +24,7 @@ static void (*sSecondaryTilesetAnimCallback)(u16);
 static void _InitPrimaryTilesetAnimation(void);
 static void _InitSecondaryTilesetAnimation(void);
 static void TilesetAnim_testing_but_secondary(u16);
+static void TilesetAnim_gTileset_AnconnaTown_but_secondary(u16);
 static void TilesetAnim_General(u16);
 static void TilesetAnim_Building(u16);
 static void TilesetAnim_Rustboro(u16);
@@ -74,11 +75,12 @@ static void QueueAnimTiles_MauvilleGym_ElectricGates(u16);
 static void QueueAnimTiles_SootopolisGym_Waterfalls(u16);
 static void QueueAnimTiles_EliteFour_GroundLights(u16);
 static void QueueAnimTiles_EliteFour_WallLights(u16);
+
+
 static void QueueAnimTiles_testing_but_secondary_Water(u16);
 static void QueueAnimTiles_testing_but_secondary_Water_Corner(u16);
 static void QueueAnimTiles_testing_but_secondary_Water_Right_Side(u16);
 static void QueueAnimTiles_testing_but_secondary_Flower(u16);
-
 
 
 const u16 gTilesetAnims_testing_but_secondary_Water_Frame0[] = INCBIN_U16("data/tilesets/secondary/testing_but_secondary/anim/Water/00000.4bpp");
@@ -114,6 +116,7 @@ const u16 *const gTilesetAnims_testing_but_secondary_Water_Corner[] = {
     gTilesetAnims_testing_but_secondary_Water_Corner_Frame3
 };
 
+
 const u16 gTilesetAnims_testing_but_secondary_Water_Right_Side_Frame0[] = INCBIN_U16("data/tilesets/secondary/testing_but_secondary/anim/Water_Right_Side/00000.4bpp");
 const u16 gTilesetAnims_testing_but_secondary_Water_Right_Side_Frame1[] = INCBIN_U16("data/tilesets/secondary/testing_but_secondary/anim/Water_Right_Side/00001.4bpp");
 const u16 gTilesetAnims_testing_but_secondary_Water_Right_Side_Frame2[] = INCBIN_U16("data/tilesets/secondary/testing_but_secondary/anim/Water_Right_Side/00002.4bpp");
@@ -125,6 +128,7 @@ const u16 *const gTilesetAnims_testing_but_secondary_Water_Right_Side[] = {
     gTilesetAnims_testing_but_secondary_Water_Right_Side_Frame2,
     gTilesetAnims_testing_but_secondary_Water_Right_Side_Frame3
 };
+
 
 const u16 gTilesetAnims_testing_but_secondary_Flower_Frame0[] = INCBIN_U16("data/tilesets/secondary/testing_but_secondary/anim/Flower/00000.4bpp");
 const u16 gTilesetAnims_testing_but_secondary_Flower_Frame1[] = INCBIN_U16("data/tilesets/secondary/testing_but_secondary/anim/Flower/00001.4bpp");
@@ -145,6 +149,7 @@ const u16 *const gTilesetAnims_testing_but_secondary_Flower[] = {
     gTilesetAnims_testing_but_secondary_Flower_Frame6,
     gTilesetAnims_testing_but_secondary_Flower_Frame7
 };
+
 
 
 const u16 gTilesetAnims_General_Flower_Frame1[] = INCBIN_U16("data/tilesets/primary/general/anim/flower/1.4bpp");
@@ -702,6 +707,13 @@ void InitTilesetAnim_testing_but_secondary(void)
     sSecondaryTilesetAnimCounterMax = 256;
     sSecondaryTilesetAnimCallback = TilesetAnim_testing_but_secondary;
 }
+//////////////////////
+void InitTilesetAnim_gTileset_AnconnaTown_but_secondary(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = 256;
+    sSecondaryTilesetAnimCallback = TilesetAnim_gTileset_AnconnaTown_but_secondary;
+}
 
 
 void InitTilesetAnim_Building(void)
@@ -727,6 +739,18 @@ static void TilesetAnim_General(u16 timer)
 
 
 static void TilesetAnim_testing_but_secondary(u16 timer)
+{
+    if (timer % 16 == 0)
+        QueueAnimTiles_testing_but_secondary_Water(timer / 16);
+    if (timer % 16 == 1)
+        QueueAnimTiles_testing_but_secondary_Water_Corner(timer / 16);
+    if (timer % 16 == 2)
+        QueueAnimTiles_testing_but_secondary_Water_Right_Side(timer / 16);
+    if (timer % 16 == 3)
+        QueueAnimTiles_testing_but_secondary_Flower(timer / 16);
+}
+
+static void TilesetAnim_gTileset_AnconnaTown_but_secondary(u16 timer)
 {
     if (timer % 16 == 0)
         QueueAnimTiles_testing_but_secondary_Water(timer / 16);

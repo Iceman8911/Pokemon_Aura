@@ -1094,6 +1094,8 @@ Common_EventScript_LegendaryFlewAway::
 
 	.include "data/scripts/remember.inc"
 
+	.include "data/scripts/iceman_debug_menu.inc"
+
 @@ Used by bufferdynamicmulti to ensure that there aren't any empty
 @@ empty strings buffered with bufferdynamicmulti to prevent crashes.
 RyuEmptyTextPtr:: 

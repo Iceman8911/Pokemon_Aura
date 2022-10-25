@@ -4416,8 +4416,8 @@
       "name": "AnconnaTown_Layout",
       "width": 38,
       "height": 36,
-      "primary_tileset": "gTileset_Testing",
-      "secondary_tileset": "gTileset_testing_but_secondary",
+      "primary_tileset": "gTileset_Tileset_AnconnaTown",
+      "secondary_tileset": "gTileset_AnconnaTown_but_secondary",
       "border_filepath": "data/layouts/AnconnaTown/border.bin",
       "blockdata_filepath": "data/layouts/AnconnaTown/map.bin"
     },
@@ -4436,8 +4436,8 @@
       "name": "Route01_Layout",
       "width": 30,
       "height": 50,
-      "primary_tileset": "gTileset_Testing",
-      "secondary_tileset": "gTileset_testing_but_secondary",
+      "primary_tileset": "gTileset_Tileset_AnconnaTown",
+      "secondary_tileset": "gTileset_AnconnaTown_but_secondary",
       "border_filepath": "data/layouts/Route01/border.bin",
       "blockdata_filepath": "data/layouts/Route01/map.bin"
     },
@@ -4496,8 +4496,8 @@
       "name": "AnconnaLake_Layout",
       "width": 50,
       "height": 30,
-      "primary_tileset": "gTileset_Testing",
-      "secondary_tileset": "gTileset_testing_but_secondary",
+      "primary_tileset": "gTileset_Tileset_AnconnaTown",
+      "secondary_tileset": "gTileset_AnconnaTown_but_secondary",
       "border_filepath": "data/layouts/AnconnaLake/border.bin",
       "blockdata_filepath": "data/layouts/AnconnaLake/map.bin"
     },

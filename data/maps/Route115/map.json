@@ -27,6 +27,7 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
+      "in_connection": false,
       "x": 18,
       "y": 68,
       "elevation": 3,
@@ -40,6 +41,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
+      "in_connection": false,
       "x": 5,
       "y": 15,
       "elevation": 3,
@@ -53,6 +55,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
+      "in_connection": false,
       "x": 27,
       "y": 53,
       "elevation": 3,
@@ -66,6 +69,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
+      "in_connection": false,
       "x": 12,
       "y": 5,
       "elevation": 3,
@@ -79,6 +83,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
+      "in_connection": false,
       "x": 13,
       "y": 5,
       "elevation": 3,
@@ -92,6 +97,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
+      "in_connection": false,
       "x": 14,
       "y": 5,
       "elevation": 3,
@@ -105,6 +111,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
+      "in_connection": false,
       "x": 15,
       "y": 50,
       "elevation": 3,
@@ -118,6 +125,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
+      "in_connection": false,
       "x": 19,
       "y": 15,
       "elevation": 3,
@@ -131,6 +139,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MANIAC",
+      "in_connection": false,
       "x": 24,
       "y": 62,
       "elevation": 3,
@@ -144,6 +153,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "in_connection": false,
       "x": 20,
       "y": 60,
       "elevation": 3,
@@ -157,6 +167,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "in_connection": false,
       "x": 18,
       "y": 7,
       "elevation": 3,
@@ -170,6 +181,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "in_connection": false,
       "x": 23,
       "y": 29,
       "elevation": 3,
@@ -183,6 +195,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
+      "in_connection": false,
       "x": 31,
       "y": 64,
       "elevation": 3,
@@ -196,6 +209,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
+      "in_connection": false,
       "x": 31,
       "y": 65,
       "elevation": 3,
@@ -209,6 +223,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+      "in_connection": false,
       "x": 29,
       "y": 50,
       "elevation": 3,
@@ -222,6 +237,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "in_connection": false,
       "x": 31,
       "y": 56,
       "elevation": 3,
@@ -235,6 +251,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F",
+      "in_connection": false,
       "x": 10,
       "y": 15,
       "elevation": 3,
@@ -248,6 +265,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
+      "in_connection": false,
       "x": 11,
       "y": 12,
       "elevation": 3,
@@ -261,6 +279,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
+      "in_connection": false,
       "x": 15,
       "y": 7,
       "elevation": 3,
@@ -274,6 +293,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LASS",
+      "in_connection": false,
       "x": 10,
       "y": 7,
       "elevation": 3,
@@ -287,6 +307,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LASS",
+      "in_connection": false,
       "x": 28,
       "y": 62,
       "elevation": 3,
@@ -300,6 +321,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "in_connection": false,
       "x": 26,
       "y": 67,
       "elevation": 3,
@@ -313,6 +335,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "in_connection": false,
       "x": 12,
       "y": 14,
       "elevation": 3,
@@ -348,7 +371,9 @@
       "dest_warp_id": 0
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+
+  ],
   "bg_events": [
     {
       "type": "secret_base",
@@ -449,7 +474,9 @@
       "y": 49,
       "elevation": 3,
       "item": "ITEM_HEART_SCALE",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_115_HEART_SCALE"
+      "flag": "FLAG_HIDDEN_ITEM_ROUTE_115_HEART_SCALE",
+      "quantity": 0,
+      "underfoot": false
     }
   ]
 }
