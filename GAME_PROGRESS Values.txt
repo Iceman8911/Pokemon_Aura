@@ -18,6 +18,8 @@
 
 Bonbon, Blossom, 
 
+Fix DexNav bruh, the R button doesn't work + it doesn't work in towns
+
 
 
 

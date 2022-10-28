@@ -109,8 +109,11 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
             if (newKeys & B_BUTTON)
                 input->pressedBButton = TRUE;
             //if (newKeys & R_BUTTON && !FlagGet(FLAG_SYS_DEXNAV_SEARCH))
-            if (newKeys & L_BUTTON && !FlagGet(FLAG_SYS_DEXNAV_SEARCH))
+            if (newKeys & L_BUTTON && !FlagGet(FLAG_SYS_DEXNAV_SEARCH))   //Auto Run
                 input->pressedLButton = TRUE;
+
+            if (newKeys & R_BUTTON && !FlagGet(FLAG_SYS_DEXNAV_SEARCH))   //DexNav
+                input->pressedRButton = TRUE;
         }
 
         if (heldKeys & (DPAD_UP | DPAD_DOWN | DPAD_LEFT | DPAD_RIGHT))
@@ -197,8 +200,13 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     if (input->pressedStartButton)
     {
         PlaySE(SE_WIN_OPEN);
-        ShowStartMenu();
-        return TRUE;
+        if(!FlagGet(FLAG_SYS_DEXNAV_SEARCH)){  //If dexnav is currently being used in the overworld, the start menu will not work on the first try
+            ShowStartMenu();
+            return TRUE;
+        } else {
+            EndDexNavSearch(0);  //Stops the search. Not sure abt the "0" there
+            return FALSE;
+        }
     }
     
     if (input->tookStep && TryFindHiddenPokemon())
@@ -220,8 +228,8 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         return TRUE;
     }
 #endif
-    //if (input->pressedRButton && TryStartDexnavSearch())
-    if (input->pressedLButton && TryStartDexnavSearch())
+    if (input->pressedRButton && TryStartDexnavSearch())
+    //if (input->pressedLButton && TryStartDexnavSearch())
         return TRUE;
 
     return FALSE;

@@ -22,8 +22,8 @@ EventScript_MovedTooFast::
     end
 sText_TryMovingSlower:
     .string "The Pokémon got away!\n"
-    .string "Try moving more slowly.$"
-
+    .string "Try moving more slowly using 'A'.$"
+@@ Using A slows the player down to interact with dexnav encounters
 
 EventScript_PokemonGotAway::
     msgbox sText_PokemonGotAway, MSGBOX_SIGN
