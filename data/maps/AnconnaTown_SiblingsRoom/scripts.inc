@@ -68,16 +68,15 @@ Anconna_TownSiblingMainScript::
 	goto_if_lt Anconna_TownSiblingMainScript_2
 	compare GAME_PROGRESS, 6
 	goto_if_eq Anconna_TownSiblingMainScript_3
-	msgbox Anconna_TownSiblingMainScript_Text_23
+	msgbox Anconna_TownSiblingMainScript_Text_22
 	waitmessage
 Anconna_TownSiblingMainScript_1:
 	return
 
 Anconna_TownSiblingMainScript_2:
 	msgbox Anconna_TownSiblingMainScript_Text_0
-	msgbox Anconna_TownSiblingMainScript_Text_1
 	waitmessage
-	msgbox Anconna_TownSiblingMainScript_Text_2
+	msgbox Anconna_TownSiblingMainScript_Text_1
 	waitmessage
 	addvar VAR_TEMP_0, 1
 	goto Anconna_TownSiblingMainScript_1
@@ -89,9 +88,9 @@ Anconna_TownSiblingMainScript_3:
 	case 0, Anconna_TownSiblingMainScript_9
 	case 1, Anconna_TownSiblingMainScript_10
 Anconna_TownSiblingMainScript_7:
-	bufferdynamicmulti Anconna_TownSiblingMainScript_Text_5, Anconna_TownSiblingMainScript_Text_6
+	bufferdynamicmulti Anconna_TownSiblingMainScript_Text_4, Anconna_TownSiblingMainScript_Text_5
 	multichoice 25, 7, MULTI_DYNAMIC_2, 1
-	msgbox Anconna_TownSiblingMainScript_Text_7
+	msgbox Anconna_TownSiblingMainScript_Text_6
 	waitmessage
 	delay 50
 	call AnconnaTownSiblingWalksInPlace
@@ -101,11 +100,11 @@ Anconna_TownSiblingMainScript_7:
 	goto Anconna_TownSiblingMainScript_1
 
 Anconna_TownSiblingMainScript_9:
-	msgbox Anconna_TownSiblingMainScript_Text_3
+	msgbox Anconna_TownSiblingMainScript_Text_2
 	goto Anconna_TownSiblingMainScript_7
 
 Anconna_TownSiblingMainScript_10:
-	msgbox Anconna_TownSiblingMainScript_Text_4
+	msgbox Anconna_TownSiblingMainScript_Text_3
 	goto Anconna_TownSiblingMainScript_7
 
 Anconna_TownSiblingMainScript_12:
@@ -114,7 +113,7 @@ Anconna_TownSiblingMainScript_12:
 	goto Anconna_TownSiblingMainScript_1
 
 Anconna_TownSiblingMainScript_13:
-	msgbox Anconna_TownSiblingMainScript_Text_22, 2
+	msgbox Anconna_TownSiblingMainScript_Text_21, 2
 	waitmessage
 	goto Anconna_TownSiblingMainScript_1
 
@@ -122,28 +121,28 @@ Anconna_TownSiblingMainScript_14:
 	checkitem ITEM_BIDOOF_COMB, 1
 	compare VAR_RESULT, 0
 	goto_if_ne Anconna_TownSiblingMainScript_17
-	msgbox Anconna_TownSiblingMainScript_Text_21, 2
+	msgbox Anconna_TownSiblingMainScript_Text_20, 2
 	waitmessage
 	goto Anconna_TownSiblingMainScript_1
 
 Anconna_TownSiblingMainScript_17:
-	msgbox Anconna_TownSiblingMainScript_Text_8
+	msgbox Anconna_TownSiblingMainScript_Text_7
 	removeitem ITEM_BIDOOF_COMB, 1
 	playfanfare MUS_OBTAIN_ITEM
-	msgbox Anconna_TownSiblingMainScript_Text_9
+	msgbox Anconna_TownSiblingMainScript_Text_8
 	waitmessage
 	waitfanfare
 	delay 25
 	call AnconnaTownSiblingWalksInPlace
-	msgbox Anconna_TownSiblingMainScript_Text_10
+	msgbox Anconna_TownSiblingMainScript_Text_9
 	call AnconnaTownPlayerWalksInPlace
-	msgbox Anconna_TownSiblingMainScript_Text_11
-	bufferdynamicmulti Anconna_TownSiblingMainScript_Text_12, Anconna_TownSiblingMainScript_Text_13
+	msgbox Anconna_TownSiblingMainScript_Text_10
+	bufferdynamicmulti Anconna_TownSiblingMainScript_Text_11, Anconna_TownSiblingMainScript_Text_12
 	call PlayerTellsSiblingAboutBidoofComb
 	call AnconnaTownSiblingWalksInPlace
-	msgbox Anconna_TownSiblingMainScript_Text_14
+	msgbox Anconna_TownSiblingMainScript_Text_13
 	call AnconnaTownPlayerWalksInPlace
-	msgbox Anconna_TownSiblingMainScript_Text_15
+	msgbox Anconna_TownSiblingMainScript_Text_14
 	closemessage
 	switch VAR_TEMP_8
 	case 1, Anconna_TownSiblingMainScript_22
@@ -151,7 +150,7 @@ Anconna_TownSiblingMainScript_17:
 	case 3, Anconna_TownSiblingMainScript_24
 Anconna_TownSiblingMainScript_20:
 	waitmovement 0
-	msgbox Anconna_TownSiblingMainScript_Text_16
+	msgbox Anconna_TownSiblingMainScript_Text_15
 	fadescreen FADE_TO_WHITE
 	call SpawnRioluInSiblingsRoom
 	switch VAR_TEMP_8
@@ -160,7 +159,7 @@ Anconna_TownSiblingMainScript_20:
 	case 3, Anconna_TownSiblingMainScript_29
 Anconna_TownSiblingMainScript_25:
 	waitmovement 0
-	msgbox Anconna_TownSiblingMainScript_Text_17
+	msgbox Anconna_TownSiblingMainScript_Text_16
 	waitmessage
 	delay 60
 	call RioluPunchesSiblingLol
@@ -170,7 +169,7 @@ Anconna_TownSiblingMainScript_25:
 	case 3, Anconna_TownSiblingMainScript_34
 Anconna_TownSiblingMainScript_30:
 	delay 45
-	msgbox Anconna_TownSiblingMainScript_Text_18
+	msgbox Anconna_TownSiblingMainScript_Text_17
 	waitmessage
 	delay 45
 	switch VAR_TEMP_8
@@ -179,10 +178,10 @@ Anconna_TownSiblingMainScript_30:
 	case 3, Anconna_TownSiblingMainScript_39
 Anconna_TownSiblingMainScript_35:
 	waitmovement 0
-	msgbox Anconna_TownSiblingMainScript_Text_19
+	msgbox Anconna_TownSiblingMainScript_Text_18
 	waitmessage
 	giveitem ITEM_RARE_CANDY, 1
-	msgbox Anconna_TownSiblingMainScript_Text_20
+	msgbox Anconna_TownSiblingMainScript_Text_19
 	waitmessage
 	fadescreen FADE_TO_BLACK
 	removeobject 3
@@ -636,97 +635,93 @@ SisterBidoofAtHome_Text_0:
 	.string "{COLOR DARK_GRAY}(Bidoof looks very snug and happy)$"
 
 Anconna_TownSiblingMainScript_Text_0:
-	.string "i literally don't have a good name atm...\n"
-	.string ":/$"
-
-Anconna_TownSiblingMainScript_Text_1:
 	.string "{SIBLING}:{COLOR RED} Where is it?\p"
 	.string "...\p"
 	.string "WHERE THE HECK COULD THIS THING BE?$"
 
-Anconna_TownSiblingMainScript_Text_2:
+Anconna_TownSiblingMainScript_Text_1:
 	.string "(It does't seem like she noticed me,\n"
 	.string "maybe I should try calling her again...)$"
 
-Anconna_TownSiblingMainScript_Text_3:
+Anconna_TownSiblingMainScript_Text_2:
 	.string "{SIBLING}:{COLOR RED} Did you find it yet?$"
 
-Anconna_TownSiblingMainScript_Text_4:
+Anconna_TownSiblingMainScript_Text_3:
 	.string "{SIBLING}:{COLOR RED} Have you found it yet?$"
 
-Anconna_TownSiblingMainScript_Text_5:
+Anconna_TownSiblingMainScript_Text_4:
 	.string "Yeah$"
 
-Anconna_TownSiblingMainScript_Text_6:
+Anconna_TownSiblingMainScript_Text_5:
 	.string "Not yet..$"
 
-Anconna_TownSiblingMainScript_Text_7:
+Anconna_TownSiblingMainScript_Text_6:
 	.string ".....$"
 
-Anconna_TownSiblingMainScript_Text_8:
+Anconna_TownSiblingMainScript_Text_7:
 	.string "{SIBLING}:{COLOR RED} Yay :D!!!\n"
 	.string "You found it!$"
 
-Anconna_TownSiblingMainScript_Text_9:
+Anconna_TownSiblingMainScript_Text_8:
 	.string "You returned the Ugly Comb!$"
 
-Anconna_TownSiblingMainScript_Text_10:
+Anconna_TownSiblingMainScript_Text_9:
 	.string "{SIBLING}:{COLOR RED} By the way, where did you\n"
 	.string "find it?\p"
 	.string "It was a secret gift I made for {COLOR GREEN}Bibby{COLOR RED} so\n"
 	.string "I have no idea how it got lost...$"
 
-Anconna_TownSiblingMainScript_Text_11:
+Anconna_TownSiblingMainScript_Text_10:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Well...$"
 
-Anconna_TownSiblingMainScript_Text_12:
+Anconna_TownSiblingMainScript_Text_11:
 	.string "It was somewhere near the staircase..$"
 
-Anconna_TownSiblingMainScript_Text_13:
+Anconna_TownSiblingMainScript_Text_12:
 	.string "It was in the trash bin..$"
 
-Anconna_TownSiblingMainScript_Text_14:
+Anconna_TownSiblingMainScript_Text_13:
 	.string "{SIBLING}:{COLOR RED} Anyways, I believe you\n"
 	.string "wanted to show me something since you\l"
 	.string "came here in the first place.$"
 
-Anconna_TownSiblingMainScript_Text_15:
+Anconna_TownSiblingMainScript_Text_14:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Yeah, about that..$"
 
-Anconna_TownSiblingMainScript_Text_16:
+Anconna_TownSiblingMainScript_Text_15:
 	.string "You can come out now, Riolu.$"
 
-Anconna_TownSiblingMainScript_Text_17:
+Anconna_TownSiblingMainScript_Text_16:
 	.string "{SIBLING}:{COLOR RED} Eeek!\p"
 	.string "You got yourself a Pokemon! And its\n"
 	.string "really cute :3\p"
 	.string "Aww, lemme hug it!$"
 
-Anconna_TownSiblingMainScript_Text_18:
+Anconna_TownSiblingMainScript_Text_17:
 	.string "{SIBLING}:{COLOR RED} Ouch :(\p"
 	.string "I just wanted to hug it.$"
 
-Anconna_TownSiblingMainScript_Text_19:
+Anconna_TownSiblingMainScript_Text_18:
 	.string "{SIBLING}:{COLOR RED} Its really strong though so\n"
 	.string "take care of the little guy.\p"
 	.string "Since {COLOR GREEN}Bibby{COLOR RED} and I don't train much, I'd\n"
 	.string "like you both to have this. Take it as a\l"
 	.string "reward for helping me earlier.$"
 
-Anconna_TownSiblingMainScript_Text_20:
+Anconna_TownSiblingMainScript_Text_19:
 	.string "{SIBLING}:{COLOR RED} Thanks again for helping me\n"
 	.string "find {COLOR GREEN}Bibby's{COLOR RED} comb. Now I can make him\l"
 	.string "look all pretty again.$"
 
-Anconna_TownSiblingMainScript_Text_21:
+Anconna_TownSiblingMainScript_Text_20:
 	.string "{SIBLING}:{COLOR RED} If you didn't find it, why\n"
 	.string "did you still say yes?$"
 
-Anconna_TownSiblingMainScript_Text_22:
+Anconna_TownSiblingMainScript_Text_21:
 	.string "{SIBLING}:{COLOR RED} Try checking {COLOR GREEN}everywhere{COLOR RED}\n"
 	.string "again. Who knows where it might be...$"
 
-Anconna_TownSiblingMainScript_Text_23:
+Anconna_TownSiblingMainScript_Text_22:
 	.string "{SIBLING}:{COLOR RED} Hmm, what should {COLOR GREEN}Bibby{COLOR RED} and\n"
 	.string "I do...$"
 
