@@ -500,3 +500,17 @@ u8* ReadWord(u8 index)
     return (T1_READ_PTR(&ctx->data[index]));
 }
 
+#include "string_util.h"
+void GetObjectEventTrainerRangeANDMovementRangeXToCreateAGeneralFindItemScript(void)  //This can actually be used to make Find Item scripts
+{
+    u8 itemId = gMapHeader.events->objectEvents[gSpecialVar_LastTalked - 1].trainerRange_berryTreeId;    //Uses the berrytree_id slot
+    u16 itemAmount = gMapHeader.events->objectEvents[gSpecialVar_LastTalked - 1].movementRangeX;       //uses the movement radius X slot
+
+    gSpecialVar_Result = itemId;  
+    
+    if((itemAmount) >= 1 && (itemAmount) <= 999) {
+        gSpecialVar_0x8006 = itemAmount; 
+    } else {
+        gSpecialVar_0x8006 = 1;  //Number is Invalid
+    }
+}

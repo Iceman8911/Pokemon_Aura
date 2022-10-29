@@ -18,6 +18,8 @@
 
 Bonbon, Blossom, 
 
+The Script "Common_EventScript_FindItem" can be used as a general Item script. Trainer Id == ITEM_ID, Movement X radius == ITEM_AMOUNT
+
 Fix DexNav bruh, the R button doesn't work + it doesn't work in towns
 
 

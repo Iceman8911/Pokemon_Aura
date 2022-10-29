@@ -115,7 +115,8 @@
     "AnconnaTown_House1",
     "AnconnaTown_House2",
     "AnconnaTown_SiblingsRoom",
-    "AnconnaTown_Lab"
+    "AnconnaTown_Lab",
+    "AnconnaTown_Lab1stFloor"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

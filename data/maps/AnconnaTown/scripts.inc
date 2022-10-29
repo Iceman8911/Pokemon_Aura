@@ -137,13 +137,6 @@ AnconnaTown_EventScript_Sign::
 	end
 
 
-AnconnaTown_EventScript_Antidote::
-	lockall
-	finditem ITEM_ANTIDOTE
-	releaseall
-	end
-
-
 AnconnaTown_Bidoof::
 	lockall
 	playmoncry SPECIES_BIDOOF, CRY_MODE_NORMAL

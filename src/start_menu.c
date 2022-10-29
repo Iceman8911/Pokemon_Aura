@@ -637,7 +637,7 @@ static bool8 HandleStartMenuInput(void)
                 return FALSE;
         }
         if (sCurrentStartMenuActions[sStartMenuCursorPos] == MENU_ACTION_DEXNAV
-          && MapHasNoEncounterData())
+          && MapHasNoEncounterData())   //This apparently prevents the player from accessing the Dexnav in a map without enounters
             return FALSE;
         
         gMenuCallback = sStartMenuItems[sCurrentStartMenuActions[sStartMenuCursorPos]].func.u8_void;

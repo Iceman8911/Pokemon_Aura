@@ -46,55 +46,84 @@ IcemanDebugSwitch_5:
 	goto IcemanDebugSwitch_1
 
 IcemanDebugSwitch_7:
-	bufferdynamicmulti IcemanDebugSwitch_Text_2, IcemanDebugSwitch_Text_3, IcemanDebugSwitch_Text_4, IcemanDebugSwitch_Text_5, IcemanDebugSwitch_Text_6, IcemanDebugSwitch_Text_7
-	multichoice 25, 3, MULTI_DYNAMIC_6, 0
+	bufferdynamicmulti IcemanDebugSwitch_Text_2, IcemanDebugSwitch_Text_3
+	multichoice 25, 7, MULTI_DYNAMIC_2, 0
 	switch VAR_RESULT
 	case 0, IcemanDebugSwitch_10
 	case 1, IcemanDebugSwitch_11
-	case 2, IcemanDebugSwitch_12
-	case 3, IcemanDebugSwitch_13
-	case 4, IcemanDebugSwitch_14
-	case 5, IcemanDebugSwitch_15
 	goto IcemanDebugSwitch_1
 
 IcemanDebugSwitch_8:
-	bufferdynamicmulti IcemanDebugSwitch_Text_8, IcemanDebugSwitch_Text_9
+	bufferdynamicmulti IcemanDebugSwitch_Text_13, IcemanDebugSwitch_Text_14
 	multichoice 25, 3, MULTI_DYNAMIC_2, 0
 	switch VAR_RESULT
-	case 0, IcemanDebugSwitch_17
-	case 1, IcemanDebugSwitch_18
+	case 0, IcemanDebugSwitch_13
+	case 1, IcemanDebugSwitch_14
 	goto IcemanDebugSwitch_1
 
 IcemanDebugSwitch_10:
-	warp MAP_ANCONNA_TOWN, 0
+	bufferdynamicmulti IcemanDebugSwitch_Text_4, IcemanDebugSwitch_Text_5, IcemanDebugSwitch_Text_6, IcemanDebugSwitch_Text_7, IcemanDebugSwitch_Text_8, IcemanDebugSwitch_Text_9
+	multichoice 25, 3, MULTI_DYNAMIC_6, 0
+	switch VAR_RESULT
+	case 0, IcemanDebugSwitch_16
+	case 1, IcemanDebugSwitch_17
+	case 2, IcemanDebugSwitch_18
+	case 3, IcemanDebugSwitch_19
+	case 4, IcemanDebugSwitch_20
+	case 5, IcemanDebugSwitch_21
 	goto IcemanDebugSwitch_1
 
 IcemanDebugSwitch_11:
-	warp MAP_ANCONNA_WOODS, 0
-	goto IcemanDebugSwitch_1
-
-IcemanDebugSwitch_12:
-	warp MAP_ANCONNA_WOODS_1, 0
+	bufferdynamicmulti IcemanDebugSwitch_Text_10, IcemanDebugSwitch_Text_11, IcemanDebugSwitch_Text_12
+	multichoice 25, 3, MULTI_DYNAMIC_3, 0
+	switch VAR_RESULT
+	case 0, IcemanDebugSwitch_23
+	case 1, IcemanDebugSwitch_24
+	case 2, IcemanDebugSwitch_25
 	goto IcemanDebugSwitch_1
 
 IcemanDebugSwitch_13:
-	warp MAP_ROUTE01, 0
-	goto IcemanDebugSwitch_1
-
-IcemanDebugSwitch_14:
-	warp MAP_ANCONNA_LAKE, 25, 4
-	goto IcemanDebugSwitch_1
-
-IcemanDebugSwitch_15:
-	warp MAP_MURKY_GROVE, 0
-	goto IcemanDebugSwitch_1
-
-IcemanDebugSwitch_17:
 	warp MAP_ROUTE02, 0
 	goto IcemanDebugSwitch_1
 
-IcemanDebugSwitch_18:
+IcemanDebugSwitch_14:
 	warp MAP_SCANDI_CITY, 0
+	goto IcemanDebugSwitch_1
+
+IcemanDebugSwitch_16:
+	warp MAP_ANCONNA_TOWN, 0
+	goto IcemanDebugSwitch_1
+
+IcemanDebugSwitch_17:
+	warp MAP_ANCONNA_WOODS, 0
+	goto IcemanDebugSwitch_1
+
+IcemanDebugSwitch_18:
+	warp MAP_ANCONNA_WOODS_1, 0
+	goto IcemanDebugSwitch_1
+
+IcemanDebugSwitch_19:
+	warp MAP_ROUTE01, 0
+	goto IcemanDebugSwitch_1
+
+IcemanDebugSwitch_20:
+	warp MAP_ANCONNA_LAKE, 25, 4
+	goto IcemanDebugSwitch_1
+
+IcemanDebugSwitch_21:
+	warp MAP_MURKY_GROVE, 0
+	goto IcemanDebugSwitch_1
+
+IcemanDebugSwitch_23:
+	warp MAP_ANCONNA_TOWN_PLAYER_HOUSE, 0
+	goto IcemanDebugSwitch_1
+
+IcemanDebugSwitch_24:
+	warp MAP_ANCONNA_TOWN_LAB, 0
+	goto IcemanDebugSwitch_1
+
+IcemanDebugSwitch_25:
+	warp MAP_ANCONNA_TOWN_LAB1ST_FLOOR, 0
 	goto IcemanDebugSwitch_1
 
 
@@ -123,25 +152,40 @@ IcemanDebugSwitch_Text_1:
 	.string "Scandi$"
 
 IcemanDebugSwitch_Text_2:
-	.string "Anconna Town$"
+	.string "Outdoors$"
 
 IcemanDebugSwitch_Text_3:
-	.string "Anconna Woods$"
+	.string "Indoors$"
 
 IcemanDebugSwitch_Text_4:
-	.string "Anconna Woods_1$"
+	.string "Anconna Town$"
 
 IcemanDebugSwitch_Text_5:
-	.string "Route 01$"
+	.string "Anconna Woods$"
 
 IcemanDebugSwitch_Text_6:
-	.string "Anconna Lake$"
+	.string "Anconna Woods_1$"
 
 IcemanDebugSwitch_Text_7:
-	.string "Murky Grove$"
+	.string "Route 01$"
 
 IcemanDebugSwitch_Text_8:
-	.string "Route 02$"
+	.string "Anconna Lake$"
 
 IcemanDebugSwitch_Text_9:
+	.string "Murky Grove$"
+
+IcemanDebugSwitch_Text_10:
+	.string "{PLAYER}'s House$"
+
+IcemanDebugSwitch_Text_11:
+	.string "Anconna Lab$"
+
+IcemanDebugSwitch_Text_12:
+	.string "Anconna Lab 1$"
+
+IcemanDebugSwitch_Text_13:
+	.string "Route 02$"
+
+IcemanDebugSwitch_Text_14:
 	.string "Scandi City$"

@@ -2,6 +2,11 @@ raw `
 Route01_MapScripts::
 	.byte 0
 `
+
+script Route01_ProfessorMaxmilliamCutscence_1 {
+
+}
+
 script Route01_Sign {
     msgbox(format("Route 01\p{UP_ARROW} Murky Grove\n{DOWN_ARROW} AnconnaTown"))
     closemessage

@@ -55,8 +55,8 @@
 #define MURKY_GROVE_POISON_GEM    0x2B // Unused Flag
 #define ANCONNA_WOODS_RARE_CANDY    0x2C // Unused Flag
 #define RIOLU_IS_IN_PLAYER_HOUSE    0x2D // Unused Flag
-#define RIOLU_IS_A_FOLLOWER    0x2E // Unused Flag. I'm using this a flag for Ghoul's follower branch. U can use all flags below
-#define FLAG_UNUSED_0x02F    0x2F // Unused Flag
+#define RIOLU_IS_A_FOLLOWER    0x2E // Unused Flag. I'm using this a flag for Ghoul's follower branch.
+#define FLAG_TURN_PLAYER_INVISIBLE    0x2F // Unused Flag. I'm using this flag to make the player invisible during certain cutscenes. U can use all flags below
 #define FLAG_UNUSED_0x030    0x30 // Unused Flag
 #define FLAG_UNUSED_0x031    0x31 // Unused Flag
 #define FLAG_UNUSED_0x032    0x32 // Unused Flag

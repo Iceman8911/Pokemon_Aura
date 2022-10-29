@@ -4570,6 +4570,16 @@
       "secondary_tileset": "gTileset_Lab_Secondary",
       "border_filepath": "data/layouts/AnconnaTown_Lab/border.bin",
       "blockdata_filepath": "data/layouts/AnconnaTown_Lab/map.bin"
+    },
+    {
+      "id": "LAYOUT_ANCONNA_TOWN_LAB1ST_FLOOR",
+      "name": "AnconnaTown_Lab1stFloor_Layout",
+      "width": 17,
+      "height": 14,
+      "primary_tileset": "gTileset_Lab_Primary",
+      "secondary_tileset": "gTileset_Lab_Secondary",
+      "border_filepath": "data/layouts/AnconnaTown_Lab1stFloor/border.bin",
+      "blockdata_filepath": "data/layouts/AnconnaTown_Lab1stFloor/map.bin"
     }
   ]
 }

@@ -115,12 +115,12 @@ text AnconnaSign {
 	"{DOWN_ARROW} Anconna Lake"
 }
 
-script AnconnaTown_EventScript_Antidote {
-	lockall
-	finditem(ITEM_ANTIDOTE)
-	releaseall
-	end
-}
+//script AnconnaTown_EventScript_Antidote {
+//	lockall
+//	finditem(ITEM_ANTIDOTE)
+//	releaseall
+//	end
+//}
 
 script AnconnaTown_Bidoof {
 	lockall

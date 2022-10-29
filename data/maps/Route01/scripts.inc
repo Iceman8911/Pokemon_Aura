@@ -1,6 +1,10 @@
 Route01_MapScripts::
 	.byte 0
 
+Route01_ProfessorMaxmilliamCutscence_1::
+	return
+
+
 Route01_Sign::
 	msgbox Route01_Sign_Text_0
 	closemessage

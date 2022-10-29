@@ -657,3 +657,8 @@ MagmaHideout_4F_EventScript_ItemMaxRevive::
 MagmaHideout_3F_3R_EventScript_ItemEscapeRope::
 	finditem ITEM_ESCAPE_ROPE
 	end
+
+Common_EventScript_FindItem::            @@Using that particular script, we can use this to find any item we want
+	callnative GetObjectEventTrainerRangeANDMovementRangeXToCreateAGeneralFindItemScript
+	finditem VAR_RESULT, VAR_0x8006
+	end

@@ -1106,3 +1106,5 @@ RyuEmptyTextPtr::
 	.include "data/maps/AnconnaTown_Lab/scripts.inc"
     .include "data/scripts/dexnav.inc"
     
+
+	.include "data/maps/AnconnaTown_Lab1stFloor/scripts.inc"

@@ -83,6 +83,7 @@
 #define MAP_ANCONNA_TOWN_HOUSE2                    (5 | (2 << 8))
 #define MAP_ANCONNA_TOWN_SIBLINGS_ROOM             (6 | (2 << 8))
 #define MAP_ANCONNA_TOWN_LAB                       (7 | (2 << 8))
+#define MAP_ANCONNA_TOWN_LAB1ST_FLOOR              (8 | (2 << 8))
 
 // gMapGroup_IndoorLittleroot
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (3 << 8))

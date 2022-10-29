@@ -15,21 +15,38 @@ script IcemanDebugSwitch {
             multichoice(25, 7, MULTI_DYNAMIC_2, 0)
             switch(var(VAR_RESULT)) {
                 case 0:
-                    bufferdynamicmulti("Anconna Town", "Anconna Woods", "Anconna Woods_1", "Route 01", "Anconna Lake", "Murky Grove") //Sub Maps
-                    multichoice(25, 3, MULTI_DYNAMIC_6, 0)
+                    bufferdynamicmulti("Outdoors", "Indoors")  //Outdoor / Indoor
+                    multichoice(25, 7, MULTI_DYNAMIC_2, 0)
                     switch(var(VAR_RESULT)) {
                         case 0:
-                            warp(MAP_ANCONNA_TOWN, 0)
+                            bufferdynamicmulti("Anconna Town", "Anconna Woods", "Anconna Woods_1", "Route 01", "Anconna Lake", "Murky Grove") //Sub Maps
+                            multichoice(25, 3, MULTI_DYNAMIC_6, 0)
+                            switch(var(VAR_RESULT)) {
+                                case 0:
+                                    warp(MAP_ANCONNA_TOWN, 0)
+                                case 1:
+                                    warp(MAP_ANCONNA_WOODS, 0)
+                                case 2:
+                                    warp(MAP_ANCONNA_WOODS_1, 0)
+                                case 3:
+                                    warp(MAP_ROUTE01, 0)
+                                case 4:
+                                    warp(MAP_ANCONNA_LAKE, 25, 4)
+                                case 5:
+                                    warp(MAP_MURKY_GROVE, 0)
+                            }
+
                         case 1:
-                            warp(MAP_ANCONNA_WOODS, 0)
-                        case 2:
-                            warp(MAP_ANCONNA_WOODS_1, 0)
-                        case 3:
-                            warp(MAP_ROUTE01, 0)
-                        case 4:
-                            warp(MAP_ANCONNA_LAKE, 25, 4)
-                        case 5:
-                            warp(MAP_MURKY_GROVE, 0)
+                            bufferdynamicmulti("{PLAYER}'s House", "Anconna Lab", "Anconna Lab 1")
+                            multichoice(25, 3, MULTI_DYNAMIC_3, 0) 
+                            switch(var(VAR_RESULT)) {
+                                case 0:
+                                    warp(MAP_ANCONNA_TOWN_PLAYER_HOUSE, 0)
+                                case 1:
+                                    warp(MAP_ANCONNA_TOWN_LAB, 0)
+                                case 2:
+                                    warp(MAP_ANCONNA_TOWN_LAB1ST_FLOOR, 0)
+                            }
                     }
                 case 1:
                     bufferdynamicmulti("Route 02", "Scandi City") //Sub Maps

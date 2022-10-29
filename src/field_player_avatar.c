@@ -1467,6 +1467,14 @@ void InitPlayerAvatar(s16 x, s16 y, u8 direction, u8 gender)
     gPlayerAvatar.gender = gender;
     SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_CONTROLLABLE | PLAYER_AVATAR_FLAG_ON_FOOT);    
     CreateFollowerAvatar();
+
+
+    if (FlagGet(FLAG_TURN_PLAYER_INVISIBLE))    //Turns the Player Invisible when the flag is enabled. To make the player visible, use a movement command with set_visible
+    {
+        FlagClear(FLAG_TURN_PLAYER_INVISIBLE);
+        objectEvent->invisible = TRUE;
+    }
+    
 }
 
 void SetPlayerInvisibility(bool8 invisible)
