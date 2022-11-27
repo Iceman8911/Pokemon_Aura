@@ -3,7 +3,7 @@ IcemanDebugMenu::
 	msgbox IcemanDebugMenu_Text_0
 	msgbox IcemanDebugMenu_Text_1
 	bufferdynamicmulti IcemanDebugMenu_Text_2, IcemanDebugMenu_Text_3, IcemanDebugMenu_Text_4, IcemanDebugMenu_Text_5
-	multichoice 25, 5, MULTI_DYNAMIC_3, 0
+	multichoice 25, 5, MULTI_DYNAMIC_4, 0
 	call IcemanDebugSwitch
 	releaseall
 	return
@@ -14,6 +14,7 @@ IcemanDebugSwitch::
 	case 0, IcemanDebugSwitch_3
 	case 1, IcemanDebugSwitch_4
 	case 2, IcemanDebugSwitch_5
+	case 3, IcemanDebugSwitch_6
 IcemanDebugSwitch_1:
 	return
 
@@ -21,8 +22,8 @@ IcemanDebugSwitch_3:
 	bufferdynamicmulti IcemanDebugSwitch_Text_0, IcemanDebugSwitch_Text_1
 	multichoice 25, 7, MULTI_DYNAMIC_2, 0
 	switch VAR_RESULT
-	case 0, IcemanDebugSwitch_7
-	case 1, IcemanDebugSwitch_8
+	case 0, IcemanDebugSwitch_8
+	case 1, IcemanDebugSwitch_9
 	goto IcemanDebugSwitch_1
 
 IcemanDebugSwitch_4:
@@ -45,84 +46,120 @@ IcemanDebugSwitch_5:
 	setflag FLAG_SYS_POKEMON_GET
 	goto IcemanDebugSwitch_1
 
-IcemanDebugSwitch_7:
-	bufferdynamicmulti IcemanDebugSwitch_Text_2, IcemanDebugSwitch_Text_3
-	multichoice 25, 7, MULTI_DYNAMIC_2, 0
+IcemanDebugSwitch_6:
+	bufferdynamicmulti IcemanDebugSwitch_Text_15, IcemanDebugSwitch_Text_16, IcemanDebugSwitch_Text_17, IcemanDebugSwitch_Text_18, IcemanDebugSwitch_Text_19, IcemanDebugSwitch_Text_20
+	multichoice 25, 5, MULTI_DYNAMIC_6, 0
 	switch VAR_RESULT
-	case 0, IcemanDebugSwitch_10
-	case 1, IcemanDebugSwitch_11
+	case 0, IcemanDebugSwitch_11
+	case 1, IcemanDebugSwitch_12
+	case 2, IcemanDebugSwitch_13
 	goto IcemanDebugSwitch_1
 
 IcemanDebugSwitch_8:
+	bufferdynamicmulti IcemanDebugSwitch_Text_2, IcemanDebugSwitch_Text_3
+	multichoice 25, 7, MULTI_DYNAMIC_2, 0
+	switch VAR_RESULT
+	case 0, IcemanDebugSwitch_15
+	case 1, IcemanDebugSwitch_16
+	goto IcemanDebugSwitch_1
+
+IcemanDebugSwitch_9:
 	bufferdynamicmulti IcemanDebugSwitch_Text_13, IcemanDebugSwitch_Text_14
 	multichoice 25, 3, MULTI_DYNAMIC_2, 0
 	switch VAR_RESULT
-	case 0, IcemanDebugSwitch_13
-	case 1, IcemanDebugSwitch_14
-	goto IcemanDebugSwitch_1
-
-IcemanDebugSwitch_10:
-	bufferdynamicmulti IcemanDebugSwitch_Text_4, IcemanDebugSwitch_Text_5, IcemanDebugSwitch_Text_6, IcemanDebugSwitch_Text_7, IcemanDebugSwitch_Text_8, IcemanDebugSwitch_Text_9
-	multichoice 25, 3, MULTI_DYNAMIC_6, 0
-	switch VAR_RESULT
-	case 0, IcemanDebugSwitch_16
-	case 1, IcemanDebugSwitch_17
-	case 2, IcemanDebugSwitch_18
-	case 3, IcemanDebugSwitch_19
-	case 4, IcemanDebugSwitch_20
-	case 5, IcemanDebugSwitch_21
+	case 0, IcemanDebugSwitch_18
+	case 1, IcemanDebugSwitch_19
 	goto IcemanDebugSwitch_1
 
 IcemanDebugSwitch_11:
-	bufferdynamicmulti IcemanDebugSwitch_Text_10, IcemanDebugSwitch_Text_11, IcemanDebugSwitch_Text_12
-	multichoice 25, 3, MULTI_DYNAMIC_3, 0
-	switch VAR_RESULT
-	case 0, IcemanDebugSwitch_23
-	case 1, IcemanDebugSwitch_24
-	case 2, IcemanDebugSwitch_25
+	special NameSibling
+	waitstate
+	msgbox IcemanDebugSwitch_Text_21
+	waitmessage
+	goto IcemanDebugSwitch_1
+
+IcemanDebugSwitch_12:
+	callnative AdjustFollowerElevation
+	buffernumberstring STR_VAR_1, VAR_0x8000
+	buffernumberstring STR_VAR_2, VAR_0x8001
+	buffernumberstring STR_VAR_3, VAR_0x8002
+	msgbox IcemanDebugSwitch_Text_22
+	buffernumberstring STR_VAR_1, VAR_0x8003
+	msgbox IcemanDebugSwitch_Text_23
 	goto IcemanDebugSwitch_1
 
 IcemanDebugSwitch_13:
-	warp MAP_ROUTE02, 0
+	callnative ShowPlayerAndFollowerElevations
+	buffernumberstring STR_VAR_1, VAR_0x8000
+	buffernumberstring STR_VAR_2, VAR_0x8001
+	buffernumberstring STR_VAR_3, VAR_0x8002
+	msgbox IcemanDebugSwitch_Text_22
+	buffernumberstring STR_VAR_1, VAR_0x8003
+	msgbox IcemanDebugSwitch_Text_23
 	goto IcemanDebugSwitch_1
 
-IcemanDebugSwitch_14:
-	warp MAP_SCANDI_CITY, 0
+IcemanDebugSwitch_15:
+	bufferdynamicmulti IcemanDebugSwitch_Text_4, IcemanDebugSwitch_Text_5, IcemanDebugSwitch_Text_6, IcemanDebugSwitch_Text_7, IcemanDebugSwitch_Text_8, IcemanDebugSwitch_Text_9
+	multichoice 25, 3, MULTI_DYNAMIC_6, 0
+	switch VAR_RESULT
+	case 0, IcemanDebugSwitch_21
+	case 1, IcemanDebugSwitch_22
+	case 2, IcemanDebugSwitch_23
+	case 3, IcemanDebugSwitch_24
+	case 4, IcemanDebugSwitch_25
+	case 5, IcemanDebugSwitch_26
 	goto IcemanDebugSwitch_1
 
 IcemanDebugSwitch_16:
-	warp MAP_ANCONNA_TOWN, 0
-	goto IcemanDebugSwitch_1
-
-IcemanDebugSwitch_17:
-	warp MAP_ANCONNA_WOODS, 0
+	bufferdynamicmulti IcemanDebugSwitch_Text_10, IcemanDebugSwitch_Text_11, IcemanDebugSwitch_Text_12
+	multichoice 25, 3, MULTI_DYNAMIC_3, 0
+	switch VAR_RESULT
+	case 0, IcemanDebugSwitch_28
+	case 1, IcemanDebugSwitch_29
+	case 2, IcemanDebugSwitch_30
 	goto IcemanDebugSwitch_1
 
 IcemanDebugSwitch_18:
-	warp MAP_ANCONNA_WOODS_1, 0
+	warp MAP_ROUTE02, 0
 	goto IcemanDebugSwitch_1
 
 IcemanDebugSwitch_19:
-	warp MAP_ROUTE01, 0
-	goto IcemanDebugSwitch_1
-
-IcemanDebugSwitch_20:
-	warp MAP_ANCONNA_LAKE, 25, 4
+	warp MAP_SCANDI_CITY, 0
 	goto IcemanDebugSwitch_1
 
 IcemanDebugSwitch_21:
-	warp MAP_MURKY_GROVE, 0
+	warp MAP_ANCONNA_TOWN, 0
+	goto IcemanDebugSwitch_1
+
+IcemanDebugSwitch_22:
+	warp MAP_ANCONNA_WOODS, 0
 	goto IcemanDebugSwitch_1
 
 IcemanDebugSwitch_23:
-	warp MAP_ANCONNA_TOWN_PLAYER_HOUSE, 0
+	warp MAP_ANCONNA_WOODS_1, 0
 	goto IcemanDebugSwitch_1
 
 IcemanDebugSwitch_24:
-	warp MAP_ANCONNA_TOWN_LAB, 0
+	warp MAP_ROUTE01, 0
 	goto IcemanDebugSwitch_1
 
 IcemanDebugSwitch_25:
+	warp MAP_ANCONNA_LAKE, 25, 4
+	goto IcemanDebugSwitch_1
+
+IcemanDebugSwitch_26:
+	warp MAP_MURKY_GROVE, 0
+	goto IcemanDebugSwitch_1
+
+IcemanDebugSwitch_28:
+	warp MAP_ANCONNA_TOWN_PLAYER_HOUSE, 0
+	goto IcemanDebugSwitch_1
+
+IcemanDebugSwitch_29:
+	warp MAP_ANCONNA_TOWN_LAB, 0
+	goto IcemanDebugSwitch_1
+
+IcemanDebugSwitch_30:
 	warp MAP_ANCONNA_TOWN_LAB1ST_FLOOR, 0
 	goto IcemanDebugSwitch_1
 
@@ -143,7 +180,7 @@ IcemanDebugMenu_Text_4:
 	.string "Give Mon$"
 
 IcemanDebugMenu_Text_5:
-	.string "Rare Candies?$"
+	.string "Custom Script$"
 
 IcemanDebugSwitch_Text_0:
 	.string "Anconna$"
@@ -189,3 +226,33 @@ IcemanDebugSwitch_Text_13:
 
 IcemanDebugSwitch_Text_14:
 	.string "Scandi City$"
+
+IcemanDebugSwitch_Text_15:
+	.string "Name Sibling$"
+
+IcemanDebugSwitch_Text_16:
+	.string "Test Script 1$"
+
+IcemanDebugSwitch_Text_17:
+	.string "Test Script 2$"
+
+IcemanDebugSwitch_Text_18:
+	.string "4$"
+
+IcemanDebugSwitch_Text_19:
+	.string "5$"
+
+IcemanDebugSwitch_Text_20:
+	.string "6$"
+
+IcemanDebugSwitch_Text_21:
+	.string "Your Sibling's Name is {SIBLING}$"
+
+IcemanDebugSwitch_Text_22:
+	.string "The Player's Elevation is\n"
+	.string "{STR_VAR_1} and subpriority is\l"
+	.string "{STR_VAR_3} while the Follower's\l"
+	.string "Elevation is {STR_VAR_2}.$"
+
+IcemanDebugSwitch_Text_23:
+	.string "Follower Subpriority = {STR_VAR_1}$"

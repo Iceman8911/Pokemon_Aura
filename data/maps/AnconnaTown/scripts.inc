@@ -34,7 +34,7 @@ AnconnaTown_CannotEnterLab::
 	compare GAME_PROGRESS, 9
 	goto_if_lt AnconnaTown_CannotEnterLab_2
 AnconnaTown_CannotEnterLab_1:
-	addvar VAR_TEMP_3, 1
+	addvar VAR_TEMP_4, 1
 	return
 
 AnconnaTown_CannotEnterLab_2:
@@ -187,6 +187,14 @@ AnconnaTown_EventScript_LittleGirl_2:
 AnconnaTown_Woman::
 	lockall
 	msgbox AnconnaTown_Woman_Text_0, 2
+	waitmessage
+	releaseall
+	end
+
+
+AnconnaTown_FlowerGirl::
+	lockall
+	msgbox AnconnaTown_FlowerGirl_Text_0, 2
 	waitmessage
 	releaseall
 	end
@@ -546,6 +554,8 @@ AnconnaTown_ProfMaxMilliamRunsToPlayer_1:
 	walk_fast_left
 	walk_fast_up
 	walk_fast_up
+	walk_right
+	walk_fast_up
 	walk_fast_up
 	walk_fast_up
 	walk_fast_up
@@ -553,7 +563,6 @@ AnconnaTown_ProfMaxMilliamRunsToPlayer_1:
 	walk_fast_up
 	walk_right
 	walk_right
-	walk_up
 	face_player
 	step_end
 
@@ -562,6 +571,8 @@ AnconnaTown_ProfMaxMilliamRunsToPlayer_2:
 	walk_fast_left
 	walk_fast_up
 	walk_fast_up
+	walk_right
+	walk_fast_up
 	walk_fast_up
 	walk_fast_up
 	walk_fast_up
@@ -570,7 +581,6 @@ AnconnaTown_ProfMaxMilliamRunsToPlayer_2:
 	walk_right
 	walk_right
 	walk_right
-	walk_up
 	face_player
 	step_end
 
@@ -649,11 +659,12 @@ AnconnaTown_PlayerWalksToLab4:
 	walk_down
 	walk_down
 	walk_left
+	walk_left
+	walk_down
 	walk_down
 	walk_down
 	walk_down
 	walk_left
-	walk_down
 	walk_down
 	walk_down
 	walk_right
@@ -671,11 +682,12 @@ AnconnaTown_PlayerWalksToLab5:
 	walk_down
 	walk_down
 	walk_left
+	walk_left
+	walk_down
 	walk_down
 	walk_down
 	walk_down
 	walk_left
-	walk_down
 	walk_down
 	walk_down
 	walk_right
@@ -702,6 +714,7 @@ AnconnaTown_MakeRioluAFollower_Text_2:
 	.string "You can't just be coming out like that.\n"
 	.string "You could've signaled me better if you\l"
 	.string "wanted to stay out.\p"
+	.string "Sigh...\p"
 	.string "Since I'm a new trainer, I guess you can\n"
 	.string "stay out...\p"
 	.string "But no causing trouble, okay?$"
@@ -741,6 +754,11 @@ AnconnaTown_EventScript_LittleGirl_Text_0:
 AnconnaTown_Woman_Text_0:
 	.string "{COLOR RED}I love this town!\p"
 	.string "It's so simple and peaceful to live in.$"
+
+AnconnaTown_FlowerGirl_Text_0:
+	.string "{COLOR RED}I love tending to the flowers here, its\n"
+	.string "so refreshing. You never know what you\l"
+	.string "might find here.$"
 
 AnconnaTown_Boy_Text_0:
 	.string "{COLOR BLUE}Mommy told me that a lot of bad people\n"

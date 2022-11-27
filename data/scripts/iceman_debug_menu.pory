@@ -2,8 +2,8 @@ script IcemanDebugMenu {
     lockall
     msgbox(format("Loading Debug Menu...."))
     msgbox(format("What do you want to do?"))
-    bufferdynamicmulti("Teleport", "Set Flags And Vars", "Give Mon", "Rare Candies?")
-    multichoice(25, 5, MULTI_DYNAMIC_3, 0)
+    bufferdynamicmulti("Teleport", "Set Flags And Vars", "Give Mon", "Custom Script")
+    multichoice(25, 5, MULTI_DYNAMIC_4, 0)
     call(IcemanDebugSwitch)
     releaseall
 }
@@ -77,6 +77,34 @@ script IcemanDebugSwitch {
         case 2:
             givecustommon(SPECIES_RIOLU, 5, ITEM_FOCUS_SASH, , NATURE_HASTY, 0, , , , , , , , 31, , 31, 31)
             setflag(FLAG_SYS_POKEMON_GET)
+        case 3:
+            bufferdynamicmulti("Name Sibling", "Test Script 1", "Test Script 2", "4", "5", "6")
+            multichoice(25, 5, MULTI_DYNAMIC_6, 0)
+            switch(var(VAR_RESULT)) {
+                case 0: //Name Sibling
+                    special(NameSibling)
+                    waitstate
+                    msgbox(format("Your Sibling's Name is {SIBLING}"))
+                    waitmessage
+                case 1: //Run My Test Script
+                    //callnative(AdjustFollowerElevation)
+                    buffernumberstring(STR_VAR_1, VAR_0x8000)
+                    buffernumberstring(STR_VAR_2, VAR_0x8001)
+                    buffernumberstring(STR_VAR_3, VAR_0x8002)
+                    //buffernumberstring(STR_VAR_5, VAR_0x8003)
+                    msgbox(format("The Player's Elevation is {STR_VAR_1} and subpriority is {STR_VAR_3} while the Follower's Elevation is {STR_VAR_2}."))
+                    buffernumberstring(STR_VAR_1, VAR_0x8003)
+                    msgbox(format("Follower Subpriority = {STR_VAR_1}"))
+                case 2: //Another one
+                    //callnative(ShowPlayerAndFollowerElevations)
+                    buffernumberstring(STR_VAR_1, VAR_0x8000)
+                    buffernumberstring(STR_VAR_2, VAR_0x8001)
+                    buffernumberstring(STR_VAR_3, VAR_0x8002)
+                    msgbox(format("The Player's Elevation is {STR_VAR_1} and subpriority is {STR_VAR_3} while the Follower's Elevation is {STR_VAR_2}."))
+                    buffernumberstring(STR_VAR_1, VAR_0x8003)
+                    msgbox(format("Follower Subpriority = {STR_VAR_1}"))
+                    
+            }
     }
 
     return

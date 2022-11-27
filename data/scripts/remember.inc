@@ -18,9 +18,6 @@ Remember::
 	case 8, Remember_10
 	case 9, Remember_10
 Remember_1:
-	special NameSibling
-	waitstate
-	msgbox Remember_Text_10
 	waitmessage
 	releaseall
 	return
@@ -108,6 +105,3 @@ Remember_Text_8:
 Remember_Text_9:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: {COLOR GREEN}Scandi City{COLOR DARK_GRAY} is just beyond\n"
 	.string "{COLOR GREEN}Route 01{COLOR DARK_GRAY} and {COLOR GREEN}Murky Grove{COLOR DARK_GRAY}, right?$"
-
-Remember_Text_10:
-	.string "Your Sibling's Name is {SIBLING}$"

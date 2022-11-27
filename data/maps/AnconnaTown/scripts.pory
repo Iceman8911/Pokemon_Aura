@@ -37,7 +37,7 @@ script AnconnaTown_CannotEnterLab {
 		waitmovement(0)
 		releaseall
 	}
-	addvar(VAR_TEMP_3, 1)
+	addvar(VAR_TEMP_4, 1)
 }
 script AnconnaTown_MakeRioluAFollower {
 	addobject(10)
@@ -73,7 +73,7 @@ script AnconnaTown_MakeRioluAFollower {
 	}
 	waitmovement(0)
 	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Geeezz!\pYou can't just be coming out like that. You could've signaled me better if you wanted to stay out."
-	"\pSince I'm a new trainer, I guess you can stay out...\pBut no causing trouble, okay?"))
+	"\pSigh...\pSince I'm a new trainer, I guess you can stay out...\pBut no causing trouble, okay?"))
 	waitmessage
 	delay(20)
 	if(var(VAR_TEMP_2) == 17) {
@@ -201,6 +201,14 @@ script AnconnaTown_Woman {
 	msgbox(format("{COLOR RED}I love this town!\p It's so simple and peaceful to live in."), 2)
 	waitmessage
 	//destroy_speech_bubble
+	releaseall
+	end
+}
+
+script AnconnaTown_FlowerGirl {
+	lockall
+	msgbox(format("{COLOR RED}I love tending to the flowers here, its so refreshing. You never know what you might find here."), 2)
+	waitmessage
 	releaseall
 	end
 }
@@ -512,17 +520,19 @@ movement MumRunsToYouAtHome {
 
 movement AnconnaTown_ProfMaxMilliamRunsToPlayer_1 {
 	walk_fast_left * 2
-	walk_fast_up * 7
+	walk_fast_up * 2
+	walk_right
+	walk_fast_up * 6
 	walk_right * 2
-	walk_up
 	face_player
 }
 
 movement AnconnaTown_ProfMaxMilliamRunsToPlayer_2 {
 	walk_fast_left * 2
-	walk_fast_up * 7
+	walk_fast_up * 2
+	walk_right
+	walk_fast_up * 6
 	walk_right * 3
-	walk_up
 	face_player
 }
 
@@ -570,10 +580,10 @@ movement AnconnaTown_PlayerWalksToLab3 {
 
 movement AnconnaTown_PlayerWalksToLab4 {
 	walk_down * 3
+	walk_left * 2
+	walk_down * 4
 	walk_left
-	walk_down * 3
-	walk_left
-	walk_down * 3
+	walk_down * 2
 	walk_right * 6
 	walk_up
 }
@@ -581,10 +591,10 @@ movement AnconnaTown_PlayerWalksToLab4 {
 movement AnconnaTown_PlayerWalksToLab5 {
 	walk_left
 	walk_down * 3
+	walk_left * 2
+	walk_down * 4
 	walk_left
-	walk_down * 3
-	walk_left
-	walk_down * 3
+	walk_down * 2
 	walk_right * 6
 	walk_up
 }
