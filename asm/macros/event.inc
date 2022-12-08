@@ -843,9 +843,10 @@
 	@ Starts displaying a standard message box containing the specified text. If text is a pointer, then the string at
 	@ that offset will be loaded and used. If text is NULL, then the value of script data 0 will be treated as
 	@ a pointer to the text. The 'loadword 0' in msgbox sets this value, for instance.
-	.macro message text:req
+	.macro message text:req, name=NULL
 	.byte 0x67
 	.4byte \text
+	.4byte \name
 	.endm
 
 	@ Closes the current message box.
@@ -2252,8 +2253,10 @@
 	NO  = 0
 
 	@ Buffers the given text and calls the relevant standard message script (see gStdScripts).
-	.macro msgbox text:req, type=MSGBOX_DEFAULT
+	@ An additional parameter can now be added and will create or replace a namebox with the inputted string
+	.macro msgbox text:req, type=MSGBOX_DEFAULT, name=NULL
 	loadword 0, \text
+	loadword 1, \name
 	callstd \type
 	.endm
 

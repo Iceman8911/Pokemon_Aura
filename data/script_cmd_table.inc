@@ -1,7 +1,7 @@
 	.align 2
 gScriptCmdTable::
 	.4byte ScrCmd_nop      	                @ 0x00
-	.4byte ScrCmd_nop1                      @ 0x01
+	.4byte ScrCmd_nop1        				@ 0x01
 	.4byte ScrCmd_end      	                @ 0x02
 	.4byte ScrCmd_return                    @ 0x03
 	.4byte ScrCmd_call                      @ 0x04

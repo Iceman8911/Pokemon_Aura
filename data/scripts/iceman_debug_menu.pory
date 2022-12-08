@@ -78,7 +78,7 @@ script IcemanDebugSwitch {
             givecustommon(SPECIES_RIOLU, 5, ITEM_FOCUS_SASH, , NATURE_HASTY, 0, , , , , , , , 31, , 31, 31)
             setflag(FLAG_SYS_POKEMON_GET)
         case 3:
-            bufferdynamicmulti("Name Sibling", "Test Script 1", "Test Script 2", "4", "5", "6")
+            bufferdynamicmulti("Name Sibling", "Test Script 1", "Test Script 2", "Text Box", "5", "6")
             multichoice(25, 5, MULTI_DYNAMIC_6, 0)
             switch(var(VAR_RESULT)) {
                 case 0: //Name Sibling
@@ -103,6 +103,12 @@ script IcemanDebugSwitch {
                     msgbox(format("The Player's Elevation is {STR_VAR_1} and subpriority is {STR_VAR_3} while the Follower's Elevation is {STR_VAR_2}."))
                     buffernumberstring(STR_VAR_1, VAR_0x8003)
                     msgbox(format("Follower Subpriority = {STR_VAR_1}"))
+                case 3:
+                    msgbox("fieeeeshhh", , "Icecram")
+                    waitmessage
+                    multichoice(25, 7, MULTI_DYNAMIC_2, 0)
+                    msgbox("fieeeeshhh2", , "Icecram")
+                    waitmessage
                     
             }
     }
