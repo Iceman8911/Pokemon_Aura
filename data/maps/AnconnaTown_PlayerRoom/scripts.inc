@@ -2,6 +2,56 @@ AnconnaTown_PlayerRoom_MapScripts::
 	.byte 0
 
 
+PlayerRoom_ReadjustMetatileOnBed::
+	setmetatile 10, 8, 0x124, FALSE
+	setmetatile 12, 8, 0x125, FALSE
+	special DrawWholeMapView
+	setvar VAR_TEMP_1, 1
+	return
+
+
+PlayerRoom_ReadjustMetatileOnBedLeftEdge::
+	setmetatile 10, 8, 0x130, FALSE
+	setmetatile 11, 7, 0x129, TRUE
+	setmetatile 11, 8, 0x131, FALSE
+	special DrawWholeMapView
+	setvar VAR_TEMP_1, 1
+	return
+
+
+PlayerRoom_ReadjustMetatileOnBedRightEdge::
+	setmetatile 12, 8, 0x132, FALSE
+	setmetatile 11, 7, 0x129, TRUE
+	setmetatile 11, 8, 0x131, FALSE
+	special DrawWholeMapView
+	setvar VAR_TEMP_1, 1
+	return
+
+
+PlayerRoom_ReadjustMetatileOnBedLeftEdgeUpperPole::
+	setmetatile 11, 7, 0x121, FALSE
+	setmetatile 11, 8, 0x131, TRUE
+	special DrawWholeMapView
+	setvar VAR_TEMP_1, 1
+	return
+
+
+PlayerRoom_ReadjustMetatileOnBedRightEdgeUpperPole::
+	setmetatile 11, 7, 0x121, FALSE
+	setmetatile 11, 8, 0x131, TRUE
+	special DrawWholeMapView
+	setvar VAR_TEMP_1, 1
+	return
+
+
+PlayerRoom_ReadjustMetatileAboveBed::
+	setmetatile 11, 7, 0x121, FALSE
+	setmetatile 11, 8, 0x131, TRUE
+	special DrawWholeMapView
+	setvar VAR_TEMP_1, 1
+	return
+
+
 AccessPlayerPC::
 	lockall
 	playse SE_PC_ON

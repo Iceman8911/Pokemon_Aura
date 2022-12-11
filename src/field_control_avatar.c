@@ -214,6 +214,9 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     
     if (input->pressedSelectButton && UseRegisteredKeyItemOnField() == TRUE)
         return TRUE;
+
+    if (input->tookStep && gSaveBlock1Ptr->location.mapGroup == (MAP_ANCONNA_TOWN_PLAYER_ROOM >> 8)) //If the player takes a step in their room
+        VarSet(VAR_TEMP_1, 0); //Reset VAR_TEMP_1
     
     //if (input->pressedRButton && EnableAutoRun())
     if (input->pressedLButton && EnableAutoRun())

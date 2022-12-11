@@ -80,28 +80,25 @@ IcemanDebugSwitch_11:
 	goto IcemanDebugSwitch_1
 
 IcemanDebugSwitch_12:
-	buffernumberstring STR_VAR_1, VAR_0x8000
-	buffernumberstring STR_VAR_2, VAR_0x8001
-	buffernumberstring STR_VAR_3, VAR_0x8002
+	setmetatile 11, 7, 289, FALSE
+	buffernumberstring STR_VAR_1, VAR_TEMP_1
 	msgbox IcemanDebugSwitch_Text_22
-	buffernumberstring STR_VAR_1, VAR_0x8003
-	msgbox IcemanDebugSwitch_Text_23
 	goto IcemanDebugSwitch_1
 
 IcemanDebugSwitch_13:
 	buffernumberstring STR_VAR_1, VAR_0x8000
 	buffernumberstring STR_VAR_2, VAR_0x8001
 	buffernumberstring STR_VAR_3, VAR_0x8002
-	msgbox IcemanDebugSwitch_Text_22
-	buffernumberstring STR_VAR_1, VAR_0x8003
 	msgbox IcemanDebugSwitch_Text_23
+	buffernumberstring STR_VAR_1, VAR_0x8003
+	msgbox IcemanDebugSwitch_Text_24
 	goto IcemanDebugSwitch_1
 
 IcemanDebugSwitch_14:
-	msgbox IcemanDebugSwitch_Text_24, , IcemanDebugSwitch_Text_25
+	msgbox IcemanDebugSwitch_Text_25, , IcemanDebugSwitch_Text_26
 	waitmessage
 	multichoice 25, 7, MULTI_DYNAMIC_2, 0
-	msgbox IcemanDebugSwitch_Text_26, , IcemanDebugSwitch_Text_25
+	msgbox IcemanDebugSwitch_Text_27, , IcemanDebugSwitch_Text_26
 	waitmessage
 	goto IcemanDebugSwitch_1
 
@@ -238,7 +235,7 @@ IcemanDebugSwitch_Text_15:
 	.string "Name Sibling$"
 
 IcemanDebugSwitch_Text_16:
-	.string "Test Script 1$"
+	.string "Testt Script$"
 
 IcemanDebugSwitch_Text_17:
 	.string "Test Script 2$"
@@ -256,19 +253,22 @@ IcemanDebugSwitch_Text_21:
 	.string "Your Sibling's Name is {SIBLING}$"
 
 IcemanDebugSwitch_Text_22:
+	.string "VAR_TEMP_1 is {STR_VAR_1}$"
+
+IcemanDebugSwitch_Text_23:
 	.string "The Player's Elevation is\n"
 	.string "{STR_VAR_1} and subpriority is\l"
 	.string "{STR_VAR_3} while the Follower's\l"
 	.string "Elevation is {STR_VAR_2}.$"
 
-IcemanDebugSwitch_Text_23:
+IcemanDebugSwitch_Text_24:
 	.string "Follower Subpriority = {STR_VAR_1}$"
 
-IcemanDebugSwitch_Text_24:
+IcemanDebugSwitch_Text_25:
 	.string "fieeeeshhh$"
 
-IcemanDebugSwitch_Text_25:
+IcemanDebugSwitch_Text_26:
 	.string "Icecram$"
 
-IcemanDebugSwitch_Text_26:
+IcemanDebugSwitch_Text_27:
 	.string "fieeeeshhh2$"

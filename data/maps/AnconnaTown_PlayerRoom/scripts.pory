@@ -1,5 +1,56 @@
 mapscripts AnconnaTown_PlayerRoom_MapScripts {}
 
+//These 6 scripts are used to adjust the bed and make it gud
+script PlayerRoom_ReadjustMetatileOnBed {
+	setmetatile(10, 8, 0x124, FALSE) //Readjusts the bed pole's left end
+	setmetatile(12, 8, 0x125, FALSE) //Readjusts the bed pole's right end
+	special(DrawWholeMapView) //Reloads the map layout
+	
+	setvar(VAR_TEMP_1, 1)
+}
+
+script PlayerRoom_ReadjustMetatileOnBedLeftEdge {
+	setmetatile(10, 8, 0x130, FALSE) //resets the change made from PlayerRoom_ReadjustMetatileOnBed
+	setmetatile(11, 7, 0x129, TRUE) //Readjusts the bed's pole to metatile 0x129 and makes it impassable 
+	setmetatile(11, 8, 0x131, FALSE)  //Make the bed not HARD
+	special(DrawWholeMapView)
+
+	setvar(VAR_TEMP_1, 1)
+}
+
+script PlayerRoom_ReadjustMetatileOnBedRightEdge {
+	setmetatile(12, 8, 0x132, FALSE) //resets the change made from PlayerRoom_ReadjustMetatileOnBed
+	setmetatile(11, 7, 0x129, TRUE) //Readjusts the bed's pole to metatile 0x129 and makes it impassable 
+	setmetatile(11, 8, 0x131, FALSE)  //Make the bed not HARD
+	special(DrawWholeMapView)
+
+	setvar(VAR_TEMP_1, 1)
+}
+
+script PlayerRoom_ReadjustMetatileOnBedLeftEdgeUpperPole {
+	setmetatile(11, 7, 0x121, FALSE) //Readjusts the bed's pole to metatile 0x121 and makes it passable
+	setmetatile(11, 8, 0x131, TRUE) //Make the bed HARD
+	special(DrawWholeMapView)
+
+	setvar(VAR_TEMP_1, 1)
+}
+
+script PlayerRoom_ReadjustMetatileOnBedRightEdgeUpperPole {
+	setmetatile(11, 7, 0x121, FALSE) //Readjusts the bed's pole to metatile 0x121 and makes it passable
+	setmetatile(11, 8, 0x131, TRUE) //Make the bed HARD
+	special(DrawWholeMapView)
+
+	setvar(VAR_TEMP_1, 1)
+}
+
+script PlayerRoom_ReadjustMetatileAboveBed {
+	setmetatile(11, 7, 0x121, FALSE) //Readjusts the bed's pole to metatile 0x121 and makes it passable 
+	setmetatile(11, 8, 0x131, TRUE) //Make the bed HARD
+	special(DrawWholeMapView)
+
+	setvar(VAR_TEMP_1, 1)	
+}
+
 script AccessPlayerPC {
     lockall
     //special DoPCTurnOnEffect

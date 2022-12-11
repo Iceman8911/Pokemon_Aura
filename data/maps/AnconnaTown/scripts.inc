@@ -39,7 +39,7 @@ AnconnaTown_CannotEnterLab_1:
 
 AnconnaTown_CannotEnterLab_2:
 	lockall
-	msgbox AnconnaTown_CannotEnterLab_Text_0
+	msgbox AnconnaTown_CannotEnterLab_Text_0, , AnconnaTown_CannotEnterLab_Text_1
 	waitmessage
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Walk_Down
@@ -52,7 +52,7 @@ AnconnaTown_MakeRioluAFollower::
 	addobject 10
 	applymovement OBJ_EVENT_ID_PLAYER, Surprised
 	waitmovement 0
-	msgbox AnconnaTown_MakeRioluAFollower_Text_0
+	msgbox AnconnaTown_MakeRioluAFollower_Text_0, , AnconnaTown_CannotEnterLab_Text_1
 	waitmessage
 	fadescreen FADE_TO_WHITE
 	clearflag FLAG_TEMP_3
@@ -75,8 +75,9 @@ AnconnaTown_MakeRioluAFollower_1:
 	applymovement OBJ_EVENT_ID_PLAYER, WalkInPlaceLeft
 AnconnaTown_MakeRioluAFollower_5:
 	waitmovement 0
-	msgbox AnconnaTown_MakeRioluAFollower_Text_2
+	msgbox AnconnaTown_MakeRioluAFollower_Text_2, , AnconnaTown_CannotEnterLab_Text_1
 	waitmessage
+	closemessage
 	delay 20
 	compare VAR_TEMP_2, 17
 	goto_if_eq AnconnaTown_MakeRioluAFollower_10
@@ -217,40 +218,40 @@ Anconna_Town_Discovered_Mysterious_People::
 	waitmovement 0
 	applymovement 5, TalkRight
 	waitmovement 0
-	msgbox Anconna_Town_Discovered_Mysterious_People_Text_0
+	msgbox Anconna_Town_Discovered_Mysterious_People_Text_0, , Anconna_Town_Discovered_Mysterious_People_Text_1
 	waitmessage
 	applymovement 6, TalkLeft
 	waitmovement 0
-	msgbox Anconna_Town_Discovered_Mysterious_People_Text_1
+	msgbox Anconna_Town_Discovered_Mysterious_People_Text_2, , Anconna_Town_Discovered_Mysterious_People_Text_1
 	waitmessage
 	applymovement 7, TalkLeft
 	waitmovement 0
-	msgbox Anconna_Town_Discovered_Mysterious_People_Text_2
+	msgbox Anconna_Town_Discovered_Mysterious_People_Text_3, , Anconna_Town_Discovered_Mysterious_People_Text_1
 	applymovement 5, TalkLeft
 	waitmovement 0
-	msgbox Anconna_Town_Discovered_Mysterious_People_Text_3
+	msgbox Anconna_Town_Discovered_Mysterious_People_Text_4, , Anconna_Town_Discovered_Mysterious_People_Text_1
 	applymovement 5, TalkRight
 	waitmovement 0
-	msgbox Anconna_Town_Discovered_Mysterious_People_Text_4
+	msgbox Anconna_Town_Discovered_Mysterious_People_Text_5, 
 	waitmessage
 	applymovement 5, TalkRight
 	waitmovement 0
-	msgbox Anconna_Town_Discovered_Mysterious_People_Text_5
+	msgbox Anconna_Town_Discovered_Mysterious_People_Text_6, 
 	closemessage
 	applymovement 7, LiumIsAshamed
 	waitmovement 0
 	delay 30
 	applymovement 5, TalkLeft
 	waitmovement 0
-	msgbox Anconna_Town_Discovered_Mysterious_People_Text_6
+	msgbox Anconna_Town_Discovered_Mysterious_People_Text_7, , Anconna_Town_Discovered_Mysterious_People_Text_1
 	waitmessage
 	applymovement 7, TalkRight
 	waitmovement 0
-	msgbox Anconna_Town_Discovered_Mysterious_People_Text_7
+	msgbox Anconna_Town_Discovered_Mysterious_People_Text_8, , Anconna_Town_Discovered_Mysterious_People_Text_9
 	waitmessage
 	applymovement 5, TalkLeft
 	waitmovement 0
-	msgbox Anconna_Town_Discovered_Mysterious_People_Text_8
+	msgbox Anconna_Town_Discovered_Mysterious_People_Text_10, , Anconna_Town_Discovered_Mysterious_People_Text_1
 	closemessage
 	applymovement 5, TalkLeft
 	delay 45
@@ -258,21 +259,21 @@ Anconna_Town_Discovered_Mysterious_People::
 	delay 50
 	applymovement 6, TalkRight
 	waitmovement 0
-	msgbox Anconna_Town_Discovered_Mysterious_People_Text_9
+	msgbox Anconna_Town_Discovered_Mysterious_People_Text_11, , Anconna_Town_Discovered_Mysterious_People_Text_1
 	closemessage
 	delay 35
 	applymovement 7, TalkLeft
-	msgbox Anconna_Town_Discovered_Mysterious_People_Text_10
+	msgbox Anconna_Town_Discovered_Mysterious_People_Text_12, , Anconna_Town_Discovered_Mysterious_People_Text_13
 	applymovement 6, TalkRight
 	waitmovement 0
-	msgbox Anconna_Town_Discovered_Mysterious_People_Text_11
+	msgbox Anconna_Town_Discovered_Mysterious_People_Text_14, , Anconna_Town_Discovered_Mysterious_People_Text_1
 	closemessage
 	applymovement 6, WalkLeft
 	waitmovement 0
 	delay 35
 	removeobject 6
 	delay 50
-	msgbox Anconna_Town_Discovered_Mysterious_People_Text_12
+	msgbox Anconna_Town_Discovered_Mysterious_People_Text_15, , Anconna_Town_Discovered_Mysterious_People_Text_13
 	closemessage
 	applymovement 7, LiumLeaves
 	waitmovement 0
@@ -284,7 +285,9 @@ Anconna_Town_Discovered_Mysterious_People::
 	special RemoveCameraObject
 	applymovement OBJ_EVENT_ID_PLAYER, WalkInPlaceDown
 	waitmovement 0
-	msgbox Anconna_Town_Discovered_Mysterious_People_Text_13
+	applymovement OBJ_EVENT_ID_PLAYER, Surprised
+	waitmovement 0
+	msgbox Anconna_Town_Discovered_Mysterious_People_Text_16, , AnconnaTown_CannotEnterLab_Text_1
 	setvar ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE, 1
 	releaseall
 	return
@@ -311,9 +314,9 @@ AnconnaTown_JustCameOutOfForest1::
 AnconnaTown_ProfessorMaxmilliam::
 	lockall
 	faceplayer
-	msgbox AnconnaTown_ProfessorMaxmilliam_Text_0
+	msgbox AnconnaTown_ProfessorMaxmilliam_Text_0, , Anconna_Town_Discovered_Mysterious_People_Text_1
 	bufferdynamicmulti AnconnaTown_ProfessorMaxmilliam_Text_1, AnconnaTown_ProfessorMaxmilliam_Text_2
-	multichoice 25, 7, MULTI_DYNAMIC_2, 1
+	multichoice 25, 8, MULTI_DYNAMIC_2, 1
 	switch VAR_RESULT
 	case 0, AnconnaTown_ProfessorMaxmilliam_3
 	case 1, AnconnaTown_ProfessorMaxmilliam_4
@@ -329,7 +332,7 @@ AnconnaTown_ProfessorMaxmilliam_5:
 	delay 20
 	applymovement OBJ_EVENT_ID_PLAYER, WalkInPlaceRight
 	waitmovement 0
-	msgbox AnconnaTown_ProfessorMaxmilliam_Text_6
+	msgbox AnconnaTown_ProfessorMaxmilliam_Text_7, , AnconnaTown_CannotEnterLab_Text_1
 	waitmessage
 	closemessage
 	compare VAR_TEMP_2, 18
@@ -347,16 +350,16 @@ AnconnaTown_ProfessorMaxmilliam_9:
 	return
 
 AnconnaTown_ProfessorMaxmilliam_3:
-	msgbox AnconnaTown_ProfessorMaxmilliam_Text_3
+	msgbox AnconnaTown_ProfessorMaxmilliam_Text_3, , AnconnaTown_ProfessorMaxmilliam_Text_4
 	giveitem ITEM_POKE_BALL, 10
-	msgbox AnconnaTown_ProfessorMaxmilliam_Text_4
+	msgbox AnconnaTown_ProfessorMaxmilliam_Text_5
 	waitmessage
 	goto AnconnaTown_ProfessorMaxmilliam_1
 
 AnconnaTown_ProfessorMaxmilliam_4:
-	msgbox AnconnaTown_ProfessorMaxmilliam_Text_5
+	msgbox AnconnaTown_ProfessorMaxmilliam_Text_6, , AnconnaTown_ProfessorMaxmilliam_Text_4
 	giveitem ITEM_POKE_BALL, 10
-	msgbox AnconnaTown_ProfessorMaxmilliam_Text_4
+	msgbox AnconnaTown_ProfessorMaxmilliam_Text_5
 	waitmessage
 	goto AnconnaTown_ProfessorMaxmilliam_1
 
@@ -385,7 +388,7 @@ AnconnaTown_ProfessorMaxmilliam_16:
 
 AnconnaTown_ProfessorMaxmilliam1::
 	lockall
-	msgbox AnconnaTown_ProfessorMaxmilliam1_Text_0
+	msgbox AnconnaTown_ProfessorMaxmilliam1_Text_0, , Anconna_Town_Discovered_Mysterious_People_Text_1
 	waitmessage
 	applymovement OBJ_EVENT_ID_PLAYER, Surprised
 	waitmovement 0
@@ -398,9 +401,9 @@ AnconnaTown_ProfessorMaxmilliam1_1:
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, FaceDown
 	waitmovement 0
-	msgbox AnconnaTown_ProfessorMaxmilliam1_Text_1
+	msgbox AnconnaTown_ProfessorMaxmilliam1_Text_1, , Anconna_Town_Discovered_Mysterious_People_Text_1
 	bufferdynamicmulti AnconnaTown_ProfessorMaxmilliam_Text_1, AnconnaTown_ProfessorMaxmilliam_Text_2
-	multichoice 25, 7, MULTI_DYNAMIC_2, 1
+	multichoice 25, 8, MULTI_DYNAMIC_2, 1
 	switch VAR_RESULT
 	case 0, AnconnaTown_ProfessorMaxmilliam1_7
 	case 1, AnconnaTown_ProfessorMaxmilliam1_8
@@ -415,7 +418,7 @@ AnconnaTown_ProfessorMaxmilliam1_9:
 	delay 20
 	applymovement OBJ_EVENT_ID_PLAYER, WalkInPlaceDown
 	waitmovement 0
-	msgbox AnconnaTown_ProfessorMaxmilliam_Text_6
+	msgbox AnconnaTown_ProfessorMaxmilliam_Text_7, , AnconnaTown_CannotEnterLab_Text_1
 	waitmessage
 	closemessage
 	special SpawnCameraObject
@@ -436,16 +439,16 @@ AnconnaTown_ProfessorMaxmilliam1_2:
 	goto AnconnaTown_ProfessorMaxmilliam1_1
 
 AnconnaTown_ProfessorMaxmilliam1_7:
-	msgbox AnconnaTown_ProfessorMaxmilliam_Text_3
+	msgbox AnconnaTown_ProfessorMaxmilliam_Text_3, , AnconnaTown_ProfessorMaxmilliam_Text_4
 	giveitem ITEM_POKE_BALL, 10
-	msgbox AnconnaTown_ProfessorMaxmilliam1_Text_2
+	msgbox AnconnaTown_ProfessorMaxmilliam_Text_5
 	waitmessage
 	goto AnconnaTown_ProfessorMaxmilliam1_5
 
 AnconnaTown_ProfessorMaxmilliam1_8:
-	msgbox AnconnaTown_ProfessorMaxmilliam_Text_5
+	msgbox AnconnaTown_ProfessorMaxmilliam_Text_6, , AnconnaTown_ProfessorMaxmilliam_Text_4
 	giveitem ITEM_POKE_BALL, 10
-	msgbox AnconnaTown_ProfessorMaxmilliam_Text_4
+	msgbox AnconnaTown_ProfessorMaxmilliam_Text_5
 	waitmessage
 	goto AnconnaTown_ProfessorMaxmilliam1_5
 
@@ -703,6 +706,9 @@ AnconnaTown_CannotEnterLab_Text_0:
 	.string "There's no real reason to be in there\n"
 	.string "now, I'll probably be a nuance.$"
 
+AnconnaTown_CannotEnterLab_Text_1:
+	.string "{COLOR GREEN}{PLAYER}$"
+
 AnconnaTown_MakeRioluAFollower_Text_0:
 	.string "Huh?!$"
 
@@ -710,7 +716,7 @@ AnconnaTown_MakeRioluAFollower_Text_1:
 	.string "{COLOR GREEN}Rioluuuuuu!!$"
 
 AnconnaTown_MakeRioluAFollower_Text_2:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Geeezz!\p"
+	.string "Geeezz!\p"
 	.string "You can't just be coming out like that.\n"
 	.string "You could've signaled me better if you\l"
 	.string "wanted to stay out.\p"
@@ -769,64 +775,72 @@ AnconnaTown_Boy_Text_0:
 	.string "now I can play with Pokemon!$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_0:
-	.string "???: {COLOR BLUE}Erhem.\p"
+	.string "{COLOR BLUE}Erhem.\p"
 	.string "Now that we're here, I hope the both of\n"
 	.string "you remember the pl...$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_1:
-	.string "???: {COLOR RED}Yeah, yeah, yeah. Find the escapee\n"
+	.string "???$"
+
+Anconna_Town_Discovered_Mysterious_People_Text_2:
+	.string "{COLOR RED}Yeah, yeah, yeah. Find the escapee\n"
 	.string "Pokémon and return it to our superiors\l"
 	.string "ASAP. I know!$"
 
-Anconna_Town_Discovered_Mysterious_People_Text_2:
-	.string "???: {COLOR BLUE}Me too!$"
-
 Anconna_Town_Discovered_Mysterious_People_Text_3:
-	.string "???: {COLOR BLUE}Hmph.$"
+	.string "{COLOR BLUE}Me too!$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_4:
-	.string "???: {COLOR BLUE}Just needed to make sure. We can't\n"
-	.string "have another slip-up this time, you\l"
-	.string "hear?$"
+	.string "{COLOR BLUE}Hmph.$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_5:
-	.string "???: {COLOR BLUE}You in the back, especially!$"
+	.string "{COLOR BLUE}Just needed to make sure. We can't have\n"
+	.string "another slip-up this time, you hear?$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_6:
-	.string "???: {COLOR BLUE}This Forest here is a huge maze. I\n"
-	.string "say we should stick together. It might\l"
+	.string "{COLOR BLUE}You in the back, especially!$"
+
+Anconna_Town_Discovered_Mysterious_People_Text_7:
+	.string "{COLOR BLUE}This Forest here is a huge maze. I say\n"
+	.string "we should stick together. It might\l"
 	.string "take longer but at least we wouldn't\l"
 	.string "get lost.$"
 
-Anconna_Town_Discovered_Mysterious_People_Text_7:
-	.string "(If we all go together, we would never\n"
+Anconna_Town_Discovered_Mysterious_People_Text_8:
+	.string "{FONT_SMALL}(If we all go together, we would never\n"
 	.string "find that Pokémon in time. I'll have to\l"
 	.string "divert in order to speed things up.\p"
 	.string "Also, if I find the Pokémon by myself,\n"
 	.string "he'll finally stop treating me like\l"
 	.string "trash.$"
 
-Anconna_Town_Discovered_Mysterious_People_Text_8:
-	.string "???: {COLOR BLUE}...With that in mind,..\p"
-	.string "Lets move out!$"
-
 Anconna_Town_Discovered_Mysterious_People_Text_9:
-	.string "???: {COLOR RED}Don't mind him, Lium. That's just\n"
-	.string "how he is. Just focus on the mission\l"
-	.string "for now, okay?$"
+	.string "{FONT_SMALL}???$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_10:
-	.string "Lium: {COLOR BLUE}...Okay.$"
+	.string "{COLOR BLUE}...With that in mind,..\p"
+	.string "Lets move out!$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_11:
-	.string "???: {COLOR RED}That's right. Cheer up and lets go.$"
+	.string "{COLOR RED}Don't mind him, Lium. That's just how he\n"
+	.string "is. Just focus on the mission for now,\l"
+	.string "okay?$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_12:
-	.string "Lium: {COLOR BLUE}Deep Breaths.\p"
-	.string "I can do this!$"
+	.string "{COLOR BLUE}...Okay.$"
 
 Anconna_Town_Discovered_Mysterious_People_Text_13:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Who the heck are they?\p"
+	.string "Lium$"
+
+Anconna_Town_Discovered_Mysterious_People_Text_14:
+	.string "{COLOR RED}That's right. Cheer up and lets go.$"
+
+Anconna_Town_Discovered_Mysterious_People_Text_15:
+	.string "{COLOR BLUE}Deep Breaths.\p"
+	.string "I can do this!$"
+
+Anconna_Town_Discovered_Mysterious_People_Text_16:
+	.string "Who the heck were they?\p"
 	.string "And why are they entering our forest?\p"
 	.string "I haven't seen them around this place\n"
 	.string "before.\p"
@@ -840,9 +854,9 @@ AnconnaTown_JustCameOutOfForest_Text_0:
 	.string "to my parents, right?)$"
 
 AnconnaTown_ProfessorMaxmilliam_Text_0:
-	.string "???:{COLOR BLUE} Goodday, {COLOR GREEN}{PLAYER}{COLOR BLUE}. I am the\n"
-	.string "current Field Researcher here,\l"
-	.string "{COLOR GREEN}Professor Maxmilliam{COLOR BLUE}.\p"
+	.string "{COLOR BLUE}Goodday, {COLOR GREEN}{PLAYER}{COLOR BLUE}. I am the current\n"
+	.string "Field Researcher here, {COLOR GREEN}Professor\l"
+	.string "Maxmilliam{COLOR BLUE}.\p"
 	.string "I heard quite a ruckus coming from that\n"
 	.string "forest and I saw you coming out of it.\n"
 	.string "Would you care to explain?$"
@@ -854,15 +868,18 @@ AnconnaTown_ProfessorMaxmilliam_Text_2:
 	.string "I didn't see anything...$"
 
 AnconnaTown_ProfessorMaxmilliam_Text_3:
-	.string "Prof. Maxmilliam:{COLOR BLUE} I did see some\n"
-	.string "suspicious people enter the forest\l"
-	.string "earlier today. Nevertheless, I doubt\l"
-	.string "you know anything about it.\p"
+	.string "{COLOR BLUE}I did see some suspicious people enter\n"
+	.string "the forest earlier today.\l"
+	.string "Nevertheless, I doubt you know\l"
+	.string "anything about it.\p"
 	.string "Since I took some of your time and it\n"
 	.string "looks like you're heading out, take this\l"
 	.string "as a compensation.$"
 
 AnconnaTown_ProfessorMaxmilliam_Text_4:
+	.string "Prof. Maxmilliam$"
+
+AnconnaTown_ProfessorMaxmilliam_Text_5:
 	.string "{COLOR BLUE}Say...\p"
 	.string "You don't even have a Pokedex! How do\n"
 	.string "you expect to be informed of the wild\l"
@@ -870,8 +887,8 @@ AnconnaTown_ProfessorMaxmilliam_Text_4:
 	.string "Come with me to my lab and I'll lend you\n"
 	.string "one for now.$"
 
-AnconnaTown_ProfessorMaxmilliam_Text_5:
-	.string "Prof. Maxmilliam:{COLOR BLUE} Sigh..\p"
+AnconnaTown_ProfessorMaxmilliam_Text_6:
+	.string "{COLOR BLUE}Sigh..\p"
 	.string "Well, I saw three strange-looking\n"
 	.string "people enter the forest earlier today.\l"
 	.string "Nevertheless, I doubt you know\l"
@@ -880,14 +897,14 @@ AnconnaTown_ProfessorMaxmilliam_Text_5:
 	.string "looks like you're heading out, take this\l"
 	.string "as a compensation.$"
 
-AnconnaTown_ProfessorMaxmilliam_Text_6:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: He does have a point...$"
+AnconnaTown_ProfessorMaxmilliam_Text_7:
+	.string "He does have a point...$"
 
 AnconnaTown_ProfessorMaxmilliam1_Text_0:
-	.string "???:{COLOR BLUE} WAIT!!!$"
+	.string "{COLOR BLUE}WAIT!!!$"
 
 AnconnaTown_ProfessorMaxmilliam1_Text_1:
-	.string "???:{COLOR BLUE} Huff-puff...\p"
+	.string "{COLOR BLUE}Huff-puff...\p"
 	.string "Erhem..\p"
 	.string "Goodday, {COLOR GREEN}{PLAYER}{COLOR BLUE}. I am the current\n"
 	.string "Field Researcher here, {COLOR GREEN}Professor\l"
@@ -895,11 +912,6 @@ AnconnaTown_ProfessorMaxmilliam1_Text_1:
 	.string "I heard quite a ruckus coming from that\n"
 	.string "forest and I saw you coming out of it.\n"
 	.string "Would you care to explain?$"
-
-AnconnaTown_ProfessorMaxmilliam1_Text_2:
-	.string "{COLOR BLUE}Don't bother yourself with this\n"
-	.string "situation, I'll make sure this is\l"
-	.string "handled well.$"
 
 AnconnaSign::
 	.string "Anconna Town\n"

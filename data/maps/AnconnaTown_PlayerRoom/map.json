@@ -46,12 +46,66 @@
     },
     {
       "type": "trigger",
-      "x": 8,
-      "y": 9,
+      "x": 9,
+      "y": 14,
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "Quests"
+    },
+    {
+      "type": "trigger",
+      "x": 11,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "PlayerRoom_ReadjustMetatileOnBed"
+    },
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "PlayerRoom_ReadjustMetatileOnBedRightEdge"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "PlayerRoom_ReadjustMetatileOnBedLeftEdge"
+    },
+    {
+      "type": "trigger",
+      "x": 11,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "PlayerRoom_ReadjustMetatileAboveBed"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 7,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "PlayerRoom_ReadjustMetatileOnBedLeftEdgeUpperPole"
+    },
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 7,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "PlayerRoom_ReadjustMetatileOnBedRightEdgeUpperPole"
     }
   ],
   "bg_events": [
