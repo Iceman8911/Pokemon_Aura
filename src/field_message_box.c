@@ -5,6 +5,7 @@
 #include "text.h"
 #include "match_call.h"
 #include "field_message_box.h"
+#include "script_menu.h" //Link to the header file for my nameBox
 
 static EWRAM_DATA u8 sFieldMessageBoxMode = 0;
 
@@ -131,6 +132,10 @@ static void StartDrawFieldMessage(void)
 
 void HideFieldMessageBox(void)
 {
+    if(isNameBoxActive) {
+        ClearToTransparentAndRemoveWindow(nameBoxWindowId); //Clears the namebox if any
+        isNameBoxActive = FALSE;
+    }
     DestroyTask_DrawFieldMessage();
     ClearDialogWindowAndFrame(0, 1);
     sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;

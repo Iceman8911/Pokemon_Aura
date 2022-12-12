@@ -6,6 +6,7 @@
 #include "item.h"
 #include "menu.h"
 #include "palette.h"
+#include "party_menu.h"
 #include "script.h"
 #include "script_menu.h"
 #include "sound.h"
@@ -21,6 +22,10 @@
 #include "data/script_menu.h"
 
 static EWRAM_DATA u8 sProcessInputDelay = 0;
+EWRAM_DATA u8 nameBoxWindowId = 0;          //Basically where I store the name box's windowId to be cleared later 
+EWRAM_DATA bool8 isNameBoxActive = FALSE;   //Self Explanatory
+EWRAM_DATA u8 tempWindowId = 0;             //Used to store the nameBox so it can be removed and loaded back easily
+EWRAM_DATA const u8 *tempText = NULL;              //Moved to EWRAM since I am making global use of it. It is used temporarily to store the value of "text" in my namebox function
 
 static u8 sLilycoveSSTidalSelections[SSTIDAL_SELECTION_COUNT];
 
@@ -38,6 +43,12 @@ static void InitMultichoiceNoWrap(bool8 ignoreBPress, u8 unusedCount, u8 windowI
 
 bool8 ScriptMenu_Multichoice(u8 left, u8 top, u8 multichoiceId, bool8 ignoreBPress)
 {
+    if (isNameBoxActive) {
+        tempWindowId = nameBoxWindowId; //save in tempWindowId right before it gets deleted
+        ClearToTransparentAndRemoveWindow(nameBoxWindowId); //Clears the namebox
+    }
+    
+    //Since having the namebox and multichoice active at the same time corrupts one of them, i edited the function Task_HandleMultichoiceInput
     if (FuncIsActiveTask(Task_HandleMultichoiceInput) == TRUE)
     {
         return FALSE;
@@ -114,6 +125,45 @@ static void DrawMultichoiceMenu(u8 left, u8 top, u8 multichoiceId, bool8 ignoreB
     InitMultichoiceCheckWrap(ignoreBPress, count, windowId, multichoiceId);
 }
 
+void DrawObjEventNameBox(u8 left, u8 top, const u8 *text)
+{
+    u32 i;
+    static u8 windowId;
+    u8 newWidth;
+    u8 count = 1;
+    u8 width = 0;
+    u8 marginSpace;
+
+    //These 3 vars are used to repeat the function when needed
+    u8 tempLeft = left; 
+    u8 tempTop = top;
+    tempText = text;
+
+    width = DisplayTextAndGetWidth(text, width);
+    newWidth = ConvertPixelWidthToTileWidth(width);
+    left = ScriptMenu_AdjustLeftCoordFromWidth(left, newWidth);
+    windowId = CreateWindowFromRect(left, top, newWidth, count * 2);
+
+    if (isNameBoxActive == FALSE) {  //Newly loading name box
+
+        SetStandardWindowBorderStyle(windowId, FALSE);
+        AddTextPrinterParameterized(windowId, 1, text, 6, 0, TEXT_SKIP_DRAW, NULL);
+        CopyWindowToVram(windowId, COPYWIN_GFX);
+        ScheduleBgCopyTilemapToVram(2);
+
+    } else { //Loading a name box over another one
+
+        ClearToTransparentAndRemoveWindow(windowId); //what this else condtional does is to make it look as if it buffered. looks better imo
+        for (i = 0; i <= 125500; i++) { //just a delay lol
+            isNameBoxActive = FALSE;
+        }
+        DrawObjEventNameBox(tempLeft, tempTop, tempText); //reload function
+    }
+
+    nameBoxWindowId = windowId; //I use an EWRAM_DATA to access the value in the closemessage function to remove the namebox
+    isNameBoxActive = TRUE;
+}
+
 #define tLeft           data[0]
 #define tTop            data[1]
 #define tRight          data[2]
@@ -188,9 +238,20 @@ static void Task_HandleMultichoiceInput(u8 taskId)
                 {
                     gSpecialVar_Result = selection;
                 }
-                ClearToTransparentAndRemoveWindow(tWindowId);
+                ClearToTransparentAndRemoveWindow(tWindowId); //These 3 lines end the regular multichoice
                 DestroyTask(taskId);
                 EnableBothScriptContexts();
+                //ScriptContext_Enable();
+                
+                if (isNameBoxActive) //I do not clear this bool when the multichoice starts so it is still technically active
+                {
+                    //Right after ending the multichoice, reload the previous namebox
+                    SetStandardWindowBorderStyle(tempWindowId, FALSE);
+                    AddTextPrinterParameterized(tempWindowId, 1, tempText, 6, 0, TEXT_SKIP_DRAW, NULL);
+                    CopyWindowToVram(tempWindowId, COPYWIN_GFX);
+                    ScheduleBgCopyTilemapToVram(2);
+                    nameBoxWindowId = tempWindowId; //restore the nameBoxWindowId
+                }
             }
         }
     }
@@ -305,9 +366,20 @@ static void Task_HandleMultichoiceGridInput(u8 taskId)
         break;
     }
 
-    ClearToTransparentAndRemoveWindow(tWindowId);
+    ClearToTransparentAndRemoveWindow(tWindowId); //These 3 lines end the multichoice grid
     DestroyTask(taskId);
     EnableBothScriptContexts();
+    //ScriptContext_Enable();
+    
+    if (isNameBoxActive) //I do not clear this bool when the multichoice starts so it is still technically active
+    {
+        //Right after ending the multichoice, reload the previous namebox
+        SetStandardWindowBorderStyle(tempWindowId, FALSE);
+        AddTextPrinterParameterized(tempWindowId, 1, tempText, 6, 0, TEXT_SKIP_DRAW, NULL);
+        CopyWindowToVram(tempWindowId, COPYWIN_GFX);
+        ScheduleBgCopyTilemapToVram(2);
+        nameBoxWindowId = tempWindowId; //restore the nameBoxWindowId
+    }
 }
 
 #undef tWindowId
