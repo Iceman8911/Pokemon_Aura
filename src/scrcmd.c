@@ -1278,7 +1278,7 @@ bool8 ScrCmd_message(struct ScriptContext *ctx)  //Can also print out and remove
         msg = (const u8 *)ctx->data[0];
     if (name == NULL){ //Regular pass to load the slot from data[]
         name = (const u8 *)ctx->data[1];
-        if (name != NULL) //Checks if the string stored by loadword 1 is not NULL. Keep in mind loadword 0 stores data in ScriptContext.data[1]
+        if (name != NULL) //Checks if the string stored by loadword 1 is not NULL. Keep in mind loadword 1 stores data in ScriptContext.data[1]
             DrawObjEventNameBox(x, y, name);
     }
     ShowFieldMessage(msg);
