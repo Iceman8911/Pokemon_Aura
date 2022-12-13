@@ -82,13 +82,17 @@ EWRAM_DATA static u8 sSafariBallsWindowId = 0;
 EWRAM_DATA static u8 sBattlePyramidFloorWindowId = 0;
 EWRAM_DATA static u8 sStartMenuCursorPos = 0;
 EWRAM_DATA static u8 sNumStartMenuActions = 0;
-EWRAM_DATA static u8 sCurrentStartMenuActions[9] = {0};
+EWRAM_DATA static u8 sCurrentStartMenuActions[NUM_OF_START_MENU_OPTIONS] = {0};
 EWRAM_DATA static u8 sInitStartMenuData[2] = {0};
 
 EWRAM_DATA static u8 (*sSaveDialogCallback)(void) = NULL;
 EWRAM_DATA static u8 sSaveDialogTimer = 0;
 EWRAM_DATA static bool8 sSavingComplete = FALSE;
 EWRAM_DATA static u8 sSaveInfoWindowId = 0;
+
+// For multi start menu
+const u8 gText_MenuExitPage[] = _("Exit {RIGHT_ARROW}");   //These 2 texts are used only when IS_MULTI_STARTMENU_ENABLED is true
+const u8 gText_MenuExitLastPage[] = _("Exit {LEFT_ARROW}");
 
 // Menu action callbacks
 static bool8 StartMenuPokedexCallback(void);
@@ -287,28 +291,54 @@ static void AddStartMenuAction(u8 action)
     AppendToList(sCurrentStartMenuActions, &sNumStartMenuActions, action);
 }
 
+static bool8 IsStartMenuActionIncluded(u8 action) {   //Helps in making sure I don't repeat a start menu option
+    u8 i;
+
+    for (i = (NUM_OF_START_MENU_OPTIONS * sStartMenuPage); i < (NUM_OF_START_MENU_OPTIONS * (sStartMenuPage + 1)); i++) //Checks the current batch for the action
+    { 
+        if (sCurrentStartMenuActions[i] == action) {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
 static void BuildNormalStartMenu(void)
 {
-    if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
+    u8 i;
+    u8 sFinalStartMenuAction = FINAL_START_MENU_OPTION; 
+
+    sStartMenuPageTotal = NUM_OF_START_MENUS - 1; //This stores the number of the possible amount of start menu pages (starting from 0) 
+
+    for (i = (NUM_OF_START_MENU_OPTIONS * sStartMenuPage); i < (NUM_OF_START_MENU_OPTIONS * (sStartMenuPage + 1)); i++) //To keep the loop going without resetting anything and self adjusting itself with each page
     {
-        AddStartMenuAction(MENU_ACTION_POKEDEX);
-    }
-    if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
-    {
-        AddStartMenuAction(MENU_ACTION_POKEMON);
+        if (i <= sFinalStartMenuAction) 
+        { //To make sure it doesn't crash after loading all intended start menu options
+            if(!FlagGet(FLAG_SYS_POKEDEX_GET) && i == MENU_ACTION_POKEDEX) //The loop wants to print the Pokedex option but the flag is not set
+            {  
+                //skip
+            } 
+            else if(!FlagGet(FLAG_SYS_POKEMON_GET) && i == MENU_ACTION_POKEMON) //The loop wants to print the Pokemon option but the flag is not set
+            {  
+                //skip
+            }
+            else if(!FlagGet(FLAG_SYS_POKENAV_GET) && i == MENU_ACTION_POKENAV) //The loop wants to print the Pokenav option but the flag is not set
+            {  
+                //skip
+            }
+            else if (i >= MENU_ACTION_RETIRE_SAFARI && i <= MENU_ACTION_PYRAMID_BAG) //Skip the safari and battle frontier stuff. You can remove this check if you want
+            {
+                //skip
+            }
+            else //No other check required so proceed to print as normal
+            { 
+            AddStartMenuAction(i); //Any custom conditions you want can be added here can be added above like the first 4
+            }
+        }
     }
 
-    AddStartMenuAction(MENU_ACTION_BAG);
-
-    if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
-    {
-        AddStartMenuAction(MENU_ACTION_POKENAV);
-    }
-
-    AddStartMenuAction(MENU_ACTION_PLAYER);
-    AddStartMenuAction(MENU_ACTION_SAVE);
-    AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
+    if(!IsStartMenuActionIncluded(MENU_ACTION_EXIT))  //Incase The Exit option wasn't printed, Print it
+        AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
 static void BuildSafariZoneStartMenu(void)
@@ -421,7 +451,7 @@ static void RemoveExtraStartMenuWindows(void)
     }
 }
 
-static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
+static bool32 PrintStartMenuActions(s8 *pIndex, u32 count) //This function now prints a different Exit text depending on IS_MULTI_STARTMENU_ENABLED
 {
     s8 index = *pIndex;
 
@@ -431,10 +461,31 @@ static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
         {
             PrintPlayerNameOnWindow(GetStartMenuWindowId(), sStartMenuItems[sCurrentStartMenuActions[index]].text, 8, (index << 4) + 9);
         }
-        else
+        else 
         {
-            StringExpandPlaceholders(gStringVar4, sStartMenuItems[sCurrentStartMenuActions[index]].text);
-            AddTextPrinterParameterized(GetStartMenuWindowId(), FONT_NORMAL, gStringVar4, 8, (index << 4) + 9, TEXT_SKIP_DRAW, NULL);
+            if (IS_MULTI_STARTMENU_ENABLED) //Exit text will be different if its on or off
+            {
+                if (sStartMenuItems[sCurrentStartMenuActions[index]].func.u8_void != StartMenuExitCallback) //This condition prevents my exit custom text from being overwritten
+                {
+                StringExpandPlaceholders(gStringVar4, sStartMenuItems[sCurrentStartMenuActions[index]].text);
+                } 
+                else if (sStartMenuItems[sCurrentStartMenuActions[index]].func.u8_void == StartMenuExitCallback) //Once the option to be printed is MENU_ACTION_EXIT, then it loads the custom text instead
+                {
+                    if (sStartMenuPage != sStartMenuPageTotal) {  //If not on the last page
+                        StringExpandPlaceholders(gStringVar4, gText_MenuExitPage);
+                    }
+                    else
+                    { //If on the last page
+                        StringExpandPlaceholders(gStringVar4, gText_MenuExitLastPage);
+                    }
+                }
+                AddTextPrinterParameterized(GetStartMenuWindowId(), FONT_NORMAL, gStringVar4, 8, (index << 4) + 9, TEXT_SKIP_DRAW, NULL);
+            }
+            else //Proceed as normal
+            {
+                StringExpandPlaceholders(gStringVar4, sStartMenuItems[sCurrentStartMenuActions[index]].text);
+                AddTextPrinterParameterized(GetStartMenuWindowId(), FONT_NORMAL, gStringVar4, 8, (index << 4) + 9, TEXT_SKIP_DRAW, NULL);
+            }
         }
 
         index++;
@@ -542,7 +593,7 @@ void Task_ShowStartMenu(u8 taskId)
     case 0:
         if (InUnionRoom() == TRUE)
             SetUsingUnionRoomStartMenu();
-
+        
         gMenuCallback = HandleStartMenuInput;
         task->data[0]++;
         break;
@@ -606,6 +657,35 @@ static bool8 HandleStartMenuInput(void)
         RemoveExtraStartMenuWindows();
         HideStartMenu();
         return TRUE;
+    }
+
+    if (IS_MULTI_STARTMENU_ENABLED)  //Must be enabled to use the multi menu
+    {
+        if (JOY_NEW(DPAD_RIGHT)) //Scrolls to the next start menu page
+        {
+            RemoveExtraStartMenuWindows();
+            HideStartMenu();
+            if(sStartMenuPage < sStartMenuPageTotal) { 
+                sStartMenuPage++;
+            } else { //If at the last page, it will jump back to the first one
+                sStartMenuPage = 0;
+            }
+            ShowStartMenu();
+            return TRUE;
+        }
+
+        if (JOY_NEW(DPAD_LEFT)) //Scrolls to the previous start menu page
+        {
+            RemoveExtraStartMenuWindows();
+            HideStartMenu();
+            if(sStartMenuPage > 0) { 
+                sStartMenuPage--;
+            } else { //If at the first page, it will jump to the last one
+                sStartMenuPage = sStartMenuPageTotal;
+            }
+            ShowStartMenu();
+            return TRUE;
+        }
     }
 
     return FALSE;
