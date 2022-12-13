@@ -82,7 +82,8 @@ EWRAM_DATA static u8 sSafariBallsWindowId = 0;
 EWRAM_DATA static u8 sBattlePyramidFloorWindowId = 0;
 EWRAM_DATA static u8 sStartMenuCursorPos = 0;
 EWRAM_DATA static u8 sNumStartMenuActions = 0;
-EWRAM_DATA static u8 sCurrentStartMenuActions[NUM_OF_START_MENU_OPTIONS] = {0};
+EWRAM_DATA static u8 sCurrentStartMenuActions[FINAL_START_MENU_OPTION] = {0}; /* Might revert FINAL_START_MENU_OPTION back to NUM_OF_START_MENU_OPTIONS if there's any problem.
+Turns out that using FINAL_START_MENU_OPTION fixes quite a bunch of bugs*/
 EWRAM_DATA static u8 sInitStartMenuData[2] = {0};
 
 EWRAM_DATA static u8 (*sSaveDialogCallback)(void) = NULL;
@@ -91,7 +92,7 @@ EWRAM_DATA static bool8 sSavingComplete = FALSE;
 EWRAM_DATA static u8 sSaveInfoWindowId = 0;
 
 // For multi start menu
-const u8 gText_MenuExitPage[] = _("Exit {RIGHT_ARROW}");   //These 2 texts are used only when IS_MULTI_STARTMENU_ENABLED is true
+const u8 gText_MenuExitPage[] = _("Exit {RIGHT_ARROW}");   //These 2 texts are used only when IS_MULTI_START_MENU_ENABLED is true
 const u8 gText_MenuExitLastPage[] = _("Exit {LEFT_ARROW}");
 
 // Menu action callbacks
@@ -291,29 +292,64 @@ static void AddStartMenuAction(u8 action)
     AppendToList(sCurrentStartMenuActions, &sNumStartMenuActions, action);
 }
 
-static bool8 IsStartMenuActionIncluded(u8 action) {   //Helps in making sure I don't repeat a start menu option
+/*static bool8 IsStartMenuActionIncluded(u8 action) {   //Helps in making sure I don't repeat a start menu option. CURRENTLY UNUSED
     u8 i;
-
+    
     for (i = (NUM_OF_START_MENU_OPTIONS * sStartMenuPage); i < (NUM_OF_START_MENU_OPTIONS * (sStartMenuPage + 1)); i++) //Checks the current batch for the action
-    { 
-        if (sCurrentStartMenuActions[i] == action) {
+    {
+        if (sCurrentStartMenuActions[i] == action) { //This needs a bit of editing. Using i % NUM_OF_START_MENU_OPTIONS doesn't work as intended
             return TRUE;
         }
     }
     return FALSE;
-}
+}*/
 
 static void BuildNormalStartMenu(void)
 {
     u8 i;
-    u8 sFinalStartMenuAction = FINAL_START_MENU_OPTION; 
 
-    sStartMenuPageTotal = NUM_OF_START_MENUS - 1; //This stores the number of the possible amount of start menu pages (starting from 0) 
+    #ifdef FILL_STARTMENU_PAGE
+        u8 sAmountOfOptionsNeeded;                 // The amount of options required to fill the page to (NUM_OF_START_MENU_OPTIONS - 1)
+        u8 sAmountOfOptionsToBeLoaded;             // The amount of options remaining in the enum that are yet to be loaded
+        static u8 sAmountOfOptionsToSkip;          // It saves the amount of options that are skipped during subsequent iterations
+        static u8 sPreviousAmountOfOptionsNeeded;  // For the last page, sAmountOfOptionsNeeded is unreliable so we save the one from the last loop
+        
+        static bool8 danger;                      // This is just a check/flag to know if I need to adjust some values due to various situations
+        static u8 dangerPage;                     // The page that needs special adjustment
 
-    for (i = (NUM_OF_START_MENU_OPTIONS * sStartMenuPage); i < (NUM_OF_START_MENU_OPTIONS * (sStartMenuPage + 1)); i++) //To keep the loop going without resetting anything and self adjusting itself with each page
+        //This is to prevent the first page from messing up since sAmountOfOptionsToSkip changes anytime the function is run
+        if (sStartMenuPage != 0)
+        {
+            if (danger) //Just an extra precaution to a particular bug. Not much to say now but this is not likely to occur
+            {
+                i = (sAmountOfOptionsToSkip + 1) + (NUM_OF_START_MENU_OPTIONS * sStartMenuPage);
+
+                if (dangerPage != sStartMenuPage)  /*Once the user switched pages, no use keeping the flag
+                Incase you are confused, this is check will work when the page we originally saved in dangerPage isn't loaded*/
+                    danger = FALSE; // Reset the flag/check
+            }
+            else // Gets run most of the time
+            {
+                i = sAmountOfOptionsToSkip + (NUM_OF_START_MENU_OPTIONS * sStartMenuPage);
+            }
+        } 
+        else 
+        {
+            i = (NUM_OF_START_MENU_OPTIONS * sStartMenuPage);
+        }
+    #endif
+
+    #ifndef FILL_STARTMENU_PAGE
+        i = (NUM_OF_START_MENU_OPTIONS * sStartMenuPage);
+    #endif
+
+    sCurrentPageOptionCounter = 0;  //set it to 0 every time its used
+    sStartMenuPageTotal = NUM_OF_START_MENUS - 1;
+
+    for (i; i < (NUM_OF_START_MENU_OPTIONS * (sStartMenuPage + 1)); i++) //To keep the loop going without resetting anything and self adjusting itself with each page
     {
-        if (i <= sFinalStartMenuAction) 
-        { //To make sure it doesn't crash after loading all intended start menu options
+        if (i <= FINAL_START_MENU_OPTION) //To make sure it doesn't crash after loading all intended start menu options
+        { 
             if(!FlagGet(FLAG_SYS_POKEDEX_GET) && i == MENU_ACTION_POKEDEX) //The loop wants to print the Pokedex option but the flag is not set
             {  
                 //skip
@@ -326,18 +362,95 @@ static void BuildNormalStartMenu(void)
             {  
                 //skip
             }
+            else if(i == MENU_ACTION_EXIT) //Don't print the Exit action normally, to reduce the amount of stuff you need to edit if you shift stuff around in the MENU_ACTION_* enum
+            { 
+                //skip
+            }
             else if (i >= MENU_ACTION_RETIRE_SAFARI && i <= MENU_ACTION_PYRAMID_BAG) //Skip the safari and battle frontier stuff. You can remove this check if you want
             {
                 //skip
             }
+
+            //Any custom conditions you want can be added here can be added above like the first 4 //
+
             else //No other check required so proceed to print as normal
             { 
-            AddStartMenuAction(i); //Any custom conditions you want can be added here can be added above like the first 4
+                AddStartMenuAction(i); 
+                sCurrentPageOptionCounter++; /*While i increases evrey time the loop is run,
+                sCurrentPageOptionCounter only increases with EACH successful option that was loaded*/
             }
         }
     }
 
-    if(!IsStartMenuActionIncluded(MENU_ACTION_EXIT))  //Incase The Exit option wasn't printed, Print it
+    #ifdef FILL_STARTMENU_PAGE
+        sAmountOfOptionsNeeded = (NUM_OF_START_MENU_OPTIONS - 1) - sCurrentPageOptionCounter;
+        sAmountOfOptionsToBeLoaded = FINAL_START_MENU_OPTION - i;
+        sAmountOfOptionsToSkip = sAmountOfOptionsNeeded; /*Before sAmountOfOptionsNeeded is affected and the options are pulled out from their original pages, 
+        save it to sAmountOfOptionsToSkip so that we have a way to adjust incoming options properly */
+
+        if (sStartMenuPage == (sStartMenuPageTotal - 1)) // On the second to last page
+        {
+            sPreviousAmountOfOptionsNeeded = (NUM_OF_START_MENU_OPTIONS - 1) - sCurrentPageOptionCounter; //save this for now, it is useful in maintaing the last page
+        } 
+
+        //After doing the regular iteration, if the page is not almost full (the last slot is for the Exit option) and it is not the last page, then use elements from the next page (if any) to fill it
+        if ((sCurrentPageOptionCounter != NUM_OF_START_MENU_OPTIONS - 1) && (sStartMenuPage != sStartMenuPageTotal) && (sAmountOfOptionsToBeLoaded >= sAmountOfOptionsNeeded))
+        {
+            while(sAmountOfOptionsNeeded != 0)
+            { /*As long as the current page isn't almost full,
+              continuously decrease sAmountOfOptionsNeeded to 0 which is when the page would have only 1 slot left*/
+
+                if(!FlagGet(FLAG_SYS_POKEDEX_GET) && i == MENU_ACTION_POKEDEX) 
+                {  
+                    //skip
+                } 
+                else if(!FlagGet(FLAG_SYS_POKEMON_GET) && i == MENU_ACTION_POKEMON) 
+                {  
+                    //skip
+                }
+                else if(!FlagGet(FLAG_SYS_POKENAV_GET) && i == MENU_ACTION_POKENAV) 
+                {  
+                    //skip
+                }
+                else if(i == MENU_ACTION_EXIT) 
+                { 
+                    //skip
+                }
+                else if (i >= MENU_ACTION_RETIRE_SAFARI && i <= MENU_ACTION_PYRAMID_BAG) 
+                {
+                    //skip
+                }
+                
+                // You have to add your extra condtions here too if you did above //
+
+                else
+                {
+                    AddStartMenuAction(i);
+                    sAmountOfOptionsNeeded--;
+                }
+
+                if (i == NUM_OF_START_MENU_OPTIONS && i == MENU_ACTION_EXIT) /* If i reaches NUM_OF_START_MENU_OPTIONS while being the same as MENU_ACTION_EXIT in this particular loop,
+                I noticed that sAmountOfOptionsToSkip needs to be (sAmountOfOptionsToSkip + 1) to load out the options well. */
+                // If there are any bugs relating to this, just comment this conditional
+                {
+                    danger = TRUE;
+                    dangerPage = (sStartMenuPage + 1);  // Saves the next page which is where the adjustment needs to be made
+                }
+                i++;
+            }
+        } 
+        else if (sStartMenuPage == sStartMenuPageTotal) // On the last page.
+        {
+            sAmountOfOptionsToSkip = sPreviousAmountOfOptionsNeeded; /* Keep the last value generated intact,
+            so that returning to and back from the overworld doesn't mess anything up. */
+        }
+        else
+        { //No need to fill the page, so reset variables. I doubt this is even called.
+            sAmountOfOptionsToSkip = 0;
+        }
+    #endif
+
+    //if(!IsStartMenuActionIncluded(MENU_ACTION_EXIT))  //Incase The Exit option wasn't printed, Print it. CURRENTLY UNUSED
         AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
@@ -451,7 +564,7 @@ static void RemoveExtraStartMenuWindows(void)
     }
 }
 
-static bool32 PrintStartMenuActions(s8 *pIndex, u32 count) //This function now prints a different Exit text depending on IS_MULTI_STARTMENU_ENABLED
+static bool32 PrintStartMenuActions(s8 *pIndex, u32 count) //This function now prints a different Exit text depending on IS_MULTI_START_MENU_ENABLED
 {
     s8 index = *pIndex;
 
@@ -463,23 +576,24 @@ static bool32 PrintStartMenuActions(s8 *pIndex, u32 count) //This function now p
         }
         else 
         {
-            if (IS_MULTI_STARTMENU_ENABLED) //Exit text will be different if its on or off
+            if (IS_MULTI_START_MENU_ENABLED && NUM_OF_START_MENUS != 1) //Makes sure the the multi start menu is enabled AND there isn't only 1 page before trying to print out the appropiate text for the Exit option
             {
-                if (sStartMenuItems[sCurrentStartMenuActions[index]].func.u8_void != StartMenuExitCallback) //This condition prevents my exit custom text from being overwritten
+                if (sStartMenuItems[sCurrentStartMenuActions[index]].func.u8_void != StartMenuExitCallback) //Stops the loop from printing out any option with StartMenuExitCallback (i.e the Exit option)
                 {
-                StringExpandPlaceholders(gStringVar4, sStartMenuItems[sCurrentStartMenuActions[index]].text);
+                    StringExpandPlaceholders(gStringVar4, sStartMenuItems[sCurrentStartMenuActions[index]].text);
                 } 
                 else if (sStartMenuItems[sCurrentStartMenuActions[index]].func.u8_void == StartMenuExitCallback) //Once the option to be printed is MENU_ACTION_EXIT, then it loads the custom text instead
                 {
-                    if (sStartMenuPage != sStartMenuPageTotal) {  //If not on the last page
-                        StringExpandPlaceholders(gStringVar4, gText_MenuExitPage);
+                    if (sStartMenuPage != sStartMenuPageTotal) 
+                    {  //If not on the last page
+                        StringExpandPlaceholders(gStringVar4, gText_MenuExitPage); //Print out "Exit {RIGHT_ARROW}"
                     }
                     else
                     { //If on the last page
-                        StringExpandPlaceholders(gStringVar4, gText_MenuExitLastPage);
+                        StringExpandPlaceholders(gStringVar4, gText_MenuExitLastPage); //Print out "Exit {LEFT_ARROW}"
                     }
                 }
-                AddTextPrinterParameterized(GetStartMenuWindowId(), FONT_NORMAL, gStringVar4, 8, (index << 4) + 9, TEXT_SKIP_DRAW, NULL);
+                AddTextPrinterParameterized(GetStartMenuWindowId(), FONT_NORMAL, gStringVar4, 8, (index << 4) + 9, TEXT_SKIP_DRAW, NULL); //What actually prints it
             }
             else //Proceed as normal
             {
@@ -659,7 +773,7 @@ static bool8 HandleStartMenuInput(void)
         return TRUE;
     }
 
-    if (IS_MULTI_STARTMENU_ENABLED)  //Must be enabled to use the multi menu
+    if (IS_MULTI_START_MENU_ENABLED && NUM_OF_START_MENUS != 1)  //Must be enabled to use the multi menu and there musn't be just 1 menu
     {
         if (JOY_NEW(DPAD_RIGHT)) //Scrolls to the next start menu page
         {
