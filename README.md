@@ -3,11 +3,11 @@ This branch allows you to fit as many options on the start menu as you wish afte
 There are some important things you need to keep in mind though:
 
 1. NUM_OF_START_MENUS creates as many menus as you need.
-2. NUM_OF_START_MENU_OPTIONS is the max amount of options that can stay on one menu (it is not advised to go beyond 8)
-3. FINAL_START_MENU_OPTION is the last option in the Menu actions ENUM you want to be printed out, e.g MENU_ACTION_PYRAMID_BAG
-4. IS_MULTI_STARTMENU_ENABLED is set by the flag FLAG_IS_MULTI_STARTMENU_ENABLED and is self explanatory
+2. NUM_OF_START_MENU_OPTIONS is the max amount of options that can stay on one menu (it is not advised to go beyond 8).
+3. FINAL_START_MENU_OPTION is the last option in the Menu actions ENUM you want to be printed out, e.g MENU_ACTION_PYRAMID_BAG.
+4. IS_MULTI_STARTMENU_ENABLED is set by the flag FLAG_IS_MULTI_STARTMENU_ENABLED and is self explanatory. (IS_MULTI_STARTMENU_ENABLED seems pretty unnecessary, I'll probably get rid of it soon.)
 
-Any necessary custom conditions can be added in BuildNormalStartMenu() in start_menu.c
+Any necessary custom conditions can be added in BuildNormalStartMenu() in start_menu.c.
 Remember, to activate the multi start menus, set the flag FLAG_IS_MULTI_STARTMENU_ENABLED.
 
 ## Caveat(s)
