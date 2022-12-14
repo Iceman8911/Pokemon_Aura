@@ -36,6 +36,25 @@
 #include "constants/trainers.h"
 #include "constants/rgb.h"
 
+//For coloured battle text
+#include "constants/battle_move_effects.h"
+#include "event_data.h"
+
+//These 3 defines don't exist in regular pokeemerald
+#ifndef UQ_4_12_TO_INT
+#define UQ_4_12_TO_INT(n)  ((int)((n) / 4096))
+#endif
+
+#ifndef UQ_4_12_ROUND 
+#define UQ_4_12_ROUND ((1) << (12 - 1))
+#endif
+
+#ifndef UQ_4_12
+#define UQ_4_12(n)  ((u16)((n) * 4096))
+#endif
+
+
+
 static void PlayerHandleGetMonData(void);
 static void PlayerHandleSetMonData(void);
 static void PlayerHandleSetRawMonData(void);
@@ -101,6 +120,7 @@ static void MoveSelectionDestroyCursorAt(u8);
 static void MoveSelectionDisplayPpNumber(void);
 static void MoveSelectionDisplayPpString(void);
 static void MoveSelectionDisplayMoveType(void);
+static void MoveSelectionDisplayMoveTypeDoubles(u8 targetId); //Used to get the right coloured battle text for a selected target in a double/multi battle
 static void MoveSelectionDisplayMoveNames(void);
 static void HandleMoveSwitching(void);
 static void SwitchIn_HandleSoundAndEnd(void);
@@ -185,6 +205,66 @@ static const u8 sTargetIdentities[MAX_BATTLERS_COUNT] = {B_POSITION_PLAYER_LEFT,
 
 // unknown unused data
 static const u8 sUnused[] = {0x48, 0x48, 0x20, 0x5a, 0x50, 0x50, 0x50, 0x58};
+
+
+#define X UQ_4_12
+    // Used to determine the effectiveness of a selected move.
+    // Any unused typings in game can be removed and new typings can be added too.
+    // It has to be arranged the same way in NUMBER_OF_MON_TYPES.
+    // Fairy doesn't exist in pokeemerald hence the comments.
+    #ifndef RHH_EXPANSION
+    const u16 sTypeEffectivenessTable[NUMBER_OF_MON_TYPES][NUMBER_OF_MON_TYPES] =
+    {
+        //   normal  fight   flying  poison  ground  rock    bug     ghost   steel   mystery fire    water   grass  electric psychic ice     dragon  dark    fairy
+            {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)/*, X(1.0)*/}, // normal
+            {X(2.0), X(1.0), X(0.5), X(0.5), X(1.0), X(2.0), X(0.5), X(0.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(2.0)/*, X(0.5)*/}, // fight
+            {X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0)/*, X(1.0)*/}, // flying
+            {X(1.0), X(1.0), X(1.0), X(0.5), X(0.5), X(0.5), X(1.0), X(0.5), X(0.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)/*, X(2.0)*/}, // poison
+            {X(1.0), X(1.0), X(0.0), X(2.0), X(1.0), X(2.0), X(0.5), X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(0.5), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0)/*, X(1.0)*/}, // ground
+            {X(1.0), X(0.5), X(2.0), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0)/*, X(1.0)*/}, // rock
+            {X(1.0), X(0.5), X(0.5), X(0.5), X(1.0), X(1.0), X(1.0), X(0.5), X(0.5), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(1.0), X(2.0)/*, X(0.5)*/}, // bug
+            {X(0.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5)/*, X(1.0)*/}, // ghost
+            {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.5), X(0.5), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(1.0)/*, X(2.0)*/}, // steel
+            {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)/*, X(1.0)*/}, // mystery
+            {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(2.0), X(1.0), X(0.5), X(0.5), X(2.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0)/*, X(1.0)*/}, // fire
+            {X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(0.5), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0)/*, X(1.0)*/}, // water
+            {X(1.0), X(1.0), X(0.5), X(0.5), X(2.0), X(2.0), X(0.5), X(1.0), X(0.5), X(1.0), X(0.5), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0)/*, X(1.0)*/}, // grass
+            {X(1.0), X(1.0), X(2.0), X(1.0), X(0.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(0.5), X(1.0), X(1.0), X(0.5), X(1.0)/*, X(1.0)*/}, // electric
+            {X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(0.0)/*, X(1.0)*/}, // psychic
+            {X(1.0), X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.5), X(0.5), X(2.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0)/*, X(1.0)*/}, // ice
+            {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0)/*, X(0.0)*/}, // dragon
+            {X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5)/*, X(0.5)*/}, // dark
+            //{X(1.0), X(2.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(2.0), X(1.0)}, // fairy
+    };
+    #endif
+
+    #ifdef RHH_EXPANSION
+    const u16 sTypeEffectivenessTable[NUMBER_OF_MON_TYPES][NUMBER_OF_MON_TYPES] =
+    {
+        //   normal  fight   flying  poison  ground  rock    bug     ghost   steel   mystery fire    water   grass  electric psychic ice     dragon  dark    fairy
+            {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // normal
+            {X(2.0), X(1.0), X(0.5), X(0.5), X(1.0), X(2.0), X(0.5), X(0.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(2.0), X(0.5)}, // fight
+            {X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // flying
+            {X(1.0), X(1.0), X(1.0), X(0.5), X(0.5), X(0.5), X(1.0), X(0.5), X(0.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0)}, // poison
+            {X(1.0), X(1.0), X(0.0), X(2.0), X(1.0), X(2.0), X(0.5), X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(0.5), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // ground
+            {X(1.0), X(0.5), X(2.0), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0)}, // rock
+            {X(1.0), X(0.5), X(0.5), X(0.5), X(1.0), X(1.0), X(1.0), X(0.5), X(0.5), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(1.0), X(2.0), X(0.5)}, // bug
+            {X(0.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5), X(1.0)}, // ghost
+            {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.5), X(0.5), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(1.0), X(2.0)}, // steel
+            {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // mystery
+            {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(2.0), X(1.0), X(0.5), X(0.5), X(2.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(1.0)}, // fire
+            {X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(0.5), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0)}, // water
+            {X(1.0), X(1.0), X(0.5), X(0.5), X(2.0), X(2.0), X(0.5), X(1.0), X(0.5), X(1.0), X(0.5), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0)}, // grass
+            {X(1.0), X(1.0), X(2.0), X(1.0), X(0.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(0.5), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0)}, // electric
+            {X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(0.0), X(1.0)}, // psychic
+            {X(1.0), X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.5), X(0.5), X(2.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(1.0)}, // ice
+            {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(0.0)}, // dragon
+            {X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5), X(0.5)}, // dark
+            {X(1.0), X(2.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(2.0), X(1.0)}, // fairy
+    };
+    #endif
+
+#undef X
 
 void BattleControllerDummy(void)
 {
@@ -419,6 +499,8 @@ static void HandleInputChooseTarget(void)
                 break;
             }
 
+            MoveSelectionDisplayMoveTypeDoubles(GetBattlerPosition(gMultiUsePlayerCursor)); //Enables coloured battle text functionality in double/multi battles
+
             if (gAbsentBattlerFlags & gBitTable[gMultiUsePlayerCursor])
                 i = 0;
         } while (i == 0);
@@ -460,6 +542,8 @@ static void HandleInputChooseTarget(void)
                 i++;
                 break;
             }
+
+            MoveSelectionDisplayMoveTypeDoubles(GetBattlerPosition(gMultiUsePlayerCursor)); //Enables coloured battle text functionality in double/multi battles
 
             if (gAbsentBattlerFlags & gBitTable[gMultiUsePlayerCursor])
                 i = 0;
@@ -1493,7 +1577,157 @@ static void MoveSelectionDisplayPpNumber(void)
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_PP_REMAINING);
 }
 
-static void MoveSelectionDisplayMoveType(void)
+//For coloured battle text
+static void MulModifier(u16 *modifier, u16 val)
+{
+	*modifier = UQ_4_12_TO_INT((*modifier * val) + UQ_4_12_ROUND);
+}
+
+u8 TypeEffectiveness(struct ChooseMoveStruct *moveInfo, u8 targetId) //Determines the effectiveness of the selected move
+{
+    u8 userMoveElement = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type;  // Element of move selected
+    u8 userFirstElement = gBattleMons[gActiveBattler].type1;   // The first element of the user's typing
+    u8 userSecondElement = gBattleMons[gActiveBattler].type2;   // The second element of the user's typing
+
+    #ifdef B_FLAG_INVERSE_BATTLE
+        bool8 isInverse = (B_FLAG_INVERSE_BATTLE != 0 && FlagGet(B_FLAG_INVERSE_BATTLE)) ? TRUE : FALSE;
+    #endif
+	
+	if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].power == 0) //Move power is 0 hence it is a status move
+		return B_WIN_MOVE_TYPE;
+	else
+	{
+		u16 mod = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type][gBattleMons[targetId].type1];
+
+		if (gBattleMons[targetId].type2 != gBattleMons[targetId].type1)
+		{
+			u16 mod2 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type][gBattleMons[targetId].type2];
+			MulModifier(&mod, mod2);
+		}
+
+        #ifdef RHH_EXPANSION // This is for moves like Flying Press
+		if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].effect == EFFECT_TWO_TYPED_MOVE)
+		{
+			u16 mod3 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].argument][gBattleMons[targetId].type1];
+			MulModifier(&mod, mod3);
+
+			if (gBattleMons[targetId].type2 != gBattleMons[targetId].type1)
+			{
+				u16 mod4 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].argument][gBattleMons[targetId].type2];
+				MulModifier(&mod, mod4);
+			}
+		}
+        #endif
+
+		// B_WIN_MOVE_TYPE (10) - normal effectiveness
+		// B_WIN_SUPER_EFFECTIVE (24) - super effective
+		// B_WIN_NOT_VERY_EFFECTIVE (25) - not very effective
+		// B_WIN_NO_EFFECT (26) - no effect
+
+		// B_WIN_SUPER_EFFECTIVE_STAB (27) - super effective with STAB
+		// B_WIN_NOT_VERY_EFFECTIVE_STAB (28) - not very effective with STAB
+		// B_WIN_NO_EFFECT_STAB (29) - no effect but still has STAB
+        // B_WIN_STAB (30) - normal effectiveness with STAB
+
+		if (userMoveElement != userFirstElement && userMoveElement != userSecondElement) // Not a STAB move
+        {
+            if (mod == UQ_4_12(0.0)) // Damage multiplier is x0 meaning the move doesn't affect the target
+            { 
+            
+            #ifdef B_FLAG_INVERSE_BATTLE
+                if(isInverse)
+                    return B_WIN_SUPER_EFFECTIVE;
+                else
+            #endif
+                    return B_WIN_NO_EFFECT;
+            
+            }
+            else if (mod <= UQ_4_12(0.5)) // Damage multiplier is x0.5 meaning the move is not very effective against the target
+            { 
+
+            #ifdef B_FLAG_INVERSE_BATTLE
+                if(isInverse)
+                    return B_WIN_SUPER_EFFECTIVE;
+                else
+            #endif
+                    return B_WIN_NOT_VERY_EFFECTIVE;
+            
+            }
+            else if (mod >= UQ_4_12(2.0)) // Damage multiplier is x2.0 meaning the move is super effective against the target
+            { 
+            
+            #ifdef B_FLAG_INVERSE_BATTLE
+                if(isInverse)
+                    return B_WIN_NOT_VERY_EFFECTIVE;
+                else
+            #endif
+                    return B_WIN_SUPER_EFFECTIVE;
+            
+            }
+            else // Not super effective, not very effective or uneffective
+                return B_WIN_MOVE_TYPE;
+        }
+        else // A STAB move
+        {
+            if (mod == UQ_4_12(0.0)) // Damage multiplier is x0 meaning the move doesn't affect the target
+            { 
+            
+            #ifdef B_FLAG_INVERSE_BATTLE
+                if(isInverse)
+                    return B_WIN_SUPER_EFFECTIVE_STAB;
+                else
+            #endif
+                    return B_WIN_NO_EFFECT_STAB;
+            
+            }
+            else if (mod <= UQ_4_12(0.5)) // Damage multiplier is x0.5 meaning the move is not very effective against the target
+            { 
+
+            #ifdef B_FLAG_INVERSE_BATTLE
+                if(isInverse)
+                    return B_WIN_SUPER_EFFECTIVE_STAB;
+                else
+            #endif
+                    return B_WIN_NOT_VERY_EFFECTIVE_STAB;
+            
+            }
+            else if (mod >= UQ_4_12(2.0)) // Damage multiplier is x2.0 meaning the move is super effective against the target
+            { 
+            
+            #ifdef B_FLAG_INVERSE_BATTLE
+                if(isInverse)
+                    return B_WIN_NOT_VERY_EFFECTIVE_STAB;
+                else
+            #endif
+                    return B_WIN_SUPER_EFFECTIVE_STAB;
+            
+            }
+            else // Not super effective, not very effective or uneffective
+                return B_WIN_STAB;
+        }
+	}
+}
+
+static void MoveSelectionDisplayMoveTypeDoubles(u8 targetId) // Deals with the move type text for doubles battles
+{
+	u8 *txtPtr;
+	struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleBufferA[gActiveBattler][4]);
+
+	txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfaceType);
+	txtPtr[0] = EXT_CTRL_CODE_BEGIN;
+	txtPtr++;
+	txtPtr[0] = 6;
+	txtPtr++;
+	txtPtr[0] = 1;
+	txtPtr++;
+
+	StringCopy(txtPtr, gTypeNames[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type]);
+	BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, targetId));
+}
+
+
+
+static void MoveSelectionDisplayMoveType(void) // Deals with the move type text for single battles
 {
     u8 *txtPtr;
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleBufferA[gActiveBattler][4]);
@@ -1504,7 +1738,7 @@ static void MoveSelectionDisplayMoveType(void)
     *(txtPtr)++ = FONT_NORMAL;
 
     StringCopy(txtPtr, gTypeNames[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type]);
-    BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE);
+    BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, 1)); //Prints out the coloured text in single batttles
 }
 
 static void MoveSelectionCreateCursorAt(u8 cursorPosition, u8 baseTileNum)
