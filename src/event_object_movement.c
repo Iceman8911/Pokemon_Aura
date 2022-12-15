@@ -80,6 +80,8 @@ static u8 setup##_callback(struct ObjectEvent *objectEvent, struct Sprite *sprit
     return 0;\
 }
 
+static EWRAM_DATA u8 sCurrentReflectionType = 0;
+static EWRAM_DATA u16 sCurrentSpecialObjectPaletteTag = 0;
 static EWRAM_DATA struct LockedAnimObjectEvents *sLockedAnimObjectEvents = {0};
 
 static void MoveCoordsInDirection(u32, s16 *, s16 *, s16, s16);
@@ -172,7 +174,20 @@ static const struct SpriteFrameImage sPicTable_PechaBerryTree[];
 
 static void StartSlowRunningAnim(struct ObjectEvent *objectEvent, struct Sprite *sprite, u8 direction);
 
-const u8 gReflectionEffectPaletteMap[] = {1, 1, 6, 7, 8, 9, 6, 7, 8, 9, 11, 11, 0, 0, 0, 0};
+const u8 gReflectionEffectPaletteMap[16] = {
+        [PALSLOT_PLAYER]                 = PALSLOT_PLAYER_REFLECTION,
+        [PALSLOT_PLAYER_REFLECTION]      = PALSLOT_PLAYER_REFLECTION,
+        [PALSLOT_NPC_1]                  = PALSLOT_NPC_1_REFLECTION,
+        [PALSLOT_NPC_2]                  = PALSLOT_NPC_2_REFLECTION,
+        [PALSLOT_NPC_3]                  = PALSLOT_NPC_3_REFLECTION,
+        [PALSLOT_NPC_4]                  = PALSLOT_NPC_4_REFLECTION,
+        [PALSLOT_NPC_1_REFLECTION]       = PALSLOT_NPC_1_REFLECTION,
+        [PALSLOT_NPC_2_REFLECTION]       = PALSLOT_NPC_2_REFLECTION,
+        [PALSLOT_NPC_3_REFLECTION]       = PALSLOT_NPC_3_REFLECTION,
+        [PALSLOT_NPC_4_REFLECTION]       = PALSLOT_NPC_4_REFLECTION,
+        [PALSLOT_NPC_SPECIAL]            = PALSLOT_NPC_SPECIAL_REFLECTION,
+        [PALSLOT_NPC_SPECIAL_REFLECTION] = PALSLOT_NPC_SPECIAL_REFLECTION
+};
 
 static const struct SpriteTemplate sCameraSpriteTemplate = {
     .tileTag = 0,
@@ -2199,7 +2214,191 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
 	{gObjectEventPalette_Pokemon_Species_902, OBJ_EVENT_PAL_TAG_POKEMON_902},
 	{gObjectEventPalette_Pokemon_Species_903, OBJ_EVENT_PAL_TAG_POKEMON_903},
 	{gObjectEventPalette_Pokemon_Species_904, OBJ_EVENT_PAL_TAG_POKEMON_904},
+
 };
+
+// Not sure abt this
+static const u16 sReflectionPaletteTags_Brendan[] = {
+    OBJ_EVENT_PAL_TAG_BRENDAN_REFLECTION,
+    OBJ_EVENT_PAL_TAG_BRENDAN_REFLECTION,
+    OBJ_EVENT_PAL_TAG_BRENDAN_REFLECTION,
+    OBJ_EVENT_PAL_TAG_BRENDAN_REFLECTION,
+};
+
+static const u16 sReflectionPaletteTags_May[] = {
+    OBJ_EVENT_PAL_TAG_MAY_REFLECTION,
+    OBJ_EVENT_PAL_TAG_MAY_REFLECTION,
+    OBJ_EVENT_PAL_TAG_MAY_REFLECTION,
+    OBJ_EVENT_PAL_TAG_MAY_REFLECTION,
+};
+
+static const u16 sReflectionPaletteTags_PlayerUnderwater[] = {
+    OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER,
+    OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER,
+    OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER,
+    OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER,
+};
+
+static const struct PairedPalettes sPlayerReflectionPaletteSets[] = {
+    {OBJ_EVENT_PAL_TAG_BRENDAN,           sReflectionPaletteTags_Brendan},
+    {OBJ_EVENT_PAL_TAG_MAY,               sReflectionPaletteTags_May},
+    {OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER, sReflectionPaletteTags_PlayerUnderwater},
+    {OBJ_EVENT_PAL_TAG_NONE,              NULL},
+};
+
+static const u16 sReflectionPaletteTags_QuintyPlump[] = {
+    OBJ_EVENT_PAL_TAG_QUINTY_PLUMP_REFLECTION,
+    OBJ_EVENT_PAL_TAG_QUINTY_PLUMP_REFLECTION,
+    OBJ_EVENT_PAL_TAG_QUINTY_PLUMP_REFLECTION,
+    OBJ_EVENT_PAL_TAG_QUINTY_PLUMP_REFLECTION,
+};
+
+static const u16 sReflectionPaletteTags_Truck[] = {
+    OBJ_EVENT_PAL_TAG_TRUCK,
+    OBJ_EVENT_PAL_TAG_TRUCK,
+    OBJ_EVENT_PAL_TAG_TRUCK,
+    OBJ_EVENT_PAL_TAG_TRUCK,
+};
+
+static const u16 sReflectionPaletteTags_VigorothMover[] = {
+    OBJ_EVENT_PAL_TAG_VIGOROTH,
+    OBJ_EVENT_PAL_TAG_VIGOROTH,
+    OBJ_EVENT_PAL_TAG_VIGOROTH,
+    OBJ_EVENT_PAL_TAG_VIGOROTH,
+};
+
+static const u16 sReflectionPaletteTags_MovingBox[] = {
+    OBJ_EVENT_PAL_TAG_MOVING_BOX,
+    OBJ_EVENT_PAL_TAG_MOVING_BOX,
+    OBJ_EVENT_PAL_TAG_MOVING_BOX,
+    OBJ_EVENT_PAL_TAG_MOVING_BOX,
+};
+
+static const u16 sReflectionPaletteTags_CableCar[] = {
+    OBJ_EVENT_PAL_TAG_CABLE_CAR,
+    OBJ_EVENT_PAL_TAG_CABLE_CAR,
+    OBJ_EVENT_PAL_TAG_CABLE_CAR,
+    OBJ_EVENT_PAL_TAG_CABLE_CAR,
+};
+
+static const u16 sReflectionPaletteTags_SSTidal[] = {
+    OBJ_EVENT_PAL_TAG_SSTIDAL,
+    OBJ_EVENT_PAL_TAG_SSTIDAL,
+    OBJ_EVENT_PAL_TAG_SSTIDAL,
+    OBJ_EVENT_PAL_TAG_SSTIDAL,
+};
+
+static const u16 sReflectionPaletteTags_SubmarineShadow[] = {
+    OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW,
+    OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW,
+    OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW,
+    OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW,
+};
+
+static const u16 sReflectionPaletteTags_Kyogre[] = {
+    OBJ_EVENT_PAL_TAG_KYOGRE_REFLECTION,
+    OBJ_EVENT_PAL_TAG_KYOGRE_REFLECTION,
+    OBJ_EVENT_PAL_TAG_KYOGRE_REFLECTION,
+    OBJ_EVENT_PAL_TAG_KYOGRE_REFLECTION,
+};
+
+static const u16 sReflectionPaletteTags_Groudon[] = {
+    OBJ_EVENT_PAL_TAG_GROUDON_REFLECTION,
+    OBJ_EVENT_PAL_TAG_GROUDON_REFLECTION,
+    OBJ_EVENT_PAL_TAG_GROUDON_REFLECTION,
+    OBJ_EVENT_PAL_TAG_GROUDON_REFLECTION,
+};
+
+static const u16 sReflectionPaletteTags_Npc3[] = { // Only used by the Route 120 bridge Kecleon
+    OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION,
+    OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION,
+    OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION,
+    OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION,
+};
+
+static const u16 sReflectionPaletteTags_RedLeaf[] = {
+    OBJ_EVENT_PAL_TAG_RED_LEAF,
+    OBJ_EVENT_PAL_TAG_RED_LEAF,
+    OBJ_EVENT_PAL_TAG_RED_LEAF,
+    OBJ_EVENT_PAL_TAG_RED_LEAF,
+};
+
+static const struct PairedPalettes sSpecialObjectReflectionPaletteSets[] = {
+    {OBJ_EVENT_PAL_TAG_BRENDAN,          sReflectionPaletteTags_Brendan},
+    {OBJ_EVENT_PAL_TAG_MAY,              sReflectionPaletteTags_May},
+    {OBJ_EVENT_PAL_TAG_QUINTY_PLUMP,     sReflectionPaletteTags_QuintyPlump},
+    {OBJ_EVENT_PAL_TAG_TRUCK,            sReflectionPaletteTags_Truck},
+    {OBJ_EVENT_PAL_TAG_VIGOROTH,         sReflectionPaletteTags_VigorothMover},
+    {OBJ_EVENT_PAL_TAG_MOVING_BOX,       sReflectionPaletteTags_MovingBox},
+    {OBJ_EVENT_PAL_TAG_CABLE_CAR,        sReflectionPaletteTags_CableCar},
+    {OBJ_EVENT_PAL_TAG_SSTIDAL,          sReflectionPaletteTags_SSTidal},
+    {OBJ_EVENT_PAL_TAG_KYOGRE,           sReflectionPaletteTags_Kyogre},
+    {OBJ_EVENT_PAL_TAG_GROUDON,          sReflectionPaletteTags_Groudon},
+    {OBJ_EVENT_PAL_TAG_NPC_3,            sReflectionPaletteTags_Npc3},
+    {OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW, sReflectionPaletteTags_SubmarineShadow},
+    {OBJ_EVENT_PAL_TAG_RED_LEAF,         sReflectionPaletteTags_RedLeaf},
+    {OBJ_EVENT_PAL_TAG_NONE,             NULL},
+};
+
+static const u16 sObjectPaletteTags0[] = {
+    [PALSLOT_PLAYER]            = OBJ_EVENT_PAL_TAG_BRENDAN,
+    [PALSLOT_PLAYER_REFLECTION] = OBJ_EVENT_PAL_TAG_BRENDAN_REFLECTION,
+    [PALSLOT_NPC_1]             = OBJ_EVENT_PAL_TAG_NPC_1,
+    [PALSLOT_NPC_2]             = OBJ_EVENT_PAL_TAG_NPC_2,
+    [PALSLOT_NPC_3]             = OBJ_EVENT_PAL_TAG_NPC_3,
+    [PALSLOT_NPC_4]             = OBJ_EVENT_PAL_TAG_NPC_4,
+    [PALSLOT_NPC_1_REFLECTION]  = OBJ_EVENT_PAL_TAG_NPC_1_REFLECTION,
+    [PALSLOT_NPC_2_REFLECTION]  = OBJ_EVENT_PAL_TAG_NPC_2_REFLECTION,
+    [PALSLOT_NPC_3_REFLECTION]  = OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION,
+    [PALSLOT_NPC_4_REFLECTION]  = OBJ_EVENT_PAL_TAG_NPC_4_REFLECTION,
+};
+
+static const u16 sObjectPaletteTags1[] = {
+    [PALSLOT_PLAYER]            = OBJ_EVENT_PAL_TAG_BRENDAN,
+    [PALSLOT_PLAYER_REFLECTION] = OBJ_EVENT_PAL_TAG_BRENDAN_REFLECTION,
+    [PALSLOT_NPC_1]             = OBJ_EVENT_PAL_TAG_NPC_1,
+    [PALSLOT_NPC_2]             = OBJ_EVENT_PAL_TAG_NPC_2,
+    [PALSLOT_NPC_3]             = OBJ_EVENT_PAL_TAG_NPC_3,
+    [PALSLOT_NPC_4]             = OBJ_EVENT_PAL_TAG_NPC_4,
+    [PALSLOT_NPC_1_REFLECTION]  = OBJ_EVENT_PAL_TAG_NPC_1_REFLECTION,
+    [PALSLOT_NPC_2_REFLECTION]  = OBJ_EVENT_PAL_TAG_NPC_2_REFLECTION,
+    [PALSLOT_NPC_3_REFLECTION]  = OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION,
+    [PALSLOT_NPC_4_REFLECTION]  = OBJ_EVENT_PAL_TAG_NPC_4_REFLECTION,
+};
+
+static const u16 sObjectPaletteTags2[] = {
+    [PALSLOT_PLAYER]            = OBJ_EVENT_PAL_TAG_BRENDAN,
+    [PALSLOT_PLAYER_REFLECTION] = OBJ_EVENT_PAL_TAG_BRENDAN_REFLECTION,
+    [PALSLOT_NPC_1]             = OBJ_EVENT_PAL_TAG_NPC_1,
+    [PALSLOT_NPC_2]             = OBJ_EVENT_PAL_TAG_NPC_2,
+    [PALSLOT_NPC_3]             = OBJ_EVENT_PAL_TAG_NPC_3,
+    [PALSLOT_NPC_4]             = OBJ_EVENT_PAL_TAG_NPC_4,
+    [PALSLOT_NPC_1_REFLECTION]  = OBJ_EVENT_PAL_TAG_NPC_1_REFLECTION,
+    [PALSLOT_NPC_2_REFLECTION]  = OBJ_EVENT_PAL_TAG_NPC_2_REFLECTION,
+    [PALSLOT_NPC_3_REFLECTION]  = OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION,
+    [PALSLOT_NPC_4_REFLECTION]  = OBJ_EVENT_PAL_TAG_NPC_4_REFLECTION,
+};
+
+static const u16 sObjectPaletteTags3[] = {
+    [PALSLOT_PLAYER]            = OBJ_EVENT_PAL_TAG_BRENDAN,
+    [PALSLOT_PLAYER_REFLECTION] = OBJ_EVENT_PAL_TAG_BRENDAN_REFLECTION,
+    [PALSLOT_NPC_1]             = OBJ_EVENT_PAL_TAG_NPC_1,
+    [PALSLOT_NPC_2]             = OBJ_EVENT_PAL_TAG_NPC_2,
+    [PALSLOT_NPC_3]             = OBJ_EVENT_PAL_TAG_NPC_3,
+    [PALSLOT_NPC_4]             = OBJ_EVENT_PAL_TAG_NPC_4,
+    [PALSLOT_NPC_1_REFLECTION]  = OBJ_EVENT_PAL_TAG_NPC_1_REFLECTION,
+    [PALSLOT_NPC_2_REFLECTION]  = OBJ_EVENT_PAL_TAG_NPC_2_REFLECTION,
+    [PALSLOT_NPC_3_REFLECTION]  = OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION,
+    [PALSLOT_NPC_4_REFLECTION]  = OBJ_EVENT_PAL_TAG_NPC_4_REFLECTION,
+};
+
+static const u16 *const sObjectPaletteTagSets[] = {
+    sObjectPaletteTags0,
+    sObjectPaletteTags1,
+    sObjectPaletteTags2,
+    sObjectPaletteTags3,
+};
+// Not sure abt this
 
 #include "data/object_events/berry_tree_graphics_tables.h"
 #include "data/field_effects/field_effect_objects.h"
@@ -3010,10 +3209,19 @@ static u8 TrySetupObjectEventSprite(struct ObjectEventTemplate *objectEventTempl
 
     objectEvent = &gObjectEvents[objectEventId];
     graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
-    if (spriteTemplate->paletteTag != 0xFFFF)
+    paletteSlot = graphicsInfo->paletteSlot;
+    if (paletteSlot == PALSLOT_PLAYER)
     {
-        LoadObjectEventPalette(spriteTemplate->paletteTag);
-        UpdatePaletteGammaType(IndexOfSpritePaletteTag(spriteTemplate->paletteTag), GAMMA_ALT);
+        LoadPlayerObjectReflectionPalette(graphicsInfo->paletteTag, paletteSlot);
+    }
+    else if (paletteSlot == PALSLOT_NPC_SPECIAL)
+    {
+        LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag, paletteSlot);
+    }
+    else if (paletteSlot >= 16)
+    {
+        paletteSlot -= 16;
+        _PatchObjectPalette(graphicsInfo->paletteTag, paletteSlot);
     }
 
     if (objectEvent->movementType == MOVEMENT_TYPE_INVISIBLE)
@@ -3180,7 +3388,7 @@ u8 CreateVirtualObject(u16 graphicsId, u8 virtualObjId, s16 x, s16 y, u8 elevati
     if (spriteTemplate.paletteTag != 0xFFFF)
     {
         LoadObjectEventPalette(spriteTemplate.paletteTag);
-        UpdatePaletteGammaType(IndexOfSpritePaletteTag(spriteTemplate.paletteTag), GAMMA_ALT);
+        //UpdatePaletteGammaType(IndexOfSpritePaletteTag(spriteTemplate.paletteTag), GAMMA_ALT);
     }
     x += MAP_OFFSET;
     y += MAP_OFFSET;
@@ -3196,6 +3404,11 @@ u8 CreateVirtualObject(u16 graphicsId, u8 virtualObjId, s16 x, s16 y, u8 elevati
         sprite->coordOffsetEnabled = TRUE;
         sprite->sVirtualObjId = virtualObjId;
         sprite->sVirtualObjElev = elevation;
+        if (graphicsInfo->paletteSlot == PALSLOT_NPC_SPECIAL)
+            LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
+        else if (graphicsInfo->paletteSlot >= 16)
+            _PatchObjectPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot | 0xf0);
+
         if (subspriteTables != NULL)
         {
             SetSubspriteTables(sprite, subspriteTables);
@@ -3314,11 +3527,24 @@ static void SpawnObjectEventOnReturnToField(u8 objectEventId, s16 x, s16 y)
     spriteFrameImage.size = graphicsInfo->size;
     CopyObjectGraphicsInfoToSpriteTemplate_WithMovementType(objectEvent->graphicsId, objectEvent->movementType, &spriteTemplate, &subspriteTables);
     spriteTemplate.images = &spriteFrameImage;
-    if (spriteTemplate.paletteTag != 0xFFFF)
+
+    *(u16 *)&spriteTemplate.paletteTag = TAG_NONE;
+    paletteSlot = graphicsInfo->paletteSlot;
+    if (paletteSlot == PALSLOT_PLAYER)
     {
         LoadObjectEventPalette(spriteTemplate.paletteTag);
-        UpdatePaletteGammaType(IndexOfSpritePaletteTag(spriteTemplate.paletteTag), GAMMA_ALT);
+        //UpdatePaletteGammaType(IndexOfSpritePaletteTag(spriteTemplate.paletteTag), GAMMA_ALT);
     }
+    else if (paletteSlot == PALSLOT_NPC_SPECIAL)
+    {
+        LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
+    }
+    else if (paletteSlot >= 16)
+    {
+        paletteSlot -= 16;
+        _PatchObjectPalette(graphicsInfo->paletteTag, paletteSlot);
+    }
+    *(u16 *)&spriteTemplate.paletteTag = TAG_NONE;
 
     i = CreateSprite(&spriteTemplate, 0, 0, 0);
     if (i != MAX_SPRITES)
@@ -3379,10 +3605,19 @@ void ObjectEventSetGraphicsId(struct ObjectEvent *objectEvent, u16 graphicsId)
 
     graphicsInfo = GetObjectEventGraphicsInfo(graphicsId);
     sprite = &gSprites[objectEvent->spriteId];
-    if (graphicsInfo->paletteTag != 0xFFFF)
+    paletteSlot = graphicsInfo->paletteSlot;
+    if (paletteSlot == PALSLOT_PLAYER)
     {
-        LoadObjectEventPalette(graphicsInfo->paletteTag);
-        UpdatePaletteGammaType(IndexOfSpritePaletteTag(graphicsInfo->paletteTag), GAMMA_ALT);
+        PatchObjectPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
+    }
+    else if (paletteSlot == PALSLOT_NPC_SPECIAL)
+    {
+        LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
+    }
+    else if (paletteSlot >= 16)
+    {
+        paletteSlot -= 16;
+        _PatchObjectPalette(graphicsInfo->paletteTag, paletteSlot);
     }
     sprite->oam.shape = graphicsInfo->oam->shape;
     sprite->oam.size = graphicsInfo->oam->size;
@@ -3453,7 +3688,7 @@ static void SetBerryTreeGraphics(struct ObjectEvent *objectEvent, struct Sprite 
         ObjectEventSetGraphicsId(objectEvent, gBerryTreeObjectEventGraphicsIdTablePointers[berryId][berryStage]);
         sprite->images = gBerryTreePicTablePointers[berryId];
         sprite->oam.paletteNum = IndexOfSpritePaletteTag(gBerryTreePaletteTagTablePointers[berryId][berryStage]);
-        UpdatePaletteGammaType(sprite->oam.paletteNum, GAMMA_ALT);
+        //UpdatePaletteGammaType(sprite->oam.paletteNum, GAMMA_ALT);
         StartSpriteAnim(sprite, berryStage);
     }
 }
@@ -3555,7 +3790,7 @@ void SetObjectEventSpritePosByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup, 
 void FreeAndReserveObjectSpritePalettes(void)
 {
     FreeAllSpritePalettes();
-    gReservedSpritePaletteCount = 12;
+    gReservedSpritePaletteCount = OBJ_PALSLOT_COUNT;
 }
 
 void LoadObjectEventPalette(u16 paletteTag)
@@ -4048,6 +4283,37 @@ void OverrideSecretBaseDecorationSpriteScript(u8 localId, u8 mapNum, u8 mapGroup
             break;
         }
     }
+}
+
+void InitObjectEventPalettes(u8 reflectionType)
+{
+    FreeAndReserveObjectSpritePalettes();
+    sCurrentSpecialObjectPaletteTag = OBJ_EVENT_PAL_TAG_NONE;
+    sCurrentReflectionType = reflectionType;
+    if (reflectionType == 1)
+    {
+        PatchObjectPaletteRange(sObjectPaletteTagSets[sCurrentReflectionType], PALSLOT_PLAYER, PALSLOT_NPC_4 + 1);
+        gReservedSpritePaletteCount = 8;
+    }
+    else
+    {
+        PatchObjectPaletteRange(sObjectPaletteTagSets[sCurrentReflectionType], PALSLOT_PLAYER, PALSLOT_NPC_4_REFLECTION + 1);
+    }
+}
+
+u16 GetObjectPaletteTag(u8 palSlot)
+{
+    u8 i;
+
+    if (palSlot < PALSLOT_NPC_SPECIAL)
+        return sObjectPaletteTagSets[sCurrentReflectionType][palSlot];
+
+    for (i = 0; sSpecialObjectReflectionPaletteSets[i].tag != OBJ_EVENT_PAL_TAG_NONE; i++)
+    {
+        if (sSpecialObjectReflectionPaletteSets[i].tag == sCurrentSpecialObjectPaletteTag)
+            return sSpecialObjectReflectionPaletteSets[i].data[sCurrentReflectionType];
+    }
+    return OBJ_EVENT_PAL_TAG_NONE;
 }
 
 movement_type_empty_callback(MovementType_None)
@@ -10786,3 +11052,34 @@ bool8 PlayerIsUnderWaterfall(struct ObjectEvent *objectEvent)
     return FALSE;
 }
 
+
+void LoadPlayerObjectReflectionPalette(u16 tag, u8 slot)
+{
+    u8 i;
+
+    PatchObjectPalette(tag, slot);
+    for (i = 0; sPlayerReflectionPaletteSets[i].tag != OBJ_EVENT_PAL_TAG_NONE; i++)
+    {
+        if (sPlayerReflectionPaletteSets[i].tag == tag)
+        {
+            PatchObjectPalette(sPlayerReflectionPaletteSets[i].data[sCurrentReflectionType], gReflectionEffectPaletteMap[slot]);
+            return;
+        }
+    }
+}
+
+void LoadSpecialObjectReflectionPalette(u16 tag, u8 slot)
+{
+    u8 i;
+
+    sCurrentSpecialObjectPaletteTag = tag;
+    PatchObjectPalette(tag, slot);
+    for (i = 0; sSpecialObjectReflectionPaletteSets[i].tag != OBJ_EVENT_PAL_TAG_NONE; i++)
+    {
+        if (sSpecialObjectReflectionPaletteSets[i].tag == tag)
+        {
+            PatchObjectPalette(sSpecialObjectReflectionPaletteSets[i].data[sCurrentReflectionType], gReflectionEffectPaletteMap[slot]);
+            return;
+        }
+    }
+}
