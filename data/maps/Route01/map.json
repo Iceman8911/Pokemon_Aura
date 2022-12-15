@@ -14,15 +14,14 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "down",
+      "map": "MAP_ANCONNA_TOWN",
       "offset": -14,
-      "map": "MAP_ANCONNA_TOWN"
+      "direction": "down"
     }
   ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "in_connection": false,
       "x": 18,
       "y": 47,
       "elevation": 3,
@@ -32,11 +31,11 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route01_MiracleSeed",
-      "flag": "ROUTE01_MIRACLE_SEED"
+      "flag": "ROUTE01_MIRACLE_SEED",
+      "in_connection": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "in_connection": false,
       "x": 10,
       "y": 21,
       "elevation": 3,
@@ -46,11 +45,11 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route01_SharpBeak",
-      "flag": "ROUTE01_SHARP_BEAK"
+      "flag": "ROUTE01_SHARP_BEAK",
+      "in_connection": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
-      "in_connection": false,
       "x": 2,
       "y": 40,
       "elevation": 3,
@@ -60,11 +59,11 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "10",
       "script": "Route01_Youngster_Jimmy",
-      "flag": "0"
+      "flag": "0",
+      "in_connection": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
-      "in_connection": false,
       "x": 4,
       "y": 16,
       "elevation": 3,
@@ -74,11 +73,11 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "8",
       "script": "Route01_Youngster_John",
-      "flag": "0"
+      "flag": "0",
+      "in_connection": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
-      "in_connection": false,
       "x": 25,
       "y": 1,
       "elevation": 3,
@@ -88,11 +87,11 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "8",
       "script": "Route01_Youngster_Joey",
-      "flag": "0"
+      "flag": "0",
+      "in_connection": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "in_connection": false,
       "x": 12,
       "y": 10,
       "elevation": 3,
@@ -102,11 +101,11 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route01_Rindo_Berry",
-      "flag": "ROUTE01_RINDO_BERRY"
+      "flag": "ROUTE01_RINDO_BERRY",
+      "in_connection": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_1",
-      "in_connection": false,
       "x": 0,
       "y": 25,
       "elevation": 3,
@@ -116,11 +115,11 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "5",
       "script": "Route01_Lady",
-      "flag": "0"
+      "flag": "0",
+      "in_connection": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
-      "in_connection": false,
       "x": 10,
       "y": 2,
       "elevation": 3,
@@ -130,7 +129,8 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Route01_Georgia",
-      "flag": "0"
+      "flag": "0",
+      "in_connection": false
     }
   ],
   "warp_events": [
@@ -139,28 +139,28 @@
       "y": 45,
       "elevation": 0,
       "dest_map": "MAP_ROUTE01",
-      "dest_warp_id": 1
+      "dest_warp_id": "1"
     },
     {
       "x": 25,
       "y": 3,
       "elevation": 0,
       "dest_map": "MAP_ROUTE01",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 27,
       "y": 4,
       "elevation": 0,
       "dest_map": "MAP_MURKY_GROVE",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 27,
       "y": 5,
       "elevation": 0,
       "dest_map": "MAP_MURKY_GROVE",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

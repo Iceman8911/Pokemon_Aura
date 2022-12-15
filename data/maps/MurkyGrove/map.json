@@ -16,7 +16,6 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "in_connection": false,
       "x": 24,
       "y": 10,
       "elevation": 3,
@@ -26,11 +25,11 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MurkyGrove_PoisonGem",
-      "flag": "MURKY_GROVE_POISON_GEM"
+      "flag": "MURKY_GROVE_POISON_GEM",
+      "in_connection": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "in_connection": false,
       "x": 25,
       "y": 10,
       "elevation": 3,
@@ -40,11 +39,11 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MurkyGrove_BalmMushroom",
-      "flag": "MURKY_GROVE_BALM_MUSHROOM"
+      "flag": "MURKY_GROVE_BALM_MUSHROOM",
+      "in_connection": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MANIAC",
-      "in_connection": false,
       "x": 18,
       "y": 1,
       "elevation": 3,
@@ -54,11 +53,11 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MurkyGrove_BugManiac",
-      "flag": "0"
+      "flag": "0",
+      "in_connection": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
-      "in_connection": false,
       "x": 24,
       "y": 19,
       "elevation": 3,
@@ -68,11 +67,11 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "4",
       "script": "MurkyGrove_AromaLady",
-      "flag": "0"
+      "flag": "0",
+      "in_connection": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_M",
-      "in_connection": false,
       "x": 14,
       "y": 18,
       "elevation": 3,
@@ -82,11 +81,11 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "MurkyGrove_SchoolKid",
-      "flag": "0"
+      "flag": "0",
+      "in_connection": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TWIN",
-      "in_connection": false,
       "x": 28,
       "y": 3,
       "elevation": 3,
@@ -96,7 +95,8 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MurkyGrove_YoungGirl",
-      "flag": "0"
+      "flag": "0",
+      "in_connection": false
     }
   ],
   "warp_events": [
@@ -105,14 +105,14 @@
       "y": 3,
       "elevation": 0,
       "dest_map": "MAP_ROUTE01",
-      "dest_warp_id": 2
+      "dest_warp_id": "2"
     },
     {
       "x": 37,
       "y": 21,
       "elevation": 0,
       "dest_map": "MAP_ROUTE02",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

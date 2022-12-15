@@ -22,28 +22,28 @@
       "y": 2,
       "elevation": 0,
       "dest_map": "MAP_MURKY_GROVE",
-      "dest_warp_id": 1
+      "dest_warp_id": "1"
     },
     {
       "x": 10,
       "y": 3,
       "elevation": 0,
       "dest_map": "MAP_MURKY_GROVE",
-      "dest_warp_id": 1
+      "dest_warp_id": "1"
     },
     {
       "x": 29,
       "y": 2,
       "elevation": 0,
       "dest_map": "MAP_SCANDI_CITY",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 29,
       "y": 3,
       "elevation": 0,
       "dest_map": "MAP_SCANDI_CITY",
-      "dest_warp_id": 2
+      "dest_warp_id": "2"
     }
   ],
   "coord_events": [

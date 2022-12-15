@@ -22,14 +22,14 @@
       "y": 10,
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_TOWN",
-      "dest_warp_id": 6
+      "dest_warp_id": "6"
     },
     {
       "x": 12,
       "y": 10,
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_TOWN",
-      "dest_warp_id": 6
+      "dest_warp_id": "6"
     }
   ],
   "coord_events": [

@@ -14,15 +14,14 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "up",
+      "map": "MAP_ANCONNA_TOWN",
       "offset": 5,
-      "map": "MAP_ANCONNA_TOWN"
+      "direction": "up"
     }
   ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
-      "in_connection": false,
       "x": 27,
       "y": 8,
       "elevation": 3,
@@ -32,11 +31,11 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "AnconnaLake_FisherMan2",
-      "flag": "0"
+      "flag": "0",
+      "in_connection": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
-      "in_connection": false,
       "x": 28,
       "y": 5,
       "elevation": 3,
@@ -46,11 +45,11 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "AnconnaLake_FisherMan1",
-      "flag": "0"
+      "flag": "0",
+      "in_connection": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
-      "in_connection": false,
       "x": 22,
       "y": 8,
       "elevation": 3,
@@ -60,7 +59,8 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "AnconnaLake_FisherMan3",
-      "flag": "0"
+      "flag": "0",
+      "in_connection": false
     }
   ],
   "warp_events": [

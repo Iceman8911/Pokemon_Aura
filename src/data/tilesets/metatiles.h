@@ -207,3 +207,36 @@ const u16 gMetatileAttributes_MysteryEventsHouse[] = INCBIN_U16("data/tilesets/s
 
 const u16 gMetatiles_UnionRoom[] = INCBIN_U16("data/tilesets/secondary/union_room/metatiles.bin");
 const u16 gMetatileAttributes_UnionRoom[] = INCBIN_U16("data/tilesets/secondary/union_room/metatile_attributes.bin");
+
+const u16 gMetatiles_Testing[] = INCBIN_U16("data/tilesets/primary/testing/metatiles.bin");
+const u16 gMetatileAttributes_Testing[] = INCBIN_U16("data/tilesets/primary/testing/metatile_attributes.bin");
+
+const u16 gMetatiles_testing_but_secondary[] = INCBIN_U16("data/tilesets/secondary/testing_but_secondary/metatiles.bin");
+const u16 gMetatileAttributes_testing_but_secondary[] = INCBIN_U16("data/tilesets/secondary/testing_but_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_Anconna_Woods[] = INCBIN_U16("data/tilesets/secondary/anconna_woods/metatiles.bin");
+const u16 gMetatileAttributes_Anconna_Woods[] = INCBIN_U16("data/tilesets/secondary/anconna_woods/metatile_attributes.bin");
+
+const u16 gMetatiles_House_Indoors[] = INCBIN_U16("data/tilesets/primary/house_indoors/metatiles.bin");
+const u16 gMetatileAttributes_House_Indoors[] = INCBIN_U16("data/tilesets/primary/house_indoors/metatile_attributes.bin");
+
+const u16 gMetatiles_Indoor_AnconnaTown[] = INCBIN_U16("data/tilesets/secondary/indoor_anconnatown/metatiles.bin");
+const u16 gMetatileAttributes_Indoor_AnconnaTown[] = INCBIN_U16("data/tilesets/secondary/indoor_anconnatown/metatile_attributes.bin");
+
+const u16 gMetatiles_Scandi_City[] = INCBIN_U16("data/tilesets/primary/scandi_city/metatiles.bin");
+const u16 gMetatileAttributes_Scandi_City[] = INCBIN_U16("data/tilesets/primary/scandi_city/metatile_attributes.bin");
+
+const u16 gMetatiles_Sub_Scandi_City[] = INCBIN_U16("data/tilesets/secondary/sub_scandi_city/metatiles.bin");
+const u16 gMetatileAttributes_Sub_Scandi_City[] = INCBIN_U16("data/tilesets/secondary/sub_scandi_city/metatile_attributes.bin");
+
+const u16 gMetatiles_Lab_Primary[] = INCBIN_U16("data/tilesets/primary/lab_primary/metatiles.bin");
+const u16 gMetatileAttributes_Lab_Primary[] = INCBIN_U16("data/tilesets/primary/lab_primary/metatile_attributes.bin");
+
+const u16 gMetatiles_Lab_Secondary[] = INCBIN_U16("data/tilesets/secondary/lab_secondary/metatiles.bin");
+const u16 gMetatileAttributes_Lab_Secondary[] = INCBIN_U16("data/tilesets/secondary/lab_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_Tileset_AnconnaTown[] = INCBIN_U16("data/tilesets/primary/tileset_anconnatown/metatiles.bin");
+const u16 gMetatileAttributes_Tileset_AnconnaTown[] = INCBIN_U16("data/tilesets/primary/tileset_anconnatown/metatile_attributes.bin");
+
+const u16 gMetatiles_AnconnaTown_but_secondary[] = INCBIN_U16("data/tilesets/secondary/anconnatown_but_secondary/metatiles.bin");
+const u16 gMetatileAttributes_AnconnaTown_but_secondary[] = INCBIN_U16("data/tilesets/secondary/anconnatown_but_secondary/metatile_attributes.bin");
