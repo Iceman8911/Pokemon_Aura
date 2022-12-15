@@ -3,7 +3,7 @@ This is just the implemented version of [**Coloured Battle Text**](https://www.p
 
 The colours of the text can be edited in "src/battle_message.c". Just search for the line with the comment "//For coloured battle text" in the struct "sTextOnWindowsInfo_Normal" .
 
-STAB moves also has a different text too (somewhat smaller and wider than normal) but is currently being worked on.
+STAB moves also have a different text too (somewhat smaller and wider than normal) but are currently being worked on.
 
 
 
