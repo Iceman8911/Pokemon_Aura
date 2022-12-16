@@ -36,6 +36,7 @@
 
 #define B_SIDE_PLAYER     0
 #define B_SIDE_OPPONENT   1
+#define NUM_BATTLE_SIDES  2
 
 #define B_FLANK_LEFT  0
 #define B_FLANK_RIGHT 1
@@ -453,6 +454,14 @@
 #define B_WIN_VS_OUTCOME_DRAW    21
 #define B_WIN_VS_OUTCOME_LEFT    22
 #define B_WIN_VS_OUTCOME_RIGHT   23
+// For the coloured battle text
+#define B_WIN_SUPER_EFFECTIVE         24
+#define B_WIN_NOT_VERY_EFFECTIVE      25
+#define B_WIN_NO_EFFECT               26
+#define B_WIN_SUPER_EFFECTIVE_STAB    27
+#define B_WIN_NOT_VERY_EFFECTIVE_STAB 28
+#define B_WIN_NO_EFFECT_STAB          29
+#define B_WIN_STAB                    30
 
 // The following are duplicate id values for windows that Battle Arena uses differently.
 #define ARENA_WIN_PLAYER_NAME      15

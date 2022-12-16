@@ -1,3 +1,12 @@
+# Coloured Battle Text Effectiveness
+This is just the implemented version of [**Coloured Battle Text**](https://www.pokecommunity.com/showpost.php?p=10167016&postcount=83). It shows a different colored text of the element of a move in-battle (By Default: Super Effective - Green, Not Very Effective - Red, Not Effective at all - Faded Gray). It also supports Inverse and Double/Multi Battles.
+
+The colours of the text can be edited in "src/battle_message.c". Just search for the line with the comment "//For coloured battle text" in the struct "sTextOnWindowsInfo_Normal" .
+
+STAB moves also have a different text too (somewhat smaller and wider than normal) but are currently being worked on.
+
+
+
 # Pokémon Emerald
 
 ## What is the pokeemerald Expansion?
