@@ -4,6 +4,7 @@
 #include "characters.h"
 
 #define NUM_TEXT_PRINTERS 32
+#define VIBRANT_TYPE_EFFECTIVENESS TRUE   // Whether or not to have more vibrant (albeit wonky looking) coloured text in-battle
 
 // Given as a text speed when all the text should be
 // loaded at once but not copied to vram yet.
