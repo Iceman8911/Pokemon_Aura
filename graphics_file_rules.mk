@@ -308,6 +308,9 @@ $(FONTGFXDIR)/narrow.latfont: $(FONTGFXDIR)/latin_narrow.png
 $(FONTGFXDIR)/small_narrow.latfont: $(FONTGFXDIR)/latin_small_narrow.png
 	$(GFX) $< $@
 
+$(FONTGFXDIR)/bold.latfont: $(FONTGFXDIR)/latin_bold.png
+	$(GFX) $< $@
+
 $(FONTGFXDIR)/small.hwjpnfont: $(FONTGFXDIR)/japanese_small.png
 	$(GFX) $< $@
 

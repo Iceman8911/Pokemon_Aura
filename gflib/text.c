@@ -29,11 +29,13 @@ static void DecompressGlyph_Short(u16, bool32);
 static void DecompressGlyph_Narrow(u16, bool32);
 static void DecompressGlyph_SmallNarrow(u16, bool32);
 static void DecompressGlyph_Bold(u16);
+static void DecompressGlyph_LatinBold(u16, bool32); // For actual bold text
 static u32 GetGlyphWidth_Small(u16, bool32);
 static u32 GetGlyphWidth_Normal(u16, bool32);
 static u32 GetGlyphWidth_Short(u16, bool32);
 static u32 GetGlyphWidth_Narrow(u16, bool32);
 static u32 GetGlyphWidth_SmallNarrow(u16, bool32);
+static u32 GetGlyphWidth_LatinBold(u16, bool32); // For actual bold text
 
 static EWRAM_DATA struct TextPrinter sTempTextPrinter = {0};
 static EWRAM_DATA struct TextPrinter sTextPrinters[NUM_TEXT_PRINTERS] = {0};
@@ -1132,10 +1134,10 @@ static u16 RenderText(struct TextPrinter *textPrinter)
         case FONT_SHORT:
         case FONT_SHORT_COPY_1:
         case FONT_SHORT_COPY_2:
-        //    DecompressGlyph_Short(currChar, textPrinter->japanese);
-        //    break;
-        case FONT_SHORT_COPY_3:
             DecompressGlyph_Short(currChar, textPrinter->japanese);
+            break;
+        case FONT_SHORT_COPY_3:
+            DecompressGlyph_LatinBold(currChar, textPrinter->japanese);
             break;
         case FONT_NARROW:
             DecompressGlyph_Narrow(currChar, textPrinter->japanese);
@@ -1905,4 +1907,47 @@ static void DecompressGlyph_Bold(u16 glyphId)
     DecompressGlyphTile(glyphs + 0x80, gCurGlyph.gfxBufferBottom);
     gCurGlyph.width = 8;
     gCurGlyph.height = 12;
+}
+
+
+static void DecompressGlyph_LatinBold(u16 glyphId, bool32 isJapanese)
+{
+    const u16 *glyphs;
+
+    if (isJapanese == TRUE)
+    {
+        glyphs = gFontNormalJapaneseGlyphs + (0x100 * (glyphId >> 0x4)) + (0x8 * (glyphId % 0x10));
+        DecompressGlyphTile(glyphs, gCurGlyph.gfxBufferTop);
+        DecompressGlyphTile(glyphs + 0x80, gCurGlyph.gfxBufferBottom);
+        gCurGlyph.width = 8;
+        gCurGlyph.height = 15;
+    }
+    else
+    {
+        glyphs = gFontBoldLatinGlyphs + (0x20 * glyphId);
+        gCurGlyph.width = gFontBoldLatinGlyphWidths[glyphId];
+
+        if (gCurGlyph.width <= 8)
+        {
+            DecompressGlyphTile(glyphs, gCurGlyph.gfxBufferTop);
+            DecompressGlyphTile(glyphs + 0x10, gCurGlyph.gfxBufferBottom);
+        }
+        else
+        {
+            DecompressGlyphTile(glyphs, gCurGlyph.gfxBufferTop);
+            DecompressGlyphTile(glyphs + 0x8, gCurGlyph.gfxBufferTop + 8);
+            DecompressGlyphTile(glyphs + 0x10, gCurGlyph.gfxBufferBottom);
+            DecompressGlyphTile(glyphs + 0x18, gCurGlyph.gfxBufferBottom + 8);
+        }
+
+        gCurGlyph.height = 15;
+    }
+}
+
+static u32 GetGlyphWidth_LatinBold(u16 glyphId, bool32 isJapanese)
+{
+    if (isJapanese == TRUE)
+        return 8;
+    else
+        return gFontBoldLatinGlyphs[glyphId];
 }
