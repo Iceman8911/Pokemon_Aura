@@ -1711,7 +1711,7 @@ u8 TypeEffectiveness(struct ChooseMoveStruct *moveInfo, u8 targetId) //Determine
 static void MoveSelectionDisplayMoveTypeDoubles(u8 targetId) // Deals with the move type text for doubles battles
 {
 	u8 *txtPtr;
-	struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleBufferA[gActiveBattler][4]);
+	struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[gActiveBattler][MAX_BATTLERS_COUNT]);
 
 	txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfaceType);
 	txtPtr[0] = EXT_CTRL_CODE_BEGIN;
@@ -1730,7 +1730,7 @@ static void MoveSelectionDisplayMoveTypeDoubles(u8 targetId) // Deals with the m
 static void MoveSelectionDisplayMoveType(void) // Deals with the move type text for single battles
 {
     u8 *txtPtr;
-    struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleBufferA[gActiveBattler][4]);
+    struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[gActiveBattler][MAX_BATTLERS_COUNT]);
 
     txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfaceType);
     *(txtPtr)++ = EXT_CTRL_CODE_BEGIN;
