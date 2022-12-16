@@ -7,8 +7,9 @@
 
 #define NUM_OF_START_MENUS                ROUND_UP_DIVISION_RESULT(FINAL_START_MENU_OPTION, NUM_OF_START_MENU_OPTIONS)     //For more/less start menus, the macro "multistartmenu" sets this to 2 by default but can be specified
 #define NUM_OF_START_MENU_OPTIONS         8                                                                                //Max number of options per menu. (Best to leave it as 8)
-#define FINAL_START_MENU_OPTION           MENU_ACTION_EXIT                                                                 //Set this to the last startmenu option you want to print out
-#define IS_MULTI_START_MENU_ENABLED       FlagGet(FLAG_IS_MULTI_START_MENU_ENABLED)                                        //The macro "multistartmenu" lets you turn this on or off if you want the multi menu
+#define FINAL_START_MENU_OPTION           MENU_ACTION_DEXNAV                                                                 //Set this to the last startmenu option you want to print out
+//#define IS_MULTI_START_MENU_ENABLED       FlagGet(FLAG_IS_MULTI_START_MENU_ENABLED)                                        //The macro "multistartmenu" lets you turn this on or off if you want the multi menu
+#define IS_MULTI_START_MENU_ENABLED       TRUE
 //#define FILL_STARTMENU_PAGE               TRUE                                                                              //Determines if the pages should be filled if possible or can be loaded with an incomplete amount of options
 
 
