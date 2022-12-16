@@ -231,22 +231,24 @@
 #define EXT_CTRL_CODE_PAUSE_MUSIC            0x17
 #define EXT_CTRL_CODE_RESUME_MUSIC           0x18
 
+// These defines actually point to the positions of colour in text.pal which can be found in graphics/battle_interface
+// It might be different for you so check it before using. Mine are listed below as comments
 #define TEXT_COLOR_TRANSPARENT  0x0
-#define TEXT_COLOR_WHITE        0x1
-#define TEXT_COLOR_DARK_GRAY    0x2
-#define TEXT_COLOR_LIGHT_GRAY   0x3
-#define TEXT_COLOR_RED          0x4
-#define TEXT_COLOR_LIGHT_RED    0x5
-#define TEXT_COLOR_GREEN        0x6
-#define TEXT_COLOR_LIGHT_GREEN  0x7
-#define TEXT_COLOR_BLUE         0x8
-#define TEXT_COLOR_LIGHT_BLUE   0x9
-#define TEXT_DYNAMIC_COLOR_1    0xA // Usually white
-#define TEXT_DYNAMIC_COLOR_2    0xB // Usually white w/ tinge of green
-#define TEXT_DYNAMIC_COLOR_3    0xC // Usually white
-#define TEXT_DYNAMIC_COLOR_4    0xD // Usually aquamarine
-#define TEXT_DYNAMIC_COLOR_5    0xE // Usually blue-green
-#define TEXT_DYNAMIC_COLOR_6    0xF // Usually cerulean
+#define TEXT_COLOR_WHITE        0x1 // Actually Red
+#define TEXT_COLOR_DARK_GRAY    0x2 // I think Ox Blood Red
+#define TEXT_COLOR_LIGHT_GRAY   0x3 // Looks like peach
+#define TEXT_COLOR_RED          0x4 // Looks like light brown
+#define TEXT_COLOR_LIGHT_RED    0x5 // Light green
+#define TEXT_COLOR_GREEN        0x6 // 85% Green 15% White I think
+#define TEXT_COLOR_LIGHT_GREEN  0x7 // Black
+#define TEXT_COLOR_BLUE         0x8 // Black
+#define TEXT_COLOR_LIGHT_BLUE   0x9 // Black
+#define TEXT_DYNAMIC_COLOR_1    0xA // (Green)        Usually white
+#define TEXT_DYNAMIC_COLOR_2    0xB // (50% Grey)     Usually white w/ tinge of green
+#define TEXT_DYNAMIC_COLOR_3    0xC // (75% Grey)     Usually white
+#define TEXT_DYNAMIC_COLOR_4    0xD // (75% Grey)     Usually aquamarine
+#define TEXT_DYNAMIC_COLOR_5    0xE // (White)        Usually blue-green
+#define TEXT_DYNAMIC_COLOR_6    0xF // (25% Greyish)  Usually cerulean
 
 #define PLACEHOLDER_ID_UNKNOWN       0x0
 #define PLACEHOLDER_ID_PLAYER        0x1

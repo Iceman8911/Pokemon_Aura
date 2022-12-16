@@ -1132,6 +1132,8 @@ static u16 RenderText(struct TextPrinter *textPrinter)
         case FONT_SHORT:
         case FONT_SHORT_COPY_1:
         case FONT_SHORT_COPY_2:
+        //    DecompressGlyph_Short(currChar, textPrinter->japanese);
+        //    break;
         case FONT_SHORT_COPY_3:
             DecompressGlyph_Short(currChar, textPrinter->japanese);
             break;
