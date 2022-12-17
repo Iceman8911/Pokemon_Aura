@@ -143,6 +143,9 @@ static void EndDrawPartyStatusSummary(void);
 
 static void ReloadMoveNames(void);
 
+// For split in-battle icons
+static void MoveSelectionDisplaySplitIcon(void);
+
 static void (*const sPlayerBufferCommands[CONTROLLER_CMDS_COUNT])(void) =
 {
     [CONTROLLER_GETMONDATA]               = PlayerHandleGetMonData,
@@ -2005,6 +2008,7 @@ static void MoveSelectionDisplayMoveType(void) // Deals with the move type text 
     BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, 1)); /*Since we are using TypeEffectiveness(),
     it overrides what the previous *(txtPtr)++ was trying to do */
     #endif
+    MoveSelectionDisplaySplitIcon();
 }
 
 void MoveSelectionCreateCursorAt(u8 cursorPosition, u8 baseTileNum)
@@ -3673,4 +3677,20 @@ static void PlayerHandleBattleDebug(void)
 
 static void PlayerCmdEnd(void)
 {
+}
+
+static void MoveSelectionDisplaySplitIcon(void)
+{
+	static const u16 sSplitIcons_Pal[] = INCBIN_U16("graphics/interface/split_icons_battle.gbapal");
+	static const u8 sSplitIcons_Gfx[] = INCBIN_U8("graphics/interface/split_icons_battle.4bpp");
+	struct ChooseMoveStruct *moveInfo;
+	int moveCategory;
+
+	moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[gActiveBattler][MAX_BATTLERS_COUNT]);
+	moveCategory = GetBattleMoveSplit(moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]);
+	LoadPalette(sSplitIcons_Pal, 10 * 0x10, 0x20);
+	BlitBitmapToWindow(B_WIN_DUMMY, sSplitIcons_Gfx + 0x80 * moveCategory, 0, 0, 16, 16);  /* 0x80 * moveCategory is what gets the offset that is needed
+    to get the right section of split_icons_battle.png else it'll just be stuck on the physical picture lol */
+	PutWindowTilemap(B_WIN_DUMMY);
+	CopyWindowToVram(B_WIN_DUMMY, COPYWIN_FULL);
 }
