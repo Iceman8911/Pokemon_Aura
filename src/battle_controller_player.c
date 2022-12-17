@@ -1717,13 +1717,35 @@ static void MoveSelectionDisplayMoveTypeDoubles(u8 targetId) // Deals with the m
 	txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfaceType);
 	txtPtr[0] = EXT_CTRL_CODE_BEGIN;
 	txtPtr++;
-	txtPtr[0] = 6;
+	txtPtr[0] = 6; // EXT_CTRL_CODE_FONT
 	txtPtr++;
-	txtPtr[0] = 1;
-	txtPtr++;
+	#ifndef ONLY_ELEMENT_TEXT_COLOR_CHANGE
+    txtPtr[0] = 1; // FONT_NORMAL
+    txtPtr++;
+    #endif
+    #ifdef ONLY_ELEMENT_TEXT_COLOR_CHANGE
+    txtPtr[0] = gTextOnWindowsInfo_Normal[TypeEffectiveness(moveInfo, 1)].fontId;
+    txtPtr++;
+    txtPtr[0] = EXT_CTRL_CODE_BEGIN;
+    txtPtr++;
+    txtPtr[0] = EXT_CTRL_CODE_COLOR_HIGHLIGHT_SHADOW;
+    txtPtr++;
+    txtPtr[0] = gTextOnWindowsInfo_Normal[TypeEffectiveness(moveInfo, 1)].fgColor;
+    txtPtr++;
+    txtPtr[0] = gTextOnWindowsInfo_Normal[TypeEffectiveness(moveInfo, 1)].bgColor;
+    txtPtr++;
+    txtPtr[0] = gTextOnWindowsInfo_Normal[TypeEffectiveness(moveInfo, 1)].shadowColor;
+    txtPtr++;
+    #endif
 
 	StringCopy(txtPtr, gTypeNames[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type]);
-	BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, targetId));
+	#ifdef ONLY_ELEMENT_TEXT_COLOR_CHANGE
+    BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE); //Prints out the coloured text in single batttles.
+    #endif
+    #ifndef ONLY_ELEMENT_TEXT_COLOR_CHANGE
+    BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, 1)); /*Since we are using TypeEffectiveness(),
+    it overrides what the previous *(txtPtr)++ was trying to do */
+    #endif
 }
 
 
