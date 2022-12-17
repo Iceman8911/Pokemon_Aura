@@ -1,10 +1,24 @@
 # Coloured Battle Text Effectiveness
-This is just the implemented version of [**Coloured Battle Text**](https://www.pokecommunity.com/showpost.php?p=10167016&postcount=83). It shows a different colored text of the element of a move in-battle (By Default: Super Effective - Green, Not Very Effective - Red, Not Effective at all - Faded Gray). It also supports Inverse and Double/Multi Battles.
 
-The colours of the text can be edited in "src/battle_message.c". Just search for the line with the comment "//For coloured battle text" in the struct "sTextOnWindowsInfo_Normal" .
+This is the implemented version of a somewhat outdated pokecommunity post about [**Coloured Type Effectiveness In-Battle Text**](https://www.pokecommunity.com/showpost.php?p=10167016&postcount=83). It shows a different colored text of the element of a move in-battle (By Default: Super Effective - Green, Not Very Effective - Red, Not Effective at all - Faded Gray). It also supports Inverse and Double/Multi Battles.
 
-STAB moves also have a different text too (somewhat smaller and wider than normal) but are currently being worked on.
-Moves like Counter, Mirror Coat, Metal Burst, Seismic Toss, Night Shade, etc can show as super effective, not very effective,etc. I'll fix this later.
+The colours of the text can be edited in "src/battle_message.c". Just search for the line with the comment "//For coloured battle text" in the struct "gTextOnWindowsInfo_Normal" .
+
+
+## Added by me
+1. STAB move compatibility has been implemented.
+2. There are now 2 ways to display text (albeit one looks much cleaner in my opinion).
+
+
+## Important Stuff to Note
+1. If defined, VIBRANT_STAB_TYPE_EFFECTIVENESS displays a more vibrant and bolder color scheme. Else the difference in display between STAB and non-STAB moves is just the font.
+2. If defined, ONLY_ELEMENT_TEXT_COLOR_CHANGE makes just the move's typing gets its colour changed. Else the entire "TYPE/(insert_element)" gets its colour changed.
+
+Both of these defines can be found in "gflib\text.h"
+
+
+## To do
+1. Moves like Counter, Mirror Coat, Metal Burst, Seismic Toss, Night Shade, etc can show as super effective, not very effective,etc. I'll fix this later.
 
 
 

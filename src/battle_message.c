@@ -29,19 +29,7 @@
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
 
-struct BattleWindowText
-{
-    u8 fillValue;
-    u8 fontId;
-    u8 x;
-    u8 y;
-    u8 letterSpacing;
-    u8 lineSpacing;
-    u8 speed;
-    u8 fgColor;
-    u8 bgColor;
-    u8 shadowColor;
-};
+
 
 static void ChooseMoveUsedParticle(u8 *textPtr);
 static void ChooseTypeOfMoveUsedString(u8 *dst);
@@ -1474,7 +1462,7 @@ static const u16 sGrammarMoveUsedTable[] =
 
 static const u8 sDummyWeirdStatusString[] = {EOS, EOS, EOS, EOS, EOS, EOS, EOS, EOS, 0, 0};
 
-static const struct BattleWindowText sTextOnWindowsInfo_Normal[] =
+const struct BattleWindowText gTextOnWindowsInfo_Normal[] =
 {
     [B_WIN_MSG] = {
         .fillValue = PIXEL_FILL(0xF),
@@ -1598,7 +1586,7 @@ static const struct BattleWindowText sTextOnWindowsInfo_Normal[] =
     },
     [B_WIN_MOVE_TYPE] = {
         .fillValue = PIXEL_FILL(0xE),
-        .fontId = FONT_NARROW,
+        .fontId = FONT_NORMAL,
         .x = 0,
         .y = 1,
         .letterSpacing = 0,
@@ -1803,7 +1791,7 @@ static const struct BattleWindowText sTextOnWindowsInfo_Normal[] =
         .shadowColor = TEXT_DYNAMIC_COLOR_2,
     },
     // For stab moves
-    #ifndef VIBRANT_TYPE_EFFECTIVENESS
+    #ifndef VIBRANT_STAB_TYPE_EFFECTIVENESS
     [B_WIN_SUPER_EFFECTIVE_STAB] = { // 27 "type" super-effective with STAB
         .fillValue = PIXEL_FILL(0xE),
         .fontId = FONT_SHORT_COPY_3,
@@ -1853,7 +1841,7 @@ static const struct BattleWindowText sTextOnWindowsInfo_Normal[] =
         .shadowColor = TEXT_DYNAMIC_COLOR_6, //might consider using TEXT_DYNAMIC_COLOR_4
     },
     #endif
-    #ifdef VIBRANT_TYPE_EFFECTIVENESS
+    #ifdef VIBRANT_STAB_TYPE_EFFECTIVENESS
     [B_WIN_SUPER_EFFECTIVE_STAB] = { // 27 "type" super-effective with STAB
         .fillValue = PIXEL_FILL(0xE),
         .fontId = FONT_SHORT_COPY_3,
@@ -2187,7 +2175,7 @@ static const struct BattleWindowText sTextOnWindowsInfo_Arena[] =
 
 static const struct BattleWindowText *const sBattleTextOnWindowsInfo[] =
 {
-    [B_WIN_TYPE_NORMAL] = sTextOnWindowsInfo_Normal,
+    [B_WIN_TYPE_NORMAL] = gTextOnWindowsInfo_Normal,
     [B_WIN_TYPE_ARENA]  = sTextOnWindowsInfo_Arena
 };
 
