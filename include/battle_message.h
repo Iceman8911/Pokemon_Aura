@@ -212,6 +212,20 @@
     textVar[4] = B_BUFF_EOS;                                    \
 }
 
+struct BattleWindowText
+{
+    u8 fillValue;
+    u8 fontId;
+    u8 x;
+    u8 y;
+    u8 letterSpacing;
+    u8 lineSpacing;
+    u8 speed;
+    u8 fgColor;
+    u8 bgColor;
+    u8 shadowColor;
+};
+
 struct BattleMsgData
 {
     u16 currentMove;
@@ -243,6 +257,7 @@ u8 GetCurrentPpToMaxPpState(u8 currentPp, u8 maxPp);
 bool32 ShouldDoTrainerSlide(u32 battlerId, u32 trainerId, u32 which);
 void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst);
 
+extern const struct BattleWindowText gTextOnWindowsInfo_Normal[];
 extern struct BattleMsgData *gBattleMsgDataPtr;
 
 extern const u8 *const gBattleStringsTable[];

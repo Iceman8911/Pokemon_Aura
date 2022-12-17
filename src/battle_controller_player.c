@@ -1805,7 +1805,8 @@ static void MulModifier(u16 *modifier, u16 val)
 	*modifier = UQ_4_12_TO_INT((*modifier * val) + UQ_4_12_ROUND);
 }
 
-u8 TypeEffectiveness(struct ChooseMoveStruct *moveInfo, u8 targetId) //Determines the effectiveness of the selected move
+u8 TypeEffectiveness(struct ChooseMoveStruct *moveInfo, u8 targetId)  /*Determines the effectiveness of the selected move,
+                                                                      and returns the appropriate value of the struct in the struct array gTextOnWindowsInfo_Normal */
 {
     u8 userMoveElement = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type;  // Element of move selected
     u8 userFirstElement = gBattleMons[gActiveBattler].type1;   // The first element of the user's typing
@@ -1938,13 +1939,35 @@ static void MoveSelectionDisplayMoveTypeDoubles(u8 targetId) // Deals with the m
 	txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfaceType);
 	txtPtr[0] = EXT_CTRL_CODE_BEGIN;
 	txtPtr++;
-	txtPtr[0] = 6;
+	txtPtr[0] = 6; // EXT_CTRL_CODE_FONT
 	txtPtr++;
-	txtPtr[0] = 1;
-	txtPtr++;
+	#ifndef ONLY_ELEMENT_TEXT_COLOR_CHANGE
+    txtPtr[0] = 1; // FONT_NORMAL
+    txtPtr++;
+    #endif
+    #ifdef ONLY_ELEMENT_TEXT_COLOR_CHANGE
+    txtPtr[0] = gTextOnWindowsInfo_Normal[TypeEffectiveness(moveInfo, 1)].fontId;
+    txtPtr++;
+    txtPtr[0] = EXT_CTRL_CODE_BEGIN;
+    txtPtr++;
+    txtPtr[0] = EXT_CTRL_CODE_COLOR_HIGHLIGHT_SHADOW;
+    txtPtr++;
+    txtPtr[0] = gTextOnWindowsInfo_Normal[TypeEffectiveness(moveInfo, 1)].fgColor;
+    txtPtr++;
+    txtPtr[0] = gTextOnWindowsInfo_Normal[TypeEffectiveness(moveInfo, 1)].bgColor;
+    txtPtr++;
+    txtPtr[0] = gTextOnWindowsInfo_Normal[TypeEffectiveness(moveInfo, 1)].shadowColor;
+    txtPtr++;
+    #endif
 
 	StringCopy(txtPtr, gTypeNames[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type]);
-	BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, targetId));
+	#ifdef ONLY_ELEMENT_TEXT_COLOR_CHANGE
+    BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE); //Prints out the coloured text in single batttles.
+    #endif
+    #ifndef ONLY_ELEMENT_TEXT_COLOR_CHANGE
+    BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, 1)); /*Since we are using TypeEffectiveness(),
+    it overrides what the previous *(txtPtr)++ was trying to do */
+    #endif
 }
 
 
@@ -1954,13 +1977,34 @@ static void MoveSelectionDisplayMoveType(void) // Deals with the move type text 
     u8 *txtPtr;
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[gActiveBattler][4]);
 
-    txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfaceType);
+    txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfaceType); // Stores the "TYPE/" text into gDisplayedStringBattle
+
+    // Shifts forward in the text and applies the following effects to any extra text
     *(txtPtr)++ = EXT_CTRL_CODE_BEGIN;
     *(txtPtr)++ = EXT_CTRL_CODE_FONT;
+
+    #ifndef ONLY_ELEMENT_TEXT_COLOR_CHANGE
     *(txtPtr)++ = FONT_NORMAL;
+    #endif
+    #ifdef ONLY_ELEMENT_TEXT_COLOR_CHANGE
+    *(txtPtr)++ = gTextOnWindowsInfo_Normal[TypeEffectiveness(moveInfo, 1)].fontId;
+    *(txtPtr)++ = EXT_CTRL_CODE_BEGIN;
+    *(txtPtr)++ = EXT_CTRL_CODE_COLOR_HIGHLIGHT_SHADOW;
+    *(txtPtr)++ = gTextOnWindowsInfo_Normal[TypeEffectiveness(moveInfo, 1)].fgColor;
+    *(txtPtr)++ = gTextOnWindowsInfo_Normal[TypeEffectiveness(moveInfo, 1)].bgColor;
+    *(txtPtr)++ = gTextOnWindowsInfo_Normal[TypeEffectiveness(moveInfo, 1)].shadowColor;
+    #endif
+
 
     StringCopy(txtPtr, gTypeNames[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type]);
-    BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, 1)); //Prints out the coloured text in single batttles
+
+    #ifdef ONLY_ELEMENT_TEXT_COLOR_CHANGE
+    BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE); //Prints out the coloured text in single batttles.
+    #endif
+    #ifndef ONLY_ELEMENT_TEXT_COLOR_CHANGE
+    BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, 1)); /*Since we are using TypeEffectiveness(),
+    it overrides what the previous *(txtPtr)++ was trying to do */
+    #endif
 }
 
 void MoveSelectionCreateCursorAt(u8 cursorPosition, u8 baseTileNum)

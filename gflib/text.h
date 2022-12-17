@@ -5,6 +5,10 @@
 
 #define NUM_TEXT_PRINTERS 32
 
+//#define VIBRANT_STAB_TYPE_EFFECTIVENESS  TRUE   // If defined, more vibrant (albeit wonky looking) coloured text (for STAB) is used in-battle
+#define ONLY_ELEMENT_TEXT_COLOR_CHANGE   TRUE   /* If defined, only the move's typing gets its colour changed
+                                                   in-battle else its the entire "TYPE/<move's typing>" */
+
 // Given as a text speed when all the text should be
 // loaded at once but not copied to vram yet.
 #define TEXT_SKIP_DRAW 0xFF
@@ -15,7 +19,7 @@ enum {
     FONT_SHORT,
     FONT_SHORT_COPY_1,
     FONT_SHORT_COPY_2,
-    FONT_SHORT_COPY_3,
+    FONT_SHORT_COPY_3, // I'm using this as the real FONT_BOLD for english text
     FONT_BRAILLE,
     FONT_NARROW,
     FONT_SMALL_NARROW, // Very similar to FONT_SMALL, some glyphs are narrower
