@@ -14,7 +14,7 @@ The colours of the text can be edited in "src/battle_message.c". Just search for
 1. If defined, VIBRANT_STAB_TYPE_EFFECTIVENESS displays a more vibrant and bolder color scheme. Else the difference in display between STAB and non-STAB moves is just the font.
 2. If defined, ONLY_ELEMENT_TEXT_COLOR_CHANGE makes just the move's typing gets its colour changed. Else the entire "TYPE/(insert_element)" gets its colour changed.
 
-Both of these defines can be found in "gflib\text.h"
+Both of these defines can be found in "gflib\text.h". If you don't like any, comment them out. At the moment, VIBRANT_STAB_TYPE_EFFECTIVENESS is the only one commented out since it still looks somewhat "raw".
 
 
 ## To do

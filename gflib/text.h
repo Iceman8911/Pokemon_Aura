@@ -5,7 +5,7 @@
 
 #define NUM_TEXT_PRINTERS 32
 
-#define VIBRANT_STAB_TYPE_EFFECTIVENESS  TRUE   // If defined, more vibrant (albeit wonky looking) coloured text (for STAB) is used in-battle
+//#define VIBRANT_STAB_TYPE_EFFECTIVENESS  TRUE   // If defined, more vibrant (albeit wonky looking) coloured text (for STAB) is used in-battle
 #define ONLY_ELEMENT_TEXT_COLOR_CHANGE   TRUE   /* If defined, only the move's typing gets its colour changed
                                                    in-battle else its the entire "TYPE/<move's typing>" */
 
