@@ -18,7 +18,7 @@ Both of these defines can be found in "gflib\text.h". If you don't like any, com
 
 
 ## To do
-1. Moves like Counter, Mirror Coat, Metal Burst, Seismic Toss, Night Shade, etc can show as super effective, not very effective,etc. I'll fix this later.
+1. Moves like Counter, Mirror Coat, Metal Burst, Seismic Toss, Night Shade, etc can show as super effective, not very effective,etc. I'll fix this later.  ---- FIXED
 
 
 

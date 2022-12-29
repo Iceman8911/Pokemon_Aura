@@ -1596,7 +1596,23 @@ u8 TypeEffectiveness(struct ChooseMoveStruct *moveInfo, u8 targetId)  /*Determin
 	
 	if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].power == 0) //Move power is 0 hence it is a status move
 		return B_WIN_MOVE_TYPE;
-	else
+    
+    #ifndef RHH_EXPANSION
+	else if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].effect == EFFECT_LEVEL_DAMAGE || gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].effect == EFFECT_COUNTER || gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].effect == EFFECT_MIRROR_COAT) 
+    // Move is counter, mirror coat, seismic toss, night shade, etc . Because they are not affected by type effectiveness modifiers or STAB
+    {
+        return B_WIN_MOVE_TYPE;
+    }
+    #endif
+
+    #ifdef RHH_EXPANSION
+    else if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].effect == EFFECT_LEVEL_DAMAGE || gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].effect == EFFECT_COUNTER || gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].effect == EFFECT_MIRROR_COAT || gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].effect == EFFECT_METAL_BURST) 
+    // Also accounts Metal_Burst. Not sure of Comeuppance
+    {
+        return B_WIN_MOVE_TYPE;
+    }
+    #endif
+    else
 	{
 		u16 mod = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type][gBattleMons[targetId].type1];
 
