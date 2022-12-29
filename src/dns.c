@@ -127,7 +127,7 @@ const struct DnsPalExceptions gOWPalExceptions =
         DNS_PAL_EXCEPTION,  //13
         DNS_PAL_EXCEPTION,  //14
         DNS_PAL_EXCEPTION,  //15
-        DNS_PAL_ACTIVE,     //16
+        DNS_PAL_ACTIVE,     //PALETTE_SIZE
         DNS_PAL_ACTIVE,     //17
         DNS_PAL_ACTIVE,     //18
         DNS_PAL_ACTIVE,     //19
@@ -161,13 +161,13 @@ const struct DnsPalExceptions gCombatPalExceptions =
         DNS_PAL_ACTIVE,     //7
         DNS_PAL_ACTIVE,     //8
         DNS_PAL_ACTIVE,     //9
-        DNS_PAL_ACTIVE,     //10
+        DNS_PAL_EXCEPTION,  //10           Tweaked For My Battle PSS icons
         DNS_PAL_ACTIVE,     //11
         DNS_PAL_ACTIVE,     //12
         DNS_PAL_ACTIVE,     //13
         DNS_PAL_ACTIVE,     //14
         DNS_PAL_ACTIVE,     //15
-        DNS_PAL_EXCEPTION,  //16
+        DNS_PAL_EXCEPTION,  //PALETTE_SIZE
         DNS_PAL_EXCEPTION,  //17
         DNS_PAL_EXCEPTION,  //18
         DNS_PAL_EXCEPTION,  //19
@@ -200,7 +200,7 @@ const struct DnsPalExceptions gCombatPalExceptions =
  * This means that you shouln't use too high values for *
  * RGB channels in the filters. Otherwie, the channels  *
  * will easily reach 0, giving you plain colours.       *
- * I Suggest to not use channels with a value above 16. *
+ * I Suggest to not use channels with a value above PALETTE_SIZE. *
  *                                                      *
  * Feel free to experiment with your own filters.       *
  * ******************************************************
@@ -224,8 +224,8 @@ const u16 gMidnightFilters[] =
     RGB2(15, 15, 8),    //EF21
     RGB2(15, 15, 9),    //EF25
     RGB2(15, 15, 9),    //EF25
-    RGB2(16, 16, 9),    //1026
-    RGB2(16, 16, 10),   //102A
+    RGB2(PALETTE_SIZE, PALETTE_SIZE, 9),    //1026
+    RGB2(PALETTE_SIZE, PALETTE_SIZE, 10),   //102A
 };
 
 /* Filters used at dawn. (30 filters).          *
@@ -249,7 +249,7 @@ const u16 gDawnFilters[] =
     RGB2(4, 4, 11),     //13
     RGB2(3, 3, 11),     //14
     RGB2(2, 2, 11),     //15
-    RGB2(1, 1, 11),     //16
+    RGB2(1, 1, 11),     //PALETTE_SIZE
     RGB2(0, 0, 11),     //17
     RGB2(0, 0, 10),     //18
     RGB2(0, 0, 9),      //19
@@ -413,12 +413,12 @@ void DnsApplyFilters()
     palExceptionFlags = gMain.inBattle ? gCombatPalExceptions : gOWPalExceptions;   //Init pal exception slots
 
     for (palNum = 0; palNum < 32; palNum++)
-        if (palExceptionFlags.pal[palNum] && (palNum < 15 || !IsSpritePaletteTagDnsException(palNum - 16)))
-            for (colNum = 0; colNum < 16; colNum++) //Transfer filtered palette to buffer
-                sDnsPaletteDmaBuffer[palNum * 16 + colNum] = DnsApplyProportionalFilterToColour(gPlttBufferFaded[palNum * 16 + colNum], rgbFilter);
+        if (palExceptionFlags.pal[palNum] && (palNum < 15 || !IsSpritePaletteTagDnsException(palNum - PALETTE_SIZE)))
+            for (colNum = 0; colNum < PALETTE_SIZE; colNum++) //Transfer filtered palette to buffer
+                sDnsPaletteDmaBuffer[palNum * PALETTE_SIZE + colNum] = DnsApplyProportionalFilterToColour(gPlttBufferFaded[palNum * PALETTE_SIZE + colNum], rgbFilter);
         else
-            for (colNum = 0; colNum < 16; colNum++)  //Transfers palette to buffer without filtering
-                sDnsPaletteDmaBuffer[palNum * 16 + colNum] = gPlttBufferFaded[palNum * 16 + colNum];      
+            for (colNum = 0; colNum < PALETTE_SIZE; colNum++)  //Transfers palette to buffer without filtering
+                sDnsPaletteDmaBuffer[palNum * PALETTE_SIZE + colNum] = gPlttBufferFaded[palNum * PALETTE_SIZE + colNum];      
 
     if (!IsMapDNSException() && IsLightActive() && !gMain.inBattle)
         DoDnsLightning();
@@ -487,10 +487,11 @@ static u16 GetDNSFilter()
 static void DoDnsLightning()
 {
     u8 i;
+    u8 numberOfLightingColours = sizeof(gLightingColours)/sizeof(gLightingColours[0]);
 
-    for (i = 0; i < sizeof(gLightingColours)/sizeof(gLightingColours[0]); i++)
+    for (i = 0; i < numberOfLightingColours; i++)
     {
-        u16 colourSlot = gLightingColours[i].paletteNum * 16 + gLightingColours[i].colourNum;
+        u16 colourSlot = gLightingColours[i].paletteNum * PALETTE_SIZE + gLightingColours[i].colourNum;
         
         if (gPaletteFade.active || gPlttBufferUnfaded[colourSlot] != 0x0000)
         {
@@ -525,7 +526,9 @@ u8 GetDnsTimeLapse(u8 hour)
 static bool8 IsMapDNSException()
 {
     u8 i;
-    for (i=0; i < sizeof(gDnsMapExceptions)/sizeof(gDnsMapExceptions[0]); i++)
+    u8 numberOfDNSExceptions = sizeof(gDnsMapExceptions)/sizeof(gDnsMapExceptions[0]);
+
+    for (i = 0; i < numberOfDNSExceptions; i++)
         if (gMapHeader.mapType == gDnsMapExceptions[i])
             return TRUE;
     return FALSE;
@@ -535,8 +538,9 @@ static bool8 IsMapDNSException()
 static bool8 IsSpritePaletteTagDnsException(u8 palNum)
 {
     u8 i;
+    u8 numberOfPaletteTagExceptions = sizeof(gPaletteTagExceptions)/sizeof(gPaletteTagExceptions[0]);
 
-    for (i = 0; i < sizeof(gPaletteTagExceptions)/sizeof(gPaletteTagExceptions[0]); i++)
+    for (i = 0; i < numberOfPaletteTagExceptions; i++)
         if (GetSpritePaletteTagByPaletteNum(palNum) == gPaletteTagExceptions[i])
             return TRUE;
     return FALSE;
@@ -545,7 +549,7 @@ static bool8 IsSpritePaletteTagDnsException(u8 palNum)
 //Returns true if overworld is running
 static bool8 IsOverworld()
 {
-    if (gMain.callback2 == CB2_Overworld || gMain.callback2 ==CB2_OverworldBasic)
+    if (gMain.callback2 == CB2_Overworld || gMain.callback2 == CB2_OverworldBasic)
         return TRUE;
     else
         return FALSE;

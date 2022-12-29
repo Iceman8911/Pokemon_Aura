@@ -4,6 +4,8 @@
 #define DNS_PAL_EXCEPTION   FALSE
 #define DNS_PAL_ACTIVE      TRUE
 
+#define PALETTE_SIZE        16
+
 struct LightingColour {
     u8 paletteNum;
     u8 colourNum;

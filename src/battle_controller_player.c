@@ -3689,8 +3689,8 @@ static void MoveSelectionDisplaySplitIcon(void)
 	moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[gActiveBattler][MAX_BATTLERS_COUNT]);
 	moveCategory = GetBattleMoveSplit(moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]);
 	LoadPalette(sSplitIcons_Pal, 10 * 0x10, 0x20);
-	BlitBitmapToWindow(B_WIN_DUMMY, sSplitIcons_Gfx + 0x80 * moveCategory, 0, 0, 16, 16);  /* 0x80 * moveCategory is what gets the offset that is needed
+	BlitBitmapToWindow(B_WIN_PSS_BATTLE_ICONS, sSplitIcons_Gfx + 0x80 * moveCategory, 0, 0, 16, 16);  /* 0x80 * moveCategory is what gets the offset that is needed
     to get the right section of split_icons_battle.png else it'll just be stuck on the physical picture lol */
-	PutWindowTilemap(B_WIN_DUMMY);
-	CopyWindowToVram(B_WIN_DUMMY, COPYWIN_FULL);
+	PutWindowTilemap(B_WIN_PSS_BATTLE_ICONS);
+	CopyWindowToVram(B_WIN_PSS_BATTLE_ICONS, COPYWIN_FULL);
 }

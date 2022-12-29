@@ -237,7 +237,7 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
         .paletteNum = 5,
         .baseBlock = 0x0290,
     },
-    [B_WIN_DUMMY] = {
+    [B_WIN_PSS_BATTLE_ICONS] = {
         .bg = 0,
         .tilemapLeft = 21,
         .tilemapTop = 55,
@@ -524,7 +524,7 @@ static const struct WindowTemplate sBattleArenaWindowTemplates[] =
         .paletteNum = 5,
         .baseBlock = 0x0290,
     },
-    [B_WIN_DUMMY] = {
+    [B_WIN_PSS_BATTLE_ICONS] = {
         .bg = 0,
         .tilemapLeft = 21,
         .tilemapTop = 55,
