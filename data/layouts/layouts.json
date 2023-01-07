@@ -4424,8 +4424,8 @@
     {
       "id": "LAYOUT_ANCONNA_WOODS",
       "name": "AnconnaWoods_Layout",
-      "width": 40,
-      "height": 40,
+      "width": 52,
+      "height": 52,
       "primary_tileset": "gTileset_Testing",
       "secondary_tileset": "gTileset_Anconna_Woods",
       "border_filepath": "data/layouts/AnconnaWoods/border.bin",
@@ -4474,8 +4474,8 @@
     {
       "id": "LAYOUT_ANCONNA_WOODS_1",
       "name": "AnconnaWoods_1_Layout",
-      "width": 40,
-      "height": 20,
+      "width": 45,
+      "height": 23,
       "primary_tileset": "gTileset_Testing",
       "secondary_tileset": "gTileset_Anconna_Woods",
       "border_filepath": "data/layouts/AnconnaWoods_1/border.bin",

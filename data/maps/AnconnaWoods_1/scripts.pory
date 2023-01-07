@@ -60,7 +60,7 @@ script AnconnaWoods_1_Not_Found_Riolu {
 }
 
 movement NotFoundRiolu {
-    walk_up
+    walk_left
 }
 
 script AnconnaWoods_1_NotFoundMushrooms {
@@ -182,11 +182,9 @@ movement PlayerFindsRiolu {
 }
 
 movement WalkToRiolu {
+    walk_right * 5
     walk_down
-    walk_right * 4
-    walk_down
-    walk_right
-    step_end
+    face_right
 }
 
 movement RioluReacts {
@@ -218,6 +216,7 @@ movement RioluReacts {
 
 movement DodgeRiolu {
     walk_fast_up
+    walk_in_place_down
 }
 
 movement RioluRamsIntoYou {

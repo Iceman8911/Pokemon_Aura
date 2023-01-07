@@ -252,8 +252,6 @@ LittlerootTown_EventScript_FatMan::
 
 LittlerootTown_EventScript_Boy::
 	msgbox LittlerootTown_Text_BirchSpendsDaysInLab, MSGBOX_NPC
-	@ I only used this for testing, feel free to remove
-	@ setflag FLAG_IS_MULTI_START_MENU_ENABLED
 	end
 
 LittlerootTown_EventScript_Twin::

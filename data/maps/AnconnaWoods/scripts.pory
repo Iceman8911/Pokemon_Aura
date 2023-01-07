@@ -36,20 +36,6 @@ script Anconna_Woods_RareCandy {
 #	}
 #}
 
-script AnconnaWoods_PlayerWantsItemBall {
-	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: What could possibly be in that item ball?\pBut it probably isn't safe to get it."))
-	closemessage
-	applymovement(OBJ_EVENT_ID_PLAYER, PlayerStillWantsItemBall)
-	waitmovement(0)
-}
-
-script AnconnaWoods_PlayerWantsItemBallButCanNotJump {
-	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Even if I wanted that item ball, I couldn't jump from here."))
-	closemessage
-	applymovement(OBJ_EVENT_ID_PLAYER, PlayerStillWantsItemBall)
-	waitmovement(0)
-}
-
 script AnconnaWoods_Not_Found_Riolu {
     lockall
     #delay(30)
@@ -89,7 +75,7 @@ script AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu {
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerHearsSuspiciousPeople)
 	waitmovement(0)
 	//OBJ_EVENT_ID_PLAYER)
-	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: That should be them.\p......\pSo one of them is missing....\pAnd they don't seem to be moving forward..."))
+	msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: That should be them.\p......\pSounds like one of them is missing?....\pAnd they don't seem to be moving forward..."))
 	//destroy_speech_bubble
 	waitmessage
 	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Rioluuuuuuuuuuuu!"))
@@ -249,10 +235,6 @@ movement PlayerThinksAboutFirstLiumEncounter {
 	face_down
 }
 
-movement PlayerStillWantsItemBall {
-	walk_up
-}
-
 movement PlayerStillWantsBushSweet {
 	walk_in_place_right
 }
@@ -260,22 +242,22 @@ movement PlayerStillWantsBushSweet {
 script AnconnaWoods_BugCatcher1 {
 	////2)
 	trainerbattle_single(BUG_CATCHER_1, format("{COLOR BLUE}I just started raising Bug Pokemon.\pCan you help me train them?"), format("That loss doesn't count.\pThey're still grubs after all."))
-	msgbox(format("{COLOR BLUE}Almost Every Bug Type starts off as a larvae."), 2)
+	msgbox(format("{COLOR BLUE}Almost every bug type starts off as a larvae."), 2)
 	////destroy_speech_bubble
 	closemessage
 }
 
 script AnconnaWoods_BugCatcher2 {
 	////3)
-	trainerbattle_single(BUG_CATCHER_2, format("{COLOR BLUE}Bug Types grow pretty fast, but until they've reached their power spike.\pThey're pretty.....\pWeak."), format("I knew this would happen."))
-	msgbox(format("{COLOR BLUE}Don't ask me why I have a full team of cocoons.\pIts.....\pPrivate."))
+	trainerbattle_single(BUG_CATCHER_2, format("{COLOR BLUE}Bug types grow pretty fast, but until they've reached their power spike.\pThey're pretty.....\pweak..."), format("I knew this would happen."))
+	msgbox(format("{COLOR BLUE}Don't ask me why I have a full team of cocoons.\pIts.....\pprivate..."))
 	////destroy_speech_bubble
 	closemessage
 }
 
 script AnconnaWoods_BugCatcher3 {
 	////4)
-	trainerbattle_single(BUG_CATCHER_3, format("{COLOR BLUE}Bugs are Great.\pThey grow fast and become powerful quickly.\pLemme show you a taste of what I mean."), format("But.....\pBugs are supposed to dominate early-game."))
+	trainerbattle_single(BUG_CATCHER_3, format("{COLOR BLUE}Bugs are great.\pThey grow fast and become powerful quickly.\pLemme show you a taste of what I mean."), format("But.....\pBugs are supposed to dominate at early levels."))
 	msgbox(format("{COLOR BLUE}Maybe I should've evolved all my bugs.\pI'm sure I would've won then."))
 	////destroy_speech_bubble
 	closemessage

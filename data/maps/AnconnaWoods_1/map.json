@@ -16,8 +16,8 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 34,
-      "y": 7,
+      "x": 40,
+      "y": 9,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -30,8 +30,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GRETA",
-      "x": 35,
-      "y": 17,
+      "x": 38,
+      "y": 21,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_INVISIBLE",
       "movement_range_x": 0,
@@ -44,8 +44,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKEMON_447",
-      "x": 37,
-      "y": 12,
+      "x": 40,
+      "y": 14,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
       "movement_range_x": 0,
@@ -58,8 +58,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 2,
-      "y": 9,
+      "x": 16,
+      "y": 17,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -69,33 +69,53 @@
       "script": "AnconnaWoods_1_SpecialPokeBallForRiolu",
       "flag": "FLAG_TEMP_9",
       "in_connection": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
+      "x": 23,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
     }
   ],
   "warp_events": [
     {
       "x": 37,
-      "y": 1,
+      "y": 3,
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_WOODS",
       "dest_warp_id": "2"
     },
     {
-      "x": 38,
-      "y": 1,
+      "x": 39,
+      "y": 3,
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_WOODS",
       "dest_warp_id": "3"
     },
     {
-      "x": 37,
-      "y": 17,
+      "x": 40,
+      "y": 21,
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_WOODS",
       "dest_warp_id": "4"
     },
     {
-      "x": 38,
-      "y": 17,
+      "x": 41,
+      "y": 21,
+      "elevation": 0,
+      "dest_map": "MAP_ANCONNA_WOODS",
+      "dest_warp_id": "5"
+    },
+    {
+      "x": 42,
+      "y": 21,
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_WOODS",
       "dest_warp_id": "5"
@@ -104,8 +124,8 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 31,
-      "y": 10,
+      "x": 32,
+      "y": 13,
       "elevation": 0,
       "var": "ANCONNA_WOODS_FOUND_RIOLU",
       "var_value": "0",
@@ -113,8 +133,8 @@
     },
     {
       "type": "trigger",
-      "x": 39,
-      "y": 2,
+      "x": 42,
+      "y": 4,
       "elevation": 0,
       "var": "ANCONNA_WOODS_FOUND_RIOLU",
       "var_value": "0",
@@ -122,8 +142,8 @@
     },
     {
       "type": "trigger",
-      "x": 37,
-      "y": 17,
+      "x": 40,
+      "y": 21,
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
@@ -131,8 +151,17 @@
     },
     {
       "type": "trigger",
-      "x": 38,
-      "y": 17,
+      "x": 41,
+      "y": 21,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "AnconnaWoods_1_NotFoundMushrooms"
+    },
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 21,
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
@@ -140,6 +169,25 @@
     }
   ],
   "bg_events": [
-
+    {
+      "type": "hidden_item",
+      "x": 3,
+      "y": 10,
+      "elevation": 0,
+      "item": "ITEM_TINY_MUSHROOM",
+      "flag": "FLAG_TEMP_1",
+      "quantity": 1,
+      "underfoot": false
+    },
+    {
+      "type": "hidden_item",
+      "x": 5,
+      "y": 21,
+      "elevation": 0,
+      "item": "ITEM_TINY_MUSHROOM",
+      "flag": "FLAG_TEMP_1",
+      "quantity": 1,
+      "underfoot": false
+    }
   ]
 }

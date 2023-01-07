@@ -37,22 +37,6 @@ Anconna_Woods_RareCandy::
 	return
 
 
-AnconnaWoods_PlayerWantsItemBall::
-	msgbox AnconnaWoods_PlayerWantsItemBall_Text_0
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, PlayerStillWantsItemBall
-	waitmovement 0
-	return
-
-
-AnconnaWoods_PlayerWantsItemBallButCanNotJump::
-	msgbox AnconnaWoods_PlayerWantsItemBallButCanNotJump_Text_0
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, PlayerStillWantsItemBall
-	waitmovement 0
-	return
-
-
 AnconnaWoods_Not_Found_Riolu::
 	lockall
 	msgbox AnconnaWoods_Not_Found_Riolu_Text_0
@@ -256,10 +240,6 @@ PlayerThinksAboutFirstLiumEncounter:
 	face_down
 	step_end
 
-PlayerStillWantsItemBall:
-	walk_up
-	step_end
-
 PlayerStillWantsBushSweet:
 	walk_in_place_right
 	step_end
@@ -298,15 +278,6 @@ Anconna_Woods_RareCandy_Text_1:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: But still,\p"
 	.string "It wouldn't hurt to have it....$"
 
-AnconnaWoods_PlayerWantsItemBall_Text_0:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: What could possibly be in\n"
-	.string "that item ball?\p"
-	.string "But it probably isn't safe to get it.$"
-
-AnconnaWoods_PlayerWantsItemBallButCanNotJump_Text_0:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Even if I wanted that item\n"
-	.string "ball, I couldn't jump from here.$"
-
 AnconnaWoods_Not_Found_Riolu_Text_0:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: I can't go into bushes yet.\n"
 	.string "Wild Pokémon may jump out at me.\p"
@@ -339,7 +310,7 @@ AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_2:
 AnconnaWoods_HeardYellsFromMysteriousPeopleAndRiolu_Text_3:
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: That should be them.\p"
 	.string "......\p"
-	.string "So one of them is missing....\p"
+	.string "Sounds like one of them is missing?....\p"
 	.string "And they don't seem to be moving\n"
 	.string "forward...$"
 
