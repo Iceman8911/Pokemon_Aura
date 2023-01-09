@@ -85,7 +85,7 @@ static const u8 sScriptConditionTable[6][3] =
     1, 0, 1, // !=
 };
 
-static u8 * const sScriptStringVars[] =
+static u8 *const sScriptStringVars[] =
 {
     gStringVar1,
     gStringVar2,
@@ -142,7 +142,7 @@ bool8 ScrCmd_callnative(struct ScriptContext *ctx)
 
 bool8 ScrCmd_waitstate(struct ScriptContext *ctx)
 {
-    ScriptContext1_Stop();
+    ScriptContext_Stop();
     return TRUE;
 }
 
@@ -606,7 +606,7 @@ bool8 ScrCmd_incrementgamestat(struct ScriptContext *ctx)
 bool8 ScrCmd_animateflash(struct ScriptContext *ctx)
 {
     AnimateFlash(ScriptReadByte(ctx));
-    ScriptContext1_Stop();
+    ScriptContext_Stop();
     return TRUE;
 }
 
@@ -1153,10 +1153,7 @@ bool8 ScrCmd_resetobjectsubpriority(struct ScriptContext *ctx)
 bool8 ScrCmd_faceplayer(struct ScriptContext *ctx)
 {
     if (gObjectEvents[gSelectedObjectEvent].active)
-    {
-        ObjectEventFaceOppositeDirection(&gObjectEvents[gSelectedObjectEvent],
-          GetPlayerFacingDirection());
-    }
+        ObjectEventFaceOppositeDirection(&gObjectEvents[gSelectedObjectEvent], GetPlayerFacingDirection());
     return FALSE;
 }
 
@@ -1306,7 +1303,7 @@ bool8 ScrCmd_messageinstant(struct ScriptContext *ctx)
     if (msg == NULL)
         msg = (const u8 *)ctx->data[0];
     LoadMessageBoxAndBorderGfx();
-    DrawDialogueFrame(0, 1);
+    DrawDialogueFrame(0, TRUE);
     AddTextPrinterParameterized(0, FONT_NORMAL, msg, 0, 1, 0, NULL);
     return FALSE;
 }
@@ -1345,7 +1342,7 @@ bool8 ScrCmd_yesnobox(struct ScriptContext *ctx)
 
     if (ScriptMenu_YesNo(left, top) == TRUE)
     {
-        ScriptContext1_Stop();
+        ScriptContext_Stop();
         return TRUE;
     }
     else
@@ -1363,7 +1360,7 @@ bool8 ScrCmd_multichoice(struct ScriptContext *ctx)
 
     if (ScriptMenu_Multichoice(left, top, multichoiceId, ignoreBPress) == TRUE)
     {
-        ScriptContext1_Stop();
+        ScriptContext_Stop();
         return TRUE;
     }
     else
@@ -1382,7 +1379,7 @@ bool8 ScrCmd_multichoicedefault(struct ScriptContext *ctx)
 
     if (ScriptMenu_MultichoiceWithDefault(left, top, multichoiceId, ignoreBPress, defaultChoice) == TRUE)
     {
-        ScriptContext1_Stop();
+        ScriptContext_Stop();
         return TRUE;
     }
     else
@@ -1412,7 +1409,7 @@ bool8 ScrCmd_multichoicegrid(struct ScriptContext *ctx)
 
     if (ScriptMenu_MultichoiceGrid(left, top, multichoiceId, ignoreBPress, numColumns) == TRUE)
     {
-        ScriptContext1_Stop();
+        ScriptContext_Stop();
         return TRUE;
     }
     else
@@ -1441,7 +1438,7 @@ bool8 ScrCmd_drawboxtext(struct ScriptContext *ctx)
 
     /*if (Multichoice(left, top, multichoiceId, ignoreBPress) == TRUE)
     {
-        ScriptContext1_Stop();
+        ScriptContext_Stop();
         return TRUE;
     }*/
     return FALSE;
@@ -1478,7 +1475,7 @@ bool8 ScrCmd_showcontestpainting(struct ScriptContext *ctx)
         SetContestWinnerForPainting(contestWinnerId);
 
     ShowContestPainting();
-    ScriptContext1_Stop();
+    ScriptContext_Stop();
     return TRUE;
 }
 
@@ -1528,7 +1525,7 @@ bool8 ScrCmd_braillemessage(struct ScriptContext *ctx)
     winTemplate = CreateWindowTemplate(0, xWindow, yWindow + 1, width, height, 0xF, 0x1);
     sBrailleWindowId = AddWindow(&winTemplate);
     LoadUserWindowBorderGfx(sBrailleWindowId, 0x214, 0xE0);
-    DrawStdWindowFrame(sBrailleWindowId, 0);
+    DrawStdWindowFrame(sBrailleWindowId, FALSE);
     PutWindowTilemap(sBrailleWindowId);
     FillWindowPixelBuffer(sBrailleWindowId, PIXEL_FILL(1));
     AddTextPrinterParameterized(sBrailleWindowId, FONT_BRAILLE, gStringVar4, xText, yText, TEXT_SKIP_DRAW, NULL);
@@ -1885,7 +1882,7 @@ bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
         gIsScriptedWildDouble = FALSE;
     }
     else
-    { 
+    {
         CreateScriptedDoubleWildMon(species, level, item, species2, level2, item2);
         gIsScriptedWildDouble = TRUE;
     }
@@ -1895,16 +1892,12 @@ bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
 
 bool8 ScrCmd_dowildbattle(struct ScriptContext *ctx)
 {
-    if(gIsScriptedWildDouble == FALSE)
-    {
+    if (gIsScriptedWildDouble == FALSE)
         BattleSetup_StartScriptedWildBattle();
-        ScriptContext1_Stop();
-    }
     else
-    {
         BattleSetup_StartScriptedDoubleWildBattle();
-        ScriptContext1_Stop();
-    }
+
+    ScriptContext_Stop();
 
     return TRUE;
 }
@@ -1914,7 +1907,7 @@ bool8 ScrCmd_pokemart(struct ScriptContext *ctx)
     const void *ptr = (void *)ScriptReadWord(ctx);
 
     CreatePokemartMenu(ptr);
-    ScriptContext1_Stop();
+    ScriptContext_Stop();
     return TRUE;
 }
 
@@ -1923,7 +1916,7 @@ bool8 ScrCmd_pokemartdecoration(struct ScriptContext *ctx)
     const void *ptr = (void *)ScriptReadWord(ctx);
 
     CreateDecorationShop1Menu(ptr);
-    ScriptContext1_Stop();
+    ScriptContext_Stop();
     return TRUE;
 }
 
@@ -1933,7 +1926,7 @@ bool8 ScrCmd_pokemartdecoration2(struct ScriptContext *ctx)
     const void *ptr = (void *)ScriptReadWord(ctx);
 
     CreateDecorationShop2Menu(ptr);
-    ScriptContext1_Stop();
+    ScriptContext_Stop();
     return TRUE;
 }
 
@@ -1942,7 +1935,7 @@ bool8 ScrCmd_playslotmachine(struct ScriptContext *ctx)
     u8 machineId = VarGet(ScriptReadHalfword(ctx));
 
     PlaySlotMachine(machineId, CB2_ReturnToFieldContinueScriptPlayMapMusic);
-    ScriptContext1_Stop();
+    ScriptContext_Stop();
     return TRUE;
 }
 
@@ -1970,7 +1963,7 @@ bool8 ScrCmd_getpokenewsactive(struct ScriptContext *ctx)
 bool8 ScrCmd_choosecontestmon(struct ScriptContext *ctx)
 {
     ChooseContestMon();
-    ScriptContext1_Stop();
+    ScriptContext_Stop();
     return TRUE;
 }
 
@@ -1978,21 +1971,21 @@ bool8 ScrCmd_choosecontestmon(struct ScriptContext *ctx)
 bool8 ScrCmd_startcontest(struct ScriptContext *ctx)
 {
     StartContest();
-    ScriptContext1_Stop();
+    ScriptContext_Stop();
     return TRUE;
 }
 
 bool8 ScrCmd_showcontestresults(struct ScriptContext *ctx)
 {
     ShowContestResults();
-    ScriptContext1_Stop();
+    ScriptContext_Stop();
     return TRUE;
 }
 
 bool8 ScrCmd_contestlinktransfer(struct ScriptContext *ctx)
 {
     ContestLinkTransfer(gSpecialVar_ContestCategory);
-    ScriptContext1_Stop();
+    ScriptContext_Stop();
     return TRUE;
 }
 
@@ -2061,15 +2054,15 @@ bool8 ScrCmd_setmetatile(struct ScriptContext *ctx)
 {
     u16 x = VarGet(ScriptReadHalfword(ctx));
     u16 y = VarGet(ScriptReadHalfword(ctx));
-    u16 tileId = VarGet(ScriptReadHalfword(ctx));
-    u16 isImpassable = VarGet(ScriptReadHalfword(ctx));
+    u16 metatileId = VarGet(ScriptReadHalfword(ctx));
+    bool16 isImpassable = VarGet(ScriptReadHalfword(ctx));
 
     x += MAP_OFFSET;
     y += MAP_OFFSET;
     if (!isImpassable)
-        MapGridSetMetatileIdAt(x, y, tileId);
+        MapGridSetMetatileIdAt(x, y, metatileId);
     else
-        MapGridSetMetatileIdAt(x, y, tileId | MAPGRID_COLLISION_MASK);
+        MapGridSetMetatileIdAt(x, y, metatileId | MAPGRID_COLLISION_MASK);
     return FALSE;
 }
 
@@ -2147,7 +2140,7 @@ bool8 ScrCmd_addelevmenuitem(struct ScriptContext *ctx)
 bool8 ScrCmd_showelevmenu(struct ScriptContext *ctx)
 {
     /*ScriptShowElevatorMenu();
-    ScriptContext1_Stop();
+    ScriptContext_Stop();
     return TRUE;*/
     return FALSE;
 }
@@ -2252,7 +2245,7 @@ bool8 ScrCmd_checkmoneventlegal(struct ScriptContext *ctx)
 
 bool8 ScrCmd_trywondercardscript(struct ScriptContext *ctx)
 {
-    const u8* script = GetSavedRamScriptIfValid();
+    const u8 *script = GetSavedRamScriptIfValid();
 
     if (script)
     {
@@ -2291,7 +2284,7 @@ bool8 ScrCmd_setmonmetlocation(struct ScriptContext *ctx)
 
 static void CloseBrailleWindow(void)
 {
-    ClearStdWindowAndFrame(sBrailleWindowId, 1);
+    ClearStdWindowAndFrame(sBrailleWindowId, TRUE);
     RemoveWindow(sBrailleWindowId);
 }
 

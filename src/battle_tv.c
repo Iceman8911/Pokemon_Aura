@@ -130,7 +130,7 @@ static const u16 sPoints_MoveEffect[NUM_BATTLE_MOVE_EFFECTS] =
     [EFFECT_DRAGON_RAGE] = 2,
     [EFFECT_TRAP] = 4,
 //    [EFFECT_HIGH_CRITICAL] = 1,
-    [EFFECT_DOUBLE_HIT] = 1,
+//    [EFFECT_DOUBLE_HIT] = 1,
     [EFFECT_RECOIL_IF_MISS] = 1,
     [EFFECT_MIST] = 5,
     [EFFECT_FOCUS_ENERGY] = 1,
@@ -163,7 +163,7 @@ static const u16 sPoints_MoveEffect[NUM_BATTLE_MOVE_EFFECTS] =
     [EFFECT_EVASION_DOWN_HIT] = 1,
 //    [EFFECT_SKY_ATTACK] = 4,
     [EFFECT_CONFUSE_HIT] = 1,
-    [EFFECT_TWINEEDLE] = 1,
+//    [EFFECT_TWINEEDLE] = 1,
     [EFFECT_VITAL_THROW] = 1,
     [EFFECT_SUBSTITUTE] = 4,
     [EFFECT_RECHARGE] = 5,
@@ -1435,7 +1435,7 @@ static void TrySetBattleSeminarShow(void)
         return;
     else if (gBattleTypeFlags & (BATTLE_TYPE_PALACE | BATTLE_TYPE_PIKE | BATTLE_TYPE_PYRAMID))
         return;
-    else if (gBattleMoves[gBattleMons[gBattlerAttacker].moves[gMoveSelectionCursor[gBattlerAttacker]]].power == 0)
+    else if (IS_MOVE_STATUS(gBattleMons[gBattlerAttacker].moves[gMoveSelectionCursor[gBattlerAttacker]]))
         return;
 
     i = 0;
@@ -1496,7 +1496,7 @@ static void TrySetBattleSeminarShow(void)
 
 static bool8 ShouldCalculateDamage(u16 moveId, s32 *dmg, u16 *powerOverride)
 {
-    if (gBattleMoves[moveId].power == 0)
+    if (IS_MOVE_STATUS(moveId))
     {
         *dmg = 0;
         return FALSE;

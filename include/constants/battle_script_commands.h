@@ -63,15 +63,15 @@
 #define BS_EFFECT_BATTLER           2
 #define BS_FAINTED                  3
 #define BS_ATTACKER_WITH_PARTNER    4 // for Cmd_updatestatusicon
-#define BS_FAINTED_LINK_MULTIPLE_1  5
-#define BS_FAINTED_LINK_MULTIPLE_2  6
+#define BS_FAINTED_LINK_MULTIPLE_1  5 // for openpartyscreen
+#define BS_FAINTED_LINK_MULTIPLE_2  6 // for openpartyscreen
 #define BS_BATTLER_0                7
 #define BS_ATTACKER_SIDE            8 // for Cmd_jumpifability
 #define BS_TARGET_SIDE              9 // for Cmd_jumpifability
 #define BS_SCRIPTING                10
 #define BS_PLAYER1                  11
 #define BS_OPPONENT1                12
-#define BS_PLAYER2                  13
+#define BS_PLAYER2                  13 // for Cmd_updatestatusicon
 #define BS_OPPONENT2                14
 #define BS_ABILITY_BATTLER          15
 
@@ -242,6 +242,10 @@
 #define VARIOUS_SET_BEAK_BLAST                      151
 #define VARIOUS_SWAP_SIDE_STATUSES                  152
 #define VARIOUS_SET_Z_EFFECT                        153
+#define VARIOUS_TRY_SYMBIOSIS                       154
+#define VARIOUS_CAN_TELEPORT                        155
+#define VARIOUS_GET_BATTLER_SIDE                    156
+#define VARIOUS_CHECK_PARENTAL_BOND_COUNTER         157
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0
@@ -258,9 +262,9 @@
 #define SWITCH_IGNORE_ESCAPE_PREVENTION   (1 << 7)
 
 // Cmd_statbuffchange
-#define STAT_BUFF_ALLOW_PTR                 (1 << 0)   // If set, allow use of jumpptr. Set in every use of statbuffchange
-#define STAT_BUFF_NOT_PROTECT_AFFECTED      (1 << 5)
-#define STAT_BUFF_UPDATE_MOVE_EFFECT        (1 << 6)
+#define STAT_CHANGE_ALLOW_PTR               (1 << 0)   // If set, allow use of jumpptr. Set in every use of statbuffchange
+#define STAT_CHANGE_NOT_PROTECT_AFFECTED    (1 << 5)
+#define STAT_CHANGE_UPDATE_MOVE_EFFECT      (1 << 6)
 
 // stat change flags for Cmd_playstatchangeanimation
 #define STAT_CHANGE_NEGATIVE             (1 << 0)
@@ -281,38 +285,43 @@
 #define PARTY_SCREEN_OPTIONAL (1 << 7) // Flag for first argument to openpartyscreen
 
 // cases for Cmd_moveend
-#define MOVEEND_PROTECT_LIKE_EFFECT               0
-#define MOVEEND_RAGE                              1
-#define MOVEEND_DEFROST                           2
+#define MOVEEND_SUM_DAMAGE                        0
+#define MOVEEND_PROTECT_LIKE_EFFECT               1
+#define MOVEEND_RAGE                              2
 #define MOVEEND_SYNCHRONIZE_TARGET                3
 #define MOVEEND_ABILITIES                         4
 #define MOVEEND_ABILITIES_ATTACKER                5
 #define MOVEEND_STATUS_IMMUNITY_ABILITIES         6
 #define MOVEEND_SYNCHRONIZE_ATTACKER              7
 #define MOVEEND_CHOICE_MOVE                       8
-#define MOVEEND_CHANGED_ITEMS                     9
-#define MOVEEND_ATTACKER_INVISIBLE                10
-#define MOVEEND_ATTACKER_VISIBLE                  11
-#define MOVEEND_TARGET_VISIBLE                    12
-#define MOVEEND_ITEM_EFFECTS_TARGET               13
-#define MOVEEND_MOVE_EFFECTS2                     14
-#define MOVEEND_ITEM_EFFECTS_ALL                  15
-#define MOVEEND_KINGSROCK                         16    // These item effects will occur each strike of a multi-hit move
-#define MOVEEND_SUBSTITUTE                        17
-#define MOVEEND_SKY_DROP_CONFUSE                  18
-#define MOVEEND_UPDATE_LAST_MOVES                 19
-#define MOVEEND_MIRROR_MOVE                       20
-#define MOVEEND_NEXT_TARGET                       21    // Everything up until here is handled for each strike of a multi-hit move
-#define MOVEEND_MAGICIAN                          22    // Occurs after final multi-hit strike, and after other items/abilities would activate
-#define MOVEEND_EJECT_BUTTON                      23
-#define MOVEEND_RED_CARD                          24
-#define MOVEEND_EJECT_PACK                        25
-#define MOVEEND_LIFEORB_SHELLBELL                 26    // Includes shell bell, throat spray, etc
-#define MOVEEND_PICKPOCKET                        27
-#define MOVEEND_DANCER                            28
-#define MOVEEND_EMERGENCY_EXIT                    29
-#define MOVEEND_CLEAR_BITS                        30
-#define MOVEEND_COUNT                             31
+#define MOVEEND_ATTACKER_INVISIBLE                9
+#define MOVEEND_ATTACKER_VISIBLE                  10
+#define MOVEEND_TARGET_VISIBLE                    11
+#define MOVEEND_ITEM_EFFECTS_TARGET               12
+#define MOVEEND_ITEM_EFFECTS_ALL                  13
+#define MOVEEND_KINGSROCK                         14    // These item effects will occur each strike of a multi-hit move
+#define MOVEEND_SUBSTITUTE                        15
+#define MOVEEND_SKY_DROP_CONFUSE                  16
+#define MOVEEND_UPDATE_LAST_MOVES                 17
+#define MOVEEND_MIRROR_MOVE                       18
+#define MOVEEND_NEXT_TARGET                       19   // Everything up until here is handled for each strike of a multi-hit move
+#define MOVEEND_MULTIHIT_MOVE                     20
+#define MOVEEND_DEFROST                           21
+#define MOVEEND_MOVE_EFFECTS2                     22
+#define MOVEEND_RECOIL                            23
+#define MOVEEND_MAGICIAN                          24    // Occurs after final multi-hit strike, and after other items/abilities would activate
+#define MOVEEND_EJECT_BUTTON                      25
+#define MOVEEND_RED_CARD                          26
+#define MOVEEND_EJECT_PACK                        27
+#define MOVEEND_LIFEORB_SHELLBELL                 28    // Includes shell bell, throat spray, etc
+#define MOVEEND_CHANGED_ITEMS                     29
+#define MOVEEND_PICKPOCKET                        30
+#define MOVEEND_DANCER                            31
+#define MOVEEND_EMERGENCY_EXIT                    32
+#define MOVEEND_WEATHER_FORM                      33
+#define MOVEEND_SYMBIOSIS                         34
+#define MOVEEND_CLEAR_BITS                        35
+#define MOVEEND_COUNT                             36
 
 // switch cases
 #define B_SWITCH_NORMAL     0

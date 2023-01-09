@@ -931,6 +931,10 @@
 #define ITEMS_COUNT 758
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
+// A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations
+// Its icon is defined at ITEMS_COUNT as the "return to field" arrow
+#define ITEM_LIST_END 0xFFFF
+
 // Range of berries given out by various NPCS
 #define FIRST_BERRY_MASTER_BERRY      ITEM_POMEG_BERRY
 #define LAST_BERRY_MASTER_BERRY       ITEM_NOMEL_BERRY
@@ -972,6 +976,13 @@
 // Secondary IDs for bikes
 #define MACH_BIKE 0
 #define ACRO_BIKE 1
+
+// Item parameters for EXP Candies
+#define EXP_100   1
+#define EXP_800   2
+#define EXP_3000  3
+#define EXP_10000 4
+#define EXP_30000 5
 
 // Item type IDs (used to determine the exit callback)
 #define ITEM_USE_MAIL        0
