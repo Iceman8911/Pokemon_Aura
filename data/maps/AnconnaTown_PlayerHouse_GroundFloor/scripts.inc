@@ -37,20 +37,20 @@ EnterHouseWithRioluForFirstTime::
 	delay 60
 	applymovement 1, MumRunsToYouAtHome
 	waitmovement 0
-	msgbox EnterHouseWithRioluForFirstTime_Text_0
+	msgbox EnterHouseWithRioluForFirstTime_Text_0, , EnterHouseWithRioluForFirstTime_Text_1
 	waitmessage
-	msgbox EnterHouseWithRioluForFirstTime_Text_1
+	msgbox EnterHouseWithRioluForFirstTime_Text_2
 	waitmessage
 	applymovement OBJ_EVENT_ID_PLAYER, WalkInPlaceDown
 	waitmovement 0
-	msgbox EnterHouseWithRioluForFirstTime_Text_2
+	msgbox EnterHouseWithRioluForFirstTime_Text_3, , EnterHouseWithRioluForFirstTime_Text_4
 	waitmessage
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, PlayerRunsToFather
 	waitmovement 0
-	msgbox EnterHouseWithRioluForFirstTime_Text_3
+	msgbox EnterHouseWithRioluForFirstTime_Text_5
 	waitmessage
-	msgbox EnterHouseWithRioluForFirstTime_Text_4
+	msgbox EnterHouseWithRioluForFirstTime_Text_6
 	playfanfare MUS_OBTAIN_ITEM
 	waitfanfare
 	removeitem ITEM_BIG_MUSHROOM, 1
@@ -58,7 +58,7 @@ EnterHouseWithRioluForFirstTime::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, PlayerRunsUpToTheTopOfTable
 	waitmovement 0
-	msgbox EnterHouseWithRioluForFirstTime_Text_5
+	msgbox EnterHouseWithRioluForFirstTime_Text_7
 	waitmessage
 	closemessage
 	applymovement 2, FaceUp
@@ -66,11 +66,11 @@ EnterHouseWithRioluForFirstTime::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, WalkInPlaceDown
 	waitmovement 0
-	msgbox EnterHouseWithRioluForFirstTime_Text_6
+	msgbox EnterHouseWithRioluForFirstTime_Text_8
 	waitmessage
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, FaceRight
-	msgbox EnterHouseWithRioluForFirstTime_Text_7
+	msgbox EnterHouseWithRioluForFirstTime_Text_9
 	waitmessage
 	closemessage
 	fadescreen FADE_TO_WHITE
@@ -79,16 +79,16 @@ EnterHouseWithRioluForFirstTime::
 	fadescreen FADE_FROM_WHITE
 	applymovement 4, RioluSearches
 	waitmovement 0
-	msgbox EnterHouseWithRioluForFirstTime_Text_8
+	msgbox EnterHouseWithRioluForFirstTime_Text_10
 	playmoncry SPECIES_RIOLU, CRY_MODE_NORMAL
 	waitmoncry
 	delay 30
 	applymovement OBJ_EVENT_ID_PLAYER, FaceDown
 	waitmovement 0
-	msgbox EnterHouseWithRioluForFirstTime_Text_9
+	msgbox EnterHouseWithRioluForFirstTime_Text_11
 	applymovement 2, Surprised
 	waitmovement 0
-	msgbox EnterHouseWithRioluForFirstTime_Text_10
+	msgbox EnterHouseWithRioluForFirstTime_Text_12, , EnterHouseWithRioluForFirstTime_Text_13
 	waitmessage
 	closemessage
 	applymovement 2, FaceRight
@@ -98,52 +98,53 @@ EnterHouseWithRioluForFirstTime::
 	applymovement 2, FaceUp
 	applymovement 1, FaceUp
 	waitmovement 0
-	msgbox EnterHouseWithRioluForFirstTime_Text_11
+	msgbox EnterHouseWithRioluForFirstTime_Text_14
 	waitmessage
 	delay 30
 	applymovement 1, MomExclaims
 	waitmovement 0
 	delay 25
-	msgbox EnterHouseWithRioluForFirstTime_Text_12
+	msgbox EnterHouseWithRioluForFirstTime_Text_15, , EnterHouseWithRioluForFirstTime_Text_16
 	waitmessage
 	closemessage
 	applymovement 1, WalkInPlaceUp
 	waitmovement 0
-	msgbox EnterHouseWithRioluForFirstTime_Text_13
+	msgbox EnterHouseWithRioluForFirstTime_Text_17
 	waitmessage
 	applymovement OBJ_EVENT_ID_PLAYER, WalkInPlaceDown
 	waitmovement 0
-	msgbox EnterHouseWithRioluForFirstTime_Text_14
+	msgbox EnterHouseWithRioluForFirstTime_Text_18, , EnterHouseWithRioluForFirstTime_Text_4
+	msgbox EnterHouseWithRioluForFirstTime_Text_19, , EnterHouseWithRioluForFirstTime_Text_16
 	waitmessage
 	applymovement OBJ_EVENT_ID_PLAYER, LookRightThenSpeakDown
 	waitmovement 0
-	msgbox EnterHouseWithRioluForFirstTime_Text_15
+	msgbox EnterHouseWithRioluForFirstTime_Text_20, , EnterHouseWithRioluForFirstTime_Text_4
 	waitmessage
 	applymovement 1, WalkInPlaceUp
 	waitmovement 0
-	msgbox EnterHouseWithRioluForFirstTime_Text_16
+	msgbox EnterHouseWithRioluForFirstTime_Text_21, , EnterHouseWithRioluForFirstTime_Text_16
 	waitmessage
 	applymovement 1, WalkInPlaceUp
 	waitmovement 0
-	msgbox EnterHouseWithRioluForFirstTime_Text_17
+	msgbox EnterHouseWithRioluForFirstTime_Text_22
 	waitmessage
 	closemessage
 	delay 50
 	applymovement 1, FaceDown
 	waitmovement 0
-	msgbox EnterHouseWithRioluForFirstTime_Text_18
+	msgbox EnterHouseWithRioluForFirstTime_Text_23
 	waitmessage
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, WalkInPlaceDown
 	waitmovement 0
-	msgbox EnterHouseWithRioluForFirstTime_Text_19
+	msgbox EnterHouseWithRioluForFirstTime_Text_24, , EnterHouseWithRioluForFirstTime_Text_4
 	waitmessage
 	closemessage
 	applymovement 1, WalkInPlaceUp
 	waitmovement 0
-	msgbox EnterHouseWithRioluForFirstTime_Text_20
+	msgbox EnterHouseWithRioluForFirstTime_Text_25, , EnterHouseWithRioluForFirstTime_Text_16
 	waitmessage
-	msgbox EnterHouseWithRioluForFirstTime_Text_21
+	msgbox EnterHouseWithRioluForFirstTime_Text_26
 	addvar GAME_PROGRESS, 1
 	call ShowRioluInPlayerHouse
 	releaseall
@@ -157,7 +158,7 @@ PlayerCameDownstairsAfterWakingUp::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, FaceDown
 	waitmovement 0
-	msgbox PlayerCameDownstairsAfterWakingUp_Text_0
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_0, , EnterHouseWithRioluForFirstTime_Text_16
 	waitmessage
 	bufferdynamicmulti PlayerCameDownstairsAfterWakingUp_Text_1, PlayerCameDownstairsAfterWakingUp_Text_2
 	multichoice 25, 7, MULTI_DYNAMIC_2, 1
@@ -171,40 +172,45 @@ PlayerCameDownstairsAfterWakingUp_1:
 	applymovement OBJ_EVENT_ID_PLAYER, YouWalkToTheSofa
 	applymovement OBJ_EVENT_ID_CAMERA, YouWalkToTheSofa
 	waitmovement 0
-	msgbox PlayerCameDownstairsAfterWakingUp_Text_5
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_5, , EnterHouseWithRioluForFirstTime_Text_16
 	waitmessage
 	closemessage
 	applymovement 2, DadWalksToYou
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, FaceRight
 	waitmovement 0
-	msgbox PlayerCameDownstairsAfterWakingUp_Text_6
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_6, , EnterHouseWithRioluForFirstTime_Text_13
 	waitmessage
+	closemessage
 	msgbox PlayerCameDownstairsAfterWakingUp_Text_7
 	setflag FLAG_SYS_B_DASH
 	setflag FLAG_RECEIVED_RUNNING_SHOES
 	applymovement OBJ_EVENT_ID_PLAYER, FaceLeft
 	waitmovement 0
-	msgbox PlayerCameDownstairsAfterWakingUp_Text_8
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_8, , EnterHouseWithRioluForFirstTime_Text_16
 	waitmessage
-	msgbox PlayerCameDownstairsAfterWakingUp_Text_9
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_9, , EnterHouseWithRioluForFirstTime_Text_4
 	waitmessage
+	applymovement OBJ_EVENT_ID_PLAYER, Surprised
+	waitmovement 0
 	msgbox PlayerCameDownstairsAfterWakingUp_Text_10
+	waitmessage
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_11, , EnterHouseWithRioluForFirstTime_Text_16
 	waitmessage
 	applymovement 2, Surprised
 	waitmovement 0
-	msgbox PlayerCameDownstairsAfterWakingUp_Text_11
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_12, , EnterHouseWithRioluForFirstTime_Text_13
 	waitmessage
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, FaceRight
 	waitmovement 0
-	msgbox PlayerCameDownstairsAfterWakingUp_Text_12
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_13, , EnterHouseWithRioluForFirstTime_Text_13
 	closemessage
 	applymovement 1, MumReturnsToSofa
 	applymovement 2, DadReturnsToSofa
 	waitmovement 0
 	delay 90
-	msgbox PlayerCameDownstairsAfterWakingUp_Text_13
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_14, , EnterHouseWithRioluForFirstTime_Text_4
 	waitmessage
 	special RemoveCameraObject
 	addvar GAME_PROGRESS, 1
@@ -212,11 +218,11 @@ PlayerCameDownstairsAfterWakingUp_1:
 	return
 
 PlayerCameDownstairsAfterWakingUp_3:
-	msgbox PlayerCameDownstairsAfterWakingUp_Text_3
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_3, , EnterHouseWithRioluForFirstTime_Text_16
 	goto PlayerCameDownstairsAfterWakingUp_1
 
 PlayerCameDownstairsAfterWakingUp_4:
-	msgbox PlayerCameDownstairsAfterWakingUp_Text_4
+	msgbox PlayerCameDownstairsAfterWakingUp_Text_4, , EnterHouseWithRioluForFirstTime_Text_16
 	goto PlayerCameDownstairsAfterWakingUp_1
 
 
@@ -264,26 +270,26 @@ AnconnaTown_PlayerHouse_Mum_1:
 	return
 
 AnconnaTown_PlayerHouse_Mum_2:
-	msgbox AnconnaTown_PlayerHouse_Mum_Text_0, 2
+	msgbox AnconnaTown_PlayerHouse_Mum_Text_0, 2, EnterHouseWithRioluForFirstTime_Text_16
 	waitmessage
-	msgbox AnconnaTown_PlayerHouse_Mum_Text_1, 2
+	msgbox AnconnaTown_PlayerHouse_Mum_Text_1, 2, EnterHouseWithRioluForFirstTime_Text_4
 	waitmessage
-	msgbox AnconnaTown_PlayerHouse_Mum_Text_2, 2
+	msgbox AnconnaTown_PlayerHouse_Mum_Text_2, 2, EnterHouseWithRioluForFirstTime_Text_16
 	waitmessage
 	closemessage
 	goto AnconnaTown_PlayerHouse_Mum_1
 
 AnconnaTown_PlayerHouse_Mum_3:
-	msgbox AnconnaTown_PlayerHouse_Mum_Text_3, 2
+	msgbox AnconnaTown_PlayerHouse_Mum_Text_3, 2, EnterHouseWithRioluForFirstTime_Text_16
 	waitmessage
 	goto AnconnaTown_PlayerHouse_Mum_1
 
 AnconnaTown_PlayerHouse_Mum_8:
-	msgbox AnconnaTown_PlayerHouse_Mum_Text_4, 2
+	msgbox AnconnaTown_PlayerHouse_Mum_Text_4, 2, EnterHouseWithRioluForFirstTime_Text_16
 	goto AnconnaTown_PlayerHouse_Mum_1
 
 AnconnaTown_PlayerHouse_Mum_9:
-	msgbox AnconnaTown_PlayerHouse_Mum_Text_5, 2
+	msgbox AnconnaTown_PlayerHouse_Mum_Text_5, 2, EnterHouseWithRioluForFirstTime_Text_16
 	goto AnconnaTown_PlayerHouse_Mum_1
 
 
@@ -301,36 +307,36 @@ AnconnaTown_PlayerHouse_Dad_6:
 	return
 
 AnconnaTown_PlayerHouse_Dad_1:
-	msgbox AnconnaTown_PlayerHouse_Dad_Text_0, 2
+	msgbox AnconnaTown_PlayerHouse_Dad_Text_0, 2, EnterHouseWithRioluForFirstTime_Text_13
 	waitmessage
-	msgbox AnconnaTown_PlayerHouse_Mum_Text_1, 2
+	msgbox AnconnaTown_PlayerHouse_Mum_Text_1, 2, EnterHouseWithRioluForFirstTime_Text_4
 	waitmessage
-	msgbox AnconnaTown_PlayerHouse_Dad_Text_1, 2
+	msgbox AnconnaTown_PlayerHouse_Dad_Text_1, 2, EnterHouseWithRioluForFirstTime_Text_13
 	waitmessage
 	closemessage
 	return
 
 AnconnaTown_PlayerHouse_Dad_2:
-	msgbox AnconnaTown_PlayerHouse_Dad_Text_2, 2
+	msgbox AnconnaTown_PlayerHouse_Dad_Text_2, 2, EnterHouseWithRioluForFirstTime_Text_13
 	waitmessage
 	closemessage
 	return
 
 AnconnaTown_PlayerHouse_Dad_8:
-	msgbox AnconnaTown_PlayerHouse_Dad_Text_3, 2
+	msgbox AnconnaTown_PlayerHouse_Dad_Text_3, 2, EnterHouseWithRioluForFirstTime_Text_13
 	applymovement 2, FaceLeft
 	delay 45
 	msgbox AnconnaTown_PlayerHouse_Dad_Text_4
 	goto AnconnaTown_PlayerHouse_Dad_6
 
 AnconnaTown_PlayerHouse_Dad_9:
-	msgbox AnconnaTown_PlayerHouse_Dad_Text_5, 2
+	msgbox AnconnaTown_PlayerHouse_Dad_Text_5, 2, EnterHouseWithRioluForFirstTime_Text_13
 	goto AnconnaTown_PlayerHouse_Dad_6
 
 
 AnconnaTown_PlayerHouse_Blissey::
 	lockall
-	msgbox AnconnaTown_PlayerHouse_Blissey_Text_0, 2
+	msgbox AnconnaTown_PlayerHouse_Blissey_Text_0, 2, EnterHouseWithRioluForFirstTime_Text_4
 	waitmessage
 	msgbox AnconnaTown_PlayerHouse_Blissey_Text_1, 2
 	goto_if_set FLAG_SYS_POKEMON_GET, AnconnaTown_PlayerHouse_Blissey_2
@@ -732,7 +738,7 @@ MomExclaims:
 	jump_in_place_up
 	step_end
 
-Happy:
+Happy::
 	emote_heart
 	step_end
 
@@ -749,27 +755,33 @@ LookRightThenSpeakDown:
 	step_end
 
 EnterHouseWithRioluForFirstTime_Text_0:
-	.string "Mum: {COLOR RED}Waaah!!!$"
+	.string "{COLOR RED}Waaah!!!$"
 
 EnterHouseWithRioluForFirstTime_Text_1:
+	.string "Mum$"
+
+EnterHouseWithRioluForFirstTime_Text_2:
 	.string "{COLOR RED}I heard awful loud noises coming from\n"
 	.string "that forest and I was just about to\l"
 	.string "rush there to get you.\p"
 	.string "What happened in there?$"
 
-EnterHouseWithRioluForFirstTime_Text_2:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: About that.....$"
-
 EnterHouseWithRioluForFirstTime_Text_3:
-	.string "Here are the mushrooms you requested...$"
+	.string "About that.....$"
 
 EnterHouseWithRioluForFirstTime_Text_4:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY} gave the mushrooms!$"
+	.string "{COLOR GREEN}{PLAYER}$"
 
 EnterHouseWithRioluForFirstTime_Text_5:
-	.string "Erhem...$"
+	.string "Here are the mushrooms you requested...$"
 
 EnterHouseWithRioluForFirstTime_Text_6:
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY} gave the mushrooms!$"
+
+EnterHouseWithRioluForFirstTime_Text_7:
+	.string "Erhem...$"
+
+EnterHouseWithRioluForFirstTime_Text_8:
 	.string "Just outside our house, I overheard a\n"
 	.string "group of {COLOR GREEN}three{COLOR DARK_GRAY} strange looking people\l"
 	.string "talking about getting a particular\l"
@@ -782,81 +794,89 @@ EnterHouseWithRioluForFirstTime_Text_6:
 	.string "mushrooms, I found....\p"
 	.string "Well, its better to show it.$"
 
-EnterHouseWithRioluForFirstTime_Text_7:
+EnterHouseWithRioluForFirstTime_Text_9:
 	.string "You can come out now, Riolu.$"
 
-EnterHouseWithRioluForFirstTime_Text_8:
+EnterHouseWithRioluForFirstTime_Text_10:
 	.string "{COLOR GREEN}Riiolu?$"
 
-EnterHouseWithRioluForFirstTime_Text_9:
+EnterHouseWithRioluForFirstTime_Text_11:
 	.string "I found it lost at the edge of the\n"
 	.string "forest and one of those people tried\l"
 	.string "to take it from me so we battled.$"
 
-EnterHouseWithRioluForFirstTime_Text_10:
-	.string "Dad:{COLOR BLUE} Wait, could it be...?!$"
-
-EnterHouseWithRioluForFirstTime_Text_11:
-	.string "{COLOR BLUE}Nah, it couldn't be....$"
-
 EnterHouseWithRioluForFirstTime_Text_12:
-	.string "Mom:{COLOR RED} It was VERY risky trying to go\n"
-	.string "after them. What were you thinking?$"
+	.string "{COLOR BLUE} Wait, could it be...?!$"
 
 EnterHouseWithRioluForFirstTime_Text_13:
+	.string "Dad$"
+
+EnterHouseWithRioluForFirstTime_Text_14:
+	.string "{COLOR BLUE}Nah, it couldn't be....$"
+
+EnterHouseWithRioluForFirstTime_Text_15:
+	.string "{COLOR RED} It was VERY risky trying to go after\n"
+	.string "them. What were you thinking?$"
+
+EnterHouseWithRioluForFirstTime_Text_16:
+	.string "Mom$"
+
+EnterHouseWithRioluForFirstTime_Text_17:
 	.string "{COLOR RED}However, you managed to save this\n"
 	.string "Pokemon so at least it wasn't all in\l"
 	.string "vain...\p"
 	.string "....\p"
 	.string "Do you remember that I was a scientist?$"
 
-EnterHouseWithRioluForFirstTime_Text_14:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Yeah, but how does that\n"
-	.string "relate to this. Shouldn't we call the\l"
-	.string "police or something?\p"
-	.string "Mom:{COLOR RED} We will inform the authorities but\n"
-	.string "in the meantime, your Father and I\l"
-	.string "think it would be best if you meet up\l"
-	.string "with an old colleague of mine in {COLOR GREEN}Scandi\l"
-	.string "City{COLOR RED}. The fact that you now have a\l"
-	.string "Riolu who trusts you and some\l"
-	.string "proficiency in battling means that you\l"
-	.string "should have little difficulty getting\l"
-	.string "there.$"
+EnterHouseWithRioluForFirstTime_Text_18:
+	.string "Yeah, but how does that relate to this.\n"
+	.string "Shouldn't we call the police or\l"
+	.string "something?$"
 
-EnterHouseWithRioluForFirstTime_Text_15:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Are you sure that Riolu\n"
-	.string "trusts me? It still looks a bit\l"
-	.string "uncomfortable here.$"
+EnterHouseWithRioluForFirstTime_Text_19:
+	.string "{COLOR RED} We will inform the authorities but in\n"
+	.string "the meantime, your Father and I think\l"
+	.string "it would be best if you meet up with an\l"
+	.string "old colleague of mine in {COLOR GREEN}Scandi City{COLOR RED}.\l"
+	.string "The fact that you now have a Riolu who\l"
+	.string "trusts you and some proficiency in\l"
+	.string "battling means that you should have\l"
+	.string "little difficulty getting there.$"
 
-EnterHouseWithRioluForFirstTime_Text_16:
-	.string "Mom:{COLOR RED} I'm positive because Riolu are\n"
-	.string "normally very distrusting Pokemon but\l"
-	.string "this one followed you willingly.\p"
+EnterHouseWithRioluForFirstTime_Text_20:
+	.string "Are you sure that Riolu trusts me? It\n"
+	.string "still looks a bit uncomfortable here.$"
+
+EnterHouseWithRioluForFirstTime_Text_21:
+	.string "{COLOR RED} I'm positive. After all, Riolu are\n"
+	.string "normally very distrusting but this one\l"
+	.string "followed you willingly.\p"
 	.string "Well, I'd better call her now. Her name's\n"
 	.string "{COLOR GREEN}Professor Flora{COLOR RED} by the way.$"
 
-EnterHouseWithRioluForFirstTime_Text_17:
-	.string "{COLOR RED}I doubt you'd remember her since you\n"
-	.string "were very young the first time you met\l"
-	.string "so you might need to ask around.$"
+EnterHouseWithRioluForFirstTime_Text_22:
+	.string "{COLOR RED}Although, I doubt you'd remember her\n"
+	.string "well since you were very young the last\l"
+	.string "time you met so you might need to ask\l"
+	.string "around.$"
 
-EnterHouseWithRioluForFirstTime_Text_18:
+EnterHouseWithRioluForFirstTime_Text_23:
 	.string "{COLOR RED}Sniff..sniff...\n"
 	.string "My little boy's leaving me alone now.$"
 
-EnterHouseWithRioluForFirstTime_Text_19:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Y'know that I'm not a kid\n"
-	.string "anymore and I'll be back soon.$"
+EnterHouseWithRioluForFirstTime_Text_24:
+	.string "Y'know that I'm not a kid anymore and\n"
+	.string "I'll be back soon.$"
 
-EnterHouseWithRioluForFirstTime_Text_20:
-	.string "{COLOR RED}I know but we planned on giving you a\n"
-	.string "starter Pokemon today so you won't be\l"
-	.string "too lonely but seeing you leaving for\l"
-	.string "now with this Riolu....it makes me tear\l"
-	.string "up.$"
+EnterHouseWithRioluForFirstTime_Text_25:
+	.string "{COLOR RED}I know I know, but although we know you\n"
+	.string "don't like battles, we wanted to give\l"
+	.string "you a starter Pokemon today so you\l"
+	.string "won't be too lonely but seeing you\l"
+	.string "leaving for now with this Riolu....it\l"
+	.string "makes me tear up.$"
 
-EnterHouseWithRioluForFirstTime_Text_21:
+EnterHouseWithRioluForFirstTime_Text_26:
 	.string "{COLOR RED}Well,\p"
 	.string "The earlier you go, the earlier you come\n"
 	.string "back. Don't explain to anyone outside\l"
@@ -864,7 +884,7 @@ EnterHouseWithRioluForFirstTime_Text_21:
 	.string "Goodluck {COLOR GREEN}{PLAYER}{COLOR RED}!$"
 
 PlayerCameDownstairsAfterWakingUp_Text_0:
-	.string "Mum: {COLOR RED}Good Morning, {COLOR GREEN}{PLAYER}{COLOR RED}.\n"
+	.string "{COLOR RED}Good Morning, {COLOR GREEN}{PLAYER}{COLOR RED}.\n"
 	.string "How was your night?$"
 
 PlayerCameDownstairsAfterWakingUp_Text_1:
@@ -874,19 +894,17 @@ PlayerCameDownstairsAfterWakingUp_Text_2:
 	.string "Not the best...$"
 
 PlayerCameDownstairsAfterWakingUp_Text_3:
-	.string "Mum: {COLOR RED}Then I'm sure this will cheer you\n"
-	.string "up!$"
+	.string "{COLOR RED}Then I'm sure this will cheer you up!$"
 
 PlayerCameDownstairsAfterWakingUp_Text_4:
-	.string "Mum: {COLOR RED}Well, I'm sure this will cheer you\n"
-	.string "up!$"
+	.string "{COLOR RED}Well, I'm sure this will cheer you up!$"
 
 PlayerCameDownstairsAfterWakingUp_Text_5:
-	.string "Mum: {COLOR RED}Your Father and I have something\n"
+	.string "{COLOR RED}Your Father and I have something\n"
 	.string "special to give you!$"
 
 PlayerCameDownstairsAfterWakingUp_Text_6:
-	.string "Dad: {COLOR BLUE}That's right!.\n"
+	.string "{COLOR BLUE}That's right!.\n"
 	.string "Here you go.$"
 
 PlayerCameDownstairsAfterWakingUp_Text_7:
@@ -894,32 +912,35 @@ PlayerCameDownstairsAfterWakingUp_Text_7:
 	.string "Shoes!$"
 
 PlayerCameDownstairsAfterWakingUp_Text_8:
-	.string "Mum: {COLOR RED}This will make all your work faster\n"
-	.string "but please don't use run around in the\l"
-	.string "house. It took a lot of work to make it\l"
-	.string "this clean.$"
+	.string "{COLOR RED}This should speed up all your work but\n"
+	.string "please don't use it in the house. It\l"
+	.string "took a lot of effort to make it this\l"
+	.string "clean, y'know.$"
 
 PlayerCameDownstairsAfterWakingUp_Text_9:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: .....\p"
-	.string "So this is just a way of telling me to do\n"
-	.string "more work.$"
+	.string "Than-$"
 
 PlayerCameDownstairsAfterWakingUp_Text_10:
-	.string "Mum: {COLOR RED}:D\p"
+	.string ".....\p"
+	.string "So this is just a way of saying you want\n"
+	.string "me to do something..$"
+
+PlayerCameDownstairsAfterWakingUp_Text_11:
+	.string "{COLOR RED}:D\p"
 	.string ".....\p"
 	.string "{FONT_SMALL}Maybe....$"
 
-PlayerCameDownstairsAfterWakingUp_Text_11:
-	.string "Dad: {COLOR BLUE}Um, I remember now!$"
-
 PlayerCameDownstairsAfterWakingUp_Text_12:
+	.string "{COLOR BLUE}Um, I remember now!$"
+
+PlayerCameDownstairsAfterWakingUp_Text_13:
 	.string "{COLOR BLUE}Your Mother and I need you to fetch a\n"
 	.string "{COLOR GREEN}Big Mushroom{COLOR BLUE} and two {COLOR GREEN}Tiny Mushrooms{COLOR BLUE}\l"
 	.string "from {COLOR GREEN}Anconna Woods{COLOR BLUE}. Remember to watch\l"
 	.string "out for the fallen logs there too!$"
 
-PlayerCameDownstairsAfterWakingUp_Text_13:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Sigh...\p"
+PlayerCameDownstairsAfterWakingUp_Text_14:
+	.string "Sigh...\p"
 	.string "I guess I'd better get going then.$"
 
 Riolu_Text_0:
@@ -942,61 +963,58 @@ Riolu_Text_5:
 	.string "you around)$"
 
 AnconnaTown_PlayerHouse_Mum_Text_0:
-	.string "Mum: {COLOR RED}Don't forget to bring the\n"
-	.string "{COLOR GREEN}mushrooms{COLOR RED}.$"
+	.string "{COLOR RED}Don't forget to bring the {COLOR GREEN}mushrooms{COLOR RED}.$"
 
 AnconnaTown_PlayerHouse_Mum_Text_1:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Sigh...$"
+	.string "Sigh...$"
 
 AnconnaTown_PlayerHouse_Mum_Text_2:
-	.string "Mum: {COLOR RED}Tehee...$"
+	.string "{COLOR RED}Teehee :D...$"
 
 AnconnaTown_PlayerHouse_Mum_Text_3:
-	.string "Mum: {COLOR RED}If you ever need to heal up your\n"
+	.string "{COLOR RED}If you ever need to heal up your\n"
 	.string "Pokemon, my {COLOR GREEN}Blissey{COLOR RED} would gladly help.\p"
 	.string "Don't worry, we'll tell your sister that\n"
 	.string "you're leaving for now.$"
 
 AnconnaTown_PlayerHouse_Mum_Text_4:
-	.string "Mum: {COLOR RED}Its nice seeing you with Pokemon\n"
-	.string "again sniff...sniff..$"
+	.string "{COLOR RED}Its nice seeing you with Pokemon again\n"
+	.string "sniff...sniff..$"
 
 AnconnaTown_PlayerHouse_Mum_Text_5:
-	.string "Mum: {COLOR RED}Your going on your own journey now\n"
-	.string "but remember that your Father and I\l"
-	.string "will always be there for you.$"
+	.string "{COLOR RED}Your going on your own journey now but\n"
+	.string "remember that your Father and I will\l"
+	.string "always be there for you.$"
 
 AnconnaTown_PlayerHouse_Dad_Text_0:
-	.string "Dad: {COLOR BLUE}Don't forget to bring the\n"
-	.string "{COLOR GREEN}mushrooms{COLOR BLUE}.$"
+	.string "{COLOR BLUE}Don't forget to bring the {COLOR GREEN}mushrooms{COLOR BLUE}.$"
 
 AnconnaTown_PlayerHouse_Dad_Text_1:
-	.string "Dad: {COLOR BLUE}Don't sigh, son. It's all for a good\n"
+	.string "{COLOR BLUE}Don't sigh, son. It's all for a good\n"
 	.string "cause :)$"
 
 AnconnaTown_PlayerHouse_Dad_Text_2:
-	.string "Dad: {COLOR BLUE}Well, your mother has said it all. If\n"
-	.string "you ever forget how to {COLOR GREEN}Scandi City{COLOR BLUE}, you\l"
+	.string "{COLOR BLUE}Well, your mother has said it all. If you\n"
+	.string "ever forget how to {COLOR GREEN}Scandi City{COLOR BLUE}, you\l"
 	.string "just need to pass through {COLOR GREEN}Route 01{COLOR BLUE}\l"
 	.string "which is north of here and follow the\l"
 	.string "path into {COLOR GREEN}Murky Grove{COLOR BLUE} then a short\l"
 	.string "walk through {COLOR GREEN}Route 02{COLOR BLUE}. Goodluck!$"
 
 AnconnaTown_PlayerHouse_Dad_Text_3:
-	.string "Dad: {COLOR BLUE}I guess you don't need your old\n"
-	.string "man anymore.$"
+	.string "{COLOR BLUE}I guess you don't need your old man\n"
+	.string "anymore.$"
 
 AnconnaTown_PlayerHouse_Dad_Text_4:
 	.string "{COLOR BLUE}They grow up so fast...sniff...sniff..$"
 
 AnconnaTown_PlayerHouse_Dad_Text_5:
-	.string "Dad: {COLOR BLUE}You might be on your own journey\n"
-	.string "but I'll always be with you by the\l"
-	.string "sidelines chipping in every step of the\l"
-	.string "way.$"
+	.string "{COLOR BLUE}You might be on your own journey but\n"
+	.string "I'll always be with you by the sidelines\l"
+	.string "chipping in every step of the way.$"
 
 AnconnaTown_PlayerHouse_Blissey_Text_0:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Morning, Blissey.$"
+	.string "Morning, Blissey.$"
 
 AnconnaTown_PlayerHouse_Blissey_Text_1:
 	.string "{COLOR GREEN}Bliisseyyy!$"

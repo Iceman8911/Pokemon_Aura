@@ -62,7 +62,7 @@ AnconnaWoods_1_Not_Found_Riolu::
 
 
 NotFoundRiolu:
-	walk_up
+	walk_left
 	step_end
 
 AnconnaWoods_1_NotFoundMushrooms::
@@ -86,23 +86,23 @@ AnconnaWoods_1_Found_Riolu::
 	delay 30
 	applymovement OBJ_EVENT_ID_PLAYER, PlayerConfused
 	waitmovement 0
-	msgbox AnconnaWoods_1_Found_Riolu_Text_0
+	msgbox AnconnaWoods_1_Found_Riolu_Text_0, , AnconnaWoods_1_Found_Riolu_Text_1
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, PlayerFindsRiolu
 	delay 20
 	applymovement OBJ_EVENT_ID_PLAYER, WalkToRiolu
 	waitmovement 0
 	delay 60
-	msgbox AnconnaWoods_1_Found_Riolu_Text_1
+	msgbox AnconnaWoods_1_Found_Riolu_Text_2, , AnconnaWoods_1_Found_Riolu_Text_1
 	waitmessage
 	closemessage
 	applymovement 3, RioluReacts
 	waitmovement 0
 	delay 20
-	msgbox AnconnaWoods_1_Found_Riolu_Text_2
 	msgbox AnconnaWoods_1_Found_Riolu_Text_3
-	delay 17
 	msgbox AnconnaWoods_1_Found_Riolu_Text_4
+	delay 17
+	msgbox AnconnaWoods_1_Found_Riolu_Text_5, , AnconnaWoods_1_Found_Riolu_Text_1
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, DodgeRiolu
 	waitmovement 0
@@ -114,51 +114,51 @@ AnconnaWoods_1_Found_Riolu::
 	setvar VAR_0x8007, 5
 	special ShakeCamera
 	waitstate
-	msgbox AnconnaWoods_1_Found_Riolu_Text_5
+	msgbox AnconnaWoods_1_Found_Riolu_Text_6, , AnconnaWoods_1_Found_Riolu_Text_1
 	waitmessage
-	msgbox AnconnaWoods_1_Found_Riolu_Text_6
+	msgbox AnconnaWoods_1_Found_Riolu_Text_7
 	playmoncry SPECIES_RIOLU, CRY_MODE_ENCOUNTER
 	waitmoncry
-	msgbox AnconnaWoods_1_Found_Riolu_Text_7
+	msgbox AnconnaWoods_1_Found_Riolu_Text_8, , AnconnaWoods_1_Found_Riolu_Text_1
 	waitmessage
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, TreatRiolu
 	waitmovement 0
-	msgbox AnconnaWoods_1_Found_Riolu_Text_8
+	msgbox AnconnaWoods_1_Found_Riolu_Text_9, , AnconnaWoods_1_Found_Riolu_Text_1
 	delay 35
-	msgbox AnconnaWoods_1_Found_Riolu_Text_9
+	msgbox AnconnaWoods_1_Found_Riolu_Text_10
 	playfanfare MUS_HEAL
 	waitfanfare
 	delay 15
 	removeitem ITEM_POTION, 1
-	msgbox AnconnaWoods_1_Found_Riolu_Text_10
+	msgbox AnconnaWoods_1_Found_Riolu_Text_11, , AnconnaWoods_1_Found_Riolu_Text_1
 	applymovement OBJ_EVENT_ID_PLAYER, StepBackFromRiolu
-	msgbox AnconnaWoods_1_Found_Riolu_Text_11
+	msgbox AnconnaWoods_1_Found_Riolu_Text_12
 	closemessage
 	applymovement 3, RioluTurnsAround
 	waitmovement 0
-	msgbox AnconnaWoods_1_Found_Riolu_Text_12
+	msgbox AnconnaWoods_1_Found_Riolu_Text_13
 	playmoncry SPECIES_RIOLU, CRY_MODE_WEAK
 	waitmoncry
 	applymovement 3, RioluApproachesYou
 	waitmovement 0
-	msgbox AnconnaWoods_1_Found_Riolu_Text_13
+	msgbox AnconnaWoods_1_Found_Riolu_Text_14
 	applymovement 3, RioluLikesYou
 	waitmovement 0
-	msgbox AnconnaWoods_1_Found_Riolu_Text_14
-	waitmessage
 	msgbox AnconnaWoods_1_Found_Riolu_Text_15
-	msgbox AnconnaWoods_1_Found_Riolu_Text_16
+	waitmessage
+	msgbox AnconnaWoods_1_Found_Riolu_Text_16, , AnconnaWoods_1_Found_Riolu_Text_1
+	msgbox AnconnaWoods_1_Found_Riolu_Text_17
 	playmoncry SPECIES_RIOLU, CRY_MODE_NORMAL
 	waitmoncry
 	givecustommon SPECIES_RIOLU, 5, ITEM_FOCUS_SASH, , NATURE_HASTY, 0, , , , , , , , 31, , 31, 31
-	msgbox AnconnaWoods_1_Found_Riolu_Text_17
+	msgbox AnconnaWoods_1_Found_Riolu_Text_18
 	playfanfare MUS_OBTAIN_ITEM
 	waitfanfare
 	removeitem ITEM_POKE_BALL
 	setflag FLAG_SYS_POKEMON_GET
 	delay 40
-	msgbox AnconnaWoods_1_Found_Riolu_Text_18
+	msgbox AnconnaWoods_1_Found_Riolu_Text_19, , AnconnaWoods_1_Found_Riolu_Text_1
 	fadescreen FADE_TO_BLACK
 	closemessage
 	removeobject 3
@@ -166,7 +166,7 @@ AnconnaWoods_1_Found_Riolu::
 	applymovement OBJ_EVENT_ID_PLAYER, AnconnaWoods_1You
 	waitmovement 0
 	fadescreen FADE_FROM_BLACK
-	msgbox AnconnaWoods_1_Found_Riolu_Text_19
+	msgbox AnconnaWoods_1_Found_Riolu_Text_20
 	setvar ANCONNA_WOODS_FOUND_RIOLU, 1
 	addvar GAME_PROGRESS, 1
 	release
@@ -187,13 +187,13 @@ PlayerFindsRiolu:
 	step_end
 
 WalkToRiolu:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
 	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_right
+	face_right
 	step_end
 
 RioluReacts:
@@ -225,6 +225,7 @@ RioluReacts:
 
 DodgeRiolu:
 	walk_fast_up
+	walk_in_place_down
 	step_end
 
 RioluRamsIntoYou:
@@ -234,8 +235,9 @@ RioluRamsIntoYou:
 	step_end
 
 TreatRiolu:
+	walk_fast_right
 	walk_fast_down
-	walk_fast_left
+	face_left
 	step_end
 
 StepBackFromRiolu:
@@ -290,81 +292,82 @@ AnconnaWoods_1_NotFoundMushrooms_Text_0:
 	.string "here somewhere.$"
 
 AnconnaWoods_1_Found_Riolu_Text_0:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Huh?\p"
+	.string "Huh?\p"
 	.string "What is that?$"
 
 AnconnaWoods_1_Found_Riolu_Text_1:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Um?\p"
+	.string "{COLOR GREEN}{PLAYER}$"
+
+AnconnaWoods_1_Found_Riolu_Text_2:
+	.string "Um?\p"
 	.string "(What's a little Pokémon like this doing\n"
 	.string "in a bug forest?\p"
 	.string "Oh, it must be that Pokémon those\n"
 	.string "people were looking for.)$"
 
-AnconnaWoods_1_Found_Riolu_Text_2:
+AnconnaWoods_1_Found_Riolu_Text_3:
 	.string "(It looks really scared of me..\p"
 	.string "Maybe because of the strange people in\n"
 	.string "the woods)\p"
 	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: How did you get he...$"
 
-AnconnaWoods_1_Found_Riolu_Text_3:
+AnconnaWoods_1_Found_Riolu_Text_4:
 	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Rio Rioo..\p"
 	.string "Rioluuu!!!$"
 
-AnconnaWoods_1_Found_Riolu_Text_4:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Wait!!!$"
-
 AnconnaWoods_1_Found_Riolu_Text_5:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Woah!\p"
-	.string "(Why'd it try to attack me?)$"
+	.string "Wait!!!$"
 
 AnconnaWoods_1_Found_Riolu_Text_6:
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Rio lu...$"
+	.string "Woah!\p"
+	.string "(Why'd it try to attack me?)$"
 
 AnconnaWoods_1_Found_Riolu_Text_7:
-	.string "{COLOR DARK_GRAY}(It looks like it injured itself though.)\p"
-	.string "(I'd better help it quickly with my\n"
-	.string "Potion.)$"
+	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Rio lu...$"
 
 AnconnaWoods_1_Found_Riolu_Text_8:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Easy does it!$"
+	.string "(It looks like it injured itself though.\p"
+	.string "I'd better help it quickly with the\n"
+	.string "potion I brought.)$"
 
 AnconnaWoods_1_Found_Riolu_Text_9:
+	.string "Easy does it!$"
+
+AnconnaWoods_1_Found_Riolu_Text_10:
 	.string "{PLAYER} used a Potion on the Injured\n"
 	.string "Pokémon!$"
 
-AnconnaWoods_1_Found_Riolu_Text_10:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Done!$"
-
 AnconnaWoods_1_Found_Riolu_Text_11:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Doesn't that feel much\n"
-	.string "better?$"
+	.string "Done!$"
 
 AnconnaWoods_1_Found_Riolu_Text_12:
+	.string "Doesn't that feel much better?$"
+
+AnconnaWoods_1_Found_Riolu_Text_13:
 	.string "{COLOR GREEN}Rio..\p"
 	.string "Riolu?$"
 
-AnconnaWoods_1_Found_Riolu_Text_13:
-	.string "{COLOR DARK_GRAY}(It's coming closer again..)$"
-
 AnconnaWoods_1_Found_Riolu_Text_14:
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Riolu Riolu!!$"
+	.string "(It's coming closer again..)$"
 
 AnconnaWoods_1_Found_Riolu_Text_15:
-	.string "(Could it be that..)\p"
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Do you wanna come with me..\n"
-	.string "'Riolu'?$"
+	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Riolu Riolu!!$"
 
 AnconnaWoods_1_Found_Riolu_Text_16:
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Riolu Riolu Riolu!!!$"
+	.string "(Could it be that..)\p"
+	.string "Do you wanna come with me.. 'Riolu'?$"
 
 AnconnaWoods_1_Found_Riolu_Text_17:
-	.string "{COLOR DARK_GRAY}Riolu has joined your team!$"
+	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Riolu Riolu Riolu!!!$"
 
 AnconnaWoods_1_Found_Riolu_Text_18:
-	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: I'll take that as a yes.\p"
-	.string "Lets go to my house, Riolu.$"
+	.string "Riolu has joined your team!$"
 
 AnconnaWoods_1_Found_Riolu_Text_19:
+	.string "I'll take that as a yes.\p"
+	.string "Lets go to my house, Riolu.$"
+
+AnconnaWoods_1_Found_Riolu_Text_20:
 	.string "(The poor little thing is lost, probably\n"
 	.string "because of those people from before.\p"
 	.string "Lets see if there's anyway I can help.)$"

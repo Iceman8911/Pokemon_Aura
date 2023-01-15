@@ -20,7 +20,7 @@ AnconnaLab_CannotGoUpstairs::
 
 AnconnaLab_ProfMaxmilliam::
 	lockall
-	msgbox AnconnaLab_ProfMaxmilliam_Text_0, 2
+	msgbox AnconnaLab_ProfMaxmilliam_Text_0, 2, AnconnaLab_ProfMaxmilliam_Text_1
 	waitmessage
 	releaseall
 	return
@@ -60,14 +60,15 @@ AnconnaLab_RecievePokedexFromMaxilliamCutscene::
 	waitmovement 0
 	applymovement 1, WalkInPlaceDown
 	waitmovement 0
-	msgbox AnconnaLab_RecievePokedexFromMaxilliamCutscene_Text_0
+	msgbox AnconnaLab_RecievePokedexFromMaxilliamCutscene_Text_0, , AnconnaLab_RecievePokedexFromMaxilliamCutscene_Text_1
 	waitmessage
+	closemessage
 	playfanfare MUS_OBTAIN_ITEM
-	msgbox AnconnaLab_RecievePokedexFromMaxilliamCutscene_Text_1
+	msgbox AnconnaLab_RecievePokedexFromMaxilliamCutscene_Text_2
 	setflag FLAG_SYS_POKEDEX_GET
 	setflag FLAG_SYS_NATIONAL_DEX
 	waitfanfare
-	msgbox AnconnaLab_RecievePokedexFromMaxilliamCutscene_Text_2
+	msgbox AnconnaLab_RecievePokedexFromMaxilliamCutscene_Text_3, , AnconnaLab_RecievePokedexFromMaxilliamCutscene_Text_1
 	waitmessage
 	special RemoveCameraObject
 	addvar GAME_PROGRESS, 1
@@ -97,6 +98,9 @@ AnconnaLab_ProfMaxmilliam_Text_0:
 	.string "{COLOR BLUE}Don't worry about what happened, I'll\n"
 	.string "make sure its resolved quickly.$"
 
+AnconnaLab_ProfMaxmilliam_Text_1:
+	.string "Prof. Max$"
+
 AnconnaLab_Professor1_Text_0:
 	.string "{COLOR BLUE}So much to do in such little time..\p"
 	.string "Sigh..$"
@@ -111,14 +115,17 @@ AnconnaLab_Professor3_Text_0:
 	.string "results we get from our experiments.$"
 
 AnconnaLab_RecievePokedexFromMaxilliamCutscene_Text_0:
-	.string "Prof. Maxmilliam:{COLOR BLUE} Ahh, here it is.\n"
+	.string "{COLOR BLUE} Ahh, here it is.\n"
 	.string "The Custom {COLOR GREEN}PokeDex{COLOR BLUE}.\p"
 	.string "Make sure to return it once you're done.$"
 
 AnconnaLab_RecievePokedexFromMaxilliamCutscene_Text_1:
-	.string "{PLAYER} has received a Pokedex!$"
+	.string "Prof. Maxmilliam$"
 
 AnconnaLab_RecievePokedexFromMaxilliamCutscene_Text_2:
+	.string "{PLAYER} has received a Pokedex!$"
+
+AnconnaLab_RecievePokedexFromMaxilliamCutscene_Text_3:
 	.string "{COLOR BLUE}Now that you're well equipped, goodluck.\n"
 	.string "Don't worry about what happened in the\l"
 	.string "forest, I'll make sure its resolved\l"

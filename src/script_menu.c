@@ -126,40 +126,37 @@ static void DrawMultichoiceMenuInternal(u8 left, u8 top, u8 multichoiceId, bool8
 void DrawObjEventNameBox(u8 left, u8 top, const u8 *text)
 {
     u32 i;
-    static u8 windowId;
     u8 newWidth;
     u8 count = 1;
     u8 width = 0;
     u8 marginSpace;
-
-    //These 3 vars are used to repeat the function when needed
-    u8 tempLeft = left; 
-    u8 tempTop = top;
-    tempText = text;
+    tempText = text;   // Save current text for use later
 
     width = DisplayTextAndGetWidth(text, width);
     newWidth = ConvertPixelWidthToTileWidth(width);
     left = ScriptMenu_AdjustLeftCoordFromWidth(left, newWidth);
-    windowId = CreateWindowFromRect(left, top, newWidth, count * 2);
+    nameBoxWindowId = CreateWindowFromRect(left, top, newWidth, count * 2);
 
     if (isNameBoxActive == FALSE) {  //Newly loading name box
-
-        SetStandardWindowBorderStyle(windowId, FALSE);
+        SetStandardWindowBorderStyle(nameBoxWindowId, FALSE);
         StringExpandPlaceholders(gSystemStringVar, text);
-        AddTextPrinterParameterized(windowId, 1, gSystemStringVar, 6, 0, TEXT_SKIP_DRAW, NULL);
-        CopyWindowToVram(windowId, COPYWIN_GFX);
-        ScheduleBgCopyTilemapToVram(2);
+        AddTextPrinterParameterized(nameBoxWindowId, 1, gSystemStringVar, 6, 0, TEXT_SKIP_DRAW, NULL);
+        CopyWindowToVram(nameBoxWindowId, COPYWIN_GFX);
+        ScheduleBgCopyTilemapToVram(COPYWIN_GFX);
 
     } else { //Loading a name box over another one
 
-        ClearToTransparentAndRemoveWindow(windowId); //what this else condtional does is to make it look as if it buffered. looks better imo
+        ClearToTransparentAndRemoveWindow(nameBoxWindowId); //what this else condtional does is to make it look as if it buffered. looks better imo
+        if (nameBoxWindowId > 1)
+        { // For some reason the windows start piling up without this conditional
+            ClearToTransparentAndRemoveWindow(nameBoxWindowId - 1); //what this else condtional does is to make it look as if it buffered. looks better imo
+        }
         for (i = 0; i <= 125500; i++) { //just a delay lol
             isNameBoxActive = FALSE;
         }
-        DrawObjEventNameBox(tempLeft, tempTop, tempText); //reload function
+        DrawObjEventNameBox(left, top, text); //reload function
     }
 
-    nameBoxWindowId = windowId; //I use an EWRAM_DATA to access the value in the closemessage function to remove the namebox
     isNameBoxActive = TRUE;
 }
 

@@ -80,14 +80,14 @@ script AnconnaWoods_1_Found_Riolu {
     delay(30)
     applymovement(OBJ_EVENT_ID_PLAYER, PlayerConfused)
     waitmovement(0)
-    msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Huh?\pWhat is that?"))
+    msgbox(format("Huh?\pWhat is that?"), , "{COLOR GREEN}{PLAYER}")
     closemessage
     applymovement(OBJ_EVENT_ID_PLAYER, PlayerFindsRiolu)
     delay(20)
     applymovement(OBJ_EVENT_ID_PLAYER, WalkToRiolu)
     waitmovement(0)
     delay(60)
-    msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Um?\p(What's a little Pokémon like this doing in a bug forest?\pOh, it must be that Pokémon those people were looking for.)"))
+    msgbox(format("Um?\p(What's a little Pokémon like this doing in a bug forest?\pOh, it must be that Pokémon those people were looking for.)"), , "{COLOR GREEN}{PLAYER}")
     waitmessage
     closemessage
     applymovement(3, RioluReacts)
@@ -96,7 +96,7 @@ script AnconnaWoods_1_Found_Riolu {
     msgbox(format("(It looks really scared of me..\pMaybe because of the strange people in the woods)\p{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: How did you get he..."))
     msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Rio Rioo..\pRioluuu!!!"))
     delay(17)
-    msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Wait!!!"))
+    msgbox(format("Wait!!!"), , "{COLOR GREEN}{PLAYER}")
     closemessage
     applymovement(OBJ_EVENT_ID_PLAYER, DodgeRiolu)
     waitmovement(0)
@@ -108,26 +108,26 @@ script AnconnaWoods_1_Found_Riolu {
 	setvar(VAR_0x8007, 5)  //@ shake delay
     special(ShakeCamera)
     waitstate
-    msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Woah!\p(Why'd it try to attack me?)"))
+    msgbox(format("Woah!\p(Why'd it try to attack me?)"), , "{COLOR GREEN}{PLAYER}")
     waitmessage
     msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Rio lu..."))
     playmoncry(SPECIES_RIOLU, CRY_MODE_ENCOUNTER)
     waitmoncry
-    msgbox(format("{COLOR DARK_GRAY}(It looks like it injured itself though.)\p(I'd better help it quickly with my Potion.)"))
+    msgbox(format("(It looks like it injured itself though.\pI'd better help it quickly with the potion I brought.)"), , "{COLOR GREEN}{PLAYER}")
     waitmessage
     closemessage
     applymovement(OBJ_EVENT_ID_PLAYER, TreatRiolu)
     waitmovement(0)
-    msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Easy does it!"))
+    msgbox(format("Easy does it!"), , "{COLOR GREEN}{PLAYER}")
     delay(35)
     msgbox(format("{PLAYER} used a Potion on the Injured Pokémon!"))
     playfanfare(MUS_HEAL)
     waitfanfare
     delay(15)
     removeitem(ITEM_POTION, 1)
-    msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Done!"))
+    msgbox(format("Done!"), , "{COLOR GREEN}{PLAYER}")
     applymovement(OBJ_EVENT_ID_PLAYER, StepBackFromRiolu)
-    msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Doesn't that feel much better?"))
+    msgbox(format("Doesn't that feel much better?"))
     closemessage
     applymovement(3, RioluTurnsAround)
     waitmovement(0)
@@ -136,24 +136,24 @@ script AnconnaWoods_1_Found_Riolu {
     waitmoncry
     applymovement(3, RioluApproachesYou)
     waitmovement(0)
-    msgbox(format("{COLOR DARK_GRAY}(It's coming closer again..)"))
+    msgbox(format("(It's coming closer again..)"))
     applymovement(3, RioluLikesYou)
     waitmovement(0)
     msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Riolu Riolu!!"))
     waitmessage
-    msgbox(format("(Could it be that..)\p{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Do you wanna come with me.. 'Riolu'?"))
+    msgbox(format("(Could it be that..)\pDo you wanna come with me.. 'Riolu'?"), , "{COLOR GREEN}{PLAYER}")
     msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Riolu Riolu Riolu!!!"))
     playmoncry(SPECIES_RIOLU, CRY_MODE_NORMAL)
     waitmoncry
     //givemon(SPECIES_RIOLU, 5, ITEM_FOCUS_SASH)
     givecustommon(SPECIES_RIOLU, 5, ITEM_FOCUS_SASH, , NATURE_HASTY, 0, , , , , , , , 31, , 31, 31)
-    msgbox(format("{COLOR DARK_GRAY}Riolu has joined your team!"))
+    msgbox(format("Riolu has joined your team!"))
     playfanfare(MUS_OBTAIN_ITEM)
     waitfanfare
     removeitem(ITEM_POKE_BALL)  //gets rid of the pokeball the player found earlier
     setflag(FLAG_SYS_POKEMON_GET)
     delay(40)
-    msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: I'll take that as a yes.\pLets go to my house, Riolu."))
+    msgbox(format("I'll take that as a yes.\pLets go to my house, Riolu."), , "{COLOR GREEN}{PLAYER}")
     fadescreen(FADE_TO_BLACK)
     closemessage
     removeobject(3)
@@ -224,8 +224,9 @@ movement RioluRamsIntoYou {
 }
 
 movement TreatRiolu {
+    walk_fast_right
     walk_fast_down
-    walk_fast_left
+    face_left
 }
 
 movement StepBackFromRiolu {

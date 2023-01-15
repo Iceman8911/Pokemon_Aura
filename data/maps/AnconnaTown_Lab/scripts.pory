@@ -16,7 +16,7 @@ script AnconnaLab_CannotGoUpstairs {
 
 script AnconnaLab_ProfMaxmilliam {
     lockall
-    msgbox(format("{COLOR BLUE}Don't worry about what happened, I'll make sure its resolved quickly."), 2)
+    msgbox(format("{COLOR BLUE}Don't worry about what happened, I'll make sure its resolved quickly."), 2, "Prof. Max")
     waitmessage
     releaseall
 }
@@ -52,14 +52,15 @@ script AnconnaLab_RecievePokedexFromMaxilliamCutscene {
 	waitmovement(0)
     applymovement(1, WalkInPlaceDown)
     waitmovement(0)
-    msgbox(format("Prof. Maxmilliam:{COLOR BLUE} Ahh, here it is.\nThe Custom {COLOR GREEN}PokeDex{COLOR BLUE}.\pMake sure to return it once you're done."))
+    msgbox(format("{COLOR BLUE} Ahh, here it is.\nThe Custom {COLOR GREEN}PokeDex{COLOR BLUE}.\pMake sure to return it once you're done."), , "Prof. Maxmilliam")
     waitmessage
+    closemessage
     playfanfare(MUS_OBTAIN_ITEM)
     msgbox(format("{PLAYER} has received a Pokedex!"))
     setflag(FLAG_SYS_POKEDEX_GET)
     setflag(FLAG_SYS_NATIONAL_DEX)
     waitfanfare
-    msgbox(format("{COLOR BLUE}Now that you're well equipped, goodluck. Don't worry about what happened in the forest, I'll make sure its resolved quickly."))
+    msgbox(format("{COLOR BLUE}Now that you're well equipped, goodluck. Don't worry about what happened in the forest, I'll make sure its resolved quickly."), , "Prof. Maxmilliam")
     waitmessage
     special(RemoveCameraObject)
     addvar(GAME_PROGRESS, 1) //should be 8 here
