@@ -9502,18 +9502,33 @@ u8 ElevationToPriority(u8 elevation)
     return sElevationToPriority[elevation];
 }
 
-void ObjectEventUpdateElevation(struct ObjectEvent *objEvent)
+#include "follow_me.h"
+void ObjectEventUpdateElevation(struct ObjectEvent *objEvent)//
 {
+    struct ObjectEvent *followerObj;
     u8 curElevation = MapGridGetElevationAt(objEvent->currentCoords.x, objEvent->currentCoords.y);
     u8 prevElevation = MapGridGetElevationAt(objEvent->previousCoords.x, objEvent->previousCoords.y);
+    // All the followerObj conditionals are used to make sure the follower always has the same elevation as the player
+    if (gSaveBlock2Ptr->follower.inProgress && objEvent->isPlayer) // Follower is active and current object is player
+    {
+        followerObj = &gObjectEvents[gSaveBlock2Ptr->follower.objId];
+    }
 
     if (curElevation == 15 || prevElevation == 15)
         return;
 
     objEvent->currentElevation = curElevation;
+    if (gSaveBlock2Ptr->follower.inProgress && objEvent->isPlayer)
+    {
+        followerObj->currentElevation = objEvent->currentElevation;
+    }
 
     if (curElevation != 0 && curElevation != 15)
         objEvent->previousElevation = curElevation;
+    if (gSaveBlock2Ptr->follower.inProgress && objEvent->isPlayer)
+    {
+        followerObj->previousElevation = objEvent->previousElevation;
+    }
 }
 
 void SetObjectSubpriorityByElevation(u8 elevation, struct Sprite *sprite, u8 subpriority)
