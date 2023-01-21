@@ -1,3 +1,9 @@
+# Start Menu Icons
+1. If you want more icons, add them to graphics/interface/start_menu_icons.png in the right order. Grayscale in the first batch and then coloured in the latter part.
+2. You'll need to adjust some entries in start_menu.c if you want your icon to show such as sStartMenuIconFrames, HandleStartMenuInput, DynamicallyLoadStartMenuIcon, etc. You'll need to read through it to know exactly what you need.
+3. DNS may darken the icons when late. Its up to you to make an exception for that.. This line might be of use "oam.paletteNum = LoadSpritePalette(&palSheet);"
+
+
 # Pokémon Emerald
 
 This is a decompilation of Pokémon Emerald.
