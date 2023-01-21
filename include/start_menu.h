@@ -12,6 +12,10 @@
 #define IS_MULTI_START_MENU_ENABLED       TRUE
 //#define FILL_STARTMENU_PAGE               TRUE                                                                              //Determines if the pages should be filled if possible or can be loaded with an incomplete amount of options
 
+// For Start Menu Icons
+#define ICON_WINDOW_OFFSET               2         // The extra space allocated to fit icons
+#define TEXT_WINDOW_OFFSET               22        // The gap added to shift the text
+#define COLOR_ICON_OFFSET                7         // In "start_menu_icons.png", its the number of 32x32 blocks till the colored likewise sprite
 
 
 extern bool8 (*gMenuCallback)(void);
@@ -32,5 +36,8 @@ static u8 sStartMenuPage;                       //This stores the page the start
 static u8 sStartMenuPageTotal;                  //This stores the number of the possible amount of start menu pages (starting at 0). Not actually useful since it just represents (NUM_OF_START_MENUS - 1)
 static u8 sCurrentPageOptionCounter;            //This keeps track on the amount of options that get loaded into a page
 
+// For Start Menu Icons
+extern bool8 gAreStartMenuIconsReady;
+bool8 gIsAStartMenuIconAtPosition(u8 position);
 
 #endif // GUARD_START_MENU_H
