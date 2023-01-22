@@ -54,3 +54,4 @@ aa.py
 *.lnk
 *.mp4
 include/config.h
+data/maps/**/*.inc
