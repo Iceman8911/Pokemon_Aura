@@ -38,7 +38,8 @@ static u8 sStartMenuPageTotal;                  //This stores the number of the 
 static u8 sCurrentPageOptionCounter;            //This keeps track on the amount of options that get loaded into a page
 
 // For Start Menu Icons
-extern bool8 gAreStartMenuIconsReady;
-bool8 gIsAStartMenuIconAtPosition(u8 position);
+extern bool8 gAreStartMenuIconsReady;               // TRUE when the start menu is open. FALSE when it's closed
+bool8 gIsAStartMenuIconAtPosition(u8 position);     // Takes an index in the startmenu and checks if an icon has been drawn at that spot
+extern u8 gStartMenuIconPaletteNum;                 // Stores the palette number the start menu icons use
 
 #endif // GUARD_START_MENU_H

@@ -402,6 +402,7 @@ void DnsTransferPlttBuffer(void *src, void *dest)
 /* Applies filter to palette colours, stores new palettes in EWRAM buffer.   *
  * It must be called from CB2 if the DNS wants to be used (similar to        *
  * TransferPlttBuffer)  in VBlank callbacks                                  */
+#include "start_menu.h"
 void DnsApplyFilters()
 {
     u8 palNum, colNum;
@@ -410,7 +411,16 @@ void DnsApplyFilters()
 
     rgbFilter = GetDNSFilter();
 
-    palExceptionFlags = gMain.inBattle ? gCombatPalExceptions : gOWPalExceptions;   //Init pal exception slots
+    if (gMain.inBattle) //Init pal exception slots
+    {
+        palExceptionFlags = gCombatPalExceptions;
+    }
+    else
+    {
+        palExceptionFlags = gOWPalExceptions;
+        if (gAreStartMenuIconsReady)
+            palExceptionFlags.pal[gStartMenuIconPaletteNum + 16] = DNS_PAL_EXCEPTION; // Add the palette used for the start menu icons to exceptions
+    }
 
     for (palNum = 0; palNum < 32; palNum++)
         if (palExceptionFlags.pal[palNum] && (palNum < 15 || !IsSpritePaletteTagDnsException(palNum - PALETTE_SIZE)))

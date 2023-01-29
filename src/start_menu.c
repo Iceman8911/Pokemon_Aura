@@ -173,7 +173,9 @@ static u8 GetIndexOfOptionInsStartMenuItems(u8 index);  // Incase you rearranged
 bool8 gIsAStartMenuIconAtPosition(u8 position);
 
 EWRAM_DATA bool8 gAreStartMenuIconsReady = FALSE;
+EWRAM_DATA u8 gStartMenuIconPaletteNum = 0;
 static EWRAM_DATA bool8 sIsStartMenuIconRefreshed = FALSE;
+static EWRAM_DATA bool8 sIsStartMenuIconPaletteLoaded = FALSE;
 
 static EWRAM_DATA union AnimCmd *iconFrames = NULL;
 
@@ -795,11 +797,18 @@ static void CreateStartMenuTask(TaskFunc followupFunc)
 
 static bool8 FieldCB_ReturnToFieldStartMenu(void)
 {
+    struct SpritePalette palSheet;
+
     if (InitStartMenuStep() == FALSE)
     {
         return FALSE;
     }
 
+    palSheet.tag = spriteTagId;
+    palSheet.data = sStartMenuIconsPal;
+
+    if (gAreStartMenuIconsReady)
+        LoadSpritePalette(&palSheet); // Returning to the menu using some calbacks, the palette is replaced so this restores it
     ReturnToFieldOpenStartMenu();
     return TRUE;
 }
@@ -1888,8 +1897,18 @@ void LoadStartMenuIcon(u8 iconId, u8 position)
     palSheet.tag = spriteTagId + iconId;  // This tag could be anything really
     palSheet.data = sStartMenuIconsPal;
 
-    oam = *spriteTemplate.oam; // Copy over original oam
-    oam.paletteNum = LoadSpritePalette(&palSheet); // Load palette and set appropriate palNum
+    oam = *spriteTemplate.oam;                       // Copy over original oam
+    if (!sIsStartMenuIconPaletteLoaded)
+    {
+        oam.paletteNum = LoadSpritePalette(&palSheet);   // Load palette and set appropriate palNum
+        gStartMenuIconPaletteNum = oam.paletteNum;       // Copy the paletteNum of the Icon Palette
+        sIsStartMenuIconPaletteLoaded = TRUE;
+    }
+    else
+    {
+        // Palette already loaded, no need to load a new sprite palette so pull it from gStartMenuIconPaletteNum
+        oam.paletteNum = gStartMenuIconPaletteNum;
+    }
 
     spriteTemplate.oam = &oam; // Back to Sender
 
@@ -1914,6 +1933,7 @@ static void DeleteAllStartMenuIcons(void)
         }
     }
 
+    sIsStartMenuIconPaletteLoaded = FALSE;
     gAreStartMenuIconsReady = FALSE;
 }
 
