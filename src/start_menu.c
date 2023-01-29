@@ -1615,34 +1615,38 @@ void LoadStartMenuIcon(u8 iconId, u8 position)
     struct OamData oam = {0};
     struct SpriteTemplate spriteTemplate = sStartMenuIconSpriteTemplate;
 
+    // Both of these are finetuned for this exact start menu size. If your is different, you might need to tweak this
     u8 x = (gWindows[GetStartMenuWindowId()].window.tilemapLeft * 8) + 8;
     u8 y = (gWindows[GetStartMenuWindowId()].window.tilemapTop + 15) + ((position) << 4) + (position * 3);
 
     // Keeping this on the stack is way to much so stuff it on the heap
     iconFrames = Alloc(sizeof(union AnimCmd) * 2);
 
-    // This is what will load the particular frame needed
-    if (sStartMenuCursorPos == position) // If the current option is selected
-        iconFrames[0].frame.imageValue = iconId + COLOR_ICON_OFFSET;
+    // This is what will set the particular frame needed
+    if (sStartMenuCursorPos == position)                                // If the current option is selected
+        iconFrames[0].frame.imageValue = iconId + COLOR_ICON_OFFSET;    // Load in the colored icon
     else
-        iconFrames[0].frame.imageValue = iconId;
-    iconFrames[0].frame.duration = 30;
-    iconFrames[0].frame.vFlip = FALSE;  // Prevent it from inverting lol
-    iconFrames[1].type = -1;   //ANIMCMD_END(0)
+        iconFrames[0].frame.imageValue = iconId;                        // Load in the grayscale icon
+    
+    iconFrames[0].frame.duration = 30;  // Not sure this has a use here since its a static frame we need
+    iconFrames[0].frame.vFlip = FALSE;  // These 2 prevent it from occasionally inverting
+    iconFrames[0].frame.hFlip = FALSE;
+
+    iconFrames[1].type = -1;            // Same as ANIMCMD_END(0)
 
     // Prepare the Sprite Palette
-    palSheet.tag = spriteTagId + iconId;
+    palSheet.tag = spriteTagId + iconId; // This tag could be anything really
     palSheet.data = sStartMenuIconsPal;
 
     oam = *spriteTemplate.oam; // Copy over original oam
-    oam.paletteNum = LoadSpritePalette(&palSheet); // Set appropriate palNum
+    oam.paletteNum = LoadSpritePalette(&palSheet); // Load palette and set appropriate palNum
 
-    spriteTemplate.oam = &oam; // Back to Sender
+    spriteTemplate.oam = &oam; // Return it back to spriteTemplate
 
     spriteTemplate.anims = (const union AnimCmd *const *)&iconFrames;
     //spriteTemplate.soloSpriteId = iconId;
     
-    // Create the sprite
+    // Create the sprite and load the appropriate frame
     CreateSpriteAndAnimate(&spriteTemplate, x, y, 0);
 
     Free((void *)iconFrames);
