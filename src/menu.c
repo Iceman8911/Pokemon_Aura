@@ -961,12 +961,23 @@ void RedrawMenuCursor(u8 oldPos, u8 newPos)
 
     width = GetMenuCursorDimensionByFont(sMenu.fontId, 0);
     height = GetMenuCursorDimensionByFont(sMenu.fontId, 1);
-    FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(1), sMenu.left, sMenu.optionHeight * oldPos + sMenu.top, width, height);
-    if (!gIsAStartMenuIconAtPosition(newPos))
-        AddTextPrinterParameterized(sMenu.windowId, sMenu.fontId, gText_SelectorArrow3, sMenu.left, sMenu.optionHeight * newPos + sMenu.top, 0, 0);
-    else
-    // Don't Print the cursor if there is already an option
+    // The first 2 conditionals have changes specially made for the expanded start menu
+    if (!gIsAStartMenuIconAtPosition(newPos) && gAreStartMenuIconsReady)
+    {
+        FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(1), sMenu.left, sMenu.optionHeight * oldPos, width, height + 4);
+        AddTextPrinterParameterized(sMenu.windowId, sMenu.fontId, gText_SelectorArrow3, sMenu.left, (sMenu.optionHeight * newPos) + (newPos * 3), 0, 0);
+    }
+    else if (gIsAStartMenuIconAtPosition(newPos) && gAreStartMenuIconsReady)
+    {
+        FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(1), sMenu.left, sMenu.optionHeight * oldPos, width, height + 4);
+        // Don't Print the cursor if there is already an option
         AddTextPrinterParameterized(sMenu.windowId, sMenu.fontId, gText_Space, sMenu.left, sMenu.optionHeight * newPos + sMenu.top, 0, 0);
+    }
+    else
+    {
+        FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(1), sMenu.left, sMenu.optionHeight * oldPos, width, height);
+        AddTextPrinterParameterized(sMenu.windowId, sMenu.fontId, gText_SelectorArrow3, sMenu.left, sMenu.optionHeight * newPos + sMenu.top, 0, 0);
+    }
 }
 
 u8 Menu_MoveCursor(s8 cursorDelta)
