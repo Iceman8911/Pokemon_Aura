@@ -76,9 +76,10 @@ Remember_Text_2:
 	.string "{COLOR GREEN}{PLAYER}$"
 
 Remember_Text_3:
-	.string "Sigh..only the good mushrooms can be\n"
-	.string "found in the deeper parts of {COLOR GREEN}Anconna\l"
-	.string "Forest{COLOR DARK_GRAY}...$"
+	.string "Ughh..\p"
+	.string "{COLOR GREEN}Anconna Forest{COLOR DARK_GRAY} is a pain to go through\n"
+	.string "and only the good mushrooms can be\l"
+	.string "found in the deeper parts.$"
 
 Remember_Text_4:
 	.string "This was unexpected...\p"
@@ -86,8 +87,7 @@ Remember_Text_4:
 	.string "this...$"
 
 Remember_Text_5:
-	.string "I'd better check up on little sister\n"
-	.string "then....$"
+	.string "I'd better check up on lil sis then....$"
 
 Remember_Text_6:
 	.string "Time to go then....\p"

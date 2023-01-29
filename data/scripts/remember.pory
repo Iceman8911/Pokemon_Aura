@@ -11,11 +11,11 @@ script Remember{    //This is the script that will be run by the Start Menu Opti
         case 1:
         msgbox(format("Time to start the day!"), , "{COLOR GREEN}{PLAYER}")
         case 2:
-        msgbox(format("Sigh..only the good mushrooms can be found in the deeper parts of {COLOR GREEN}Anconna Forest{COLOR DARK_GRAY}..."), ,"{COLOR GREEN}{PLAYER}")
+        msgbox(format("Ughh..\p{COLOR GREEN}Anconna Forest{COLOR DARK_GRAY} is a pain to go through and only the good mushrooms can be found in the deeper parts."), ,"{COLOR GREEN}{PLAYER}")
         case 3:
         msgbox(format("This was unexpected...\pI probably need to show my parents this..."), ,"{COLOR GREEN}{PLAYER}")
         case 4:
-        msgbox(format("I'd better check up on little sister then...."), ,"{COLOR GREEN}{PLAYER}")
+        msgbox(format("I'd better check up on lil sis then...."), ,"{COLOR GREEN}{PLAYER}")
         case 5:
         msgbox(format("Time to go then....\p{COLOR GREEN}Riolu{COLOR DARK_GRAY}, are you with me?\p....\p{COLOR GREEN}Riol Rioluuuu!!{COLOR DARK_GRAY}"), ,"{COLOR GREEN}{PLAYER}")
         case 6:
