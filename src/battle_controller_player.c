@@ -10,6 +10,7 @@
 #include "battle_tv.h"
 #include "bg.h"
 #include "data.h"
+#include "decompress.h"
 #include "item.h"
 #include "item_menu.h"
 #include "link.h"
@@ -23,7 +24,9 @@
 #include "recorded_battle.h"
 #include "reshow_battle_screen.h"
 #include "sound.h"
+#include "sprite.h"
 #include "string_util.h"
+#include "strings.h"
 #include "task.h"
 #include "text.h"
 #include "util.h"
@@ -139,6 +142,16 @@ static void DoSwitchOutAnimation(void);
 static void PlayerDoMoveAnimation(void);
 static void Task_StartSendOutAnim(u8);
 static void EndDrawPartyStatusSummary(void);
+static u8 TypeEffectiveness(struct ChooseMoveStruct *moveInfo, u8 targetId);
+static bool8 DoesMoveHaveStab(struct ChooseMoveStruct *moveInfo);
+static u8 LoadStaticPic(const u32 *gfx, const u16 *pal, u8 x, u8 y, u16 spriteTagId);
+void DestroyStaticPic(u16 spriteTagId, u8 spriteId);
+
+static const u32 sSTABIconGfx[] = INCBIN_U32("graphics/interface/STAB_icon.4bpp.lz");
+static const u16 sSTABIconPal[] = INCBIN_U16("graphics/interface/STAB_icon.gbapal");
+
+static EWRAM_DATA u8 sSTABIconId = 0;
+static EWRAM_DATA bool8 sHasTypeEffectivenessShown = FALSE;
 
 static void (*const sPlayerBufferCommands[CONTROLLER_CMDS_COUNT])(void) =
 {
@@ -424,6 +437,10 @@ static void HandleInputChooseTarget(void)
 
     DoBounceEffect(gMultiUsePlayerCursor, BOUNCE_HEALTHBOX, 15, 1);
 
+    // Refresh it immediately a move is clicked and a target is selected
+    MoveSelectionDisplayMoveNames();
+    MoveSelectionCreateCursorAt(gMoveSelectionCursor[gActiveBattler], 0);
+
     // what a weird loop
     i = 0;
     if (gBattlersCount != 0)
@@ -504,6 +521,11 @@ static void HandleInputChooseTarget(void)
             if (gAbsentBattlerFlags & gBitTable[gMultiUsePlayerCursor])
                 i = 0;
         } while (i == 0);
+
+        // Refresh when switching between targets
+        MoveSelectionDisplayMoveNames();
+        MoveSelectionCreateCursorAt(gMoveSelectionCursor[gActiveBattler], 0);
+
         gSprites[gBattlerSpriteIds[gMultiUsePlayerCursor]].callback = SpriteCB_ShowAsMoveTarget;
     }
     else if (JOY_NEW(DPAD_RIGHT | DPAD_DOWN))
@@ -548,6 +570,11 @@ static void HandleInputChooseTarget(void)
             if (gAbsentBattlerFlags & gBitTable[gMultiUsePlayerCursor])
                 i = 0;
         } while (i == 0);
+
+        // Refresh when switching between targets
+        MoveSelectionDisplayMoveNames();
+        MoveSelectionCreateCursorAt(gMoveSelectionCursor[gActiveBattler], 0);
+
         gSprites[gBattlerSpriteIds[gMultiUsePlayerCursor]].callback = SpriteCB_ShowAsMoveTarget;
     }
 }
@@ -627,6 +654,16 @@ static void HandleInputChooseMove(void)
     else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)
     {
         PlaySE(SE_SELECT);
+        #ifdef ENABLE_STAB_TEXT
+        if (JOY_NEW(B_BUTTON))
+        {
+            if (sSTABIconId != 0)
+            {
+                DestroyStaticPic(0x3334, sSTABIconId);
+                sSTABIconId = 0;
+            }
+        }
+        #endif
         BtlController_EmitTwoReturnValues(BUFFER_B, 10, 0xFFFF);
         PlayerBufferExecCompleted();
     }
@@ -637,6 +674,7 @@ static void HandleInputChooseMove(void)
             MoveSelectionDestroyCursorAt(gMoveSelectionCursor[gActiveBattler]);
             gMoveSelectionCursor[gActiveBattler] ^= 1;
             PlaySE(SE_SELECT);
+            MoveSelectionDisplayMoveNames(); // Reload Moves
             MoveSelectionCreateCursorAt(gMoveSelectionCursor[gActiveBattler], 0);
             MoveSelectionDisplayPpNumber();
             MoveSelectionDisplayMoveType();
@@ -650,6 +688,7 @@ static void HandleInputChooseMove(void)
             MoveSelectionDestroyCursorAt(gMoveSelectionCursor[gActiveBattler]);
             gMoveSelectionCursor[gActiveBattler] ^= 1;
             PlaySE(SE_SELECT);
+            MoveSelectionDisplayMoveNames(); // Reload Moves
             MoveSelectionCreateCursorAt(gMoveSelectionCursor[gActiveBattler], 0);
             MoveSelectionDisplayPpNumber();
             MoveSelectionDisplayMoveType();
@@ -662,6 +701,7 @@ static void HandleInputChooseMove(void)
             MoveSelectionDestroyCursorAt(gMoveSelectionCursor[gActiveBattler]);
             gMoveSelectionCursor[gActiveBattler] ^= 2;
             PlaySE(SE_SELECT);
+            MoveSelectionDisplayMoveNames(); // Reload Moves
             MoveSelectionCreateCursorAt(gMoveSelectionCursor[gActiveBattler], 0);
             MoveSelectionDisplayPpNumber();
             MoveSelectionDisplayMoveType();
@@ -675,6 +715,7 @@ static void HandleInputChooseMove(void)
             MoveSelectionDestroyCursorAt(gMoveSelectionCursor[gActiveBattler]);
             gMoveSelectionCursor[gActiveBattler] ^= 2;
             PlaySE(SE_SELECT);
+            MoveSelectionDisplayMoveNames(); // Reload Moves
             MoveSelectionCreateCursorAt(gMoveSelectionCursor[gActiveBattler], 0);
             MoveSelectionDisplayPpNumber();
             MoveSelectionDisplayMoveType();
@@ -842,7 +883,7 @@ static void HandleMoveSwitching(void)
         }
 
         gBattlerControllerFuncs[gActiveBattler] = HandleInputChooseMove;
-        gMoveSelectionCursor[gActiveBattler] = gMultiUsePlayerCursor;
+        gMoveSelectionCursor[gActiveBattler] = gMultiUsePlayerCursor;//
         MoveSelectionCreateCursorAt(gMoveSelectionCursor[gActiveBattler], 0);
         MoveSelectionDisplayPpString();
         MoveSelectionDisplayPpNumber();
@@ -1537,18 +1578,96 @@ static void PlayerHandleYesNoInput(void)
     }
 }
 
-static void MoveSelectionDisplayMoveNames(void)
+static void MoveSelectionDisplayMoveNames(void)//
 {
     s32 i;
+    u8 moveEffectiveness;                   // Stores an index to gTextOnWindowsInfo_Normal that gets the appropriate window Id properties
+    u8 *txtPtr = gDisplayedStringBattle;    // Text for super, not very or no effect
+    u8 neutralTxt[20] = {0};                // Default text for neutral effectiveness
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleBufferA[gActiveBattler][4]);
     gNumberOfMovesToChoose = 0;
 
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         MoveSelectionDestroyCursorAt(i);
-        StringCopy(gDisplayedStringBattle, gMoveNames[moveInfo->moves[i]]);
+        sHasTypeEffectivenessShown = FALSE;    // Set to false so it doesn't affect calculations
+
+        // Get the type effectiveness of the target
+        if (GetBattlerPosition(gMultiUsePlayerCursor) == B_POSITION_PLAYER_LEFT && gActiveBattler == B_POSITION_PLAYER_LEFT)
+        {
+            /* In single battles, GetBattlerPosition(gMultiUsePlayerCursor) always returns B_POSITION_PLAYER_LEFT
+            so we also compare the active battler to be sure its a single battle */
+            moveEffectiveness = TypeEffectiveness(moveInfo, B_POSITION_OPPONENT_LEFT);
+        }
+        else
+        {
+            // This should work for all double battles
+            moveEffectiveness = TypeEffectiveness(moveInfo, GetBattlerPosition(gMultiUsePlayerCursor));
+        }
+        
+        // Set colors in template text "txtPtr" and display STAB (if any)
+        if (i == gMoveSelectionCursor[gActiveBattler] && !sHasTypeEffectivenessShown) // If the current move is selected and no move has any non-gray color yet
+        {
+            if (moveEffectiveness != B_WIN_MOVE_TYPE) // As long as its super, not very effective or has no effect
+            {
+                *(txtPtr)++ = EXT_CTRL_CODE_BEGIN;
+                *(txtPtr)++ = EXT_CTRL_CODE_COLOR_HIGHLIGHT_SHADOW;
+                *(txtPtr)++ = gTextOnWindowsInfo_Normal[moveEffectiveness].fgColor;
+                *(txtPtr)++ = gTextOnWindowsInfo_Normal[moveEffectiveness].bgColor;
+                *(txtPtr)++ = gTextOnWindowsInfo_Normal[moveEffectiveness].shadowColor;
+
+                sHasTypeEffectivenessShown = TRUE;   // The appropriate move has its type effectiveness shown
+            }
+
+            #ifdef ENABLE_STAB_TEXT
+            // Current move has stab and the STAB icon isn't loaded
+            if (DoesMoveHaveStab(moveInfo) && sSTABIconId == 0)
+            {
+                sSTABIconId = LoadStaticPic(sSTABIconGfx, sSTABIconPal, 100, 50, 0x3334);
+            }
+            // The STAB icon is loaded but current move lacks stab/user clicked out of move selection
+            else if (sSTABIconId != 0)
+            {
+                DestroyStaticPic(0x3334, sSTABIconId);
+                sSTABIconId = 0;
+            }
+            #endif
+
+        }
+
+        // Add move name to the prepared template and backup 
+        StringCopy(txtPtr, gMoveNames[moveInfo->moves[i]]);
+        StringCopy(neutralTxt, gMoveNames[moveInfo->moves[i]]);
+
+        // Add a symbol to the move name depending on effectiveness
+        switch ((TypeEffectiveness(moveInfo, 1)))
+        {
+            case B_WIN_SUPER_EFFECTIVE:
+                StringAppend(txtPtr, gText_SuperEffective);
+                break;
+            case B_WIN_NOT_VERY_EFFECTIVE:
+                StringAppend(txtPtr, gText_NotVeryEffective);
+                break;
+            case B_WIN_NO_EFFECT:
+                StringAppend(txtPtr, gText_NoEffect);
+                break;
+            case B_WIN_MOVE_TYPE:
+            default:
+                break;
+        }
+
         // Prints on windows B_WIN_MOVE_NAME_1, B_WIN_MOVE_NAME_2, B_WIN_MOVE_NAME_3, B_WIN_MOVE_NAME_4
-        BattlePutTextOnWindow(gDisplayedStringBattle, i + B_WIN_MOVE_NAME_1);
+        if (sHasTypeEffectivenessShown)
+        {
+            // Current move is not neutral against target
+            BattlePutTextOnWindow(gDisplayedStringBattle, i + B_WIN_MOVE_NAME_1);
+        }
+        else
+        {
+            // Current move is neutral against target
+            BattlePutTextOnWindow(neutralTxt, i + B_WIN_MOVE_NAME_1);
+        }
+
         if (moveInfo->moves[i] != MOVE_NONE)
             gNumberOfMovesToChoose++;
     }
@@ -1583,13 +1702,9 @@ static void MulModifier(u16 *modifier, u16 val)
 	*modifier = UQ_4_12_TO_INT((*modifier * val) + UQ_4_12_ROUND);
 }
 
-u8 TypeEffectiveness(struct ChooseMoveStruct *moveInfo, u8 targetId)  /*Determines the effectiveness of the selected move,
+static u8 TypeEffectiveness(struct ChooseMoveStruct *moveInfo, u8 targetId)  /*Determines the effectiveness of the selected move,
                                                                       and returns the appropriate value of the struct in the struct array gTextOnWindowsInfo_Normal */
 {
-    u8 userMoveElement = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type;  // Element of move selected
-    u8 userFirstElement = gBattleMons[gActiveBattler].type1;   // The first element of the user's typing
-    u8 userSecondElement = gBattleMons[gActiveBattler].type2;   // The second element of the user's typing
-
     #ifdef B_FLAG_INVERSE_BATTLE
         bool8 isInverse = (B_FLAG_INVERSE_BATTLE != 0 && FlagGet(B_FLAG_INVERSE_BATTLE)) ? TRUE : FALSE;
     #endif
@@ -1641,87 +1756,41 @@ u8 TypeEffectiveness(struct ChooseMoveStruct *moveInfo, u8 targetId)  /*Determin
 		// B_WIN_NOT_VERY_EFFECTIVE (25) - not very effective
 		// B_WIN_NO_EFFECT (26) - no effect
 
-		// B_WIN_SUPER_EFFECTIVE_STAB (27) - super effective with STAB
-		// B_WIN_NOT_VERY_EFFECTIVE_STAB (28) - not very effective with STAB
-		// B_WIN_NO_EFFECT_STAB (29) - no effect but still has STAB
-        // B_WIN_STAB (30) - normal effectiveness with STAB
-
-		if (userMoveElement != userFirstElement && userMoveElement != userSecondElement) // Not a STAB move
-        {
-            if (mod == UQ_4_12(0.0)) // Damage multiplier is x0 meaning the move doesn't affect the target
-            { 
-            
-            #ifdef B_FLAG_INVERSE_BATTLE
-                if(isInverse)
-                    return B_WIN_SUPER_EFFECTIVE;
-                else
-            #endif
-                    return B_WIN_NO_EFFECT;
-            
-            }
-            else if (mod <= UQ_4_12(0.5)) // Damage multiplier is x0.5 meaning the move is not very effective against the target
-            { 
-
-            #ifdef B_FLAG_INVERSE_BATTLE
-                if(isInverse)
-                    return B_WIN_SUPER_EFFECTIVE;
-                else
-            #endif
-                    return B_WIN_NOT_VERY_EFFECTIVE;
-            
-            }
-            else if (mod >= UQ_4_12(2.0)) // Damage multiplier is x2.0 meaning the move is super effective against the target
-            { 
-            
-            #ifdef B_FLAG_INVERSE_BATTLE
-                if(isInverse)
-                    return B_WIN_NOT_VERY_EFFECTIVE;
-                else
-            #endif
-                    return B_WIN_SUPER_EFFECTIVE;
-            
-            }
-            else // Not super effective, not very effective or uneffective
-                return B_WIN_MOVE_TYPE;
+        if (mod == UQ_4_12(0.0)) // Damage multiplier is x0 meaning the move doesn't affect the target
+        { 
+        
+        #ifdef B_FLAG_INVERSE_BATTLE
+            if(isInverse)
+                return B_WIN_SUPER_EFFECTIVE;
+            else
+        #endif
+                return B_WIN_NO_EFFECT;
+        
         }
-        else // A STAB move
-        {
-            if (mod == UQ_4_12(0.0)) // Damage multiplier is x0 meaning the move doesn't affect the target
-            { 
-            
-            #ifdef B_FLAG_INVERSE_BATTLE
-                if(isInverse)
-                    return B_WIN_SUPER_EFFECTIVE_STAB;
-                else
-            #endif
-                    return B_WIN_NO_EFFECT_STAB;
-            
-            }
-            else if (mod <= UQ_4_12(0.5)) // Damage multiplier is x0.5 meaning the move is not very effective against the target
-            { 
+        else if (mod <= UQ_4_12(0.5)) // Damage multiplier is x0.5 meaning the move is not very effective against the target
+        { 
 
-            #ifdef B_FLAG_INVERSE_BATTLE
-                if(isInverse)
-                    return B_WIN_SUPER_EFFECTIVE_STAB;
-                else
-            #endif
-                    return B_WIN_NOT_VERY_EFFECTIVE_STAB;
-            
-            }
-            else if (mod >= UQ_4_12(2.0)) // Damage multiplier is x2.0 meaning the move is super effective against the target
-            { 
-            
-            #ifdef B_FLAG_INVERSE_BATTLE
-                if(isInverse)
-                    return B_WIN_NOT_VERY_EFFECTIVE_STAB;
-                else
-            #endif
-                    return B_WIN_SUPER_EFFECTIVE_STAB;
-            
-            }
-            else // Not super effective, not very effective or uneffective
-                return B_WIN_STAB;
+        #ifdef B_FLAG_INVERSE_BATTLE
+            if(isInverse)
+                return B_WIN_SUPER_EFFECTIVE;
+            else
+        #endif
+                return B_WIN_NOT_VERY_EFFECTIVE;
+        
         }
+        else if (mod >= UQ_4_12(2.0)) // Damage multiplier is x2.0 meaning the move is super effective against the target
+        { 
+        
+        #ifdef B_FLAG_INVERSE_BATTLE
+            if(isInverse)
+                return B_WIN_NOT_VERY_EFFECTIVE;
+            else
+        #endif
+                return B_WIN_SUPER_EFFECTIVE;
+        
+        }
+        else // Not super effective, not very effective or uneffective
+            return B_WIN_MOVE_TYPE;
 	}
 }
 
@@ -1735,40 +1804,19 @@ static void MoveSelectionDisplayMoveTypeDoubles(u8 targetId) // Deals with the m
 	txtPtr++;
 	txtPtr[0] = 6; // EXT_CTRL_CODE_FONT
 	txtPtr++;
-	#ifndef ONLY_ELEMENT_TEXT_COLOR_CHANGE
     txtPtr[0] = 1; // FONT_NORMAL
     txtPtr++;
-    #endif
-    #ifdef ONLY_ELEMENT_TEXT_COLOR_CHANGE
-    txtPtr[0] = gTextOnWindowsInfo_Normal[TypeEffectiveness(moveInfo, 1)].fontId;
-    txtPtr++;
-    txtPtr[0] = EXT_CTRL_CODE_BEGIN;
-    txtPtr++;
-    txtPtr[0] = EXT_CTRL_CODE_COLOR_HIGHLIGHT_SHADOW;
-    txtPtr++;
-    txtPtr[0] = gTextOnWindowsInfo_Normal[TypeEffectiveness(moveInfo, 1)].fgColor;
-    txtPtr++;
-    txtPtr[0] = gTextOnWindowsInfo_Normal[TypeEffectiveness(moveInfo, 1)].bgColor;
-    txtPtr++;
-    txtPtr[0] = gTextOnWindowsInfo_Normal[TypeEffectiveness(moveInfo, 1)].shadowColor;
-    txtPtr++;
-    #endif
 
 	StringCopy(txtPtr, gTypeNames[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type]);
-	#ifdef ONLY_ELEMENT_TEXT_COLOR_CHANGE
+
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE); //Prints out the coloured text in single batttles.
-    #endif
-    #ifndef ONLY_ELEMENT_TEXT_COLOR_CHANGE
-    BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, 1)); /*Since we are using TypeEffectiveness(),
-    it overrides what the previous *(txtPtr)++ was trying to do */
-    #endif
 }
 
 
 
 static void MoveSelectionDisplayMoveType(void) // Deals with the move type text for single battles
 {
-    u8 *txtPtr;
+    u8 *txtPtr; 
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleBufferA[gActiveBattler][MAX_BATTLERS_COUNT]); // &gBattleBufferA should be &gBattleResources->bufferA if it doesn't compile with the former
 
     txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfaceType); // Stores the "TYPE/" text into gDisplayedStringBattle
@@ -1776,30 +1824,25 @@ static void MoveSelectionDisplayMoveType(void) // Deals with the move type text 
     // Shifts forward in the text and applies the following effects to any extra text
     *(txtPtr)++ = EXT_CTRL_CODE_BEGIN;
     *(txtPtr)++ = EXT_CTRL_CODE_FONT;
-
-    #ifndef ONLY_ELEMENT_TEXT_COLOR_CHANGE
     *(txtPtr)++ = FONT_NORMAL;
-    #endif
-    #ifdef ONLY_ELEMENT_TEXT_COLOR_CHANGE
-    *(txtPtr)++ = gTextOnWindowsInfo_Normal[TypeEffectiveness(moveInfo, 1)].fontId;
-    *(txtPtr)++ = EXT_CTRL_CODE_BEGIN;
-    *(txtPtr)++ = EXT_CTRL_CODE_COLOR_HIGHLIGHT_SHADOW;
-    *(txtPtr)++ = gTextOnWindowsInfo_Normal[TypeEffectiveness(moveInfo, 1)].fgColor;
-    *(txtPtr)++ = gTextOnWindowsInfo_Normal[TypeEffectiveness(moveInfo, 1)].bgColor;
-    *(txtPtr)++ = gTextOnWindowsInfo_Normal[TypeEffectiveness(moveInfo, 1)].shadowColor;
-    #endif
-
 
     StringCopy(txtPtr, gTypeNames[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type]);
 
-    #ifdef ONLY_ELEMENT_TEXT_COLOR_CHANGE
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE); //Prints out the coloured text in single batttles.
-    #endif
-    #ifndef ONLY_ELEMENT_TEXT_COLOR_CHANGE
-    BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, 1)); /*Since we are using TypeEffectiveness(),
-    it overrides what the previous *(txtPtr)++ was trying to do */
-    #endif
 }
+
+static bool8 DoesMoveHaveStab (struct ChooseMoveStruct *moveInfo)
+{
+    u8 userMoveElement = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type;  // Element of move selected
+    u8 userFirstElement = gBattleMons[gActiveBattler].type1;   // The first element of the user's typing
+    u8 userSecondElement = gBattleMons[gActiveBattler].type2;   // The second element of the user's typing
+
+    if (userMoveElement == userFirstElement || userMoveElement == userSecondElement)
+        return TRUE;
+    
+    return FALSE;
+};
+
 
 static void MoveSelectionCreateCursorAt(u8 cursorPosition, u8 baseTileNum)
 {
@@ -3438,4 +3481,52 @@ static void PlayerHandleEndLinkBattle(void)
 
 static void PlayerCmdEnd(void)
 {
+}
+
+u8 LoadStaticPic(const u32 *gfx, const u16 *pal, u8 x, u8 y, u16 spriteTagId)
+{
+    struct CompressedSpriteSheet sheet;
+    struct SpritePalette palSheet;
+    struct SpriteTemplate spriteTempl;
+    struct OamData oam = {0};
+    u8 sPicId = 0; // Used for deleting the sprite
+
+    // Prepare the Compressed Sprite Sheet
+    sheet.tag = spriteTagId;
+    sheet.data = gfx;
+    sheet.size = 8 * 8 * TILE_SIZE_4BPP; // For an 8*8 (tile) sprite
+    LoadCompressedSpriteSheet(&sheet);
+
+    // Prepare the Sprite Palette
+    palSheet.tag = spriteTagId;
+    palSheet.data = pal;
+    LoadSpritePalette(&palSheet);
+
+    // Prepare the OAM
+    oam.size = SPRITE_SIZE(32x32);
+    oam.shape = SPRITE_SHAPE(32x32);
+    oam.priority = 1;
+
+    // Prepare the Sprite Template
+    spriteTempl = gDummySpriteTemplate;
+    spriteTempl.oam = &oam;
+    spriteTempl.paletteTag = spriteTempl.tileTag = spriteTagId;
+    /*if (sPics[id].callback)
+        spriteTempl.callback = sPics[id].callback;
+    if (sPics[id].anims)
+        spriteTempl.anims = sPics[id].anims;*/
+
+    // Create the sprite
+    sPicId = CreateSprite(&spriteTempl, x, y, 0);
+    if (sPicId == MAX_SPRITES)
+        return;
+    
+    return sPicId;
+}
+
+void DestroyStaticPic(u16 spriteTagId, u8 spriteId)
+{
+    DestroySprite(&gSprites[spriteId]);
+    FreeSpritePaletteByTag(spriteTagId);
+    FreeSpriteTilesByTag(spriteTagId);
 }
