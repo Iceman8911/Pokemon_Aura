@@ -11700,6 +11700,99 @@
           }
         },
         {
+          "map": "MAP_ROUTE01",
+          "base_label": "gRoute01_WaterMons",
+          "water_mons": {
+            "encounter_rate": 30,
+            "mons": [
+              {
+                "min_level": 30,
+                "max_level": 45,
+                "species": "SPECIES_SURSKIT"
+              },
+              {
+                "min_level": 35,
+                "max_level": 40,
+                "species": "SPECIES_GOLDEEN"
+              },
+              {
+                "min_level": 37,
+                "max_level": 43,
+                "species": "SPECIES_PSYDUCK"
+              },
+              {
+                "min_level": 40,
+                "max_level": 55,
+                "species": "SPECIES_MASQUERAIN"
+              },
+              {
+                "min_level": 45,
+                "max_level": 55,
+                "species": "SPECIES_GOLDUCK"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_ROUTE01",
+          "base_label": "gRoute01_FishingMons",
+          "fishing_mons": {
+            "encounter_rate": 40,
+            "mons": [
+              {
+                "min_level": 5,
+                "max_level": 8,
+                "species": "SPECIES_SURSKIT"
+              },
+              {
+                "min_level": 5,
+                "max_level": 13,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 10,
+                "max_level": 18,
+                "species": "SPECIES_GOLDEEN"
+              },
+              {
+                "min_level": 8,
+                "max_level": 17,
+                "species": "SPECIES_SURSKIT"
+              },
+              {
+                "min_level": 8,
+                "max_level": 19,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 30,
+                "max_level": 45,
+                "species": "SPECIES_BARBOACH"
+              },
+              {
+                "min_level": 40,
+                "max_level": 46,
+                "species": "SPECIES_SEAKING"
+              },
+              {
+                "min_level": 40,
+                "max_level": 47,
+                "species": "SPECIES_WHISCASH"
+              },
+              {
+                "min_level": 25,
+                "max_level": 34,
+                "species": "SPECIES_SQUIRTLE"
+              },
+              {
+                "min_level": 28,
+                "max_level": 44,
+                "species": "SPECIES_WARTORTLE"
+              }
+            ]
+          }
+        },
+        {
           "map": "MAP_MURKY_GROVE",
           "base_label": "gMurkyGrove0",
           "land_mons": {
