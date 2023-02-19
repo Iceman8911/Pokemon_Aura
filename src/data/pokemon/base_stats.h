@@ -70,10 +70,10 @@
 #define UNOWN_BASE_STATS(flip)                        \
     {                                                 \
         .baseHP        = 48,                          \
-        .baseAttack    = 172,                          \
+        .baseAttack    = 182,                          \
         .baseDefense   = 48,                          \
         .baseSpeed     = 48,                          \
-        .baseSpAttack  = 172,                          \
+        .baseSpAttack  = 182,                          \
         .baseSpDefense = 48,                          \
         .type1 = TYPE_PSYCHIC,                        \
         .type2 = TYPE_PSYCHIC,                        \
@@ -94,17 +94,17 @@
 
 #define CASTFORM_BASE_STATS(type, color)              \
     {                                                 \
-        .baseHP        = 70,                          \
-        .baseAttack    = 30,                          \
+        .baseHP        = 55,                          \
+        .baseAttack    = 20,                          \
         .baseDefense   = 70,                          \
-        .baseSpeed     = 90,                          \
-        .baseSpAttack  = 90,                          \
+        .baseSpeed     = 100,                          \
+        .baseSpAttack  = 105,                          \
         .baseSpDefense = 70,                          \
         .type1 = type,                                \
         .type2 = type,                                \
         .catchRate = 45,                              \
         .expYield = 147,                              \
-        .evYield_HP        = 1,                       \
+        .evYield_SpAttack  = 1,                       \
         .itemCommon = ITEM_MYSTIC_WATER,                   \
         .itemRare = ITEM_MYSTIC_WATER,                   \
         .genderRatio = PERCENT_FEMALE(50),            \
@@ -294,8 +294,8 @@
         .baseHP        = 80,                                                         \
         .baseAttack    = 120,                                                        \
         .baseDefense   = 65,                                                         \
-        .baseSpeed     = 95,                                                         \
-        .baseSpAttack  = 50,                                                         \
+        .baseSpeed     = 105,                                                         \
+        .baseSpAttack  = 40,                                                         \
         .baseSpDefense = 65,                                                         \
         .type1 = TYPE_NORMAL,                                                        \
         .type2 = TYPE_GRASS,                                                         \
@@ -441,10 +441,10 @@
 #define FURFROU_BASE_STATS(flip)                      \
     {                                                 \
         .baseHP        = 75,                          \
-        .baseAttack    = 90,                          \
+        .baseAttack    = 95,                          \
         .baseDefense   = 60,                          \
         .baseSpeed     = 112,                         \
-        .baseSpAttack  = 45,                          \
+        .baseSpAttack  = 40,                          \
         .baseSpDefense = 90,                          \
         .type1 = TYPE_NORMAL,                         \
         .type2 = TYPE_NORMAL,                         \
@@ -547,10 +547,10 @@
 #define ZYGARDE_10_BASE_STATS(ability)       \
     {                                        \
         .baseHP        = 54,                 \
-        .baseAttack    = 100,                \
+        .baseAttack    = 103,                \
         .baseDefense   = 71,                 \
-        .baseSpeed     = 115,                \
-        .baseSpAttack  = 61,                 \
+        .baseSpeed     = 122,                \
+        .baseSpAttack  = 51,                 \
         .baseSpDefense = 85,                 \
         .type1 = TYPE_DRAGON,                \
         .type2 = TYPE_GROUND,                \
@@ -645,11 +645,11 @@
 
 #define MINIOR_METEOR_ATTRIBUTES\
         .baseHP        = 60,    \
-        .baseAttack    = 60,    \
-        .baseDefense   = 100,   \
-        .baseSpeed     = 60,    \
-        .baseSpAttack  = 60,    \
-        .baseSpDefense = 100
+        .baseAttack    = 40,    \
+        .baseDefense   = 130,   \
+        .baseSpeed     = 40,    \
+        .baseSpAttack  = 40,    \
+        .baseSpDefense = 130
 
 #define MINIOR_CORE_ATTRIBUTES\
         .baseHP        = 60,  \
@@ -693,10 +693,10 @@
 #define MIMIKYU_BASE_STATS                            \
     {                                                 \
         .baseHP        = 55,                          \
-        .baseAttack    = 95,                          \
+        .baseAttack    = 98,                          \
         .baseDefense   = 85,                          \
-        .baseSpeed     = 96,                          \
-        .baseSpAttack  = 30,                          \
+        .baseSpeed     = 98,                          \
+        .baseSpAttack  = 25,                          \
         .baseSpDefense = 115,                         \
         .type1 = TYPE_GHOST,                          \
         .type2 = TYPE_FAIRY,                          \
@@ -767,9 +767,9 @@
 #define TOXTRICITY_BASE_STATS(ability2)                                \
     {                                                                  \
         .baseHP        = 75,                                           \
-        .baseAttack    = 98,                                           \
+        .baseAttack    = 88,                                           \
         .baseDefense   = 70,                                           \
-        .baseSpeed     = 75,                                           \
+        .baseSpeed     = 85,                                           \
         .baseSpAttack  = 114,                                          \
         .baseSpDefense = 70,                                           \
         .type1 = TYPE_ELECTRIC,                                        \
@@ -838,12 +838,12 @@
 
 #define ALCREMIE_BASE_STATS(color)                                          \
     {                                                                       \
-        .baseHP        = 75,                                                \
+        .baseHP        = 85,                                                \
         .baseAttack    = 40,                                                \
-        .baseDefense   = 75,                                                \
+        .baseDefense   = 85,                                                \
         .baseSpeed     = 64,                                                \
-        .baseSpAttack  = 115,                                               \
-        .baseSpDefense = 126,                                               \
+        .baseSpAttack  = 105,                                               \
+        .baseSpDefense = 116,                                               \
         .type1 = TYPE_FAIRY,                                                \
         .type2 = TYPE_FAIRY,                                                \
         .catchRate = 100,                                                   \
@@ -965,11 +965,11 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_VENUSAUR] =
     {
         .baseHP        = 80,
-        .baseAttack    = 82,
+        .baseAttack    = 72,
         .baseDefense   = 83,
         .baseSpeed     = 80,
-        .baseSpAttack  = 100,
-        .baseSpDefense = 100,
+        .baseSpAttack  = 105,
+        .baseSpDefense = 105,
         .type1 = TYPE_GRASS,
         .type2 = TYPE_POISON,
         .catchRate = 45,
@@ -1111,8 +1111,8 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_BLASTOISE] =
     {
-        .baseHP        = 79,
-        .baseAttack    = 83,
+        .baseHP        = 89,
+        .baseAttack    = 73,
         .baseDefense   = 100,
         .baseSpeed     = 78,
         .baseSpAttack  = 85,
@@ -1725,11 +1725,11 @@ const struct BaseStats gBaseStats[] =
     {
         .baseHP        = 71,
         .baseDefense   = 77,
-        .baseSpeed     = 85,
+        .baseSpeed     = 90,
         .baseSpAttack  = 95,
         .baseSpDefense = 75,
         #if P_UPDATED_STATS >= GEN_6
-            .baseAttack    = 102,
+            .baseAttack    = 97,
         #else
             .baseAttack    = 92,
         #endif
@@ -1782,8 +1782,8 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_CLEFABLE] =
     {
         .baseHP        = 95,
-        .baseAttack    = 60,
-        .baseDefense   = 83,
+        .baseAttack    = 55,
+        .baseDefense   = 88,
         .baseSpeed     = 60,
         .baseSpDefense = 90,
         #if P_UPDATED_STATS >= GEN_6
@@ -1841,9 +1841,9 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_NINETALES] =
     {
         .baseHP        = 73,
-        .baseAttack    = 66,
-        .baseDefense   = 65,
-        .baseSpeed     = 100,
+        .baseAttack    = 65,
+        .baseDefense   = 63,
+        .baseSpeed     = 103,
         .baseSpAttack  = 101,
         .baseSpDefense = 100,
         .type1 = TYPE_FIRE,
@@ -1896,8 +1896,8 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_WIGGLYTUFF] =
     {
-        .baseHP        = 140,
-        .baseAttack    = 55,
+        .baseHP        = 145,
+        .baseAttack    = 50,
         .baseDefense   = 45,
         .baseSpeed     = 45,
         .baseSpDefense = 50,
@@ -2083,11 +2083,11 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_PARASECT] =
     {
-        .baseHP        = 105,
+        .baseHP        = 125,
         .baseAttack    = 90,
         .baseDefense   = 85,
         .baseSpeed     = 20,
-        .baseSpAttack  = 50,
+        .baseSpAttack  = 30,
         .baseSpDefense = 85,
         .type1 = TYPE_BUG,
         .type2 = TYPE_GRASS,
@@ -3049,11 +3049,11 @@ const struct BaseStats gBaseStats[] =
     {
         .baseHP        = 60,
         .baseAttack    = 110,
-        .baseDefense   = 70,
+        .baseDefense   = 62,
         .baseSpAttack  = 60,
         .baseSpDefense = 60,
         #if P_UPDATED_STATS >= GEN_7
-            .baseSpeed     = 110,
+            .baseSpeed     = 118,
         #else
             .baseSpeed     = 100,
         #endif

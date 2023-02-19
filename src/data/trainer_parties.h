@@ -386,17 +386,17 @@ static const struct TrainerMon sParty_Leah[] = {
 static const struct TrainerMon sParty_Daisy[] = {
     {
     .iv = 0,
-    .lvl = 16,
+    .lvl = 10,
     .species = SPECIES_SHROOMISH,
     },
     {
     .iv = 0,
-    .lvl = 16,
+    .lvl = 12,
     .species = SPECIES_ODDISH,
     },
     {
     .iv = 0,
-    .lvl = 18,
+    .lvl = 13,
     .species = SPECIES_ROSELIA,
     }
 };
@@ -2712,17 +2712,17 @@ static const struct TrainerMon sParty_Ethan5[] = {
 static const struct TrainerMon sParty_Brent[] = {
     {
     .iv = 150,
-    .lvl = 16,
+    .lvl = 12,
     .species = SPECIES_BEEDRILL,
     .heldItem = ITEM_MUSCLE_BAND,
-    .moves = {MOVE_TWINEEDLE, MOVE_POISON_JAB, MOVE_FURY_ATTACK, MOVE_WORK_UP},
+    .moves = {MOVE_FOCUS_ENERGY, MOVE_POISON_STING, MOVE_FURY_ATTACK, MOVE_HARDEN},
     },
     {
     .iv = 150,
-    .lvl = 16,
+    .lvl = 13,
     .species = SPECIES_DUSTOX,
     .heldItem = ITEM_BLACK_SLUDGE,
-    .moves = {MOVE_MOONLIGHT, MOVE_TOXIC, MOVE_VENOSHOCK, MOVE_CONFUSION},
+    .moves = {MOVE_MOONLIGHT, MOVE_CONFUSION, MOVE_POISON_STING, MOVE_STRING_SHOT},
     }
 };
 
@@ -3637,15 +3637,15 @@ static const struct TrainerMon sParty_Jerry1[] = {
 static const struct TrainerMon sParty_Ted[] = {
     {
     .iv = 70,
-    .lvl = 15,
+    .lvl = 9,
     .species = SPECIES_WOOPER,
-    .moves = {MOVE_RECOVER, MOVE_MUD_SHOT, MOVE_WATER_PULSE, MOVE_YAWN},
+    .moves = {MOVE_MUD_SPORT, MOVE_MUD_SHOT, MOVE_WATER_GUN, MOVE_MUD_SLAP},
     },
     {
     .iv = 70,
-    .lvl = 16,
+    .lvl = 12,
     .species = SPECIES_CROAGUNK,
-    .moves = {MOVE_POISON_STING, MOVE_POISON_JAB, MOVE_KARATE_CHOP, MOVE_VACUUM_WAVE},
+    .moves = {MOVE_POISON_STING, MOVE_MUD_SLAP, MOVE_KARATE_CHOP, MOVE_VACUUM_WAVE},
     }
 };
 
@@ -12496,7 +12496,7 @@ static const struct TrainerMon sParty_YoungsterJohn[] = {
 static const struct TrainerMon sParty_YoungsterJoey[] = {
     {
     .iv = 255,
-    .lvl = 14,
+    .lvl = 11,
     .species = SPECIES_RATTATA,
     .gender = 1,
     .heldItem = ITEM_SILK_SCARF,
@@ -12515,7 +12515,7 @@ static const struct TrainerMon sParty_LadyLia[] = {
     },
     {
     .iv = 58,
-    .lvl = 9,
+    .lvl = 8,
     .species = SPECIES_ROSELIA,
     }
 };

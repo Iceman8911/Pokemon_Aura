@@ -1,37 +1,37 @@
 gText_ObtainedTheItem::
-	.string "Obtained the {STR_VAR_2}!$"
+	.string "Obtained the {COLOR GREEN}{STR_VAR_2}{COLOR DARK_GRAY}!$"
     
 gText_ObtainedTheItems::
-    .string "Obtained {STR_VAR_1} {STR_VAR_2}!$"
+    .string "Obtained {COLOR GREEN}{STR_VAR_1} {STR_VAR_2}{COLOR DARK_GRAY}!$"
 
 gText_TheBagIsFull::
 	.string "The Bag is full…$"
 
 gText_PutItemInPocket::
-	.string "{PLAYER} put away the {STR_VAR_2}\n"
-	.string "in the {STR_VAR_3} Pocket.$"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY} put away the {COLOR GREEN}{STR_VAR_2}{COLOR DARK_GRAY}\n"
+	.string "in the {COLOR GREEN}{STR_VAR_3}{COLOR DARK_GRAY} Pocket.$"
 
 gText_PlayerFoundOneItem::
-	.string "{PLAYER} found one {STR_VAR_2}!$"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY} found one {COLOR GREEN}{STR_VAR_2}{COLOR DARK_GRAY}!$"
 
 gText_PlayerFoundItems::
-	.string "{PLAYER} found {STR_VAR_1} {STR_VAR_2}!$"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY} found {COLOR GREEN}{STR_VAR_1} {STR_VAR_2}{COLOR DARK_GRAY}!$"
 
 gText_TooBadBagIsFull::
 	.string "Too bad!\n"
 	.string "The Bag is full…$"
 
 gText_PlayerPutItemInBag::
-	.string "{PLAYER} put away the {STR_VAR_2}\n"
+	.string "{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY} put away the {COLOR GREEN}{STR_VAR_2}{COLOR DARK_GRAY}\n"
 	.string "in the Bag.$"
 
 gText_ObtainedTheDecor::
-	.string "Obtained the {STR_VAR_2}!$"
+	.string "Obtained the {COLOR GREEN}{STR_VAR_2}{COLOR DARK_GRAY}!$"
 
 gText_NoRoomLeftForAnother::
 	.string "Too bad! There's no room left for\n"
-	.string "another {STR_VAR_2}…$"
+	.string "another {COLOR GREEN}{STR_VAR_2}{COLOR DARK_GRAY}…$"
 
 gText_TheDecorWasTransferredToThePC::
-	.string "The {STR_VAR_2} was transferred\n"
+	.string "The {COLOR GREEN}{STR_VAR_2}{COLOR DARK_GRAY} was transferred\n"
 	.string "to the PC.$"

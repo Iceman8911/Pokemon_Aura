@@ -19,35 +19,59 @@ script MurkyGrove_Sign {
 }
 
 script MurkyGrove_BugManiac {
-    trainerbattle_single(BUG_MANIAC_BRENT, format("{COLOR BLUE}There are four mushrooms in this grove that grow {COLOR GREEN}Tiny Mushrooms{COLOR BLUE} very quickly.\pIf you defeat me, I'll tell you where they are."), format("Almost had it there!"))
-    switch (var(VAR_TEMP_0)) {
+    lockall
+    if(!defeated(BUG_MANIAC_BRENT))
+    {
+        msgbox(format("{COLOR BLUE}There are some really nice stuff here. If you beat me in a battle, I'll tell you what and where they are."), 2)
+        bufferdynamicmulti("Sure, I'll take you on!", "Nah, not feeling like it.")
+        multichoice(25, 7, MULTI_DYNAMIC_2, 1)
+        switch(var(VAR_RESULT))
+        {
+            // Battle
+            case 0:
+                trainerbattle_single(BUG_MANIAC_BRENT, format("{COLOR BLUE}Keke, I'm no pushover!"), format("Almost had it there!"))
+            case 1:
+                msgbox(format("{COLOR BLUE}Perhaps the might of my bugs scared you off ...fufu."))
+                waitmessage
+            default:
+                break
+        }
+    }
+    else
+    {
+        switch (var(VAR_TEMP_0)) 
+        {
         case 0:
-            msgbox(format("{COLOR BLUE}Well,\pA deal's a deal."), 2)
+            msgbox(format("{COLOR BLUE}Well, a deal's a deal."), 2)
             closemessage
             addvar(VAR_TEMP_0, 1)
         case 1:
-            msgbox(format("{COLOR BLUE}Just south of here are two mushrooms side-by-side.\p One of them has a {COLOR GREEN}Tiny Mushroom{COLOR BLUE}."), 2)
+            msgbox(format("{COLOR BLUE}To my far right, there's a {COLOR GREEN}Tiny Mushroom{COLOR BLUE} near a little girl."), 2)
             closemessage
             addvar(VAR_TEMP_0, 1)
         case 2:
-            msgbox(format("{COLOR BLUE}A bit beyond that is a {COLOR GREEN}Tiny Mushroom{COLOR BLUE} near a ledge and small light brown log."), 2)
+            msgbox(format("{COLOR BLUE}In a cluster of trees south of here, there's a{COLOR GREEN}Tiny Mushroom{COLOR BLUE} and another a bit futher and close to a ledge."), 2)
             closemessage
             addvar(VAR_TEMP_0, 1)
         case 3:
             if(var(VAR_TEMP_1) == 0) {
-                msgbox(format("{COLOR BLUE}You can find two more {COLOR GREEN}Tiny Mushrooms{COLOR BLUE} if you choose to follow the other way out of this place, which is to your far right.\pThe two mushrooms are close to the first light brown log you can jump over."), 2)
+                msgbox(format("{COLOR BLUE}The last {COLOR GREEN}Tiny Mushroom{COLOR BLUE} is close to the exit of the grove. You can't miss it!"), 2)
                 waitmessage
-                msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: (I bet mushrooms would sell for a reasonable price.)\pThanks man,\pYou're really saving A LOT of trouble looking for them."), 2)
-                waitmessage
-                msgbox(format("{COLOR BLUE}Your Welcome.\pSince you appreciate my advice, I'll throw in a bonus.\pIf you want extra loot, use the south path to get out of here and choose the path off the ledge that's closer to the pond."), 2)
                 closemessage
                 addvar(VAR_TEMP_1, 1)
-            }else
+            }
+            else
             {
-                msgbox(format("{COLOR BLUE}If you want extra loot, use the south path to get out of here and choose the path off the ledge that's closer to the pond.\pThat'll take you to a {COLOR GREEN}Balm Mushroom{COLOR BLUE}and a {COLOR GREEN}Poison Gem{COLOR BLUE}."), 2)
+                msgbox(format("{COLOR BLUE}If you want extra loot, go into the cluster of trees and you can find "
+                "a {COLOR GREEN}Balm Mushroom{COLOR BLUE}and a {COLOR GREEN}Poison Gem{COLOR BLUE}. There should even be"
+                " a {COLOR GREEN}Poké Ball{COLOR BLUE} nearby...\pI'd get some of these myself "
+                "but I need to tend to my bugs and make them stronger. Be sure to come back later so we can show"
+                " how stronger we've gotten!"), 2)
                 closemessage
             }
+        }
     }
+    releaseall
 }
 
 script MurkyGrove_AromaLady {
@@ -60,11 +84,12 @@ script MurkyGrove_SchoolKid {
     trainerbattle_single(SCHOOL_KID_M_TED, format("{COLOR BLUE}My classmates said that {COLOR GREEN}Grimer{COLOR BLUE} live here.\p Is that true?"), format("Gotta get that Grimer!"))
     msgbox(format("{COLOR BLUE}I'm pretty sure that {COLOR GREEN}Grimer{COLOR BLUE} live here. I'll keep looking."), 2)
     waitmessage
-    msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Why do you want a {COLOR GREEN}Grimer{COLOR DARK_GRAY} so badly?"), 2)
+    msgbox(format("Why do you want a {COLOR GREEN}Grimer{COLOR DARK_GRAY} anyways?"), 2, "{COLOR GREEN}{PLAYER}")
     waitmessage
-    msgbox(format("{COLOR BLUE}Well..,\pIts because {COLOR GREEN}Grimer{COLOR BLUE} evolves into {COLOR GREEN}Muk{COLOR BLUE} and {COLOR GREEN}Muk{COLOR BLUE} backwards is...."), 2)
+    msgbox(format("{COLOR BLUE}There's an inside joke with my schoolmates about {COLOR GREEN}Muk{COLOR BLUE} and I don't quite"
+    " understand what its all about so getting a {COLOR GREEN}Grimer{COLOR BLUE} first might help."), 2)
     waitmessage
-    msgbox(format("{COLOR GREEN}{PLAYER}{COLOR DARK_GRAY}: Nope.\pBye."))
+    msgbox(format("Uhhh.. I doubt you'll wanna know anyways, cya."), , "{COLOR GREEN}{PLAYER}")
     closemessage
 }
 

@@ -4484,8 +4484,8 @@
     {
       "id": "LAYOUT_MURKY_GROVE",
       "name": "MurkyGrove_Layout",
-      "width": 40,
-      "height": 25,
+      "width": 54,
+      "height": 45,
       "primary_tileset": "gTileset_Testing",
       "secondary_tileset": "gTileset_Anconna_Woods",
       "border_filepath": "data/layouts/MurkyGrove/border.bin",
