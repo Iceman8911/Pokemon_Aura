@@ -140,18 +140,20 @@ static void Task_WaitForBattleTowerLinkSave(u8 taskId);
 static bool8 FieldCB_ReturnToFieldStartMenu(void);
 
 //
-#define spriteTagId 0x3333
+#define spriteTagId 0x4444
 #define startMenuIconId  7
 
-static void LoadStartMenuIcon(u8 iconId, u8 position);   // Loads the icon frame at a specified menu option index
-static void DynamicallyLoadStartMenuIcon(u8 index);  // Slap in the position, get the accurate icon
-static void DeleteAllStartMenuIcons(void);  // If you run into graphical issues, just run this
-static void DeleteStartMenuIcon(u8 position); // Some illegal stuff
-static u8 GetIndexOfOptionInsStartMenuItems(u8 index);  // Incase you rearranged smh in your start menu, this gets the right index.
+static void LoadStartMenuIcon(u8 iconId, u8 position);        // Loads the icon frame at a specified menu option index
+static void DynamicallyLoadStartMenuIcon(u8 index);           // Slap in the position, get the accurate icon
+static void DeleteAllStartMenuIcons(void);                    // If you run into graphical issues, just run this then run the function right before this line
+static void DeleteStartMenuIcon(u8 position);                 
+static u8 GetIndexOfOptionInsStartMenuItems(u8 index);        // Incase you rearranged smh in your start menu, this gets the right index.
 bool8 gIsAStartMenuIconAtPosition(u8 position);
 
 EWRAM_DATA bool8 gAreStartMenuIconsReady = FALSE;
+EWRAM_DATA u8 gStartMenuIconPaletteNum = 0;                   // Stores the palette num of the icons
 static EWRAM_DATA bool8 sIsStartMenuIconRefreshed = FALSE;
+static EWRAM_DATA bool8 sIsStartMenuIconPaletteLoaded = FALSE;
 
 static EWRAM_DATA union AnimCmd *iconFrames = NULL;
 
@@ -615,6 +617,10 @@ static bool8 FieldCB_ReturnToFieldStartMenu(void)
     {
         return FALSE;
     }
+
+    // Fix Palette bugs when returning to the start menu from overworld callbacks
+    sIsStartMenuIconPaletteLoaded = FALSE;
+    LoadPalette(sStartMenuIconsPal, (gStartMenuIconPaletteNum * 16) + 0x100, 32);
 
     ReturnToFieldOpenStartMenu();
     return TRUE;
@@ -1611,6 +1617,7 @@ void AppendToList(u8 *list, u8 *pos, u8 newEntry)
 #include "malloc.h"
 void LoadStartMenuIcon(u8 iconId, u8 position)
 {
+    u8 internalSpriteNum; // Just stores the index of the sprite
     struct SpritePalette palSheet;
     struct OamData oam = {0};
     struct SpriteTemplate spriteTemplate = sStartMenuIconSpriteTemplate;
@@ -1635,19 +1642,29 @@ void LoadStartMenuIcon(u8 iconId, u8 position)
     iconFrames[1].type = -1;            // Same as ANIMCMD_END(0)
 
     // Prepare the Sprite Palette
-    palSheet.tag = spriteTagId + iconId; // This tag could be anything really
+    palSheet.tag = spriteTagId;  // This tag could be anything really
     palSheet.data = sStartMenuIconsPal;
 
-    oam = *spriteTemplate.oam; // Copy over original oam
-    oam.paletteNum = LoadSpritePalette(&palSheet); // Load palette and set appropriate palNum
+    oam = *spriteTemplate.oam;                       // Copy over original oam
+    if (!sIsStartMenuIconPaletteLoaded)
+    {
+        oam.paletteNum = LoadSpritePalette(&palSheet);   // Load palette and set appropriate palNum
+        gStartMenuIconPaletteNum = oam.paletteNum;       // Copy the paletteNum of the Icon Palette
+        sIsStartMenuIconPaletteLoaded = TRUE;
+    }
+    else
+    {
+        // Palette already loaded, no need to load a new sprite palette so pull it from gStartMenuIconPaletteNum
+        oam.paletteNum = gStartMenuIconPaletteNum;
+    }
 
-    spriteTemplate.oam = &oam; // Return it back to spriteTemplate
+    spriteTemplate.oam = &oam; // Back to Sender
 
-    spriteTemplate.anims = (const union AnimCmd *const *)&iconFrames;
-    //spriteTemplate.soloSpriteId = iconId;
+    spriteTemplate.anims = (const union AnimCmd *const *)&iconFrames;   // Attach the edited "animation"
     
     // Create the sprite and load the appropriate frame
-    CreateSpriteAndAnimate(&spriteTemplate, x, y, 0);
+    internalSpriteNum = CreateSpriteAtEnd(&spriteTemplate, x, y, 0);
+    AnimateSprite(&gSprites[internalSpriteNum]);
 
     Free((void *)iconFrames);
 }
@@ -1664,6 +1681,7 @@ static void DeleteAllStartMenuIcons(void)
         }
     }
 
+    sIsStartMenuIconPaletteLoaded = FALSE;
     gAreStartMenuIconsReady = FALSE;
 }
 

@@ -21,6 +21,7 @@ void AppendToList(u8 *list, u8 *pos, u8 newEntry);
 
 // For Start Menu Icons
 extern bool8 gAreStartMenuIconsReady;
+extern u8 gStartMenuIconPaletteNum;
 bool8 gIsAStartMenuIconAtPosition(u8 position);
 
 #endif // GUARD_START_MENU_H
