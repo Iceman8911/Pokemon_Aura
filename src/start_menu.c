@@ -165,15 +165,15 @@ static bool8 FieldCB_ReturnToFieldStartMenu(void);
 #define spriteTagId 0x3333
 #define startMenuIconId  7
 
-static void LoadStartMenuIcon(u8 iconId, u8 position);   // Loads the icon frame at a specified menu option index
-static void DynamicallyLoadStartMenuIcon(u8 index);  // Slap in the position, get the accurate icon
-static void DeleteAllStartMenuIcons(void);  // If you run into graphical issues, just run this
-static void DeleteStartMenuIcon(u8 position); // Some illegal stuff
-static u8 GetIndexOfOptionInsStartMenuItems(u8 index);  // Incase you rearranged smh in your start menu, this gets the right index.
+static void LoadStartMenuIcon(u8 iconId, u8 position);      // Loads the icon frame at a specified menu option index
+static void DynamicallyLoadStartMenuIcon(u8 index);         // Slap in the position, get the accurate icon
+static void DeleteAllStartMenuIcons(void);                  // If you run into graphical issues, just run this then run the function right before this line
+static void DeleteStartMenuIcon(u8 position);               
+static u8 GetIndexOfOptionInsStartMenuItems(u8 index);      // Incase you rearranged smh in your start menu, this gets the right index.
 bool8 gIsAStartMenuIconAtPosition(u8 position);
 
 EWRAM_DATA bool8 gAreStartMenuIconsReady = FALSE;
-EWRAM_DATA u8 gStartMenuIconPaletteNum = 0;
+EWRAM_DATA u8 gStartMenuIconPaletteNum = 0;                 // Stores the palette num of the icons
 static EWRAM_DATA bool8 sIsStartMenuIconRefreshed = FALSE;
 static EWRAM_DATA bool8 sIsStartMenuIconPaletteLoaded = FALSE;
 
@@ -796,7 +796,7 @@ static void CreateStartMenuTask(TaskFunc followupFunc)
 }
 
 static bool8 FieldCB_ReturnToFieldStartMenu(void)
-{
+{//
     struct SpritePalette palSheet;
 
     if (InitStartMenuStep() == FALSE)
@@ -804,11 +804,10 @@ static bool8 FieldCB_ReturnToFieldStartMenu(void)
         return FALSE;
     }
 
-    palSheet.tag = spriteTagId;
-    palSheet.data = sStartMenuIconsPal;
-
-    if (gAreStartMenuIconsReady)
-        LoadSpritePalette(&palSheet); // Returning to the menu using some calbacks, the palette is replaced so this restores it
+    // Fix Palette bugs when returning to the start menu from overworld callbacks
+    sIsStartMenuIconPaletteLoaded = FALSE;
+    LoadPalette(sStartMenuIconsPal, (gStartMenuIconPaletteNum * 16) + 0x100, 32);
+    
     ReturnToFieldOpenStartMenu();
     return TRUE;
 }
@@ -1870,6 +1869,7 @@ static bool8 StartMenuDexNavCallback(void)
 #include "malloc.h"
 void LoadStartMenuIcon(u8 iconId, u8 position)
 {
+    u8 internalSpriteNum; // Just stores the index of the sprite
     struct SpritePalette palSheet;
     struct OamData oam = {0};
     struct SpriteTemplate spriteTemplate = sStartMenuIconSpriteTemplate;
@@ -1894,7 +1894,7 @@ void LoadStartMenuIcon(u8 iconId, u8 position)
     iconFrames[1].type = -1;            // Same as ANIMCMD_END(0)
 
     // Prepare the Sprite Palette
-    palSheet.tag = spriteTagId + iconId;  // This tag could be anything really
+    palSheet.tag = spriteTagId;  // This tag could be anything really
     palSheet.data = sStartMenuIconsPal;
 
     oam = *spriteTemplate.oam;                       // Copy over original oam
@@ -1916,7 +1916,8 @@ void LoadStartMenuIcon(u8 iconId, u8 position)
     //spriteTemplate.soloSpriteId = iconId;
     
     // Create the sprite and load the appropriate frame
-    CreateSpriteAndAnimate(&spriteTemplate, x, y, 0);
+    internalSpriteNum = CreateSpriteAtEnd(&spriteTemplate, x, y, 0);
+    AnimateSprite(&gSprites[internalSpriteNum]);
 
     Free((void *)iconFrames);
 }
