@@ -1,7 +1,13 @@
-raw `
-Route01_MapScripts::
-	.byte 0
-`
+mapscripts Route01_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION: SetTimeEncounters
+    MAP_SCRIPT_ON_RESUME: SetTimeEncounters
+}
+
+
+
+script SetTimeEncounters {
+    callnative(SetTimeBasedEncounters)
+}
 
 script Route01_ProfessorMaxmilliamCutscence_1 {
 

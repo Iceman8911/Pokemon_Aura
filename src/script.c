@@ -501,6 +501,7 @@ u8* ReadWord(u8 index)
 }
 
 #include "string_util.h"
+// Call this then use findItem / giveItem with VAR_RESULT as the itemId and VAR_0x8006 as the item amount 
 void GetObjectEventTrainerRangeANDMovementRangeXToCreateAGeneralFindItemScript(void)  //This can actually be used to make Find Item scripts
 {
     u8 itemId = gMapHeader.events->objectEvents[gSpecialVar_LastTalked - 1].trainerRange_berryTreeId;    //Uses the berrytree_id slot
@@ -513,4 +514,27 @@ void GetObjectEventTrainerRangeANDMovementRangeXToCreateAGeneralFindItemScript(v
     } else {
         gSpecialVar_0x8006 = 1;  //Number is Invalid
     }
+}
+
+#include "rtc.h"
+// Store a number depending on time of day and store in VAR_TIME_BASED_ENCOUNTER for use in GetCurrentMapWildMonHeaderId
+void SetTimeBasedEncounters(void)
+{
+	RtcCalcLocalTime();
+	if (gLocalTime.hours >= 5 && gLocalTime.hours <= 8)
+	{
+		VarSet(VAR_TIME_BASED_ENCOUNTER, 1); //Morning
+	}
+	else if (gLocalTime.hours >= 9 && gLocalTime.hours <= 17)
+	{
+		VarSet(VAR_TIME_BASED_ENCOUNTER, 2); //Day
+	}
+	else if (gLocalTime.hours >= 18 && gLocalTime.hours <= 20)
+	{
+		VarSet(VAR_TIME_BASED_ENCOUNTER, 3); //Evening
+	}
+	else
+	{
+		VarSet(VAR_TIME_BASED_ENCOUNTER, 4); //Night
+	}
 }

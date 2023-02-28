@@ -352,6 +352,7 @@ static u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon, u8 wildMonIn
 
 u16 GetCurrentMapWildMonHeaderId(void)
 {
+    // Looks like i is the index of the encounter table to be used in the array gWildMonHeaders
     u16 i;
 
     for (i = 0; ; i++)
@@ -360,9 +361,15 @@ u16 GetCurrentMapWildMonHeaderId(void)
         if (wildHeader->mapGroup == MAP_GROUP(UNDEFINED))
             break;
 
+        // Keep looping till it reaches the current map
         if (gWildMonHeaders[i].mapGroup == gSaveBlock1Ptr->location.mapGroup &&
             gWildMonHeaders[i].mapNum == gSaveBlock1Ptr->location.mapNum)
         {
+            // This only works if your encounter tables are arranged as Morning, Afternoon, Evening, Night
+            // You could also you it based on weathers too if you'd like with a bit of tweaking
+            if (VarGet(VAR_TIME_BASED_ENCOUNTER) >= 1 && VarGet(VAR_TIME_BASED_ENCOUNTER) <= 4)
+                i += (VarGet(VAR_TIME_BASED_ENCOUNTER) - 1);
+            
             if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(ALTERING_CAVE) &&
                 gSaveBlock1Ptr->location.mapNum == MAP_NUM(ALTERING_CAVE))
             {

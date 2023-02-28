@@ -50,6 +50,8 @@ void ClearTempFieldEventData(void)
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_CTRL_OBJ_DELETE);
     FlagClear(FLAG_NURSE_UNION_ROOM_REMINDER);
+
+    VarSet(VAR_TIME_BASED_ENCOUNTER, 0);   // Clears the var upon entering a map
 }
 
 void ClearDailyFlags(void)
