@@ -53,6 +53,7 @@ script Anconna_Town_SisterAtHome {
 script Anconna_TownSiblingMainScript {
     if(var(GAME_PROGRESS) < 6) 
     { //If you just entered the room for the first time
+    // Don't forget to give them a name lmao
         msgbox(format("{SIBLING}:{COLOR RED} Where is it?\p...\pWHERE THE HECK COULD THIS THING BE?"))
         waitmessage
         msgbox(format("(It does't seem like she noticed me, maybe I should try calling her again...)"))
@@ -167,6 +168,7 @@ script Anconna_TownSiblingMainScript {
                     msgbox(format("{SIBLING}:{COLOR RED} Thanks again for helping me find {COLOR GREEN}Bibby's{COLOR RED} comb. Now I can make him look all pretty again."))
                     waitmessage
                     fadescreen(FADE_TO_BLACK)  //After talking with sibling, I need to clear some stuff
+                    closemessage
                     removeobject(3)
                     applymovement(1, FaceUp)
                     waitmovement(0)

@@ -39,12 +39,14 @@ script AnconnaTown_CannotEnterLab {
 	}
 	addvar(VAR_TEMP_4, 1)
 }
+
 script AnconnaTown_MakeRioluAFollower {
 	addobject(10)
 	applymovement(OBJ_EVENT_ID_PLAYER, Surprised)
 	waitmovement(0)
 	msgbox(format("Huh?!"), ,"{COLOR GREEN}{PLAYER}")
 	waitmessage
+	closemessage
 	fadescreen(FADE_TO_WHITE)
 	clearflag(FLAG_TEMP_3)
 	getplayerxy(VAR_TEMP_2, VAR_TEMP_3) //Gets the player's location
@@ -86,6 +88,7 @@ script AnconnaTown_MakeRioluAFollower {
 	msgbox(format("(Riolu nods)"))
 	waitmessage
 	closemessage
+	loadword(0, Riolu) // Load in the script for riolu
     setfollower(10, RIOLU_IS_A_FOLLOWER)
     addvar(GAME_PROGRESS, 1)//GAME_PROGRESS is now 9
 }
