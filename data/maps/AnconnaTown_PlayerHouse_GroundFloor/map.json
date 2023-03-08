@@ -16,8 +16,8 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_MOM",
-      "x": 11,
-      "y": 8,
+      "x": 5,
+      "y": 4,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
@@ -30,8 +30,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_1",
-      "x": 6,
-      "y": 8,
+      "x": 2,
+      "y": 6,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
@@ -44,8 +44,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKEMON_242",
-      "x": 12,
-      "y": 12,
+      "x": 13,
+      "y": 13,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -58,8 +58,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKEMON_447",
-      "x": 9,
-      "y": 7,
+      "x": 3,
+      "y": 3,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -73,22 +73,22 @@
   ],
   "warp_events": [
     {
-      "x": 14,
-      "y": 12,
+      "x": 15,
+      "y": 13,
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_TOWN",
       "dest_warp_id": "3"
     },
     {
-      "x": 15,
-      "y": 12,
+      "x": 16,
+      "y": 13,
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_TOWN",
       "dest_warp_id": "3"
     },
     {
-      "x": 15,
-      "y": 3,
+      "x": 16,
+      "y": 4,
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_TOWN_PLAYER_HOUSE_FLOOR1",
       "dest_warp_id": "0"
@@ -97,8 +97,8 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 14,
-      "y": 12,
+      "x": 15,
+      "y": 13,
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
@@ -106,8 +106,8 @@
     },
     {
       "type": "trigger",
-      "x": 15,
-      "y": 12,
+      "x": 16,
+      "y": 13,
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
@@ -117,64 +117,56 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 8,
-      "y": 6,
+      "x": 12,
+      "y": 7,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "AnconnaTown_PlayerHouse_TV"
     },
     {
       "type": "sign",
-      "x": 9,
-      "y": 6,
+      "x": 13,
+      "y": 7,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "AnconnaTown_PlayerHouse_TV"
     },
     {
       "type": "sign",
-      "x": 17,
-      "y": 12,
+      "x": 18,
+      "y": 13,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "AnconnaTown_PlayerHouse_Plant"
     },
     {
       "type": "sign",
-      "x": 1,
-      "y": 12,
+      "x": 2,
+      "y": 9,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "AnconnaTown_PlayerHouse_Dustbin"
     },
     {
       "type": "sign",
-      "x": 4,
-      "y": 2,
+      "x": 1,
+      "y": 3,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "AnconnaTown_PlayerHouse_Plant"
     },
     {
       "type": "sign",
-      "x": 7,
-      "y": 2,
+      "x": 8,
+      "y": 3,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "AnconnaTown_PlayerHouse_Fridge"
     },
     {
       "type": "sign",
-      "x": 8,
-      "y": 2,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "AnconnaTown_PlayerHouse_Sink"
-    },
-    {
-      "type": "sign",
       "x": 9,
-      "y": 2,
+      "y": 3,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "AnconnaTown_PlayerHouse_Sink"
@@ -182,18 +174,42 @@
     {
       "type": "sign",
       "x": 10,
-      "y": 2,
+      "y": 3,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "AnconnaTown_PlayerHouse_Sink"
+    },
+    {
+      "type": "sign",
+      "x": 11,
+      "y": 3,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "AnconnaTown_PlayerHouse_Dishes"
     },
     {
       "type": "sign",
-      "x": 11,
-      "y": 2,
+      "x": 12,
+      "y": 3,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "AnconnaTown_PlayerHouse_Dishes"
+    },
+    {
+      "type": "sign",
+      "x": 15,
+      "y": 5,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "AnconnaTown_PlayerHouse_BookShelve"
+    },
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "AnconnaTown_PlayerHouse_Window"
     },
     {
       "type": "sign",
@@ -201,39 +217,47 @@
       "y": 2,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "AnconnaTown_PlayerHouse_BookShelve"
-    },
-    {
-      "type": "sign",
-      "x": 1,
-      "y": 6,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "AnconnaTown_PlayerHouse_Window"
     },
     {
       "type": "sign",
-      "x": 1,
+      "x": 14,
       "y": 5,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "AnconnaTown_PlayerHouse_Window"
-    },
-    {
-      "type": "sign",
-      "x": 5,
-      "y": 2,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "AnconnaTown_PlayerHouse_BookShelve"
     },
     {
       "type": "sign",
-      "x": 0,
-      "y": 12,
+      "x": 1,
+      "y": 9,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "AnconnaTown_PlayerHouse_Plant"
+    },
+    {
+      "type": "sign",
+      "x": 3,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "AnconnaTown_PlayerHouse_TV"
+    },
+    {
+      "type": "sign",
+      "x": 4,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "AnconnaTown_PlayerHouse_TV"
+    },
+    {
+      "type": "sign",
+      "x": 12,
+      "y": 5,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "AnconnaTown_PlayerHouse_Dustbin"
     }
   ]
 }

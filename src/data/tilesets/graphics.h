@@ -1843,3 +1843,41 @@ const u16 gTilesetPalettes_AnconnaTown_but_secondary[][16] =
 };
 
 const u32 gTilesetTiles_AnconnaTown_but_secondary[] = INCBIN_U32("data/tilesets/secondary/anconnatown_but_secondary/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_House_Indoors_GroundFloor[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/house_indoors_ground_floor/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/house_indoors_ground_floor/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/house_indoors_ground_floor/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/house_indoors_ground_floor/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/house_indoors_ground_floor/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/house_indoors_ground_floor/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/house_indoors_ground_floor/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/house_indoors_ground_floor/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/house_indoors_ground_floor/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/house_indoors_ground_floor/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/house_indoors_ground_floor/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/house_indoors_ground_floor/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/house_indoors_ground_floor/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_House_Indoors_GroundFloor[] = INCBIN_U32("data/tilesets/primary/house_indoors_ground_floor/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_Indoor_AnconnaTown_GroundFloor[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/indoor_anconna_town_ground_floor/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_anconna_town_ground_floor/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_anconna_town_ground_floor/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_anconna_town_ground_floor/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_anconna_town_ground_floor/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_anconna_town_ground_floor/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_anconna_town_ground_floor/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_anconna_town_ground_floor/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_anconna_town_ground_floor/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_anconna_town_ground_floor/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_anconna_town_ground_floor/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_anconna_town_ground_floor/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_anconna_town_ground_floor/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Indoor_AnconnaTown_GroundFloor[] = INCBIN_U32("data/tilesets/secondary/indoor_anconna_town_ground_floor/tiles.4bpp.lz");

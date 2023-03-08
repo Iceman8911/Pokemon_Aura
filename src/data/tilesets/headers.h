@@ -946,3 +946,24 @@ const struct Tileset gTileset_AnconnaTown_but_secondary =
     .metatileAttributes = gMetatileAttributes_AnconnaTown_but_secondary,
     .callback = InitTilesetAnim_gTileset_AnconnaTown_but_secondary,
 };
+const struct Tileset gTileset_House_Indoors_GroundFloor =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_House_Indoors_GroundFloor,
+    .palettes = gTilesetPalettes_House_Indoors_GroundFloor,
+    .metatiles = gMetatiles_House_Indoors_GroundFloor,
+    .metatileAttributes = gMetatileAttributes_House_Indoors_GroundFloor,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Indoor_AnconnaTown_GroundFloor =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Indoor_AnconnaTown_GroundFloor,
+    .palettes = gTilesetPalettes_Indoor_AnconnaTown_GroundFloor,
+    .metatiles = gMetatiles_Indoor_AnconnaTown_GroundFloor,
+    .metatileAttributes = gMetatileAttributes_Indoor_AnconnaTown_GroundFloor,
+    .callback = NULL,
+};

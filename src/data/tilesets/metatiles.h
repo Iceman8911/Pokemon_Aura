@@ -240,3 +240,8 @@ const u16 gMetatileAttributes_Tileset_AnconnaTown[] = INCBIN_U16("data/tilesets/
 
 const u16 gMetatiles_AnconnaTown_but_secondary[] = INCBIN_U16("data/tilesets/secondary/anconnatown_but_secondary/metatiles.bin");
 const u16 gMetatileAttributes_AnconnaTown_but_secondary[] = INCBIN_U16("data/tilesets/secondary/anconnatown_but_secondary/metatile_attributes.bin");
+const u16 gMetatiles_House_Indoors_GroundFloor[] = INCBIN_U16("data/tilesets/primary/house_indoors_ground_floor/metatiles.bin");
+const u16 gMetatileAttributes_House_Indoors_GroundFloor[] = INCBIN_U16("data/tilesets/primary/house_indoors_ground_floor/metatile_attributes.bin");
+
+const u16 gMetatiles_Indoor_AnconnaTown_GroundFloor[] = INCBIN_U16("data/tilesets/secondary/indoor_anconna_town_ground_floor/metatiles.bin");
+const u16 gMetatileAttributes_Indoor_AnconnaTown_GroundFloor[] = INCBIN_U16("data/tilesets/secondary/indoor_anconna_town_ground_floor/metatile_attributes.bin");
