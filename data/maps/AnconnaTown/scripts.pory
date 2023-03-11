@@ -89,6 +89,7 @@ script AnconnaTown_MakeRioluAFollower {
 	waitmessage
 	closemessage
 	loadword(0, Riolu) // Load in the script for riolu
+	setflag(RIOLU_IS_IN_PLAYER_HOUSE) // Stop Riolu from appearing in the player's house while its a follower
     setfollower(10, RIOLU_IS_A_FOLLOWER)
     addvar(GAME_PROGRESS, 1)//GAME_PROGRESS is now 9
 }

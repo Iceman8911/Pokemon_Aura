@@ -225,8 +225,16 @@ script PlayerCameDownstairsAfterWakingUp {
 
 script Riolu {
     lockall
-    faceplayer
-    applymovement(4, Happy)
+    if (!flag(RIOLU_IS_IN_PLAYER_HOUSE))
+    {
+        faceplayer
+        applymovement(4, Happy)
+    }
+    else
+    {
+        facefollower
+        applymovement(OBJ_EVENT_ID_FOLLOWER, Happy)
+    }    
     waitmovement(0)
     playmoncry(SPECIES_RIOLU, CRY_MODE_NORMAL)
     msgbox(format("{COLOR GREEN}Rioooluu"))
@@ -235,7 +243,14 @@ script Riolu {
     multichoice(25, 5, MULTI_DYNAMIC_2, 0)
     switch (var(VAR_RESULT)) {
         case 0:
-            applymovement(4, Happy)
+           if (!flag(RIOLU_IS_IN_PLAYER_HOUSE))
+            {
+                applymovement(4, Happy)
+            }
+            else
+            {
+                applymovement(OBJ_EVENT_ID_FOLLOWER, Happy)
+            }  
             waitmovement(0)
             msgbox(format("{COLOR GREEN}Riooluuuuuuu"))
             waitmessage
