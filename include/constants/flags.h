@@ -41,22 +41,22 @@
 #define FLAG_TEMP_1F     (TEMP_FLAGS_START + 0x1F)
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 
-#define ROUTE01_MIRACLE_SEED    0x20 // Unused Flag
-#define ROUTE01_SHARP_BEAK    0x21 // Unused Flag
-#define ANCONNA_TOWN_ANTIDOTE    0x22 // Unused Flag
-#define ANCONNA_WOODS_BUGGEM    0x23 // Unused Flag
-#define ANCONNA_WOODS_MUSHROOMS    0x24 // Unused Flag
-#define RIOLU_ENCOUNTER    0x25 // Unused Flag
-#define FIRST_LIUM_ENCOUNTER    0x26 // Unused Flag
-#define ANCONNA_WOODS_POKE_BALL    0x27 // Unused Flag
-#define ANCONNA_TOWN_MYSTERIOUS_PEOPLE    0x28 // Unused Flag
-#define ROUTE01_RINDO_BERRY    0x29 // Unused Flag
-#define MURKY_GROVE_BALM_MUSHROOM    0x2A // Unused Flag
-#define MURKY_GROVE_POISON_GEM    0x2B // Unused Flag
-#define ANCONNA_WOODS_RARE_CANDY    0x2C // Unused Flag
-#define RIOLU_IS_IN_PLAYER_HOUSE    0x2D // Unused Flag
-#define RIOLU_IS_A_FOLLOWER    0x2E // Unused Flag. I'm using this a flag for Ghoul's follower branch.
-#define FLAG_TURN_PLAYER_INVISIBLE    0x2F // Unused Flag. I'm using this flag to make the player invisible during certain cutscenes. U can use all flags below
+#define ROUTE01_MIRACLE_SEED    0x20 
+#define ROUTE01_SHARP_BEAK    0x21 
+#define ANCONNA_TOWN_ANTIDOTE    0x22 
+#define ANCONNA_WOODS_BUGGEM    0x23 
+#define ANCONNA_WOODS_MUSHROOMS    0x24 
+#define RIOLU_ENCOUNTER    0x25 
+#define FIRST_LIUM_ENCOUNTER    0x26 
+#define ANCONNA_WOODS_POKE_BALL    0x27 
+#define ANCONNA_TOWN_MYSTERIOUS_PEOPLE    0x28 
+#define ROUTE01_RINDO_BERRY    0x29 
+#define MURKY_GROVE_BALM_MUSHROOM    0x2A 
+#define MURKY_GROVE_POISON_GEM    0x2B 
+#define ANCONNA_WOODS_RARE_CANDY    0x2C 
+#define RIOLU_IS_IN_PLAYER_HOUSE    0x2D 
+#define RIOLU_IS_A_FOLLOWER    0x2E //I'm using this a flag for Ghoul's follower branch.
+#define FLAG_TURN_PLAYER_INVISIBLE    0x2F // I'm using this flag to make the player invisible during certain cutscenes. U can use all flags below
 #define FLAG_UNUSED_0x030    0x30 // Unused Flag
 #define FLAG_UNUSED_0x031    0x31 // Unused Flag
 #define FLAG_UNUSED_0x032    0x32 // Unused Flag
