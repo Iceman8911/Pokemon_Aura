@@ -9503,31 +9503,38 @@ u8 ElevationToPriority(u8 elevation)
 }
 
 #include "follow_me.h"
-void ObjectEventUpdateElevation(struct ObjectEvent *objEvent)//
+void ObjectEventUpdateElevation(struct ObjectEvent *objEvent)
 {
-    struct ObjectEvent *followerObj;
+    struct ObjectEvent *followerObj, *playerObj;
+    u8 playerTileElevation, followerTileElevation;
+
     u8 curElevation = MapGridGetElevationAt(objEvent->currentCoords.x, objEvent->currentCoords.y);
     u8 prevElevation = MapGridGetElevationAt(objEvent->previousCoords.x, objEvent->previousCoords.y);
-    // All the followerObj conditionals are used to make sure the follower always has the same elevation as the player
-    if (gSaveBlock2Ptr->follower.inProgress && objEvent->isPlayer) // Follower is active and current object is player
-    {
-        followerObj = &gObjectEvents[gSaveBlock2Ptr->follower.objId];
-    }
 
     if (curElevation == 15 || prevElevation == 15)
         return;
 
     objEvent->currentElevation = curElevation;
-    if (gSaveBlock2Ptr->follower.inProgress && objEvent->isPlayer)
-    {
-        followerObj->currentElevation = objEvent->currentElevation;
-    }
 
     if (curElevation != 0 && curElevation != 15)
         objEvent->previousElevation = curElevation;
-    if (gSaveBlock2Ptr->follower.inProgress && objEvent->isPlayer)
+
+
+    // Just a small fix for the follower in some cases
+    if (gSaveBlock2Ptr->follower.inProgress)
     {
-        followerObj->previousElevation = objEvent->previousElevation;
+        followerObj = &gObjectEvents[gSaveBlock2Ptr->follower.objId];
+        playerObj = &gObjectEvents[gPlayerAvatar.objectEventId];
+
+        playerTileElevation = MapGridGetElevationAt(playerObj->previousCoords.x, playerObj->previousCoords.y);
+        followerTileElevation = MapGridGetElevationAt(followerObj->previousCoords.x, followerObj->previousCoords.y);
+
+        if (playerTileElevation != followerTileElevation
+            && (followerTileElevation == 0 || followerTileElevation == 15))
+            // Follower is on elevation 0 or 15 without the player
+        {
+            followerObj->currentElevation = playerObj->currentElevation;
+        }
     }
 }
 
