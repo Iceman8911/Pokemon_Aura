@@ -220,7 +220,7 @@ script AnconnaTown_FlowerGirl {
 
 script AnconnaTown_Boy {
 	lockall
-	msgbox(format("{COLOR BLUE}Mommy told me that a lot of bad people used to come to the forest long before to chop down trees and scare away the Pokemon.\pI'm glad they stopped coming here so now I can play with Pokemon!"))
+	msgbox(format("{COLOR BLUE}Mommy told me that a lot of bad people used to come to the forest long before to chop down trees and scare away the Pokemon.\pI'm glad they stopped coming here so now I can play with Pokemon!"), 2)
 	releaseall
 }
 
