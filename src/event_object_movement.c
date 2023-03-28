@@ -1346,7 +1346,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Lugia,                 OBJ_EVENT_PAL_TAG_LUGIA},
     {gObjectEventPal_RubySapphireBrendan,   OBJ_EVENT_PAL_TAG_RS_BRENDAN},
     {gObjectEventPal_RubySapphireMay,       OBJ_EVENT_PAL_TAG_RS_MAY},
-    {NULL,                                  0x0000},
+    //{NULL,                                  0x0000},
     //My New Overworlds
     {gObjectEventPalette_New_Collector, OBJ_EVENT_PAL_NEW_COLLECTOR},
     {gObjectEventPalette_New_Fat_Man, OBJ_EVENT_PAL_NEW_FAT_MAN},
@@ -2201,6 +2201,12 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
 	{gObjectEventPalette_Pokemon_Species_903, OBJ_EVENT_PAL_TAG_POKEMON_903},
 	{gObjectEventPalette_Pokemon_Species_904, OBJ_EVENT_PAL_TAG_POKEMON_904},
 
+#ifdef BUGFIX
+    {NULL,                                  OBJ_EVENT_PAL_TAG_NONE}, 
+#else
+    {}, // BUG: FindObjectEventPaletteIndexByTag looks for OBJ_EVENT_PAL_TAG_NONE and not 0x0.
+        // If it's looking for a tag that isn't in this table, the game locks in an infinite loop.
+#endif
 };
 
 
@@ -3566,7 +3572,12 @@ void LoadObjectEventPalette(u16 paletteTag)
 {
     u16 i = FindObjectEventPaletteIndexByTag(paletteTag);
 
-    if (i != OBJ_EVENT_PAL_TAG_NONE) // always true
+// FindObjectEventPaletteIndexByTag returns 0xFF on failure, not OBJ_EVENT_PAL_TAG_NONE.
+#ifdef BUGFIX
+    if (i != 0xFF)
+#else
+    if (i != OBJ_EVENT_PAL_TAG_NONE)
+#endif
         LoadSpritePaletteIfTagExists(&sObjectEventSpritePalettes[i]);
 }
 
@@ -3589,9 +3600,10 @@ static u8 LoadSpritePaletteIfTagExists(const struct SpritePalette *spritePalette
 
 void PatchObjectPalette(u16 paletteTag, u8 paletteSlot)
 {
-    u16 paletteIndex = FindObjectEventPaletteIndexByTag(paletteTag);
+    // paletteTag is assumed to exist in sObjectEventSpritePalettes
+    u8 paletteIndex = FindObjectEventPaletteIndexByTag(paletteTag);
 
-    LoadPalette(sObjectEventSpritePalettes[paletteIndex].data, 16 * paletteSlot + 0x100, 0x20);
+    LoadPalette(sObjectEventSpritePalettes[paletteIndex].data, OBJ_PLTT_ID(paletteSlot), PLTT_SIZE_4BPP);
 }
 
 void PatchObjectPaletteRange(const u16 *paletteTags, u8 minSlot, u8 maxSlot)
@@ -6194,7 +6206,7 @@ static u8 GetVanillaCollision(struct ObjectEvent *objectEvent, s16 x, s16 y, u8 
 {
     //u8 direction = dir;
 
-#if DEBUG_SYSTEM_ENABLE == TRUE
+#if DEBUG_FLAG_NO_COLLISION != 0
     if (FlagGet(DEBUG_FLAG_NO_COLLISION))
         return COLLISION_NONE;
 #endif

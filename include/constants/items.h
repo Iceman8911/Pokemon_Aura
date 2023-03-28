@@ -935,7 +935,13 @@
 //
 //
 
-#define ITEMS_COUNT 759
+#define ITEM_ABILITY_SHIELD 759
+#define ITEM_CLEAR_AMULET 760
+#define ITEM_PUNCHING_GLOVE 761
+#define ITEM_COVERT_CLOAK 762
+#define ITEM_LOADED_DICE 763
+
+#define ITEMS_COUNT 764
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

@@ -18,7 +18,6 @@
 #include "battle_pike.h"
 #include "battle_pyramid.h"
 #include "constants/abilities.h"
-#include "constants/battle_config.h"
 #include "constants/game_stat.h"
 #include "constants/item.h"
 #include "constants/items.h"
@@ -441,7 +440,7 @@ void CreateWildMon(u16 species, u8 level)
     ZeroEnemyPartyMons();
     checkCuteCharm = TRUE;
 
-    switch (gBaseStats[species].genderRatio)
+    switch (gSpeciesInfo[species].genderRatio)
     {
     case MON_MALE:
     case MON_FEMALE:
@@ -1038,7 +1037,7 @@ static bool8 TryGetRandomWildMonIndexByType(const struct WildPokemon *wildMon, u
 
     for (validMonCount = 0, i = 0; i < numMon; i++)
     {
-        if (gBaseStats[wildMon[i].species].type1 == type || gBaseStats[wildMon[i].species].type2 == type)
+        if (gSpeciesInfo[wildMon[i].species].types[0] == type || gSpeciesInfo[wildMon[i].species].types[1] == type)
             validIndexes[validMonCount++] = i;
     }
 
@@ -1112,7 +1111,7 @@ bool8 TryDoDoubleWildBattle(void)
         return TRUE;
 #endif
 #if B_DOUBLE_WILD_CHANCE != 0
-    else if ((Random() % 100) + 1 < B_DOUBLE_WILD_CHANCE)
+    else if ((Random() % 100) + 1 <= B_DOUBLE_WILD_CHANCE)
         return TRUE;
 #endif
     return FALSE;

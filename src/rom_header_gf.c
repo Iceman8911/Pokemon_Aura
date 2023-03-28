@@ -71,7 +71,7 @@ struct GFRomHeader
     u32 externalEventFlagsOffset;
     u32 externalEventDataOffset;
     u32 unk18;
-    const struct BaseStats * baseStats;
+    const struct SpeciesInfo * speciesInfo;
     const u8 (* abilityNames)[];
     const u8 *const * abilityDescriptions;
     const struct Item * items;
@@ -158,7 +158,7 @@ static const struct GFRomHeader sGFRomHeader = {
     //.externalEventFlagsOffset = offsetof(struct SaveBlock1, externalEventFlags),    useless
     //.externalEventDataOffset = offsetof(struct SaveBlock1, externalEventData),    useless
     .unk18 = 0x00000000,
-    .baseStats = gBaseStats,
+    .speciesInfo = gSpeciesInfo,
     .abilityNames = gAbilityNames,
     .abilityDescriptions = gAbilityDescriptionPointers,
     .items = gItems,
