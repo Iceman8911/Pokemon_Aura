@@ -1680,7 +1680,8 @@ static void DeleteStartMenuIcon(u8 position)
         if (gSprites[i].y == icon_yposition && gSprites[i].commonSpriteId == startMenuIconId) // Sprite is an icon for the start menu
         {
             DestroySpriteAndFreeResources(&gSprites[i]);
-            break;
+            if (GetFlashLevel())  // There are 2 sprites per icon loaded in maps requiring flash, this gets rid of the second
+                continue;
         }
     }
 }
