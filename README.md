@@ -5,7 +5,9 @@
 
 3. DNS may darken the icons when late. Its up to you to make an exception for that.. This line might be of use "oam.paletteNum = LoadSpritePalette(&palSheet);"
 
-4. The spritesheet is divided into 2 portions(Grayscale and Coloured) and only the index of the icon in the first portion is needed. It will be appropriately adjusted when needed
+4. The spritesheet is divided into 2 portions(Grayscale and Coloured) and only the index of the icon in the first portion is needed. It will be appropriately adjusted when needed.
+
+5. Remember to check the defines with comments in start_menu.c and start_menu.h
 
 
 # Pokémon Emerald

@@ -184,8 +184,7 @@ struct SpriteTemplate
     const struct SpriteFrameImage *images;
     const union AffineAnimCmd *const *affineAnims;
     SpriteCallback callback;
-    u8 dummyValue; //used to specify a group of related sprites
-    //u8 soloSpriteId;  //used to delete a specific sprite
+    u8 commonSpriteId;          // used to specify a group of related sprites
 };
 
 // UB: template pointer is often used to point to temporary storage,
@@ -240,8 +239,7 @@ struct Sprite
              u8 subspriteMode:2;
 
     /*0x43*/ u8 subpriority;
-    u8 dummyValue; //used to specify a group of related sprites
-    //u8 soloSpriteId;  // used to delete specific sprites
+             u8 commonSpriteId;                   //used to specify a group of related sprites
 };
 
 struct OamMatrix

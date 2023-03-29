@@ -22,6 +22,7 @@
 #include "link.h"
 #include "load_save.h"
 #include "main.h"
+#include "malloc.h"
 #include "menu.h"
 #include "new_game.h"
 #include "option_menu.h"
@@ -139,21 +140,38 @@ static void Task_SaveAfterLinkBattle(u8 taskId);
 static void Task_WaitForBattleTowerLinkSave(u8 taskId);
 static bool8 FieldCB_ReturnToFieldStartMenu(void);
 
-//
-#define spriteTagId 0x4444
+
+// Both of these are fine-tuned for this exact start menu size. If yours is different, you'll prolly need to tweak this.
+// gWindows[GetStartMenuWindowId()].window.tilemapLeft represents the distance of the icon from the left border of the start menu.
+// gWindows[GetStartMenuWindowId()].window.tilemapTop should be self explanatory.
+// position represents which option/location the icon should show at
+#define icon_xposition (gWindows[GetStartMenuWindowId()].window.tilemapLeft * 8) + 8
+#define icon_yposition (gWindows[GetStartMenuWindowId()].window.tilemapTop + 15) + (position << 4) + (position * 3)
+
+// You won't really need to change any of these except spriteTagId if you're using Merrp's DNS (change it to 0x8654) and want the icons to be excluded
+#define spriteTagId 0x4654
 #define startMenuIconId  7
+
+// Any callback for an option requiring an icon should be included here
+#define callbackConditions (callback == StartMenuPokedexCallback \
+    || callback == StartMenuPokemonCallback                      \
+    || callback == StartMenuBagCallback                          \
+    || callback == StartMenuPlayerNameCallback                   \
+    || callback == StartMenuSaveCallback                         \
+    || callback == StartMenuOptionCallback                       \
+    || callback == StartMenuExitCallback)
 
 static void LoadStartMenuIcon(u8 iconId, u8 position);        // Loads the icon frame at a specified menu option index
 static void DynamicallyLoadStartMenuIcon(u8 index);           // Slap in the position, get the accurate icon
 static void DeleteAllStartMenuIcons(void);                    // If you run into graphical issues, just run this then run the function right before this line
 static void DeleteStartMenuIcon(u8 position);                 
 static u8 GetIndexOfOptionInsStartMenuItems(u8 index);        // Incase you rearranged smh in your start menu, this gets the right index.
-bool8 gIsAStartMenuIconAtPosition(u8 position);
+bool8 gIsAStartMenuIconAtPosition(u8 position);               // Used in menu.c to stop the menu cursor from being drawn if an icon exists
 
 EWRAM_DATA bool8 gAreStartMenuIconsReady = FALSE;
-EWRAM_DATA u8 gStartMenuIconPaletteNum = 0;                   // Stores the palette num of the icons
-static EWRAM_DATA bool8 sIsStartMenuIconRefreshed = FALSE;
-static EWRAM_DATA bool8 sIsStartMenuIconPaletteLoaded = FALSE;
+EWRAM_DATA u8 gStartMenuIconPaletteNum = 0;                      // Stores the palette num of the icons
+static EWRAM_DATA bool8 sIsStartMenuIconRefreshed = FALSE;       // Is used to reload the icons when swtching between options
+static EWRAM_DATA bool8 sIsStartMenuIconPaletteLoaded = FALSE;   // Is used to decide whether the palette should be reloaded or not
 
 static EWRAM_DATA union AnimCmd *iconFrames = NULL;
 
@@ -178,23 +196,17 @@ static const struct SpriteFrameImage sStartMenuIconFrames[] = {
     overworld_frame(sStartMenuIconsGfx, 4, 4, 13),
 };
 
-const struct OamData sObjectEventBaseOam_32x32 = {
-    .shape = SPRITE_SHAPE(32x32),
-    .size = SPRITE_SIZE(32x32),
-    .priority = 0
-};
-
 static const struct SpriteTemplate sStartMenuIconSpriteTemplate = {
     .tileTag = TAG_NONE,
-    .paletteTag = TAG_NONE, //not used by anything here
-    .oam = &sObjectEventBaseOam_32x32,
-    .anims = NULL, // Would be set later
+    .paletteTag = TAG_NONE,                         // This is not actually used since I load the palette seperately
+    .oam = &gDummyOamData,                          // Would be set later   
+    .anims = gDummySpriteAnimTable,                 // Would be set later
     .images = sStartMenuIconFrames,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCallbackDummy,
-    .dummyValue = startMenuIconId, // could be any non zero number
+    .commonSpriteId = startMenuIconId,              // could be any non zero number
 };
-//
+
 
 static const struct WindowTemplate sSafariBallsWindowTemplate = {0, 1, 1, 9, 4, 0xF, 8};
 
@@ -613,6 +625,10 @@ static void CreateStartMenuTask(TaskFunc followupFunc)
 
 static bool8 FieldCB_ReturnToFieldStartMenu(void)
 {
+    struct SpritePalette palSheet;
+    palSheet.data = sStartMenuIconsPal;
+    palSheet.tag = spriteTagId;
+
     if (InitStartMenuStep() == FALSE)
     {
         return FALSE;
@@ -620,8 +636,8 @@ static bool8 FieldCB_ReturnToFieldStartMenu(void)
 
     // Fix Palette bugs when returning to the start menu from overworld callbacks
     sIsStartMenuIconPaletteLoaded = FALSE;
-    LoadPalette(sStartMenuIconsPal, (gStartMenuIconPaletteNum * 16) + 0x100, 32);
-
+    gStartMenuIconPaletteNum = LoadSpritePalette(&palSheet);
+    
     ReturnToFieldOpenStartMenu();
     return TRUE;
 }
@@ -670,15 +686,8 @@ static bool8 HandleStartMenuInput(void)
 {
     bool8 (*callback)(void);
     callback = sStartMenuItems[sCurrentStartMenuActions[sStartMenuCursorPos]].func.u8_void;
-    // All options with icons must be added to this conditional using their callbacks
-    // There's prolly a shorter way for this though. Eh
-    if (callback == StartMenuPokedexCallback
-    ||  callback == StartMenuPokemonCallback
-    ||  callback == StartMenuBagCallback
-    ||  callback == StartMenuPlayerNameCallback
-    ||  callback == StartMenuSaveCallback
-    ||  callback == StartMenuOptionCallback
-    ||  callback == StartMenuExitCallback)
+
+    if (callbackConditions)
     {
         if (gAreStartMenuIconsReady && !sIsStartMenuIconRefreshed)
         {
@@ -693,14 +702,7 @@ static bool8 HandleStartMenuInput(void)
     {
         PlaySE(SE_SELECT);
         sStartMenuCursorPos = Menu_MoveCursor(-1);
-        // Same thing here like before
-        if (callback == StartMenuPokedexCallback
-        ||  callback == StartMenuPokemonCallback
-        ||  callback == StartMenuBagCallback
-        ||  callback == StartMenuPlayerNameCallback
-        ||  callback == StartMenuSaveCallback
-        ||  callback == StartMenuOptionCallback
-        ||  callback == StartMenuExitCallback)
+        if (callbackConditions)
         {
             if (sStartMenuCursorPos != (sNumStartMenuActions - 1)) // Not at bottom of start menu
             {
@@ -721,14 +723,7 @@ static bool8 HandleStartMenuInput(void)
     {
         PlaySE(SE_SELECT);
         sStartMenuCursorPos = Menu_MoveCursor(1);
-        // Yup, still the same here too
-        if (callback == StartMenuPokedexCallback
-        ||  callback == StartMenuPokemonCallback
-        ||  callback == StartMenuBagCallback
-        ||  callback == StartMenuPlayerNameCallback
-        ||  callback == StartMenuSaveCallback
-        ||  callback == StartMenuOptionCallback
-        ||  callback == StartMenuExitCallback)
+        if (callbackConditions)
         {
             if (sStartMenuCursorPos != 0)
             {
@@ -773,38 +768,6 @@ static bool8 HandleStartMenuInput(void)
         HideStartMenu();
         return TRUE;
     }
-
-    /*if (IS_MULTI_START_MENU_ENABLED && NUM_OF_START_MENUS != 1)  //Must be enabled to use the multi menu and there musn't be just 1 menu
-    {
-        if (JOY_NEW(DPAD_RIGHT)) //Scrolls to the next start menu page
-        {
-            sIsStartMenuIconRefreshed = FALSE;
-            RemoveExtraStartMenuWindows();
-            HideStartMenu();
-            if(sStartMenuPage < sStartMenuPageTotal) { 
-                sStartMenuPage++;
-            } else { //If at the last page, it will jump back to the first one
-                sStartMenuPage = 0;
-            }
-            ShowStartMenu();
-            return TRUE;
-        }
-
-        if (JOY_NEW(DPAD_LEFT)) //Scrolls to the previous start menu page
-        {
-            sIsStartMenuIconRefreshed = FALSE;
-            RemoveExtraStartMenuWindows();
-            HideStartMenu();
-            if(sStartMenuPage > 0) { 
-                sStartMenuPage--;
-            } else { //If at the first page, it will jump to the last one
-                sStartMenuPage = sStartMenuPageTotal;
-            }
-            ShowStartMenu();
-            return TRUE;
-        }
-    }*/
-
     return FALSE;
 }
 
@@ -1613,20 +1576,19 @@ void AppendToList(u8 *list, u8 *pos, u8 newEntry)
     (*pos)++;
 }
 
-//
-#include "malloc.h"
+
 void LoadStartMenuIcon(u8 iconId, u8 position)
 {
-    u8 internalSpriteNum; // Just stores the index of the sprite
-    struct SpritePalette palSheet;
-    struct OamData oam = {0};
+    struct SpritePalette iconPalSheet;
+    struct OamData iconOam = {0};
     struct SpriteTemplate spriteTemplate = sStartMenuIconSpriteTemplate;
+    u8 internalSpriteNum = 0;                                             // Just stores the index of the sprite for use later
+    u8 internalSpriteNum2 = MAX_SPRITES;                                  // This is only used in maps with flash to serve as the id for "filler sprites"
+    u8 flashLevel = GetFlashLevel();                                      // Maps requiring flash need some extra care
+    u8 x = icon_xposition;
+    u8 y = icon_yposition;
 
-    // Both of these are finetuned for this exact start menu size. If your is different, you might need to tweak this
-    u8 x = (gWindows[GetStartMenuWindowId()].window.tilemapLeft * 8) + 8;
-    u8 y = (gWindows[GetStartMenuWindowId()].window.tilemapTop + 15) + ((position) << 4) + (position * 3);
-
-    // Keeping this on the stack is way to much so stuff it on the heap
+    // Keeping this on the stack is way too much so stuff it on the heap
     iconFrames = Alloc(sizeof(union AnimCmd) * 2);
 
     // This is what will set the particular frame needed
@@ -1634,38 +1596,62 @@ void LoadStartMenuIcon(u8 iconId, u8 position)
         iconFrames[0].frame.imageValue = iconId + COLOR_ICON_OFFSET;    // Load in the colored icon
     else
         iconFrames[0].frame.imageValue = iconId;                        // Load in the grayscale icon
-    
-    iconFrames[0].frame.duration = 30;  // Not sure this has a use here since its a static frame we need
-    iconFrames[0].frame.vFlip = FALSE;  // These 2 prevent it from occasionally inverting
-    iconFrames[0].frame.hFlip = FALSE;
 
-    iconFrames[1].type = -1;            // Same as ANIMCMD_END(0)
+    iconFrames[0].frame.duration = 30;              // Not sure this has a use here since its a static frame we need
+    iconFrames[0].frame.vFlip = FALSE;              // These 2 prevent it from occasionally inverting
+    iconFrames[0].frame.hFlip = FALSE;
+    iconFrames[1].type = -1;                        // Same as ANIMCMD_END(0)
 
     // Prepare the Sprite Palette
-    palSheet.tag = spriteTagId;  // This tag could be anything really
-    palSheet.data = sStartMenuIconsPal;
+    iconPalSheet.tag = spriteTagId;                                 // This tag could be anything really
+    iconPalSheet.data = sStartMenuIconsPal;
 
-    oam = *spriteTemplate.oam;                       // Copy over original oam
+    // Copy over original oam
+    iconOam = *spriteTemplate.oam;
+    iconOam.shape = SPRITE_SHAPE(32x32);                            // Assign the hape, size and priority of the icon
+    iconOam.size = SPRITE_SIZE(32x32);
+    iconOam.priority = 0;
+
+    // Deal with the palette
     if (!sIsStartMenuIconPaletteLoaded)
     {
-        oam.paletteNum = LoadSpritePalette(&palSheet);   // Load palette and set appropriate palNum
-        gStartMenuIconPaletteNum = oam.paletteNum;       // Copy the paletteNum of the Icon Palette
+        iconOam.paletteNum = LoadSpritePalette(&iconPalSheet);     // Load palette and set appropriate palNum
+        gStartMenuIconPaletteNum = iconOam.paletteNum;             // Copy the paletteNum of the Icon Palette
         sIsStartMenuIconPaletteLoaded = TRUE;
     }
     else
     {
         // Palette already loaded, no need to load a new sprite palette so pull it from gStartMenuIconPaletteNum
-        oam.paletteNum = gStartMenuIconPaletteNum;
+        iconOam.paletteNum = gStartMenuIconPaletteNum;
     }
 
-    spriteTemplate.oam = &oam; // Back to Sender
-
+    // Return the edited oam and animtable back to the sprite template
+    spriteTemplate.oam = &iconOam;                                      // Back to Sender
     spriteTemplate.anims = (const union AnimCmd *const *)&iconFrames;   // Attach the edited "animation"
+
+    // If you don't understand the next 2 lines, read this http://problemkaputt.de/gbatek.htm#Icdiowindowfeature and compare it with "io_reg.h"
+    // But it basically enables us to create "filler objects" that give us space for the real icons in the dark area
+    if (flashLevel)
+    {
+        SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
+        SetGpuRegBits(REG_OFFSET_WINOUT, WINOUT_WINOBJ_BG2 | WINOUT_WINOBJ_OBJ);   // I'm not too sure abt WINOUT_WINOBJ_BG2 though but I doubt it matters
+    }
     
-    // Create the sprite and load the appropriate frame
+    // Create the sprite(s) and load the appropriate frame
+    if (flashLevel)
+    {
+        // Load in "filler sprite". Its some funny GBA window stuff :) to bypass the flash issue
+        internalSpriteNum2 = CreateSprite(&spriteTemplate, x, y, 0);
+        if (internalSpriteNum2 != MAX_SPRITES)
+        {
+            gSprites[internalSpriteNum2].oam.objMode = ST_OAM_OBJ_WINDOW;  // Lets the gba know that this object has a "filler sprite"
+            AnimateSprite(&gSprites[internalSpriteNum2]);
+        }
+    }
     internalSpriteNum = CreateSpriteAtEnd(&spriteTemplate, x, y, 0);
     AnimateSprite(&gSprites[internalSpriteNum]);
 
+    // Free up the anim table
     Free((void *)iconFrames);
 }
 
@@ -1675,7 +1661,7 @@ static void DeleteAllStartMenuIcons(void)
 
     for (i = 0; i <= MAX_SPRITES; i++)
     {
-        if (gSprites[i].dummyValue == startMenuIconId) // Sprite is an icon for the start menu
+        if (gSprites[i].commonSpriteId == startMenuIconId) // Sprite is an icon for the start menu
         {
             DestroySpriteAndFreeResources(&gSprites[i]);
         }
@@ -1691,7 +1677,7 @@ static void DeleteStartMenuIcon(u8 position)
 
     for (i = 0; i < MAX_SPRITES; i++)
     {
-        if (gSprites[i].y == (gWindows[GetStartMenuWindowId()].window.tilemapTop + 15) + ((position) << 4) + (position * 3) && gSprites[i].dummyValue == startMenuIconId) // Sprite is an icon for the start menu
+        if (gSprites[i].y == icon_yposition && gSprites[i].commonSpriteId == startMenuIconId) // Sprite is an icon for the start menu
         {
             DestroySpriteAndFreeResources(&gSprites[i]);
             break;
@@ -1722,7 +1708,7 @@ static u8 GetIndexOfOptionInsStartMenuItems(u8 index)
 
 static void DynamicallyLoadStartMenuIcon(u8 index)
 {
-    // Add any new options with icons here
+    // Add any new options with icons here and adjust accordingly
     switch (GetIndexOfOptionInsStartMenuItems(index))
     {
     case MENU_ACTION_POKEDEX:
@@ -1757,7 +1743,7 @@ bool8 gIsAStartMenuIconAtPosition(u8 position)
 
     for (i = 0; i < MAX_SPRITES; i++)
     {
-        if (gSprites[i].y == (gWindows[GetStartMenuWindowId()].window.tilemapTop + 15) + ((position) << 4) + (position * 3) && gSprites[i].dummyValue == startMenuIconId) // Sprite is an icon for the start menu
+        if (gSprites[i].y == icon_yposition && gSprites[i].commonSpriteId == startMenuIconId) // Sprite is an icon for the start menu
         {
             return TRUE;
         }
@@ -1765,3 +1751,10 @@ bool8 gIsAStartMenuIconAtPosition(u8 position)
 
     return FALSE;
 }
+
+
+#undef icon_xposition
+#undef icon_yposition
+#undef spriteTagId
+#undef startMenuIconId
+#undef callbackConditions
