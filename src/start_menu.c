@@ -795,9 +795,12 @@ static void CreateStartMenuTask(TaskFunc followupFunc)
     SetTaskFuncWithFollowupFunc(taskId, StartMenuTask, followupFunc);
 }
 
+#include "sprite.h"
 static bool8 FieldCB_ReturnToFieldStartMenu(void)
-{//
+{
     struct SpritePalette palSheet;
+    palSheet.data = sStartMenuIconsPal;
+    palSheet.tag = spriteTagId;
 
     if (InitStartMenuStep() == FALSE)
     {
@@ -806,7 +809,8 @@ static bool8 FieldCB_ReturnToFieldStartMenu(void)
 
     // Fix Palette bugs when returning to the start menu from overworld callbacks
     sIsStartMenuIconPaletteLoaded = FALSE;
-    LoadPalette(sStartMenuIconsPal, (gStartMenuIconPaletteNum * 16) + 0x100, 32);
+    //LoadPalette(sStartMenuIconsPal, (gStartMenuIconPaletteNum * 16) + 0x100, 32);
+    gStartMenuIconPaletteNum = LoadSpritePalette(&palSheet);
     
     ReturnToFieldOpenStartMenu();
     return TRUE;
