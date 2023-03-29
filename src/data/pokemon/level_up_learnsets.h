@@ -2999,6 +2999,7 @@ static const struct LevelUpMove sChikoritaLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 6, MOVE_RAZOR_LEAF),
     LEVEL_UP_MOVE( 9, MOVE_POISON_POWDER),
     LEVEL_UP_MOVE(12, MOVE_SYNTHESIS),
+    LEVEL_UP_MOVE(15, MOVE_DRAINING_KISS),
     LEVEL_UP_MOVE(17, MOVE_REFLECT),
     LEVEL_UP_MOVE(20, MOVE_MAGICAL_LEAF),
     LEVEL_UP_MOVE(23, MOVE_NATURAL_GIFT),
@@ -3022,6 +3023,7 @@ static const struct LevelUpMove sBayleefLevelUpLearnset[] = {
     LEVEL_UP_MOVE(18, MOVE_REFLECT),
     LEVEL_UP_MOVE(22, MOVE_MAGICAL_LEAF),
     LEVEL_UP_MOVE(26, MOVE_NATURAL_GIFT),
+    LEVEL_UP_MOVE(29, MOVE_DRAINING_KISS),
     LEVEL_UP_MOVE(32, MOVE_SWEET_SCENT),
     LEVEL_UP_MOVE(36, MOVE_LIGHT_SCREEN),
     LEVEL_UP_MOVE(40, MOVE_BODY_SLAM),
@@ -3046,6 +3048,7 @@ static const struct LevelUpMove sMeganiumLevelUpLearnset[] = {
     LEVEL_UP_MOVE(18, MOVE_REFLECT),
     LEVEL_UP_MOVE(22, MOVE_MAGICAL_LEAF),
     LEVEL_UP_MOVE(26, MOVE_NATURAL_GIFT),
+    LEVEL_UP_MOVE(32, MOVE_DRAGON_PULSE),
     LEVEL_UP_MOVE(34, MOVE_SWEET_SCENT),
     LEVEL_UP_MOVE(40, MOVE_LIGHT_SCREEN),
     LEVEL_UP_MOVE(46, MOVE_BODY_SLAM),
@@ -12727,9 +12730,9 @@ static const struct LevelUpMove sGolettLevelUpLearnset[] = {
     LEVEL_UP_END
 };
 
-static const struct LevelUpMove sGolurkLevelUpLearnset[] = {
+static const struct LevelUpMove sGolurkLevelUpLearnset[] = {// Needs Power Whip
     LEVEL_UP_MOVE( 0, MOVE_HEAVY_SLAM),
-    LEVEL_UP_MOVE( 1, MOVE_HEAVY_SLAM),
+    LEVEL_UP_MOVE( 1, MOVE_POWER_WHIP),
     LEVEL_UP_MOVE( 1, MOVE_HIGH_HORSEPOWER),
     LEVEL_UP_MOVE( 1, MOVE_POUND),
     LEVEL_UP_MOVE( 1, MOVE_ASTONISH),
@@ -12744,6 +12747,7 @@ static const struct LevelUpMove sGolurkLevelUpLearnset[] = {
     LEVEL_UP_MOVE(30, MOVE_MAGNITUDE),
     LEVEL_UP_MOVE(35, MOVE_DYNAMIC_PUNCH),
     LEVEL_UP_MOVE(40, MOVE_NIGHT_SHADE),
+    LEVEL_UP_MOVE(45, MOVE_POLTERGEIST),
     LEVEL_UP_MOVE(47, MOVE_CURSE),
     LEVEL_UP_MOVE(54, MOVE_EARTHQUAKE),
     LEVEL_UP_MOVE(61, MOVE_HAMMER_ARM),
@@ -15113,7 +15117,7 @@ static const struct LevelUpMove sYungoosLevelUpLearnset[] = {
 static const struct LevelUpMove sGumshoosLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_TACKLE),
     LEVEL_UP_MOVE( 1, MOVE_LEER),
-    LEVEL_UP_MOVE( 1, MOVE_PURSUIT),
+    LEVEL_UP_MOVE( 1, MOVE_SUCKER_PUNCH),
     LEVEL_UP_MOVE( 1, MOVE_SAND_ATTACK),
     LEVEL_UP_MOVE( 3, MOVE_LEER),
     LEVEL_UP_MOVE( 7, MOVE_PURSUIT),

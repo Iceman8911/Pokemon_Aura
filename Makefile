@@ -18,7 +18,6 @@ export PATH := $(TOOLCHAIN)/bin:$(PATH)
 endif
 endif
 
-SCRIPT := tools/poryscript/poryscript$(EXE)
 PREFIX := arm-none-eabi-
 OBJCOPY := $(PREFIX)objcopy
 OBJDUMP := $(PREFIX)objdump
