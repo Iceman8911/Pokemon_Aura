@@ -223,7 +223,6 @@ struct Pokedex
     /*0x08*/ u32 spindaPersonality; // set when you first see Spinda
     /*0x0C*/ u32 unknown3;
     /*0x10*/ u8 seen[0x68]; // Previously Dex Flags, feel free to remove.
-    int *owned;
 };
 
 struct PokemonJumpRecords
@@ -994,6 +993,7 @@ struct MysteryGiftSave
 
 // For external event data storage. The majority of these may have never been used.
 // In Emerald, the only known used fields are the PokeCoupon and BoxRS ones, but hacking the distribution discs allows Emerald to receive events and set the others
+/* USELESS
 struct ExternalEventData
 {
     u8 unknownExternalDataFields1[7]; // if actually used, may be broken up into different fields.
@@ -1083,10 +1083,10 @@ struct SaveBlock1
     /*0xC70*/ struct ObjectEventTemplate objectEventTemplates[OBJECT_EVENT_TEMPLATES_COUNT];
     /*0x1270*/ u8 flags[NUM_FLAG_BYTES];
     /*0x139C*/ u16 vars[VARS_COUNT];
-    /*0x159C*/ u32 gameStats[NUM_GAME_STATS];
+    /*0x159C*/ u32 gameStats[NUM_GAME_STATS];  // I should really cut this down
     /*0x169C*/ struct BerryTree berryTrees[BERRY_TREES_COUNT];
     /*0x1A9C*/ struct SecretBase secretBases[SECRET_BASES_COUNT];
-    /*0x271C*/ u8 playerRoomDecorations[DECOR_MAX_PLAYERS_HOUSE];
+    /*0x271C*/ u8 playerRoomDecorations[DECOR_MAX_PLAYERS_HOUSE];    // Who uses decor anyways??
     /*0x2728*/ u8 playerRoomDecorationPositions[DECOR_MAX_PLAYERS_HOUSE];
     /*0x2734*/ u8 decorationDesks[10];
     /*0x273E*/ u8 decorationChairs[10];
@@ -1160,8 +1160,8 @@ struct SaveBlock1
                u8 dexNavSearchLevels[NUM_SPECIES];
                u8 dexNavChain;
     // sizeof: 0x3D88
-    int *dexCaught;
-    u8 dexSeen;
+    u8 dexSeen[NUM_DEX_FLAG_BYTES];
+    u8 dexCaught[NUM_DEX_FLAG_BYTES];
 
 };
 
