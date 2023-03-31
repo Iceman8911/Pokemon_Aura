@@ -976,6 +976,7 @@ void RedrawMenuCursor(u8 oldPos, u8 newPos)
     }
     else
     {
+        // This isn't going to be reached anyways
         FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(1), sMenu.left, sMenu.optionHeight * oldPos, width, height);
         AddTextPrinterParameterized(sMenu.windowId, sMenu.fontId, gText_SelectorArrow3, sMenu.left, sMenu.optionHeight * newPos + sMenu.top, 0, 0);
     }

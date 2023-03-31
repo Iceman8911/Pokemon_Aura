@@ -17557,9 +17557,9 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_VIKAVOLT] =
     {
         .baseHP        = 77,
-        .baseAttack    = 70,
+        .baseAttack    = 70, // 60
         .baseDefense   = 90,
-        .baseSpeed     = 43,
+        .baseSpeed     = 43, // 53
         .baseSpAttack  = 145,
         .baseSpDefense = 75,
         .types = { TYPE_BUG, TYPE_ELECTRIC},
@@ -17571,7 +17571,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 70,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_BUG},
-        .abilities = {ABILITY_LEVITATE, ABILITY_NONE},
+        .abilities = {ABILITY_LEVITATE, ABILITY_NONE}, // Signature ability that raises speed by x1.5 upon switch in + Levitate
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
     },
@@ -17665,7 +17665,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 70,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_FAIRY},
-        .abilities = {ABILITY_HONEY_GATHER, ABILITY_SHIELD_DUST, ABILITY_SWEET_VEIL},
+        .abilities = {ABILITY_HONEY_GATHER, ABILITY_SHIELD_DUST, ABILITY_SWEET_VEIL},  // Needs a new signature
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
     },
@@ -17689,7 +17689,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 70,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
-        .abilities = {ABILITY_KEEN_EYE, ABILITY_SAND_RUSH, ABILITY_STEADFAST},
+        .abilities = {ABILITY_KEEN_EYE, ABILITY_SAND_RUSH, ABILITY_STEADFAST},  // All the Lycans get a signature ability
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
     },
@@ -17879,11 +17879,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_LURANTIS] =
     {
-        .baseHP        = 70,
+        .baseHP        = 95, // 70
         .baseAttack    = 105,
         .baseDefense   = 90,
         .baseSpeed     = 45,
-        .baseSpAttack  = 80,
+        .baseSpAttack  = 100, // 80
         .baseSpDefense = 90,
         .types = { TYPE_GRASS, TYPE_FIGHTING},
         .catchRate = 75,
@@ -17902,8 +17902,8 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_MORELULL] =
     {
-        .baseHP        = 40,
-        .baseAttack    = 35,
+        .baseHP        = 60,
+        .baseAttack    = 15,
         .baseDefense   = 55,
         .baseSpeed     = 15,
         .baseSpAttack  = 65,
@@ -17926,8 +17926,8 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_SHIINOTIC] =
     {
-        .baseHP        = 60,
-        .baseAttack    = 35,
+        .baseHP        = 75,
+        .baseAttack    = 20,
         .baseDefense   = 80,
         .baseSpeed     = 30,
         .baseSpAttack  = 90,
@@ -18147,7 +18147,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 70,
         .growthRate = GROWTH_SLOW,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
-        .abilities = {ABILITY_INNER_FOCUS, ABILITY_TELEPATHY, ABILITY_SYMBIOSIS},
+        .abilities = {ABILITY_INNER_FOCUS, ABILITY_TELEPATHY, ABILITY_SYMBIOSIS}, // needs new ability
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
     },
@@ -18266,8 +18266,8 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_PYUKUMUKU] =
     {
-        .baseHP        = 65,
-        .baseAttack    = 50,
+        .baseHP        = 65, // 85 keke
+        .baseAttack    = 50, // 30
         .baseDefense   = 130,
         .baseSpeed     = 5,
         .baseSpAttack  = 30,
@@ -18337,11 +18337,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_TURTONATOR] =
     {
-        .baseHP        = 60,
-        .baseAttack    = 78,
+        .baseHP        = 90, // 60
+        .baseAttack    = 98, // 78
         .baseDefense   = 135,
         .baseSpeed     = 36,
-        .baseSpAttack  = 91,
+        .baseSpAttack  = 111, // 91
         .baseSpDefense = 85,
         .types = { TYPE_FIRE, TYPE_DRAGON},
         .catchRate = 70,
@@ -18353,7 +18353,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 70,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_DRAGON},
-        .abilities = {ABILITY_SHELL_ARMOR, ABILITY_NONE},
+        .abilities = {ABILITY_SHELL_ARMOR, ABILITY_NONE},  // Perhaps a better ability. Dragon Maw?? lol
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
     },
@@ -18361,10 +18361,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_TOGEDEMARU] =
     {
         .baseHP        = 65,
-        .baseAttack    = 98,
+        .baseAttack    = 103,
         .baseDefense   = 63,
-        .baseSpeed     = 96,
-        .baseSpAttack  = 40,
+        .baseSpeed     = 101,
+        .baseSpAttack  = 30,
         .baseSpDefense = 73,
         .types = { TYPE_ELECTRIC, TYPE_STEEL},
         .catchRate = 180,
@@ -18386,10 +18386,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_BRUXISH] =
     {
         .baseHP        = 68,
-        .baseAttack    = 115,
+        .baseAttack    = 120,
         .baseDefense   = 70,
         .baseSpeed     = 92,
-        .baseSpAttack  = 60,
+        .baseSpAttack  = 55,
         .baseSpDefense = 70,
         .types = { TYPE_WATER, TYPE_PSYCHIC},
         .catchRate = 80,
@@ -18408,12 +18408,12 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_DRAMPA] =
     {
-        .baseHP        = 78,
+        .baseHP        = 128, // 78 Might be a tad too much but was necessary to keep up with turtonator
         .baseAttack    = 60,
-        .baseDefense   = 85,
+        .baseDefense   = 95, // 85
         .baseSpeed     = 36,
         .baseSpAttack  = 135,
-        .baseSpDefense = 91,
+        .baseSpDefense = 101, // 91
         .types = { TYPE_NORMAL, TYPE_DRAGON},
         .catchRate = 70,
         .expYield = 170,
@@ -18778,10 +18778,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_XURKITREE] =
     {
         .baseHP        = 83,
-        .baseAttack    = 89,
+        .baseAttack    = 89,  // 79 or 69
         .baseDefense   = 71,
         .baseSpeed     = 83,
-        .baseSpAttack  = 173,
+        .baseSpAttack  = 173, // 183 or 193 :)
         .baseSpDefense = 71,
         .types = { TYPE_ELECTRIC, TYPE_ELECTRIC},
         .catchRate = 45,
@@ -24365,7 +24365,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_LYCANROC_MIDNIGHT] =
     {
         .baseHP        = 85,
-        .baseAttack    = 125,
+        .baseAttack    = 135,
         .baseDefense   = 75,
         .baseSpeed     = 82,
         .baseSpAttack  = 35,
