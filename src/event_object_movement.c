@@ -9492,15 +9492,38 @@ static const u8 sElevationToSubspriteTableNum[] = {
     1, 1, 1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 0, 0, 1,
 };
 
+#include "follow_me.h"
 static void UpdateObjectEventElevationAndPriority(struct ObjectEvent *objEvent, struct Sprite *sprite)
 {
+    struct ObjectEvent *followerObj, *playerObj;
+    struct Sprite *followerSprite;
+    u8 playerTileElevation, followerTileElevation;
+    
     if (objEvent->fixedPriority)
         return;
 
     ObjectEventUpdateElevation(objEvent);
 
+    if (gSaveBlock2Ptr->follower.inProgress)
+    {
+        followerObj = &gObjectEvents[gSaveBlock2Ptr->follower.objId];
+        playerObj = &gObjectEvents[gPlayerAvatar.objectEventId];
+
+        followerSprite = &gSprites[followerObj->spriteId];
+
+        followerTileElevation = MapGridGetElevationAt(followerObj->currentCoords.x, followerObj->currentCoords.y);
+
+        // followerObj->heldMovementFinished is the defining point here
+        // Adding it will make the follower priority only update when stationary so it might be janky when moving from elevations
+        // Without it, the follower's priority update on every move which may have some grpahical issues if the follower is already on a metatile with a top layer
+        if ((followerObj->currentElevation == 0 || followerObj->currentElevation == 15)) //&& followerObj->heldMovementFinished)
+        { // Make the follower's previous elevation the same as the player's if on a transition elevation (i.e 0 or 15)
+            followerObj->previousElevation = playerObj->previousElevation;
+        }
+        //DebugPrintf("Held Movement: %d, Single Movement: %d, Held Movement: %d", followerObj->heldMovementActive, followerObj->singleMovementActive, followerObj->heldMovementFinished);
+    }
     sprite->subspriteTableNum = sElevationToSubspriteTableNum[objEvent->previousElevation];
-    sprite->oam.priority = sElevationToPriority[objEvent->previousElevation];
+    sprite->oam.priority = sElevationToPriority[objEvent->previousElevation];   
 }
 
 static void InitObjectPriorityByElevation(struct Sprite *sprite, u8 elevation)
@@ -9514,12 +9537,8 @@ u8 ElevationToPriority(u8 elevation)
     return sElevationToPriority[elevation];
 }
 
-#include "follow_me.h"
 void ObjectEventUpdateElevation(struct ObjectEvent *objEvent)
 {
-    struct ObjectEvent *followerObj, *playerObj;
-    u8 playerTileElevation, followerTileElevation;
-
     u8 curElevation = MapGridGetElevationAt(objEvent->currentCoords.x, objEvent->currentCoords.y);
     u8 prevElevation = MapGridGetElevationAt(objEvent->previousCoords.x, objEvent->previousCoords.y);
 
@@ -9531,23 +9550,6 @@ void ObjectEventUpdateElevation(struct ObjectEvent *objEvent)
     if (curElevation != 0 && curElevation != 15)
         objEvent->previousElevation = curElevation;
 
-
-    // Just a small fix for the follower in some cases
-    if (gSaveBlock2Ptr->follower.inProgress)
-    {
-        followerObj = &gObjectEvents[gSaveBlock2Ptr->follower.objId];
-        playerObj = &gObjectEvents[gPlayerAvatar.objectEventId];
-
-        playerTileElevation = MapGridGetElevationAt(playerObj->previousCoords.x, playerObj->previousCoords.y);
-        followerTileElevation = MapGridGetElevationAt(followerObj->previousCoords.x, followerObj->previousCoords.y);
-
-        if (playerTileElevation != followerTileElevation
-            && (followerTileElevation == 0 || followerTileElevation == 15))
-            // Follower is on elevation 0 or 15 without the player
-        {
-            followerObj->currentElevation = playerObj->currentElevation;
-        }
-    }
 }
 
 void SetObjectSubpriorityByElevation(u8 elevation, struct Sprite *sprite, u8 subpriority)
