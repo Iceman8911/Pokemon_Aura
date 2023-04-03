@@ -1578,10 +1578,11 @@ static void PlayerHandleYesNoInput(void)
     }
 }
 
+#include "text.h"
 static void MoveSelectionDisplayMoveNames(void)//
 {
     s32 i;
-    u8 moveEffectiveness;                   // Stores an index to gTextOnWindowsInfo_Normal that gets the appropriate window Id properties
+    u8 moveEffectiveness, movEff2;          // Stores an index to gTextOnWindowsInfo_Normal that gets the appropriate window Id properties
     u8 *txtPtr = gDisplayedStringBattle;    // Text for super, not very or no effect
     u8 neutralTxt[20] = {0};                // Default text for neutral effectiveness
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleBufferA[gActiveBattler][4]);
@@ -1603,6 +1604,18 @@ static void MoveSelectionDisplayMoveNames(void)//
         {
             // This should work for all double battles
             moveEffectiveness = TypeEffectiveness(moveInfo, GetBattlerPosition(gMultiUsePlayerCursor));
+
+            // For stuff like Surf, EQ, Muddy Water etc. Note that it will not detect the effectiveness to allies
+            if (gBattleMoves[moveInfo->moves[i]].target == MOVE_TARGET_BOTH
+                || gBattleMoves[moveInfo->moves[i]].target == MOVE_TARGET_FOES_AND_ALLY)
+            {
+                moveEffectiveness = TypeEffectiveness(moveInfo, B_POSITION_OPPONENT_LEFT);
+                movEff2 = TypeEffectiveness(moveInfo, B_POSITION_OPPONENT_RIGHT);
+
+                // Prioritize Effectiveness as Super Eff > Not Very Eff > No Eff
+                moveEffectiveness = min(moveEffectiveness, movEff2);
+            }
+
         }
         
         // Set colors in template text "txtPtr" and display STAB (if any)
@@ -1640,20 +1653,23 @@ static void MoveSelectionDisplayMoveNames(void)//
         StringCopy(neutralTxt, gMoveNames[moveInfo->moves[i]]);
 
         // Add a symbol to the move name depending on effectiveness
-        switch ((TypeEffectiveness(moveInfo, 1)))
+        if (StringLength(gMoveNames[moveInfo->moves[i]]) <= 12) // Max length of string before it starts chopping off
         {
-            case B_WIN_SUPER_EFFECTIVE:
-                StringAppend(txtPtr, gText_SuperEffective);
-                break;
-            case B_WIN_NOT_VERY_EFFECTIVE:
-                StringAppend(txtPtr, gText_NotVeryEffective);
-                break;
-            case B_WIN_NO_EFFECT:
-                StringAppend(txtPtr, gText_NoEffect);
-                break;
-            case B_WIN_MOVE_TYPE:
-            default:
-                break;
+            switch (moveEffectiveness)
+            {
+                case B_WIN_SUPER_EFFECTIVE:
+                    StringAppend(txtPtr, gText_SuperEffective);
+                    break;
+                case B_WIN_NOT_VERY_EFFECTIVE:
+                    StringAppend(txtPtr, gText_NotVeryEffective);
+                    break;
+                case B_WIN_NO_EFFECT:
+                    //StringAppend(txtPtr, gText_NoEffect);  Ugly :(
+                    break;
+                case B_WIN_MOVE_TYPE:
+                default:
+                    break;
+            }
         }
 
         // Prints on windows B_WIN_MOVE_NAME_1, B_WIN_MOVE_NAME_2, B_WIN_MOVE_NAME_3, B_WIN_MOVE_NAME_4
