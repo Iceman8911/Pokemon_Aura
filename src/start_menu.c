@@ -1606,9 +1606,9 @@ void LoadStartMenuIcon(u8 iconId, u8 position)
     iconPalSheet.tag = spriteTagId;                                 // This tag could be anything really
     iconPalSheet.data = sStartMenuIconsPal;
 
-    // Copy over original oam
+    // Copy over original oam and assign the shape, size and priority of the icon
     iconOam = *spriteTemplate.oam;
-    iconOam.shape = SPRITE_SHAPE(32x32);                            // Assign the hape, size and priority of the icon
+    iconOam.shape = SPRITE_SHAPE(32x32);
     iconOam.size = SPRITE_SIZE(32x32);
     iconOam.priority = 0;
 
