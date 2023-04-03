@@ -16,7 +16,6 @@
 #define ICON_WINDOW_OFFSET               2         // The extra space allocated to fit icons
 #define TEXT_WINDOW_OFFSET               22        // The gap added to shift the text
 #define COLOR_ICON_OFFSET                8         // In "start_menu_icons.png", its the number of 32x32 blocks till the colored likewise sprite
-                                                   // You will have to adjust this when making any sprite sheet changes
 
 
 extern bool8 (*gMenuCallback)(void);
