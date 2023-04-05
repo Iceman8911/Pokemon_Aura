@@ -68,7 +68,7 @@ script EnterHouseWithRioluForFirstTime {
     applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceDown)
     waitmovement(0)
     msgbox(format("Just outside our house, I overheard a group of {COLOR GREEN}three{COLOR DARK_GRAY} strange looking people talking about getting a particular Pokemon from the forest just before they entered it. I trailed them since they looked suspicious"
-    "and eventually I heard two voices shouting about someone going missing. Deeper into the forest where I was to get the mushrooms, I found....\pWell, its better to show it."))
+    "and eventually I heard two voices shouting about someone going missing. Deeper into the forest where I was to get the mushrooms, I found...\pWell, its better to show it."))
     waitmessage
     closemessage
     applymovement(OBJ_EVENT_ID_PLAYER, FaceRight)
