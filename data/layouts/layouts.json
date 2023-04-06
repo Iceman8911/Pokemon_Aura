@@ -4414,7 +4414,7 @@
     {
       "id": "LAYOUT_ANCONNA_TOWN",
       "name": "AnconnaTown_Layout",
-      "width": 38,
+      "width": 41,
       "height": 36,
       "primary_tileset": "gTileset_Tileset_AnconnaTown",
       "secondary_tileset": "gTileset_AnconnaTown_but_secondary",
@@ -4434,7 +4434,7 @@
     {
       "id": "LAYOUT_ROUTE01",
       "name": "Route01_Layout",
-      "width": 30,
+      "width": 32,
       "height": 50,
       "primary_tileset": "gTileset_Tileset_AnconnaTown",
       "secondary_tileset": "gTileset_AnconnaTown_but_secondary",

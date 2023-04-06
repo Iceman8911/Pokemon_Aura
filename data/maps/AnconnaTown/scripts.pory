@@ -51,13 +51,13 @@ script AnconnaTown_MakeRioluAFollower {
 	clearflag(FLAG_TEMP_3)
 	getplayerxy(VAR_TEMP_2, VAR_TEMP_3) //Gets the player's location
 	if(var(VAR_TEMP_2) == 17) {
-		setobjectxy(10, 18, 0)
+		setobjectxy(10, 19, 0)
 		applymovement(OBJ_EVENT_ID_PLAYER, FaceRight)
 		waitmovement(0)
 		applymovement(10, FacePlayer)
 		waitmovement(0)
 	} else {
-		setobjectxy(10, 17, 0)
+		setobjectxy(10, 18, 0)
 		applymovement(OBJ_EVENT_ID_PLAYER, FaceLeft)
 		waitmovement(0)
 		applymovement(10, FacePlayer)

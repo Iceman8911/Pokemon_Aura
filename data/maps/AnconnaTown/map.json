@@ -15,19 +15,19 @@
   "connections": [
     {
       "map": "MAP_ROUTE01",
-      "offset": 14,
+      "offset": 16,
       "direction": "up"
     },
     {
       "map": "MAP_ANCONNA_LAKE",
-      "offset": -5,
+      "offset": -3,
       "direction": "down"
     }
   ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 5,
+      "x": 7,
       "y": 10,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -41,8 +41,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_NEW_FAT_MAN",
-      "x": 23,
-      "y": 23,
+      "x": 25,
+      "y": 24,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 3,
@@ -55,7 +55,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_NEW_TWIN",
-      "x": 13,
+      "x": 15,
       "y": 31,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -69,7 +69,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_1",
-      "x": 25,
+      "x": 27,
       "y": 31,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -80,34 +80,6 @@
       "script": "AnconnaTown_Woman",
       "flag": "0",
       "in_connection": true
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
-      "x": 0,
-      "y": 21,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "ANCONNA_TOWN_MYSTERIOUS_PEOPLE",
-      "in_connection": false
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
-      "x": 1,
-      "y": 21,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "ANCONNA_TOWN_MYSTERIOUS_PEOPLE",
-      "in_connection": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
@@ -124,8 +96,36 @@
       "in_connection": false
     },
     {
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
+      "x": 3,
+      "y": 21,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "ANCONNA_TOWN_MYSTERIOUS_PEOPLE",
+      "in_connection": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "x": 4,
+      "y": 21,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "ANCONNA_TOWN_MYSTERIOUS_PEOPLE",
+      "in_connection": false
+    },
+    {
       "graphics_id": "OBJ_EVENT_GFX_POKEMON_399",
-      "x": 18,
+      "x": 20,
       "y": 13,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -139,7 +139,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_2",
-      "x": 16,
+      "x": 18,
       "y": 10,
       "elevation": 4,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -154,7 +154,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKEMON_447",
-      "x": 7,
+      "x": 9,
       "y": 2,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -168,8 +168,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 30,
-      "y": 8,
+      "x": 35,
+      "y": 9,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -182,7 +182,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
-      "x": 8,
+      "x": 10,
       "y": 32,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -196,7 +196,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_NEW_BOY",
-      "x": 13,
+      "x": 15,
       "y": 20,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -210,7 +210,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
-      "x": 14,
+      "x": 16,
       "y": 23,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -221,60 +221,99 @@
       "script": "AnconnaTown_FlowerGirl",
       "flag": "0",
       "in_connection": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POKEMON_263",
+      "x": 26,
+      "y": 21,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 5,
+      "movement_range_y": 5,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POKEMON_016",
+      "x": 11,
+      "y": 24,
+      "elevation": 1,
+      "movement_type": "MOVEMENT_TYPE_WANDER_RIGHT_AND_LEFT",
+      "movement_range_x": 1,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POKEMON_661",
+      "x": 32,
+      "y": 11,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_RIGHT_LEFT_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
     }
   ],
   "warp_events": [
     {
-      "x": 14,
+      "x": 16,
       "y": 22,
       "elevation": 0,
       "dest_map": "MAP_LITTLEROOT_TOWN",
       "dest_warp_id": "3"
     },
     {
-      "x": 0,
+      "x": 2,
       "y": 21,
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_WOODS",
       "dest_warp_id": "0"
     },
     {
-      "x": 0,
+      "x": 2,
       "y": 22,
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_WOODS",
       "dest_warp_id": "1"
     },
     {
-      "x": 6,
+      "x": 8,
       "y": 15,
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_TOWN_PLAYER_HOUSE_GROUND_FLOOR",
       "dest_warp_id": "0"
     },
     {
-      "x": 29,
+      "x": 31,
       "y": 14,
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_TOWN_PLAYER_HOUSE",
       "dest_warp_id": "0"
     },
     {
-      "x": 26,
+      "x": 28,
       "y": 24,
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_TOWN_HOUSE1",
       "dest_warp_id": "0"
     },
     {
-      "x": 8,
+      "x": 10,
       "y": 27,
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_TOWN_HOUSE2",
       "dest_warp_id": "0"
     },
     {
-      "x": 20,
+      "x": 22,
       "y": 9,
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_TOWN_LAB",
@@ -284,7 +323,7 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 6,
+      "x": 8,
       "y": 17,
       "elevation": 0,
       "var": "ANCONNA_TOWN_DISCOVERED_MYSTERIOUS_PEOPLE",
@@ -293,7 +332,7 @@
     },
     {
       "type": "trigger",
-      "x": 17,
+      "x": 19,
       "y": 1,
       "elevation": 0,
       "var": "VAR_TEMP_9",
@@ -302,7 +341,7 @@
     },
     {
       "type": "trigger",
-      "x": 18,
+      "x": 20,
       "y": 1,
       "elevation": 0,
       "var": "VAR_TEMP_9",
@@ -311,7 +350,7 @@
     },
     {
       "type": "trigger",
-      "x": 5,
+      "x": 7,
       "y": 22,
       "elevation": 0,
       "var": "GAME_PROGRESS",
@@ -320,7 +359,7 @@
     },
     {
       "type": "trigger",
-      "x": 6,
+      "x": 8,
       "y": 21,
       "elevation": 0,
       "var": "GAME_PROGRESS",
@@ -329,7 +368,7 @@
     },
     {
       "type": "trigger",
-      "x": 7,
+      "x": 9,
       "y": 20,
       "elevation": 0,
       "var": "GAME_PROGRESS",
@@ -338,7 +377,7 @@
     },
     {
       "type": "trigger",
-      "x": 8,
+      "x": 10,
       "y": 19,
       "elevation": 0,
       "var": "GAME_PROGRESS",
@@ -347,7 +386,7 @@
     },
     {
       "type": "trigger",
-      "x": 9,
+      "x": 11,
       "y": 18,
       "elevation": 0,
       "var": "GAME_PROGRESS",
@@ -356,7 +395,7 @@
     },
     {
       "type": "trigger",
-      "x": 10,
+      "x": 12,
       "y": 17,
       "elevation": 0,
       "var": "GAME_PROGRESS",
@@ -365,26 +404,7 @@
     },
     {
       "type": "trigger",
-      "x": 11,
-      "y": 16,
-      "elevation": 0,
-      "var": "GAME_PROGRESS",
-      "var_value": "3",
-      "script": "AnconnaTown_JustCameOutOfForest"
-    },
-    {
-      "type": "trigger",
-      "x": 17,
-      "y": 0,
-      "elevation": 0,
-      "var": "GAME_PROGRESS",
-      "var_value": "8",
-      "script": "AnconnaTown_MakeRioluAFollower",
-      "": "Makes Riolu The Player's Follower after dealing with Early game"
-    },
-    {
-      "type": "trigger",
-      "x": 18,
+      "x": 19,
       "y": 0,
       "elevation": 0,
       "var": "GAME_PROGRESS",
@@ -395,6 +415,16 @@
     {
       "type": "trigger",
       "x": 20,
+      "y": 0,
+      "elevation": 0,
+      "var": "GAME_PROGRESS",
+      "var_value": "8",
+      "script": "AnconnaTown_MakeRioluAFollower",
+      "": "Makes Riolu The Player's Follower after dealing with Early game"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
       "y": 10,
       "elevation": 0,
       "var": "VAR_TEMP_4",
@@ -405,15 +435,7 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 18,
-      "y": 31,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-      "script": "AnconnaTown_EventScript_Sign"
-    },
-    {
-      "type": "sign",
-      "x": 17,
+      "x": 20,
       "y": 31,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
@@ -422,6 +444,14 @@
     {
       "type": "sign",
       "x": 19,
+      "y": 31,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "AnconnaTown_EventScript_Sign"
+    },
+    {
+      "type": "sign",
+      "x": 21,
       "y": 20,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
@@ -429,7 +459,7 @@
     },
     {
       "type": "sign",
-      "x": 20,
+      "x": 22,
       "y": 20,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
@@ -437,7 +467,7 @@
     },
     {
       "type": "sign",
-      "x": 15,
+      "x": 17,
       "y": 9,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",

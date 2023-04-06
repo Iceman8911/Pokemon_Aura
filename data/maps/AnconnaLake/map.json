@@ -15,7 +15,7 @@
   "connections": [
     {
       "map": "MAP_ANCONNA_TOWN",
-      "offset": 5,
+      "offset": 3,
       "direction": "up"
     }
   ],
