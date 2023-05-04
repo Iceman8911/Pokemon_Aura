@@ -6702,7 +6702,24 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
     u16 partnerHeldItem;
     u8 partnerHoldEffect;
 
-    if (heldItem == ITEM_ENIGMA_BERRY)
+    if (tradePartner != NULL)
+    {
+        partnerSpecies = GetMonData(tradePartner, MON_DATA_SPECIES, 0);
+        partnerHeldItem = GetMonData(tradePartner, MON_DATA_HELD_ITEM, 0);
+
+        if (partnerHeldItem == ITEM_ENIGMA_BERRY_E_READER)
+            partnerHoldEffect = gSaveBlock1Ptr->enigmaBerry.holdEffect;
+        else
+            partnerHoldEffect = ItemId_GetHoldEffect(partnerHeldItem);
+    }
+    else
+    {
+        partnerSpecies = SPECIES_NONE;
+        partnerHeldItem = ITEM_NONE;
+        partnerHoldEffect = HOLD_EFFECT_NONE;
+    }
+
+    if (heldItem == ITEM_ENIGMA_BERRY_E_READER || heldItem == ITEM_ENIGMA_BERRY)
         #ifndef FREE_ENIGMA_BERRY
         holdEffect = gSaveBlock1Ptr->enigmaBerry.holdEffect;
         #else
@@ -7368,7 +7385,7 @@ void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
     u8 bonus;
 
     heldItem = GetMonData(mon, MON_DATA_HELD_ITEM, 0);
-    if (heldItem == ITEM_ENIGMA_BERRY)
+    if (heldItem == ITEM_ENIGMA_BERRY_E_READER)
     {
         if (gMain.inBattle)
             holdEffect = gEnigmaBerries[0].holdEffect;
