@@ -6708,7 +6708,11 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
         partnerHeldItem = GetMonData(tradePartner, MON_DATA_HELD_ITEM, 0);
 
         if (partnerHeldItem == ITEM_ENIGMA_BERRY_E_READER)
+            #ifndef FREE_ENIGMA_BERRY
             partnerHoldEffect = gSaveBlock1Ptr->enigmaBerry.holdEffect;
+            #else
+            partnerHoldEffect = 0;
+            #endif
         else
             partnerHoldEffect = ItemId_GetHoldEffect(partnerHeldItem);
     }
@@ -6719,7 +6723,7 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
         partnerHoldEffect = HOLD_EFFECT_NONE;
     }
 
-    if (heldItem == ITEM_ENIGMA_BERRY_E_READER || heldItem == ITEM_ENIGMA_BERRY)
+    if (heldItem == ITEM_ENIGMA_BERRY_E_READER)
         #ifndef FREE_ENIGMA_BERRY
         holdEffect = gSaveBlock1Ptr->enigmaBerry.holdEffect;
         #else
