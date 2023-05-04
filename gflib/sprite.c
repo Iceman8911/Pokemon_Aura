@@ -587,9 +587,6 @@ u8 CreateSpriteAt(u8 index, const struct SpriteTemplate *template, s16 x, s16 y,
     if (template->paletteTag != TAG_NONE)
         sprite->oam.paletteNum = IndexOfSpritePaletteTag(template->paletteTag);
 
-    // This can be used to group similar sprites for stuff like deletion or smh
-    sprite->commonSpriteId = template->commonSpriteId;
-
     return index;
 }
 
