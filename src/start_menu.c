@@ -1542,9 +1542,9 @@ void AppendToList(u8 *list, u8 *pos, u8 newEntry)
 
 void LoadStartMenuIcon(u8 iconId, u8 position)
 {
-    struct SpritePalette iconPalSheet = {0};
+    struct SpritePalette iconPalSheet;
     struct OamData iconOam = {0};
-    struct SpriteTemplate iconSpriteTemplate = {0};
+    struct SpriteTemplate iconSpriteTemplate;
     u8 internalSpriteNum = 0;                                             // Just stores the index of the sprite for use later
     u8 internalSpriteNum2 = MAX_SPRITES;                                  // This is only used in maps with flash to serve as the id for "filler sprites"
     u8 flashLevel = GetFlashLevel();                                      // Maps requiring flash need some extra care
