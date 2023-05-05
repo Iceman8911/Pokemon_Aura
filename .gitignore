@@ -39,7 +39,3 @@ prefabs.json
 *.diff
 *.sym
 *.js
-*.mk
-Makefile
-tools\poryscript\font_widths.json
-tools\poryscript\poryscript
