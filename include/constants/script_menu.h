@@ -177,4 +177,11 @@
 #define STDSTRING_BATTLEITEMS      31
 #define STDSTRING_TREASURES        32
 
+
+// Dynamic Multichoice Callbacks
+#define DYN_MULTICHOICE_CB_DEBUG      0
+#define DYN_MULTICHOICE_CB_SHOW_ITEM  1
+#define DYN_MULTICHOICE_CB_NONE       255
+
+
 #endif //GUARD_SCRIPT_MENU_CONSTANTS_H

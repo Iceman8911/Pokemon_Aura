@@ -1853,28 +1853,6 @@
     customgivemon \species, \level, 0, 0, NUM_NATURES, 0xFF, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \move1, \move2, \move3, \move4, 0
 	.endm
 
-    @ sets an NPC up to follow the player
-    .macro setfollower localId:req, flags:req
-    .byte 0xe8
-    .byte \localId
-    .2byte \flags
-    .endm
-    
-    @ remove the following NPC (assumes there will only ever be one)
-    .macro destroyfollower
-    .byte 0xe9
-    .endm
-    
-    @ makes the player and follower face one another
-    .macro facefollower
-    .byte 0xea
-    .endm
-    
-    @ checks if you have a follower. returns the result to VAR_RESULT
-    .macro checkfollower
-    .byte 0xeb
-    .endm
-
 	@ buffer up to 6 supplied strings for use with MULTI_DYNAMIC_X
 	@ This lets you create custom menus at runtime using only stuff you can edit within the same script.
 	@ Prevents having to create whole new const menu stuffs in other files.
@@ -2039,6 +2017,63 @@
     subquestmenu QUEST_MENU_CHECK_COMPLETE \parent \child
     call_if_eq VAR_RESULT, FALSE, \dest
     .endm
+
+	@ sets an NPC up to follow the player
+    .macro setfollower localId:req, flags:req
+    .byte 0xe8
+    .byte \localId
+    .2byte \flags
+    .endm
+    
+    @ remove the following NPC (assumes there will only ever be one)
+    .macro destroyfollower
+    .byte 0xe9
+    .endm
+    
+    @ makes the player and follower face one another
+    .macro facefollower
+    .byte 0xea
+    .endm
+    
+    @ checks if you have a follower. returns the result to VAR_RESULT
+    .macro checkfollower
+    .byte 0xeb
+    .endm
+
+	@@ SBird dynamic multichoice implementation
+	.macro _dnmultichoice left:req, top:req, ignoreBPress:req, maxBeforeScroll:req, shouldSort:req, initialSelected:req, callbacks:req argv:vararg
+	.byte 0xec
+	.byte \left
+	.byte \top
+	.byte \ignoreBPress
+	.byte \maxBeforeScroll
+	.byte \shouldSort
+	.2byte \initialSelected
+	.byte \callbacks
+	.byte (.Ldynmultichoice_\@_2 - .Ldynmultichoice_\@_1) / 4
+.Ldynmultichoice_\@_1:
+	.4byte \argv
+.Ldynmultichoice_\@_2:
+	.endm
+
+	@ Displays a multichoice box from which the user can choose a selection, and blocks script execution until a selection is made.
+	@ Lists of options are provided in argv.
+	@ If ignoreBPress is set to a non-zero value, then the user will not be allowed to back out of the multichoice with the B button.
+	.macro dynmultichoice left:req, top:req, ignoreBPress:req, maxBeforeScroll:req, initialSelected:req, callbacks:req argv:vararg
+	_dynmultichoice \left, \top, \ignoreBPress, \maxBeforeScroll, FALSE, \initialSelected, \callbacks, \argv
+	.endm
+
+	.macro dynmultipush name:req, id:req
+	.byte 0xed
+	.4byte \name
+	.2byte \id
+	.endm
+
+	.macro dynmultistack left:req, top:req, ignoreBPress:req, maxBeforeScroll:req, shouldSort:req, initialSelected:req, callbacks:req
+	_dynmultichoice \left, \top, \ignoreBPress, \maxBeforeScroll, \shouldSort, \initialSelected, \callbacks, NULL
+	.endm
+
+
 
 @ Supplementary
 
