@@ -1626,7 +1626,7 @@ void LoadStartMenuIcon(u8 iconId, u8 position)
         }
     }
 
-    internalSpriteNum = CreateSpriteAtEnd(&iconSpriteTemplate, icon_xposition, icon_yposition, 0);
+    internalSpriteNum = CreateSprite(&iconSpriteTemplate, icon_xposition, icon_yposition, 0);
     gSprites[internalSpriteNum].isSpriteAnIcon = TRUE;
     AnimateSprite(&gSprites[internalSpriteNum]);
 
