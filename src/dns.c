@@ -418,7 +418,7 @@ void DnsApplyFilters()
     else
     {
         palExceptionFlags = gOWPalExceptions;
-        if (gAreStartMenuIconsReady)
+        if (gShouldStartMenuIconsBePrinted)
             palExceptionFlags.pal[gStartMenuIconPaletteNum + 16] = DNS_PAL_EXCEPTION; // Add the palette used for the start menu icons to exceptions
     }
 
