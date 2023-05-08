@@ -497,14 +497,10 @@ u8 AddStartMenuWindow(u8 numActions)
 {
     if (sStartMenuWindowId == WINDOW_NONE)
     {
-        if (gAreStartMenuIconsReady)
-        {
+        if (gShouldStartMenuIconsBePrinted)
             sStartMenuWindowId = AddWindowParameterized(0, 22 - ICON_WINDOW_OFFSET, 1, 7 + ICON_WINDOW_OFFSET, (numActions * 2) + 2, 15, 0x139);
-        }
         else
-        {
             sStartMenuWindowId = AddWindowParameterized(0, 22, 1, 7, (numActions * 2) + 2, 15, 0x139);
-        }
     }
     return sStartMenuWindowId;
 }
@@ -962,13 +958,13 @@ void RedrawMenuCursor(u8 oldPos, u8 newPos)
 
     width = GetMenuCursorDimensionByFont(sMenu.fontId, 0);
     height = GetMenuCursorDimensionByFont(sMenu.fontId, 1);
-    // The first 2 conditionals have changes specially made for the expanded start menu
-    if (!gIsAStartMenuIconAtPosition(newPos) && gAreStartMenuIconsReady)
+     // The first 2 conditionals have changes specially made for the expanded start menu
+    if (!IsAStartMenuIconAtPosition(newPos) && gShouldStartMenuIconsBePrinted)
     {
         FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(1), sMenu.left, sMenu.optionHeight * oldPos, width, height + 4);
         AddTextPrinterParameterized(sMenu.windowId, sMenu.fontId, gText_SelectorArrow3, sMenu.left, (sMenu.optionHeight * newPos) + (newPos * 3), 0, 0);
     }
-    else if (gIsAStartMenuIconAtPosition(newPos) && gAreStartMenuIconsReady)
+    else if (IsAStartMenuIconAtPosition(newPos) && gShouldStartMenuIconsBePrinted)
     {
         FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(1), sMenu.left, sMenu.optionHeight * oldPos, width, height + 4);
         // Don't Print the cursor if there is already an option
@@ -976,8 +972,7 @@ void RedrawMenuCursor(u8 oldPos, u8 newPos)
     }
     else
     {
-        // This isn't going to be reached anyways
-        FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(1), sMenu.left, sMenu.optionHeight * oldPos, width, height);
+        FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(1), sMenu.left, sMenu.optionHeight * oldPos + sMenu.top, width, height);
         AddTextPrinterParameterized(sMenu.windowId, sMenu.fontId, gText_SelectorArrow3, sMenu.left, sMenu.optionHeight * newPos + sMenu.top, 0, 0);
     }
 }
