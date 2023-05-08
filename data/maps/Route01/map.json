@@ -11,19 +11,20 @@
   "allow_escaping": false,
   "allow_running": true,
   "show_map_name": true,
+  "floor_number": 0,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
       "map": "MAP_ANCONNA_TOWN",
-      "offset": -16,
+      "offset": -12,
       "direction": "down"
     }
   ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 18,
-      "y": 47,
+      "x": 16,
+      "y": 48,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -36,8 +37,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 10,
-      "y": 21,
+      "x": 26,
+      "y": 29,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -50,8 +51,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
-      "x": 8,
-      "y": 42,
+      "x": 15,
+      "y": 40,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
@@ -64,8 +65,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
-      "x": 18,
-      "y": 17,
+      "x": 22,
+      "y": 14,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
@@ -78,7 +79,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
-      "x": 25,
+      "x": 29,
       "y": 4,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -92,8 +93,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 23,
-      "y": 11,
+      "x": 27,
+      "y": 16,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -106,7 +107,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_1",
-      "x": 9,
+      "x": 13,
       "y": 26,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -120,8 +121,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
-      "x": 17,
-      "y": 4,
+      "x": 20,
+      "y": 5,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -149,14 +150,14 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 27,
+      "x": 31,
       "y": 6,
       "elevation": 0,
       "dest_map": "MAP_MURKY_GROVE",
       "dest_warp_id": "0"
     },
     {
-      "x": 27,
+      "x": 31,
       "y": 7,
       "elevation": 0,
       "dest_map": "MAP_MURKY_GROVE",
@@ -209,7 +210,7 @@
     },
     {
       "type": "sign",
-      "x": 26,
+      "x": 30,
       "y": 5,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
@@ -217,12 +218,11 @@
     },
     {
       "type": "sign",
-      "x": 27,
+      "x": 31,
       "y": 5,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "Route01_SignEnd"
     }
-  ],
-  "floor_number": ""
+  ]
 }
