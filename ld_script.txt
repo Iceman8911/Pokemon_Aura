@@ -344,7 +344,6 @@ SECTIONS {
         src/international_string_util.o(.text);
         src/pokemon_debug.o(.text);
         src/speech_bubble.o(.text);
-        src/dns.o(.text);
         src/quests.o(.text);
         src/field_pic.o(.text);
         src/follow_me.o(.text);
@@ -719,7 +718,6 @@ SECTIONS {
         src/m4a_tables.o(.rodata);
         data/sound_data.o(.rodata);
         src/pokemon_debug.o(.rodata);
-        src/dns.o(.rodata);
         src/quests.o(.rodata);
         src/follow_me.o(.rodata);
 		src/dexnav.o(.rodata);

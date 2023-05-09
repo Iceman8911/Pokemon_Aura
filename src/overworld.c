@@ -68,8 +68,11 @@
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
+<<<<<<< HEAD
 #include "dns.h"
 #include "constants/event_object_movement.h"
+=======
+>>>>>>> parent of ae3cec8c6a (Added Day & Night lightning system)
 
 struct CableClubPlayer
 {
@@ -1477,8 +1480,6 @@ void CB1_Overworld(void)
 
 static void OverworldBasic(void)
 {
-    DnsApplyFilters();
-    //ScriptContext2_RunScript();
     ScriptContext_RunScript();
     RunTasks();
     AnimateSprites();

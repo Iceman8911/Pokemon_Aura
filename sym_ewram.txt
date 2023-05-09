@@ -149,7 +149,6 @@
 	.include "src/trainer_hill.o"
 	.include "src/rayquaza_scene.o"
 	.include "src/speech_bubble.o"
-	.include "src/dns.o"
 	.include "src/debug.o"
 	.include "src/quests.o"
 	.include "src/field_pic.o"
