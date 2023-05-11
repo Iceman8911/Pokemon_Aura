@@ -42,6 +42,5 @@ void UpdateSparkleFieldEffect(struct Sprite *);
 void SetSpriteInvisible(u8 spriteId);
 void ShowWarpArrowSprite(u8 spriteId, u8 direction, s16 x, s16 y);
 void LoadFieldEffectPalette(u8 fieldEffect);
-//void LoadFieldEffectPalette_(u8 fieldEffect, bool8 updateGammaType);
 
 #endif //GUARD_FIELD_EFFECT_HELPERS_H

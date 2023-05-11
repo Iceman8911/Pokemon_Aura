@@ -531,6 +531,7 @@
     {
       "map_section": "MAPSEC_AQUA_HIDEOUT_OLD",
       "name": "{AQUA} HIDEOUT",
+      "name_clone": true,
       "x": 19,
       "y": 3,
       "width": 1,
@@ -795,6 +796,7 @@
     {
       "map_section": "MAPSEC_ROUTE_4_POKECENTER",
       "name": "ROUTE 4",
+      "name_clone": true,
       "x": 0,
       "y": 0,
       "width": 1,
@@ -803,6 +805,7 @@
     {
       "map_section": "MAPSEC_ROUTE_10_POKECENTER",
       "name": "ROUTE 10",
+      "name_clone": true,
       "x": 0,
       "y": 0,
       "width": 1,
@@ -1043,6 +1046,7 @@
     {
       "map_section": "MAPSEC_UNDERGROUND_PATH_2",
       "name": "UNDERGROUND PATH",
+      "name_clone": true,
       "x": 0,
       "y": 0,
       "width": 1,
@@ -1059,6 +1063,7 @@
     {
       "map_section": "MAPSEC_KANTO_VICTORY_ROAD",
       "name": "VICTORY ROAD",
+      "name_clone": true,
       "x": 0,
       "y": 0,
       "width": 1,
@@ -1091,6 +1096,7 @@
     {
       "map_section": "MAPSEC_KANTO_SAFARI_ZONE",
       "name": "SAFARI ZONE",
+      "name_clone": true,
       "x": 0,
       "y": 0,
       "width": 1,
@@ -1435,6 +1441,7 @@
     {
       "map_section": "MAPSEC_TRAINER_TOWER_2",
       "name": "TRAINER TOWER",
+      "name_clone": true,
       "x": 0,
       "y": 0,
       "width": 1,
@@ -1701,54 +1708,6 @@
       "name": "TRAINER HILL",
       "x": 8,
       "y": 4,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_ANCONNA_TOWN",
-      "name": "Anconna Town",
-      "x": 0,
-      "y": 0,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_ANCONNA_WOODS",
-      "name": "Anconna Woods",
-      "x": 0,
-      "y": 0,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_ANCONNA_LAKE",
-      "name": "Anconna Lake",
-      "x": 0,
-      "y": 0,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_ROUTE_01",
-      "name": "Route 01",
-      "x": 0,
-      "y": 0,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_MY_HOUSE",
-      "name": "My House",
-      "x": 0,
-      "y": 0,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_MURKY_GROVE",
-      "name": "Murky Grove",
-      "x": 0,
-      "y": 0,
       "width": 1,
       "height": 1
     }

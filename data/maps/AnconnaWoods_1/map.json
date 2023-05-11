@@ -25,8 +25,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "AnconnaWoods_1_Found_Riolu",
-      "flag": "ANCONNA_WOODS_BUGGEM",
-      "in_connection": false
+      "flag": "ANCONNA_WOODS_BUGGEM"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GRETA",
@@ -39,8 +38,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "AnconnaWoods_1_Mushrooms",
-      "flag": "ANCONNA_WOODS_MUSHROOMS",
-      "in_connection": false
+      "flag": "ANCONNA_WOODS_MUSHROOMS"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKEMON_447",
@@ -53,8 +51,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "RIOLU_ENCOUNTER",
-      "in_connection": false
+      "flag": "RIOLU_ENCOUNTER"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -90,21 +87,21 @@
       "y": 3,
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_WOODS",
-      "dest_warp_id": "2"
+      "dest_warp_id": 2
     },
     {
       "x": 39,
       "y": 3,
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_WOODS",
-      "dest_warp_id": "3"
+      "dest_warp_id": 3
     },
     {
       "x": 40,
       "y": 21,
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_WOODS",
-      "dest_warp_id": "4"
+      "dest_warp_id": 4
     },
     {
       "x": 41,
@@ -118,7 +115,7 @@
       "y": 21,
       "elevation": 0,
       "dest_map": "MAP_ANCONNA_WOODS",
-      "dest_warp_id": "5"
+      "dest_warp_id": 5
     }
   ],
   "coord_events": [

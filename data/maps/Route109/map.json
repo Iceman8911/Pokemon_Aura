@@ -347,9 +347,7 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [
-
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",
@@ -373,9 +371,7 @@
       "y": 23,
       "elevation": 3,
       "item": "ITEM_REVIVE",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_109_REVIVE",
-      "quantity": 0,
-      "underfoot": false
+      "flag": "FLAG_HIDDEN_ITEM_ROUTE_109_REVIVE"
     },
     {
       "type": "hidden_item",
@@ -383,9 +379,7 @@
       "y": 5,
       "elevation": 3,
       "item": "ITEM_HEART_SCALE",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_109_HEART_SCALE_1",
-      "quantity": 0,
-      "underfoot": false
+      "flag": "FLAG_HIDDEN_ITEM_ROUTE_109_HEART_SCALE_1"
     },
     {
       "type": "hidden_item",
@@ -393,9 +387,7 @@
       "y": 10,
       "elevation": 3,
       "item": "ITEM_GREAT_BALL",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_109_GREAT_BALL",
-      "quantity": 0,
-      "underfoot": false
+      "flag": "FLAG_HIDDEN_ITEM_ROUTE_109_GREAT_BALL"
     },
     {
       "type": "hidden_item",
@@ -403,9 +395,7 @@
       "y": 20,
       "elevation": 3,
       "item": "ITEM_ETHER",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_109_ETHER",
-      "quantity": 0,
-      "underfoot": false
+      "flag": "FLAG_HIDDEN_ITEM_ROUTE_109_ETHER"
     },
     {
       "type": "hidden_item",
@@ -413,9 +403,7 @@
       "y": 16,
       "elevation": 3,
       "item": "ITEM_HEART_SCALE",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_109_HEART_SCALE_2",
-      "quantity": 0,
-      "underfoot": false
+      "flag": "FLAG_HIDDEN_ITEM_ROUTE_109_HEART_SCALE_2"
     },
     {
       "type": "hidden_item",
@@ -423,9 +411,7 @@
       "y": 42,
       "elevation": 3,
       "item": "ITEM_HEART_SCALE",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_109_HEART_SCALE_3",
-      "quantity": 0,
-      "underfoot": false
+      "flag": "FLAG_HIDDEN_ITEM_ROUTE_109_HEART_SCALE_3"
     }
   ]
 }

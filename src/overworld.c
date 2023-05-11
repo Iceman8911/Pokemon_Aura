@@ -68,11 +68,7 @@
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
-<<<<<<< HEAD
-#include "dns.h"
 #include "constants/event_object_movement.h"
-=======
->>>>>>> parent of ae3cec8c6a (Added Day & Night lightning system)
 
 struct CableClubPlayer
 {
@@ -830,7 +826,7 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     LoadSecondaryTilesetPalette(gMapHeader.mapLayout);
 
     for (paletteIndex = NUM_PALS_IN_PRIMARY; paletteIndex < NUM_PALS_TOTAL; paletteIndex++)
-        ApplyWeatherGammaShiftToPal(paletteIndex);
+        ApplyWeatherColorMapToPal(paletteIndex);
 
     InitSecondaryTilesetAnimation();
     UpdateLocationHistoryForRoamer();

@@ -92,7 +92,7 @@ static void LoadObjectReflectionPalette(struct ObjectEvent *objectEvent, struct 
         reflectionSprite->sReflectionVerticalOffset = bridgeReflectionVerticalOffsets[bridgeType - 1];
         LoadObjectEventPalette(OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION);
         reflectionSprite->oam.paletteNum = IndexOfSpritePaletteTag(OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION);
-        UpdatePaletteGammaType(reflectionSprite->oam.paletteNum, GAMMA_NORMAL);
+        //UpdatePaletteGammaType(reflectionSprite->oam.paletteNum, GAMMA_NORMAL);
         UpdateSpritePaletteWithWeather(reflectionSprite->oam.paletteNum);
     }
     else
@@ -125,8 +125,37 @@ void LoadSpecialReflectionPalette(struct Sprite *sprite)
 	reflectionPalette.tag = GetSpritePaletteTagByPaletteNum(sprite->oam.paletteNum) + 0x1000;
 	LoadSpritePalette(&reflectionPalette);
 	sprite->oam.paletteNum = IndexOfSpritePaletteTag(reflectionPalette.tag);
-	UpdatePaletteGammaType(sprite->oam.paletteNum, GAMMA_ALT);
+	//UpdatePaletteGammaType(sprite->oam.paletteNum, GAMMA_ALT);
 	UpdateSpritePaletteWithWeather(sprite->oam.paletteNum);
+}
+ static void LoadObjectRegularReflectionPalette(struct ObjectEvent *objectEvent, u8 paletteIndex)
+{
+    const struct ObjectEventGraphicsInfo *graphicsInfo;
+
+    graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
+    if (graphicsInfo->reflectionPaletteTag != OBJ_EVENT_PAL_TAG_NONE)
+    {
+        if (graphicsInfo->paletteSlot == PALSLOT_PLAYER)
+            LoadPlayerObjectReflectionPalette(graphicsInfo->paletteTag, paletteIndex);
+        else if (graphicsInfo->paletteSlot == PALSLOT_NPC_SPECIAL)
+            LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag, paletteIndex);
+        else
+            PatchObjectPalette(GetObjectPaletteTag(paletteIndex), paletteIndex);
+        UpdateSpritePaletteWithWeather(paletteIndex);
+    }
+}
+// When walking on a bridge high above water (Route 120), the reflection is a solid dark blue color.
+// This is so the sprite blends in with the dark water metatile underneath the bridge.
+static void LoadObjectHighBridgeReflectionPalette(struct ObjectEvent *objectEvent, u8 paletteNum)
+{
+    const struct ObjectEventGraphicsInfo *graphicsInfo;
+
+    graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
+    if (graphicsInfo->reflectionPaletteTag != OBJ_EVENT_PAL_TAG_NONE)
+    {
+        PatchObjectPalette(graphicsInfo->reflectionPaletteTag, paletteNum);
+        UpdateSpritePaletteWithWeather(paletteNum);
+    }
 }
 
 static void UpdateObjectReflectionSprite(struct Sprite *reflectionSprite)
@@ -184,7 +213,7 @@ u8 CreateWarpArrowSprite(void)
     u8 spriteId;
     struct Sprite *sprite;
 
-    LoadFieldEffectPalette_(FLDEFFOBJ_ARROW, FALSE);
+//    LoadFieldEffectPalette_(FLDEFFOBJ_ARROW, FALSE);
     spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_ARROW], 0, 0, 0x52);
     if (spriteId != MAX_SPRITES)
     {
@@ -1699,7 +1728,7 @@ static void UpdateGrassFieldEffectSubpriority(struct Sprite *sprite, u8 elevatio
     }
 }
 
-static void LoadFieldEffectPalette_(u8 fieldEffect, bool8 updateGammaType)
+void LoadFieldEffectPalette_(u8 fieldEffect, bool8 updateGammaType)
 {
     const struct SpriteTemplate *spriteTemplate;
 
@@ -1707,8 +1736,8 @@ static void LoadFieldEffectPalette_(u8 fieldEffect, bool8 updateGammaType)
     if (spriteTemplate->paletteTag != 0xffff)
     {
         LoadObjectEventPalette(spriteTemplate->paletteTag);
-        if (updateGammaType)
-            UpdatePaletteGammaType(IndexOfSpritePaletteTag(spriteTemplate->paletteTag), GAMMA_NORMAL);
+        //if (updateGammaType)
+            //UpdatePaletteGammaType(IndexOfSpritePaletteTag(spriteTemplate->paletteTag), GAMMA_NORMAL);
     }
 }
 
