@@ -13791,7 +13791,7 @@ static const struct LevelUpMove sSkiddoLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sGogoatLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 0, MOVE_AERIAL_ACE),
+    LEVEL_UP_MOVE( 0, MOVE_BODY_PRESS),
     LEVEL_UP_MOVE( 1, MOVE_AERIAL_ACE),
     LEVEL_UP_MOVE( 1, MOVE_EARTHQUAKE),
     LEVEL_UP_MOVE( 1, MOVE_TACKLE),
