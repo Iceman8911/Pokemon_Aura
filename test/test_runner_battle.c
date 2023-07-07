@@ -841,20 +841,30 @@ void TestRunner_Battle_AfterLastTurn(void)
     STATE->runFinally = FALSE;
 }
 
-static void CB2_BattleTest_NextParameter(void)
-{
-    if (++STATE->runParameter >= STATE->parameters)
-        SetMainCallback2(CB2_TestRunner);
-    else
-        BattleTest_Run(gTestRunnerState.test->data);
-}
-
-static void CB2_BattleTest_NextTrial(void)
+static void TearDownBattle(void)
 {
     FreeMonSpritesGfx();
     FreeBattleSpritesData();
     FreeBattleResources();
     FreeAllWindowBuffers();
+}
+
+static void CB2_BattleTest_NextParameter(void)
+{
+    if (++STATE->runParameter >= STATE->parameters)
+    {
+        SetMainCallback2(CB2_TestRunner);
+    }
+    else
+    {
+        STATE->trials = 0;
+        BattleTest_Run(gTestRunnerState.test->data);
+    }
+}
+
+static void CB2_BattleTest_NextTrial(void)
+{
+    TearDownBattle();
 
     SetMainCallback2(CB2_BattleTest_NextParameter);
 
@@ -898,12 +908,7 @@ static void BattleTest_TearDown(void *data)
         // Free resources that aren't cleaned up when the battle was
         // aborted unexpectedly.
         if (STATE->tearDownBattle)
-        {
-            FreeMonSpritesGfx();
-            FreeBattleSpritesData();
-            FreeBattleResources();
-            FreeAllWindowBuffers();
-        }
+            TearDownBattle();
         FREE_AND_SET_NULL(STATE->results);
         FREE_AND_SET_NULL(STATE);
     }
@@ -942,6 +947,7 @@ static bool32 BattleTest_HandleExitWithResult(void *data, enum TestResult result
 void Randomly(u32 sourceLine, u32 passes, u32 trials, struct RandomlyContext ctx)
 {
     const struct BattleTest *test = gTestRunnerState.test->data;
+    INVALID_IF(STATE->trials != 0, "PASSES_RANDOMLY can only be used once per test");
     INVALID_IF(test->resultsSize > 0, "PASSES_RANDOMLY is incompatible with results");
     INVALID_IF(passes > trials, "%d passes specified, but only %d trials", passes, trials);
     STATE->rngTag = ctx.tag;
@@ -1090,7 +1096,11 @@ void Ability_(u32 sourceLine, u32 ability)
             break;
         }
     }
-    INVALID_IF(i == NUM_ABILITY_SLOTS, "%S cannot have %S", gSpeciesNames[species], gAbilityNames[ability]);
+    // Store forced ability to be set when the battle starts if invalid.
+    if (i == NUM_ABILITY_SLOTS)
+    {
+        DATA.forcedAbilities[DATA.currentSide][DATA.currentPartyIndex] = ability;
+    }
 }
 
 void Level_(u32 sourceLine, u32 level)
@@ -1773,4 +1783,9 @@ void ValidateFinally(u32 sourceLine)
     if (STATE->results == NULL)
         return;
     INVALID_IF(STATE->parametersCount == 0, "FINALLY without PARAMETRIZE");
+}
+
+u32 TestRunner_Battle_GetForcedAbility(u32 side, u32 partyIndex)
+{
+    return DATA.forcedAbilities[side][partyIndex];
 }
