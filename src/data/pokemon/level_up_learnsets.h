@@ -12002,6 +12002,7 @@ static const struct LevelUpMove sKarrablastLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sEscavalierLevelUpLearnset[] = {
+    LEVEL_UP_MOVE( 0, MOVE_IRON_HEAD),
     LEVEL_UP_MOVE( 1, MOVE_DOUBLE_EDGE),
     LEVEL_UP_MOVE( 1, MOVE_FELL_STINGER),
     LEVEL_UP_MOVE( 1, MOVE_PECK),
@@ -12016,7 +12017,7 @@ static const struct LevelUpMove sEscavalierLevelUpLearnset[] = {
     LEVEL_UP_MOVE(25, MOVE_FALSE_SWIPE),
     LEVEL_UP_MOVE(28, MOVE_BUG_BUZZ),
     LEVEL_UP_MOVE(32, MOVE_SLASH),
-    LEVEL_UP_MOVE(37, MOVE_IRON_HEAD),
+    LEVEL_UP_MOVE(37, MOVE_CLOSE_COMBAT),
     LEVEL_UP_MOVE(40, MOVE_IRON_DEFENSE),
     LEVEL_UP_MOVE(44, MOVE_X_SCISSOR),
     LEVEL_UP_MOVE(49, MOVE_REVERSAL),
@@ -12498,6 +12499,7 @@ static const struct LevelUpMove sHaxorusLevelUpLearnset[] = {
     LEVEL_UP_MOVE(32, MOVE_DRAGON_DANCE),
     LEVEL_UP_MOVE(36, MOVE_TAUNT),
     LEVEL_UP_MOVE(42, MOVE_DRAGON_PULSE),
+    LEVEL_UP_MOVE(46, MOVE_CLOSE_COMBAT),
     LEVEL_UP_MOVE(50, MOVE_SWORDS_DANCE),
     LEVEL_UP_MOVE(58, MOVE_GUILLOTINE),
     LEVEL_UP_MOVE(66, MOVE_OUTRAGE),
@@ -12600,6 +12602,7 @@ static const struct LevelUpMove sShelmetLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sAccelgorLevelUpLearnset[] = {
+    LEVEL_UP_MOVE( 0, MOVE_DARK_PULSE),
     LEVEL_UP_MOVE( 1, MOVE_WATER_SHURIKEN),
     LEVEL_UP_MOVE( 1, MOVE_FINAL_GAMBIT),
     LEVEL_UP_MOVE( 1, MOVE_POWER_SWAP),
