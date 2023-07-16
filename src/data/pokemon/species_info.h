@@ -2856,10 +2856,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
     {
         .baseHP        = 115, // Might change this later
         .baseAttack    = 50,
-        .baseDefense   = 80,
+        .baseDefense   = 75,
         .baseSpeed     = 70,
         .baseSpAttack  = 90,
-        .baseSpDefense = 95,
+        .baseSpDefense = 100,
         .types = { TYPE_WATER, TYPE_ICE },
         .catchRate = 75,
         .expYield = 166,
@@ -2869,7 +2869,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 70,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_FIELD},
-        .abilities = {ABILITY_THICK_FAT, ABILITY_HYDRATION, ABILITY_FUR_COAT},
+        .abilities = {ABILITY_THICK_FAT, ABILITY_HYDRATION, ABILITY_FUR_COAT},  // Needs a signature ability
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
     },
@@ -9276,7 +9276,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_WALREIN] =
     {
-        // Need to make this more unique when compared to Seel
+        // Need to make this more unique when compared to Dewgong
         .baseHP        = 120,
         .baseAttack    = 70,
         .baseDefense   = 90,
@@ -9292,7 +9292,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 70,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_FIELD},
-        .abilities = {ABILITY_THICK_FAT, ABILITY_ICE_BODY, ABILITY_OBLIVIOUS},
+        .abilities = {ABILITY_THICK_FAT, ABILITY_ICE_BODY, ABILITY_INTIMIDATE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
     },
@@ -17488,13 +17488,13 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_GUMSHOOS] =
     {
         // Perhaps more bulk?
-        .baseHP        = 98,
+        .baseHP        = 108,
         .baseAttack    = 120,
-        .baseDefense   = 60,
+        .baseDefense   = 80,
         .baseSpeed     = 45,
         .baseSpAttack  = 35,
         .baseSpDefense = 60,
-        .types = { TYPE_NORMAL, TYPE_NORMAL},
+        .types = { TYPE_NORMAL, TYPE_GROUND},
         .catchRate = 127,
         .expYield = 146,
         .evYield_Attack    = 2,
@@ -17689,7 +17689,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 70,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
-        .abilities = {ABILITY_KEEN_EYE, ABILITY_SAND_RUSH, ABILITY_STEADFAST},  // All the Lycans get a signature ability
+        .abilities = {ABILITY_KEEN_EYE, ABILITY_SAND_RUSH, ABILITY_STEADFAST},  // Need a signature ability
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
     },
