@@ -1001,11 +1001,11 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
             .power = 120,
             .zMovePower = 190,
         #endif
-        .effect = EFFECT_HIT,
+        .effect = EFFECT_FLINCH_HIT,   // Its either a flinch or 120 BP. The latter feels meh imo.
         .type = TYPE_WATER,
         .accuracy = 80,
         .pp = 5,
-        .secondaryEffectChance = 0,
+        .secondaryEffectChance = 30,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
