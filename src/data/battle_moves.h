@@ -9267,7 +9267,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .effect = EFFECT_BURN_HIT,
         .power = 100,
         .type = TYPE_FIRE,
-        .accuracy = 50,
+        .accuracy = 60,
         .pp = 5,
         .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
@@ -11243,7 +11243,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_SPDEF_UP_1,
     },
 
-    [MOVE_TOXIC_THREAD] =
+    [MOVE_TOXIC_THREAD] = // Buff Toxic Thread to cause toxic poisoning instead of regular poison
     {
         .effect = EFFECT_TOXIC_THREAD,
         .power = 0,
@@ -11694,7 +11694,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_ACCELEROCK] =
     {
         .effect = EFFECT_HIT,
-        .power = 40,
+        .power = 50,
         .type = TYPE_ROCK,
         .accuracy = 100,
         .pp = 20,

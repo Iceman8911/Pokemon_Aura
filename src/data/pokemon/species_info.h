@@ -592,7 +592,7 @@
     }
 
 #define MINIOR_METEOR_ATTRIBUTES\
-        .baseHP        = 60,    \
+        .baseHP        = 60,    \ // Meteor form needs 120HP
         .baseAttack    = 40,    \
         .baseDefense   = 130,   \
         .baseSpeed     = 40,    \
@@ -1285,7 +1285,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseAttack    = 95,
         .baseDefense   = 60,
         .baseSpeed     = 107,
-        .baseSpAttack  = 26,
+        .baseSpAttack  = 36,
         .baseSpDefense = 70,
         .types = { TYPE_NORMAL, TYPE_NORMAL },
         .catchRate = 127,
@@ -4408,7 +4408,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 70,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_GRASS},
-        .abilities = {ABILITY_OVERGROW, ABILITY_NONE, ABILITY_REGENERATOR},
+        .abilities = {ABILITY_OVERGROW, ABILITY_NONE, ABILITY_REGENERATOR},  // Its hidden will be an ability that gives stab in fairy and reduces damage done to all grass(and/or fairy perhaps) types on screen
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
     },
@@ -10673,8 +10673,8 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseAttack    = 50,
         .baseDefense   = 60,
         .baseSpeed     = 105,
-        .baseSpAttack  = 115,
-        .baseSpDefense = 105,
+        .baseSpAttack  = 110,
+        .baseSpDefense = 110,
         .types = { TYPE_GHOST, TYPE_GHOST},
         .catchRate = 45,
         .expYield = 173,
@@ -10848,7 +10848,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_BRONZONG] =
     {
-        .baseHP        = 67,
+        .baseHP        = 87,
         .baseAttack    = 89,
         .baseDefense   = 116,
         .baseSpeed     = 33,
@@ -22289,7 +22289,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseHP        = 85,
         .baseAttack    = 91,
         .baseDefense   = 80,
-        .baseSpeed     = 77,
+        .baseSpeed     = 87,
         .baseSpAttack  = 30,
         .baseSpDefense = 80,
         .types = { TYPE_DARK, TYPE_NORMAL},
