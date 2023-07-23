@@ -3385,10 +3385,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_WEEZING] =
     {
         .baseHP        = 65,
-        .baseAttack    = 90,
+        .baseAttack    = 80,
         .baseDefense   = 120,
         .baseSpeed     = 60,
-        .baseSpAttack  = 85,
+        .baseSpAttack  = 95,
         .baseSpDefense = 70,
         .types = { TYPE_POISON, TYPE_POISON },
         .catchRate = 60,
@@ -14925,7 +14925,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         #else
             .baseAttack    = 110,
         #endif
-        .types = { TYPE_ICE, TYPE_ICE},
+        .types = { TYPE_ICE, TYPE_FIGHTING},
         .catchRate = 60,
         .expYield = 177,
         .evYield_Attack    = 2,
@@ -15016,7 +15016,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
     {
         // New ability needed for r/stunfisk
         .baseHP        = 129,
-        .baseAttack    = 46,
+        .baseAttack    = 66,
         .baseDefense   = 84,
         .baseSpeed     = 32,
         .baseSpAttack  = 81,
@@ -22829,10 +22829,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_WEEZING_GALARIAN] =
     {
         .baseHP        = 65,
-        .baseAttack    = 90,
+        .baseAttack    = 80,
         .baseDefense   = 120,
         .baseSpeed     = 60,
-        .baseSpAttack  = 85,
+        .baseSpAttack  = 95,
         .baseSpDefense = 70,
         .types = { TYPE_POISON, TYPE_FAIRY},
         .catchRate = 60,
@@ -23106,7 +23106,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_STUNFISK_GALARIAN] =
     {
-        .baseHP        = 109,
+        .baseHP        = 129,
         .baseAttack    = 81,
         .baseDefense   = 99,
         .baseSpeed     = 32,
