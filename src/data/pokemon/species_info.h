@@ -592,7 +592,7 @@
     }
 
 #define MINIOR_METEOR_ATTRIBUTES\
-        .baseHP        = 60,    \ // Meteor form needs 120HP
+        .baseHP        = 60,    \ 
         .baseAttack    = 40,    \
         .baseDefense   = 130,   \
         .baseSpeed     = 40,    \
