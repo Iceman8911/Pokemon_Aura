@@ -1465,7 +1465,6 @@ static const u16 sVulpixTeachableLearnset[] = {
     MOVE_SUBSTITUTE,
     MOVE_SWAGGER,
     MOVE_SWIFT,
-    MOVE_GRASS_KNOT,
     MOVE_UNAVAILABLE,
 };
 
@@ -1503,7 +1502,6 @@ static const u16 sNinetalesTeachableLearnset[] = {
     MOVE_SUBSTITUTE,
     MOVE_SWAGGER,
     MOVE_SWIFT,
-    MOVE_GRASS_KNOT,
     MOVE_UNAVAILABLE,
 };
 
@@ -32200,7 +32198,6 @@ static const u16 sVulpixAlolanTeachableLearnset[] = {
     MOVE_REFLECT,
     MOVE_REST,
     MOVE_TOXIC,
-    MOVE_GRASS_KNOT,
     MOVE_UNAVAILABLE,
 };
 
@@ -32216,7 +32213,6 @@ static const u16 sNinetalesAlolanTeachableLearnset[] = {
     MOVE_REFLECT,
     MOVE_REST,
     MOVE_TOXIC,
-    MOVE_GRASS_KNOT,
     MOVE_UNAVAILABLE,
 };
 
