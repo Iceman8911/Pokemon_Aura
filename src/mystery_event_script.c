@@ -294,7 +294,7 @@ bool8 MEScrCmd_givenationaldex(struct ScriptContext *ctx)
 
 bool8 MEScrCmd_addrareword(struct ScriptContext *ctx)
 {
-    UnlockAdditionalPhrase(ScriptReadByte(ctx));
+    UnlockTrendySaying(ScriptReadByte(ctx));
     StringExpandPlaceholders(gSystemStringVar, gText_MysteryEventRareWord);
     ctx->mStatus = MEVENT_STATUS_SUCCESS;
     return FALSE;

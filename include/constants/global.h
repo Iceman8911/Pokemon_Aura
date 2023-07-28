@@ -51,9 +51,8 @@
 #define DAYCARE_MON_COUNT 2
 #define POKEBLOCKS_COUNT 40
 #define OBJECT_EVENTS_COUNT 16
-#define MAIL_COUNT (1 + PARTY_SIZE) //(10 + PARTY_SIZE)
-#define SECRET_BASES_COUNT 2
-#define TV_SHOWS_COUNT 2 //25
+#define MAIL_COUNT (1 + PARTY_SIZE) // Reduce it to (1 + PARTY_SIZE) later
+#define SECRET_BASES_COUNT 2        // Reduce to 2 later
 #define POKE_NEWS_COUNT 16
 #define PC_ITEMS_COUNT 50
 #define BAG_ITEMS_COUNT 40

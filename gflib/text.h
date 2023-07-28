@@ -3,10 +3,6 @@
 
 #include "characters.h"
 
-#define NUM_TEXT_PRINTERS 32
-
-//#define ENABLE_STAB_TEXT  TRUE  // Self explanatory. Just leave his commented out, its a disappointing WIP
-
 // Given as a text speed when all the text should be
 // loaded at once but not copied to vram yet.
 #define TEXT_SKIP_DRAW 0xFF
