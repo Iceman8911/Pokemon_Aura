@@ -40,3 +40,5 @@ prefabs.json
 *.sym
 *.js
 **/scripts.inc
+install-devkitpro-pacman
+install-devkitpro-pacman.1
